@@ -1,0 +1,512 @@
+
+
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  box-shadow: 4px 2px 4px #2d313a;
+  
+  transition: 0.5s;
+  background-size: 200% auto;
+}
+
+.buttonTheme {
+  position: absolute;
+ 
+  border: none;
+  font-size: 24px;
+  transition: 0.5s;
+  background-size: 200% auto;
+  
+}
+.buttonTheme.dark {
+  position: absolute;
+  left: 1200px;
+  
+  
+}
+.buttonTheme.light {
+  position: absolute;
+  left: 1220px;
+  
+  
+}
+
+/* Стили для светлой темы */
+.header.light {
+  background-color: #6a707c;
+  color: #fff;
+  
+}
+
+/* Стили для темной темы */
+.header.dark {
+  background-color: #3c4049;
+  color: #81858e; 
+}
+
+button.dark {
+  color: #3c4049;
+  background-color: #3c4049;
+  
+
+}
+
+button.light {
+  background-color: #6a707c;
+  
+ 
+}
+
+
+
+
+
+.sidebar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 220px; /* Adjust the width as needed */
+  height: 100%; /* Adjust the height as needed */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  box-shadow: 0 1.7cm 2px 3px #6a707c;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: #fff;
+}
+
+
+
+button.majorButton {
+  font-size: 18px;
+  position: relative;
+  padding: 5px 10px;
+  margin: 40px 0 20px 0;
+  background-color: #bc881b;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.5s;
+  background-size: 200% auto;
+  border-radius: 10px;
+  box-shadow: 0px 2px 4px #81858e;
+  background-image: linear-gradient(to right, #bc881b 0%, #a4781b 50%, #cd9c36 100%);
+}
+
+button.majorButton:hover {
+  background-color: #74591f;
+  background-position: right center;
+}
+
+.sidebar.dark {
+  background-color: #3c4049;
+  color: #81858e;
+}
+
+.sidebar.light {
+  background-color: #6a707c;
+  
+}
+
+.majorButton.dark {
+  color: #2d313a;
+}
+
+.mainField{
+  width: 100%;
+  min-height: 100vh;
+  padding: 30px;
+  box-sizing: border-box;
+  background-color: #fff;
+  transition: 0.5s;
+  background-size: 200% auto;
+
+}
+
+.mainField.dark {
+  background-color: #81858e;
+  width: 100%;
+  min-height: 100vh;
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  transition: 0.5s;
+  background-size: 200% auto;
+
+}
+
+.modalContent {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 4px;
+  width: auto;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: #3c4049;
+ 
+}
+.modalContent.dark {
+  background-color: #b8bbc4;
+
+}
+
+.modalContent.dark select{
+  background-color: #b8bbc4;
+
+}
+.modalContent.dark input[type="text"] {
+  background-color: #b8bbc4;
+
+}
+
+
+.modalContent.dark input[type="number"] {
+  background-color: #b8bbc4;
+
+}
+
+.modalContent.dark input[type="date"] {
+  background-color: #b8bbc4;
+
+}
+.modalContent select {
+  padding: 5px;
+  font-size: 14px;
+  border: 1px solid #bc881b;
+  border-radius: 10px;
+  margin: 10px;
+ 
+}
+.modalContent input[type="text"] {
+  padding: 6px;
+  font-size: 14px;
+  border: 1px solid #bc881b;
+  border-radius: 10px;
+  margin: 10px;
+  
+}
+.modalContent input[type="number"] {
+  padding: 6px;
+  font-size: 14px;
+  border: 1px solid #bc881b;
+  border-radius: 10px;
+  margin: 10px;
+}
+.modalContent input[type="date"] {
+  padding: 6px;
+  font-size: 14px;
+  border: 1px solid #bc881b;
+  border-radius: 10px;
+  margin: 10px;
+}
+.modalContent select:focus,
+.modalContent input[type="text"]:focus,
+.modalContent input[type="number"]:focus,
+.modalContent input[type="date"]:focus {
+  border-color: #bc881b;
+  outline: none;
+  box-shadow: 0px 0px 4px #bc881b;
+  
+}
+
+.accountContent {
+  position: relative;
+  left: 300px;
+  top: 200px;
+  transition: 0.5s;
+  background-size: 200% auto;
+}
+.modalBtn{
+  box-shadow: 0px 2px 4px #81858e;
+  padding: 5px 10px;
+  margin: 5px;
+  font-size: 16px;
+  background-color: #bc881b;
+color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+
+  transition: 0.5s;
+  background-size: 200% auto;
+  border-radius: 10px;
+  background-image: linear-gradient(to right, #bc881b 0%, #a4781b 50%, #cd9c36 100%);
+
+
+
+}
+
+.modalBtn.dark{
+  color: #2d313a;
+}
+
+button.modalBtn:hover {
+  background-position: right center;
+}
+
+
+
+
+button.modalButton {
+  padding: 5px 10px;
+  margin: 5px;
+  font-size: 16px;
+  background-color: #bc881b;
+  
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  position: relative;
+  left: 1070px;
+  top: 150px;
+  transition: 0.5s;
+  background-size: 200% auto;
+  border-radius: 10px;
+  box-shadow: 0px 2px 4px #81858e;
+  background-image: linear-gradient(to right, #bc881b 0%, #a4781b 50%, #cd9c36 100%);
+}
+
+button.modalButton:hover {
+  background-position: right center;
+}
+
+.modalButton.dark {
+  color: #2d313a;
+}
+
+
+.modalButton.light{
+  color: #fff;
+}
+
+
+
+
+.accountButtons {
+  /* Другие стили */
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+}
+
+.titleList {
+  /* Другие стили */
+  text-align: center;
+}
+
+
+
+button.accountButton{
+  padding: 4px 5px;
+ 
+  font-size: 16px;
+  /* background-color: #bc881b; */
+  color: #fff;
+  border: none;
+
+  cursor: pointer;
+
+  transition: 0.5s;
+  background-size: 200% auto;
+
+  /* background-image: linear-gradient(to right, #bc881b 0%, #a4781b 50%, #cd9c36 100%); */
+}
+button.accountButton.dark{
+
+ 
+ 
+  /* background-color: #bc881b; */
+  color: #8d919b;
+
+
+  cursor: pointer;
+
+}
+
+  
+
+
+
+
+.accountButtonActions {
+ float: right;
+ transition: 0.5s;
+ background-size: 200% auto;
+}
+
+.accountButtonContainer{
+  border: 2px solid #a4781b;
+  border-radius: 10px;
+  padding: 2px;
+  margin: 2px;
+
+}
+
+.editButton{
+  padding:4px;
+  font-size: 14px;
+  cursor: pointer;
+  color: #fff;
+  
+  transition: 0.5s;
+  background-size: 200% auto;
+
+}
+.deleteButton{
+  padding: 2px;
+  font-size: 20px;
+  cursor: pointer;
+  color: #fff;
+  transition: 0.5s;
+  background-size: 200% auto;
+}
+
+.editButton.dark{
+color: #8d919b;
+}
+.deleteButton.dark{
+  color: #8d919b;
+  }
+
+
+  table {
+    position: fixed;
+    margin: 0 100px;
+    width: 50%;
+    text-align: center;
+    border-collapse: collapse;
+    border-spacing: 5px;
+    background: #fff;
+    border-radius: 20px;
+    color: #2d313a;
+    transition: 0.5s;
+    background-size: 200% auto;
+    }
+
+    th {  transition: 0.5s;
+      background-size: 200% auto;
+    font-size: 20px;
+    font-weight: 300;
+    padding: 5px;
+    border-bottom: 2px solid #bc881b;
+    
+    }
+  
+    td {  transition: 0.5s;
+      background-size: 200% auto;
+    padding: 5px;
+   
+    }
+
+    table caption { 
+        transition: 0.5s;
+      background-size: 200% auto;
+      font-size: 22px;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 10px;
+      /* Additional styles for the caption */
+    }
+    .editIcon1{
+      padding: 8px;
+      font-size: 16px;
+      color:#bc881b;  transition: 0.5s;
+      background-size: 200% auto;
+
+    }
+
+    .deleteIcon1{
+      padding: 6px;
+      font-size: 22px;
+      color:#bc881b;
+      transition: 0.5s;
+      background-size: 200% auto;
+    }
+
+    .editIcon1.dark{
+   
+      color:#2d313a;
+
+    }
+
+    .deleteIcon1.dark{
+    
+      color:#2d313a;;
+    }
+
+
+    table.accountContent{
+
+      background: none;
+    border-radius: 20px;
+    color: #2d313a;
+    }
+
+    table.accountContent.dark{
+
+   
+    border-radius: 20px;
+    color: #000;
+    }
+
+
+    .accountContent.dark th {
+      font-size: 20px;
+      font-weight: 300;
+      padding: 5px;
+      border-bottom: 2px solid #2d313a;
+    }
+   
+.titleList{
+  position: relative;
+  margin: auto;
+  font-size: 20px;
+  margin-top: 10px;
+  
+ 
+}
+
+
+.expandable-description {
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.expandable-description.expanded {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: initial;
+}
+
+.text{
+
+  font-size: 2050px;
+}
