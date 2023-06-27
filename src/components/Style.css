@@ -11,7 +11,7 @@
   align-items: center;
   justify-content: center;
   
-  box-shadow: 4px 2px 4px #2d313a;
+  box-shadow: 5.9cm 0 4px #2d313a;
   
   transition: 0.5s;
   background-size: 200% auto;
@@ -19,7 +19,8 @@
 
 .buttonTheme {
   position: absolute;
- 
+  cursor: pointer;
+
   border: none;
   font-size: 24px;
   transition: 0.5s;
@@ -79,7 +80,7 @@ button.light {
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
-  box-shadow: 0 1.7cm 2px 3px #6a707c;
+  box-shadow: 1px 2px 3px #6a707c;
   transition: 0.5s;
   background-size: 200% auto;
   color: #fff;
@@ -91,7 +92,7 @@ button.majorButton {
   font-size: 18px;
   position: relative;
   padding: 5px 10px;
-  margin: 40px 0 20px 0;
+  margin: 70px 0 20px 0;
   background-color: #bc881b;
   color: white;
   border: none;
@@ -132,6 +133,10 @@ button.majorButton:hover {
   transition: 0.5s;
   background-size: 200% auto;
 
+
+
+
+
 }
 
 .mainField.dark {
@@ -140,6 +145,9 @@ button.majorButton:hover {
   min-height: 100vh;
   padding: 30px;
   box-sizing: border-box;
+
+
+
 }
 
 
@@ -168,7 +176,7 @@ button.majorButton:hover {
   transition: 0.5s;
   background-size: 200% auto;
   color: #3c4049;
- 
+ z-index: 1;
 }
 .modalContent.dark {
   background-color: #b8bbc4;
@@ -224,10 +232,26 @@ button.majorButton:hover {
   border-radius: 10px;
   margin: 10px;
 }
+.modalContent input[type="email"] {
+  padding: 6px;
+  font-size: 14px;
+  border: 1px solid #bc881b;
+  border-radius: 10px;
+  margin: 10px;
+}
+.modalContent input[type="password"] {
+  padding: 6px;
+  font-size: 14px;
+  border: 1px solid #bc881b;
+  border-radius: 10px;
+  margin: 10px;
+}
 .modalContent select:focus,
 .modalContent input[type="text"]:focus,
 .modalContent input[type="number"]:focus,
-.modalContent input[type="date"]:focus {
+.modalContent input[type="date"]:focus,
+.modalContent input[type="email"]:focus,
+.modalContent input[type="password"]:focus {
   border-color: #bc881b;
   outline: none;
   box-shadow: 0px 0px 4px #bc881b;
@@ -283,7 +307,7 @@ button.modalButton {
   cursor: pointer;
   position: relative;
   left: 1070px;
-  top: 150px;
+  top: 200px;
   transition: 0.5s;
   background-size: 200% auto;
   border-radius: 10px;
@@ -308,7 +332,8 @@ button.modalButton:hover {
 
 
 .accountButtons {
-  /* Другие стили */
+  cursor: pointer;
+
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -316,7 +341,7 @@ button.modalButton:hover {
 }
 
 .titleList {
-  /* Другие стили */
+
   text-align: center;
 }
 
@@ -324,7 +349,8 @@ button.modalButton:hover {
 
 button.accountButton{
   padding: 4px 5px;
- 
+  cursor: pointer;
+
   font-size: 16px;
   /* background-color: #bc881b; */
   color: #fff;
@@ -358,6 +384,8 @@ button.accountButton.dark{
  float: right;
  transition: 0.5s;
  background-size: 200% auto;
+ cursor: pointer;
+
 }
 
 .accountButtonContainer{
@@ -373,12 +401,15 @@ button.accountButton.dark{
   font-size: 14px;
   cursor: pointer;
   color: #fff;
-  
+  cursor: pointer;
+
   transition: 0.5s;
   background-size: 200% auto;
 
 }
 .deleteButton{
+  cursor: pointer;
+
   padding: 2px;
   font-size: 20px;
   cursor: pointer;
@@ -507,6 +538,125 @@ color: #8d919b;
 }
 
 .text{
+ 
+  margin: 100px auto;
+  width: 50%;
+  text-align: center;
+  border-collapse: collapse;
+  border-spacing: 5px;
+  transition: 0.5s;
+  background-size: 200% auto;
+  font-size: 23px;
 
-  font-size: 2050px;
+  
+  
 }
+
+.text.dark{
+  color:#fff;
+  background-color: #81858e;
+ 
+ 
+  
+  
+  
+  
+  }
+
+
+.text.light{
+  
+  background-color: #fff;
+
+  color: #2d313a;
+}
+
+
+.share{
+ 
+ 
+  padding: 10px;
+  margin: 50px;
+
+position: relative;
+  top: 40px;
+
+ 
+}
+
+.item {   cursor: pointer;
+  float: left;
+  margin-right: 30px;
+  font-size: 25px; /* Расстояние между элементами */
+}
+
+.item:last-child {
+  margin-right: 0; /* Убрать расстояние после последнего элемента */
+}
+
+.logIn {
+  position: absolute;
+  cursor: pointer;
+
+  border: none;
+  font-size: 24px;
+  transition: 0.5s;
+  background-size: 200% auto;
+  position: absolute;
+  left: 1300px;
+  
+}
+
+
+.modalButtonLog{
+
+    box-shadow: 0px 2px 4px #81858e;
+    padding: 5px 10px;
+   
+    font-size: 16px;
+    background-color: #bc881b;
+  color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  
+    transition: 0.5s;
+    background-size: 200% auto;
+    border-radius: 10px;
+    background-image: linear-gradient(to right, #bc881b 0%, #a4781b 50%, #cd9c36 100%);
+  
+  margin: 10px;
+  
+  }
+  
+  .modalButtonLog.dark{
+    color: #2d313a;
+  }
+
+  .modalContent.dark input[type="email"] {
+    background-color: #b8bbc4;
+  
+  }
+  .modalContent.dark input[type="password"] {
+    background-color: #b8bbc4;
+  
+  }
+
+  .modalLog form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .modalLog form input {
+    margin-bottom: 10px;
+  }
+
+ 
+
+  .modalLog{
+    padding: 40px;
+  }
+
+  .modalLog h3 {
+text-align: center;
+  }
