@@ -1,20 +1,43 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./Header";
 import SideMenu from "./SideMenu";
-import AccountList from "./AccountList";
+import Dashboard from "./Dashboard";
 import "./Style.css";
 
 function App() {
+
+
+
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [accounts, setAccounts] = useState([]);
+  const [currency, setCurrency] = useState("USD");
   const [activeAccount, setActiveAccount] = useState(
     accounts.length > 0 ? accounts[0] : null
   );
-  const [currency, setCurrency] = useState("USD");
+ 
+
+  const setActiveModal = (modal) => {
+    // Function implementation
+  };
+  
+  
+  const headersWithToken = {};
+
+  useEffect(() => {
+    if (isDarkMode) {
+      document.body.classList.add("dark");
+    } else {
+      document.body.classList.remove("dark");
+    }
+  }, [isDarkMode]);
 
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
   };
+ 
+
 
   const createAccount = (newAccount, currency) => {
     const account = {
@@ -62,29 +85,24 @@ function App() {
   };
 
   return (
-    <div>
-      
-      <SideMenu
-        isDarkMode={isDarkMode}
-        createAccount={createAccount}
-        setActiveAccount={setActiveAccount}
-        setAccounts={setAccounts}
-        accountList={accounts}
-        activeAccount={activeAccount}
-        currency={currency}
-        handleCurrencyChange={handleCurrencyChange}
-        handleDeleteAccount={handleDeleteAccount}
-        updateAccountCaption={updateAccountCaption} // Передача функции updateAccountCaption
-      />
-
+    <div className={isDarkMode ? "dark" : "light"}>
+     
+    
       {activeAccount ? (
-        <AccountList
+        <Dashboard
           isDarkMode={isDarkMode}
           account={activeAccount}
           updateAccountData={updateAccountData}
           currency={currency}
           handleDelete={handleDelete}
           submittedDataList={activeAccount.submittedDataList}
+          headersWithToken={headersWithToken}
+          isModalOpen={isModalOpen}
+          updateAccountCaption={updateAccountCaption} 
+          handleCurrencyChange={handleCurrencyChange}
+
+          
+         
           
         />
       ) : (
@@ -101,7 +119,31 @@ function App() {
          track your expenses and income for each account.
         </div></div>
       )}
-      <Header isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
+   <SideMenu
+  isDarkMode={isDarkMode}
+  createAccount={createAccount}
+  setActiveAccount={setActiveAccount}
+  setAccounts={setAccounts}
+  accountList={accounts}
+  activeAccount={activeAccount}
+  currency={currency}
+  handleCurrencyChange={handleCurrencyChange}
+  handleDeleteAccount={handleDeleteAccount}
+  updateAccountCaption={updateAccountCaption}
+  headersWithToken={headersWithToken}
+  setActiveModal={setActiveModal} // Add this prop
+/>
+
+      
+      
+      
+      
+      <Header isDarkMode={isDarkMode} 
+      toggleTheme={toggleTheme} 
+      isModalOpen={isModalOpen}
+
+      />
+
     </div>
   );
 }

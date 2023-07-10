@@ -1,0 +1,16 @@
+import React from "react";
+import { faArrowRightToBracket } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+const LoginButton = ({ isDarkMode, handleOpenLoginModal }) => {
+  return (
+    <button
+      className={`logIn ${isDarkMode ? "dark" : "light"}`}
+      onClick={handleOpenLoginModal}
+    >
+      <FontAwesomeIcon icon={faArrowRightToBracket} style={{ color: "#bc881b" }} />
+    </button>
+  );
+};
+
+export default LoginButton;

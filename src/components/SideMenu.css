@@ -1,0 +1,53 @@
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 220px; /* Adjust the width as needed */
+    height: 100vw; /* Adjust the height as needed */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    box-shadow: 1px 2px 3px #6a707c;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: #fff;
+  }
+
+  
+.sidebar.dark {
+    background-color: #3c4049;
+    color: #81858e;
+  }
+  
+  .sidebar.light {
+    background-color: #6a707c;
+  }
+
+  
+.majorButton {
+    font-size: 18px;
+    position: relative;
+    padding: 5px 10px;
+    margin: 70px 0 20px 0;
+    background-color: #bc881b;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.5s;
+    background-size: 200% auto;
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px #81858e;
+    background-image: linear-gradient(to right, #bc881b 0%, #a4781b 50%, #cd9c36 100%);
+  }
+  
+  .majorButton:hover {
+    background-color: #74591f;
+    background-position: right center;
+  }
+  
+
+  .majorButton.dark {
+    color: #2d313a;
+  }

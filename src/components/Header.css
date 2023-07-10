@@ -1,0 +1,78 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 5.9cm 0 4px #2d313a;
+  transition: 0.5s;
+  background-size: 200% auto;
+}
+
+.header.light {
+  background-color: #6a707c;
+  color: #fff; 
+}
+
+.header.dark {
+  background-color: #3c4049;
+  color: #81858e; 
+}
+
+.buttonTheme {
+  position: absolute;
+  cursor: pointer;
+  left: 1500px;
+  border: none;
+  font-size: 24px;
+  transition: 0.5s;
+  background-size: 200% auto;
+  
+}
+.buttonTheme.dark {
+  left: 1470px;
+}
+
+
+.letter {
+  color: #bc881b; /* Цвет символа */
+  font-size: 110%; /* Размер шрифта */
+ } 
+ 
+button.dark {
+  color: #3c4049;
+  background-color: #3c4049;
+
+}
+
+button.light {
+  background-color: #6a707c;
+ 
+}
+
+.logIn {
+    position: absolute;
+    cursor: pointer;
+    border: none;
+    font-size: 24px;
+    transition: 0.5s;
+    background-size: 200% auto;
+    position: absolute;
+    left: 1300px;
+    
+  }
+  
+  .SignUp {
+    position: absolute;
+    cursor: pointer;
+    border: none;
+    font-size: 23px;
+    transition: 0.5s;
+    background-size: 200% auto;
+    position: absolute;
+    left: 1250px;
+    
+  }
