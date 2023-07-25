@@ -1,43 +1,27 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPencilAlt, faTimes } from "@fortawesome/free-solid-svg-icons";
-import { faShareNodes } from '@fortawesome/free-solid-svg-icons';
-import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
+import { faShareNodes } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
 import AccountButton from "./AccountButton";
 import "./Style.css";
 import "./SideMenu.css";
 
- const SideMenu = ({
+const SideMenu = ({
   isDarkMode,
-  createAccount,
   setActiveAccount,
   accountList,
   activeAccount,
   currency,
-  handleCurrencyChange,
   handleDeleteAccount,
   setAccounts,
   updateAccountCaption,
-  headersWithToken,
-  activeModal, setActiveModal 
-  
+  onAccountUpdate,
 }) => {
   const [newAccount, setNewAccount] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editAccountId, setEditAccountId] = useState(null);
   const [newCurrency, setNewCurrency] = useState(currency);
   const [fetchedAccountList, setFetchedAccountList] = useState([]);
- 
-
-  const handleOpenModal1 = () => {
-    setActiveModal('sideMenuModal');
-  };
-
-  
-
-  const formatAccountName = (name) => {
-    return name.length > 9 ? `${name.substring(0, 9)}...` : name;
-  };
 
   useEffect(() => {
     setNewCurrency(currency);
@@ -49,16 +33,16 @@ import "./SideMenu.css";
 
   const fetchAccountList = async () => {
     try {
-      const token = localStorage.getItem("accessToken"); // Retrieve the token from localStorage
+      const token = localStorage.getItem("accessToken");
       const headersWithToken = {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`
+        Authorization: `Bearer ${token}`,
       };
-  
+
       const response = await fetch("http://192.168.1.30:1323/accounts/", {
-        headers: headersWithToken // Pass the headers object in the fetch options
+        headers: headersWithToken,
       });
-  
+
       if (response.ok) {
         const data = await response.json();
         setFetchedAccountList(data);
@@ -69,15 +53,14 @@ import "./SideMenu.css";
       console.log("Error fetching account list:", error);
     }
   };
-  
 
   const handleCreateAccount = async () => {
     if (newAccount) {
       try {
-        const token = localStorage.getItem("accessToken"); // Retrieve the token from localStorage
+        const token = localStorage.getItem("accessToken");
         const headersWithToken = {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`
+          Authorization: `Bearer ${token}`,
         };
         const response = await fetch("http://192.168.1.30:1323/accounts/", {
           method: "POST",
@@ -86,8 +69,6 @@ import "./SideMenu.css";
           body: JSON.stringify({
             name: newAccount,
             currency: newCurrency,
-           
-
           }),
         });
         if (response.ok) {
@@ -111,29 +92,38 @@ import "./SideMenu.css";
     setNewAccount(account.name);
     setNewCurrency(account.currency);
     openModal();
+    onAccountUpdate(account);
     updateAccountCaption(account);
   };
 
   const handleSaveAccount = async () => {
     try {
-      const token = localStorage.getItem("accessToken"); // Retrieve the token from localStorage
-        const headersWithToken = {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`
-        };
-      const response = await fetch(`http://192.168.1.30:1323/accounts/${editAccountId}`, {
-        method: "PUT",
-        mode: "cors",
-        headers: headersWithToken,
-        body: JSON.stringify({
-          name: newAccount,
-          currency: newCurrency,
-        }),
-      });
+      const token = localStorage.getItem("accessToken");
+      const headersWithToken = {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      };
+      const response = await fetch(
+        `http://192.168.1.30:1323/accounts/${editAccountId}`,
+        {
+          method: "PUT",
+          mode: "cors",
+          headers: headersWithToken,
+          body: JSON.stringify({
+            name: newAccount,
+            currency: newCurrency,
+          }),
+        }
+      );
 
       if (response.ok) {
         fetchAccountList();
         closeModal();
+        updateAccountCaption({
+          id: editAccountId,
+          name: newAccount,
+          currency: newCurrency,
+        });
       } else {
         console.log("Failed to update account");
       }
@@ -144,21 +134,24 @@ import "./SideMenu.css";
 
   const handleAccountChange = (account) => {
     setActiveAccount(account);
-    setEditAccountId(null);
+    onAccountUpdate(account);
   };
 
   const handleDelete = async (account) => {
     try {
-       const token = localStorage.getItem("accessToken"); // Retrieve the token from localStorage
+      const token = localStorage.getItem("accessToken");
       const headersWithToken = {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`
+        Authorization: `Bearer ${token}`,
       };
-      const response = await fetch(`http://192.168.1.30:1323/accounts/${account.id}`, {
-        method: "DELETE",
-        mode: "cors",
-        headers: headersWithToken
-      });
+      const response = await fetch(
+        `http://192.168.1.30:1323/accounts/${account.id}`,
+        {
+          method: "DELETE",
+          mode: "cors",
+          headers: headersWithToken,
+        }
+      );
       if (response.ok) {
         handleDeleteAccount(account);
         if (editAccountId !== null && editAccountId === account.id) {
@@ -173,6 +166,20 @@ import "./SideMenu.css";
     }
   };
 
+  const handleShare = () => {
+    if (navigator.share) {
+      navigator
+        .share({
+          title: "Share App",
+          url: window.location.href,
+        })
+        .then(() => console.log("successfully"))
+        .catch((error) => console.log("Error:", error));
+    } else {
+      console.log("Not supported in your browser");
+    }
+  };
+
   const openModal = () => {
     setIsModalOpen(true);
   };
@@ -181,85 +188,92 @@ import "./SideMenu.css";
     setIsModalOpen(false);
   };
 
-  const handleShare = () => {
-    if (navigator.share) {
-      navigator.share({
-        title: "Share App",
-        url: window.location.href,
-      })
-        .then(() => console.log("successfully"))
-        .catch((error) => console.log("Error:", error));
-    } else {
-      console.log("Not supported in your browser");
-    }
-  };
-  
-  return (<div>  
-    
-    <div className={`sidebar ${isDarkMode ? "dark" : "light"}`}> 
-    
-      <button className={`majorButton ${isDarkMode ? "dark" : "light"}`} onClick={() => {
-  openModal();
-  handleOpenModal1();
-}}>
-        Create new account
-      </button>
+  return (
+    <div>
+      <div className={`sidebar ${isDarkMode ? "dark" : "light"}`}>
+        <button
+          className={`majorButton ${isDarkMode ? "dark" : "light"}`}
+          onClick={() => {
+            openModal();
+          }}
+        >
+          Create new account
+        </button>
 
-      {isModalOpen && (
-        <div className="modal">
-          <div className={`modalContent ${isDarkMode ? "dark" : "light"}`}>
-            <h3>Enter the data</h3>
-            <input
-              type="text"
-              value={newAccount}
-              onChange={(e) => setNewAccount(e.target.value)}
-              placeholder="Account Name"
-            />
-            <select value={newCurrency} onChange={(e) => setNewCurrency(e.target.value)}>
-              <option value="USD">USD</option>
-              <option value="EUR">EUR</option>
-              <option value="GBP">GBP</option>
-            </select>
-            {editAccountId ? (
-              <button className={`modalBtn ${isDarkMode ? "dark" : "light"}`} onClick={handleSaveAccount}>
-                Save
+        {isModalOpen && (
+          <div className="modal">
+            <div className={`modalContent ${isDarkMode ? "dark" : "light"}`}>
+              <h3>Enter the data</h3>
+              <input
+                type="text"
+                value={newAccount}
+                onChange={(e) => setNewAccount(e.target.value)}
+                placeholder="Account Name"
+              />
+              <select
+                value={newCurrency}
+                onChange={(e) => setNewCurrency(e.target.value)}
+              >
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+                <option value="GBP">GBP</option>
+              </select>
+              {editAccountId ? (
+                <button
+                  className={`modalBtn ${isDarkMode ? "dark" : "light"}`}
+                  onClick={handleSaveAccount}
+                >
+                  Save
+                </button>
+              ) : (
+                <button
+                  className={`modalBtn ${isDarkMode ? "dark" : "light"}`}
+                  onClick={handleCreateAccount}
+                >
+                  Add
+                </button>
+              )}
+              <button
+                className={`modalBtn ${isDarkMode ? "dark" : "light"}`}
+                onClick={closeModal}
+              >
+                Close
               </button>
-            ) : (
-              <button className={`modalBtn ${isDarkMode ? "dark" : "light"}`} onClick={handleCreateAccount}>
-                Add
-              </button>
-            )}
-            <button className={`modalBtn ${isDarkMode ? "dark" : "light"}`} onClick={closeModal}>
-              Close
-            </button>
+            </div>
+          </div>
+        )}
+
+        <div className="accountButtons">
+          <div className="titleList">Your account list:</div>
+          <div className="carousel-container">
+            {fetchedAccountList.map((account) => (
+              <div key={account.id} className="carousel-item">
+                <AccountButton
+                  key={account.id}
+                  isDarkMode={isDarkMode}
+                  account={account}
+                  activeAccount={activeAccount}
+                  handleAccountChange={handleAccountChange}
+                  handleEditAccount={handleEditAccount}
+                  handleDelete={handleDelete}
+                  updateAccountCaption={updateAccountCaption}
+                  onAccountUpdate={onAccountUpdate} 
+                />
+              </div>
+            ))}
+          </div>{" "}
+        </div>
+
+        <div className="share">
+          <div className="item" onClick={handleShare}>
+            <FontAwesomeIcon icon={faShareNodes} />
+          </div>
+          <div className="item">
+            <FontAwesomeIcon icon={faEnvelope} />
           </div>
         </div>
-      )}
-
-      <div className="accountButtons">
-        
-        <div className="titleList">Your account list:</div>
-        {fetchedAccountList.map((account) => (
-        <AccountButton
-        key={account.id}
-        isDarkMode={isDarkMode}
-        account={account}
-        activeAccount={activeAccount}
-        handleAccountChange={handleAccountChange}
-        handleEditAccount={handleEditAccount}
-        handleDelete={handleDelete}
-      />
-         
-        ))}
       </div>
-      <div className="share">
-<div class="item" onClick={handleShare}>
-<FontAwesomeIcon icon={faShareNodes} /></div>
-<div class="item">
-<FontAwesomeIcon icon={faEnvelope} /></div>
-</div>
-
-    </div></div>
+    </div>
   );
 };
 

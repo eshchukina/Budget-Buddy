@@ -1,88 +1,91 @@
 
-
 .mainField {
-    width: 100vw;
-    min-height: 100vh;
-    padding: 30px;
-    box-sizing: border-box;
-    background-color: #fff;
-    transition: 0.5s;
-    background-size: 200% auto;
+  width: 100vw;
+  min-height: 100vh;
+  padding: 30px;
+  box-sizing: border-box;
+  background-color: #fff;
+  transition: 0.5s;
+  background-size: 200% auto;
+}
   
-  }
-  
-  .mainField.dark {
-    background-color: #9fa0a1;
-   
-  
-  }
+.mainField.dark {
+  background-color: #9fa0a1;
+}
 
-  .accountContent {
-    position: relative;
-    left: 20%;
-    top: 15%;
-    transition: 0.5s;
-    background-size: 200% auto;
-  
-  }
+.accountContent {
+  position: relative;
+  left: 20%;
+  top: 15%;
+  transition: 0.5s;
+  background-size: 200% auto;
+}
 
-  .accountButtons {
-    cursor: pointer;
-  
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: center;
-  }
-  
-  .titleList {
-  
-    text-align: center;
-  }
-  
-  table {
- 
-    text-align: center;
-    border-collapse: collapse;
-    border-spacing: 5px;
-    background: #fff;
-    border-radius: 20px;
-    color: #2d313a;
-    transition: 0.5s;
-    background-size: 200% auto;
-    
-    
-    }
+.text {
+  margin: 100px auto;
+  width: 50%;
+  text-align: center;
+  border-collapse: collapse;
+  border-spacing: 5px;
+  transition: 0.5s;
+  background-size: 200% auto;
+  font-size: 23px;
+  background-color: #fff;
+  color: #2d313a;
+}
 
-    th {  transition: 0.5s;
-      background-size: 200% auto;
-    font-size: 20px;
-    font-weight: 300;
-    padding: 0px;
-   
-    
-    }
-  
-    td {  transition: 0.5s;
-      background-size: 200% auto;
-    padding: 0px;
-   
-    }
+.text.dark{
+  color:#fff;
+  background-color: #9fa0a1;
+}
 
-    table caption { 
+
+.titleList {
+  text-align: center;
+}
   
-        transition: 0.5s;
-      background-size: 200% auto;
-      font-size: 22px;
-      font-weight: 600;
-      text-align: center;
-      margin-bottom: 10px;
-      /* Additional styles for the caption */
-    }
-    th:first-child,
+table {
+  text-align: center;
+  border-collapse: collapse;
+  border-spacing: 5px;
+  background: #fff;
+  border-radius: 20px;
+  color: #2d313a;
+  transition: 0.5s;
+  background-size: 200% auto;
+}
+
+th {  
+  transition: 0.5s;
+  background-size: 200% auto;
+  font-size: 20px;
+  font-weight: 300;
+  padding: 0px;
+}
+  
+td {  
+  transition: 0.5s;
+  background-size: 200% auto;
+  padding: 0px;
+}
+
+table caption { 
+  transition: 0.5s;
+  background-size: 200% auto;
+  font-size: 22px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+th:first-child,
 td:first-child {
-  /* Стили для первой колонки */
-  width: 10%; /* Укажите желаемую ширину */
+  width: 10%;
+}
+
+table.accountContent.dark{ 
+  border-radius: 20px;
+  color: #000;
 }
 
 .pad {
@@ -90,75 +93,123 @@ td:first-child {
   padding: 10px;
 }
 
+.editIcon1{
+  padding: 8px;
+  font-size: 16px;
+  color:#bc881b;  transition: 0.5s;
+  background-size: 200% auto;
+}
 
+.deleteIcon1{
+  padding: 6px;
+  font-size: 22px;
+  color:#bc881b;
+  transition: 0.5s;
+  background-size: 200% auto;
+}
 
+.editIcon1.dark{
+  color:#2d313a;
+}
 
+.deleteIcon1.dark{
+  color:#2d313a;;
+}
 
-    .editIcon1{
-      padding: 8px;
-      font-size: 16px;
-      color:#bc881b;  transition: 0.5s;
-      background-size: 200% auto;
+.accountContent{
+  margin: 0 100px;
+  width: 50%;
+  background: none;
+  border-radius: 20px;
+  color: #2d313a;
+  position: absolute;
+}
 
-    }
+.accountContent.dark th {
+  font-size: 20px;
+  font-weight: 300;
+  padding: 5px;
+  border-bottom: 2px solid #2d313a;
+}
 
-    .deleteIcon1{
-      padding: 6px;
-      font-size: 22px;
-      color:#bc881b;
-      transition: 0.5s;
-      background-size: 200% auto;
-    }
-
-    .editIcon1.dark{
-   
-      color:#2d313a;
-
-    }
-
-    .deleteIcon1.dark{
-    
-      color:#2d313a;;
-    }
-
-
-    .accountContent{
-        margin: 0 100px;
-        width: 50%;
-        background: none;
-        border-radius: 20px;
-        color: #2d313a;
-        position: absolute;
-    }
-
-    table.accountContent.dark{
-
-   
-    border-radius: 20px;
-    color: #000;
-    }
-
-
-    .accountContent.dark th {
-      font-size: 20px;
-      font-weight: 300;
-      padding: 5px;
-      border-bottom: 2px solid #2d313a;
-    }
-    .accountContent.light th {
-      font-size: 20px;
-      font-weight: 300;
-      padding: 5px;
-      border-bottom: 2px solid #2d313a;
-    }
-   
-   
+.accountContent.light th {
+  font-size: 20px;
+  font-weight: 300;
+  padding: 5px;
+  border-bottom: 2px solid #2d313a;
+}
    
 .titleList{
   position: relative;
   margin: auto;
   font-size: 20px;
   margin-top: 10px;
-  
- 
 }
+
+@media (max-width: 720px) {
+
+  .accountContent {
+    left: 10%;
+    top: 15%;
+    margin: 0 110px;
+  }
+
+
+}
+
+@media (max-width: 650px) {
+
+  .accountContent {
+    left: 10%;
+    top: 15%;
+    margin: 0 110px;
+  }
+
+  table caption { 
+    font-size: 20px;
+  }
+
+  th {  
+    font-size: 20px;
+  }
+
+}
+
+
+@media (max-width: 600px) {
+
+  .accountContent {
+    width: 30%;
+    left: 0;
+    top: 40%;
+    margin: 0px 40px;
+  }
+
+  .text {
+    position: relative;
+    top:200px;
+    font-size: 15px;
+    width: 70%;
+ }
+
+}
+  
+@media (max-width: 550px) {
+
+  .accountContent {
+    left: 0;
+    margin: 0 10px;
+  }
+  
+
+ }
+    
+@media (max-width: 450px) {
+
+  .accountContent {
+     margin: 0 2px;
+  }
+
+}
+
+       

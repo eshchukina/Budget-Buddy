@@ -1,53 +1,393 @@
 .sidebar {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 220px; /* Adjust the width as needed */
-    height: 100vw; /* Adjust the height as needed */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-sizing: border-box;
-    box-shadow: 1px 2px 3px #6a707c;
-    transition: 0.5s;
-    background-size: 200% auto;
-    color: #fff;
-  }
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 220px; 
+  height: 100%; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  box-shadow: 1px 2px 3px #6a707c;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: #fff;
+}
 
-  
+.accountButtonActions {
+  float: right;
+  transition: 0.5s;
+  background-size: 200% auto;
+  cursor: pointer;
+  padding:4px;
+ }
+ 
+ .accountButtonContainer{
+   border: 2px solid #a4781b;
+   border-radius: 10px;
+   padding: 2px;
+   margin: 2px;
+   justify-content: stretch;
+ 
+ }
+ 
+ .editButton {
+   float: left;
+   padding:4px;
+   font-size: 14px;
+   cursor: pointer;
+   color: #fff;
+   cursor: pointer;
+   transition: 0.5s;
+   background-size: 200% auto;
+ 
+ }
+
+ .deleteButton{
+   cursor: pointer;
+   font-size: 20px;
+   cursor: pointer;
+   color: #fff;
+   transition: 0.5s;
+   background-size: 200% auto;
+ }
+ 
+ .editButton.dark {
+  color: #8d919b;
+ }
+
+ .deleteButton.dark {
+   color: #8d919b;
+}
+
+.accountButtons {
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+}
+
+.active.accountButton {
+  color: #bc881b;;
+}
+
+.active.accountButton.dark {
+  color: #bc881b;;
+}
+
 .sidebar.dark {
-    background-color: #3c4049;
-    color: #81858e;
-  }
+  background-color: #3c4049;
+  color: #81858e;
+}
   
-  .sidebar.light {
-    background-color: #6a707c;
-  }
+.sidebar.light {
+  background-color: #6a707c;
+}
 
+.label{
+  text-align: center;
+  padding-bottom: 5px;
+  color:#cd9c36;
+}
   
 .majorButton {
-    font-size: 18px;
-    position: relative;
-    padding: 5px 10px;
-    margin: 70px 0 20px 0;
-    background-color: #bc881b;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.5s;
-    background-size: 200% auto;
-    border-radius: 10px;
-    box-shadow: 0px 2px 4px #81858e;
-    background-image: linear-gradient(to right, #bc881b 0%, #a4781b 50%, #cd9c36 100%);
+  font-size: 18px;
+  position: relative;
+  padding: 5px 10px;
+  margin: 70px 0 20px 0;
+  background-color: #bc881b;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.5s;
+  background-size: 200% auto;
+  border-radius: 10px;
+  box-shadow: 0px 2px 4px #81858e;
+  background-image: linear-gradient(to right, #bc881b 0%, #a4781b 50%, #cd9c36 100%);
+}
+  
+.majorButton:hover {
+  background-color: #74591f;
+  background-position: right center;
+}
+  
+.majorButton.dark {
+  color: #2d313a;
+}
+
+.balance{
+  font-size: 15px;
+}
+
+.accountButtonContainer{
+   width: 95%;
+}
+
+.accountButton {
+  width: 100%;
+  padding: 2px 4px;
+  cursor: pointer;
+  text-align: left;
+  font-size: 16px;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: 0.5s;
+  background-size: 200% auto;
+}
+
+button.accountButton.dark{
+  color: #8d919b;
+  cursor: pointer;
+  
+}
+  
+.detailsButton {
+  display: none;
+  font-size: 15px;
+  position: relative;
+  padding: 5px;
+  margin-top: 5px;
+  text-align: center;
+  margin-left: 10px;
+
+  }
+ 
+
+  .sidebar {
+
+    overflow-y: scroll; 
+    scrollbar-width: none;
+    scroll-behavior: smooth; 
+  }
+  .sidebar::-webkit-scrollbar {
+    width: 0; 
+
   }
   
-  .majorButton:hover {
-    background-color: #74591f;
-    background-position: right center;
+  .accountButtons {
+   
+    scrollbar-width: none;
+  }
+  
+  .accountButtons::-webkit-scrollbar {
+    width: 0; 
+ 
+  }
+  .accountButtons {
+
+
+    overflow-y: auto; 
   }
   
 
-  .majorButton.dark {
-    color: #2d313a;
+
+  
+@media (max-width: 800px) {
+
+  .sidebar {
+    font-size: 8px;
+    width: 180px;
   }
+
+  .majorButton {
+    font-size: 15px;
+    position: relative;
+    padding: 5px 7px;
+    margin: 70px 0 10px 0;
+  }
+  
+  .accountButtonActions {
+    position: relative;
+    padding:2px;
+  }
+
+  .accountButtonContainer {
+    padding: 2px;
+    margin: 2px;
+    width: 90%;
+    text-align: center;
+  }
+ 
+  .editButton {
+    float: left;
+    padding:4px;
+    font-size: 12px;
+  }
+
+  .deleteButton {
+    cursor: pointer;
+    font-size: 17px;
+    cursor: pointer;
+  }
+
+  .currency {
+    display: none;
+  }
+
+  .item {
+    font-size: 20px;
+    padding: 10px;
+  }
+
+  .share {
+    left:15px;
+  }
+}
+
+
+@media (max-width:800px) {
+
+  .detailsButton {
+    left:20px;
+    margin: 10px;
+    display:inline-flex;
+    align-items:center;
+  }
+
+  .balance{
+    display: none;
+  }
+
+   .accountButtonContainer {
+    display: flex;
+    justify-content: center;
+    padding: 2px;
+    margin: 2px;
+  }
+
+  .sidebar {
+    width: 160px;
+  }
+
+  .accountButtons {
+    width: 90%;
+  }
+
+}
+
+
+@media (max-width:600px) {
+
+  .majorButton {
+    font-size: 20px;
+    padding: 10px;
+   
+  }
+  
+  .balance{
+    display: none;
+  }
+
+  .titleList{
+    display: none;
+  }
+
+  .accountButtons {
+    display: flex;
+    flex-direction:row;
+    flex-wrap:wrap; 
+    flex-basis: 250px;
+  }
+
+  .accountButtonContainer {
+    padding: 5px;
+    margin: 0px;
+    flex-basis: calc(20% - 30px);
+    width: 70px;
+    display: flex;
+    flex-wrap:wrap; 
+    flex-grow: 1;
+ 
+  }
+
+  .sidebar{
+    width: 100%;
+    left: 0;
+    top: 0;
+    height : 300px;
+    margin: 0;  
+  }
+
+  .accountButton{
+    margin: 0;
+    font-size: 12px;
+    text-align: center;
+  }
+
+  .label{
+    font-size:20px;
+  }
+
+  .detailsButton {
+    font-size: 17px;
+    position: relative;
+    padding: 5px;
+    margin-top: 15px;
+    text-align: center;
+    left: -8px;
+    top:10px;
+  }
+
+  .editButton{
+    padding: 3px 0 0 0;
+    font-size: 14px;
+  }
+
+  .deleteButton{
+    cursor: pointer;
+    padding:  0 0 0 28px;
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+  .share {
+    position: fixed;
+    top:300px;
+    display: none;
+  }
+
+  .item {
+    font-size: 20px;
+  }
+
+  .modalContent.dark{
+    background-color:#8d919b
+   }
+
+  .carousel-container {
+    display: flex;
+    overflow-x: auto; 
+    white-space: nowrap; 
+  }
+
+  .carousel-item {
+    flex: 0 0 auto;
+    margin: 5px; 
+  }
+  .carousel-container {
+
+    scroll-behavior: smooth; 
+}
+}
+.carousel-container {
+  overflow-y: auto; 
+  scrollbar-width: none; 
+}
+
+.carousel-container::-webkit-scrollbar {
+  width: 0; 
+}
+
+.carousel-container::-webkit-scrollbar-track {
+  background-color: transparent; 
+}
+
+.carousel-container::-webkit-scrollbar-thumb {
+  background-color: transparent; 
+}
+
+.carousel-container:hover::-webkit-scrollbar-thumb {
+  background-color: #555; 
+}

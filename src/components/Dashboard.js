@@ -1,214 +1,210 @@
 import React, { useState, useEffect } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPencilAlt, faTimes } from "@fortawesome/free-solid-svg-icons";
 import TransactionTable from "./TransactionTable";
-import BalanceSheet from "./BalanceSheet";
 
 import "./Style.css";
-
 import "./Dashboard.css";
 
-
-
-const Dashboard = ({ 
+const Dashboard = ({
   isDarkMode,
-   account,
-    updateAccountData, 
-    currency,  
-    headersWithToken,
-  
-    activeModal, setActiveModal }) => {
-
+  account,
+  updateAccountData,
+  setActiveModal,
+  setActiveAccount,
+  onAccountUpdate,
+  setCurrency,
+}) => {
+  // ...
   const [editData, setEditData] = useState({
     id: null,
     description: "",
     amount: "",
     date: "",
- 
   });
-
-
-
-
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [dataList, setDataList] = useState([]);
   const [accountCaption, setAccountCaption] = useState("");
-  
+  const [currentBalance, setCurrentBalance] = useState(account.currentBalance);
+  const [futureBalance, setFutureBalance] = useState(account.futureBalance);
 
-  const handleOpenModal1 = () => {
-    setActiveModal('accountModal');
-  };
-
-
-
-  const formatBalance = (balance) => {
-    if (typeof balance === "number" && !isNaN(balance)) {
-      return balance.toFixed(2);
-    }
-    return "";
-  };
-
-
-  // const [expandedDescription, setExpandedDescription] = useState(null);
-
-
-  // const handleExpandDescription = (dataId) => {
-  //   if (expandedDescription === dataId) {
-  //     setExpandedDescription(null);
-  //   } else {
-  //     setExpandedDescription(dataId);
-  //   }
-  // };
-
-
-
-
-
-
-
-//   const fetchAccountData = async () => {
-//     try {
-      
-//   const response = await fetch(`http://192.168.1.30:1323/accounts/${account.id}/statement/`);
-//   const data = await response.json();
-//    setDataList(data);
-// } catch (error) {
-//       console.log("Error fetching account list:", error);
-//     }
-//   };
-
- 
-    const fetchAccountData = async () => {
-      try {
-        const token = localStorage.getItem("accessToken"); // Retrieve the token from localStorage
-        const headersWithToken = {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`
-        };
-   
-        const response = await fetch(`http://192.168.1.30:1323/accounts/${account.id}/statement/`, {
-          headers: headersWithToken // Pass the headers object in the fetch options
-        });
-        const data = await response.json();
-        setDataList(data);
-      } catch (error) {
-        console.log("Error fetching account data:", error);
-      }
-    };
-
-
-   useEffect(() => {
-    fetchAccountData();
+  useEffect(() => {
+    setCurrentBalance(account.currentBalance);
+    setFutureBalance(account.futureBalance);
   }, [account]);
 
-
-
+  useEffect(() => {
+    fetchAccountData();
+  }, [account]);
 
   useEffect(() => {
     setAccountCaption(`${account.name} (${account.currency})`);
   }, [account]);
 
+  useEffect(() => {
+    const futureBalance = calculateFutureBalance(dataList);
+    setFutureBalance(futureBalance);
+  }, [dataList]);
 
-  const updateAccountCaption = (account) => {
+  useEffect(() => {
     setAccountCaption(`${account.name} (${account.currency})`);
+    setCurrentBalance(account.currentBalance);
+    setFutureBalance(account.futureBalance);
+  }, [account]);
+
+  useEffect(() => {
+    const futureBalance = calculateFutureBalance(dataList);
+    setFutureBalance(futureBalance);
+  }, [dataList]);
+
+  const fetchAccountData = async () => {
+    try {
+      const token = localStorage.getItem("accessToken");
+      const headersWithToken = {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      };
+
+      const response = await fetch(
+        `http://192.168.1.30:1323/accounts/${account.id}/statement/`,
+        {
+          headers: headersWithToken,
+        }
+      );
+
+      if (!response.ok) {
+        console.log("Error fetching account data:", response);
+        return;
+      }
+      const data = await response.json();
+      setDataList(data);
+
+      const currentBalance = data.reduce(
+        (total, item) => total + item.amount,
+        0
+      );
+      setCurrentBalance(currentBalance);
+      setFutureBalance(currentBalance);
+    } catch (error) {
+      console.log("Error fetching account data:", error);
+    }
   };
-  
+
+  const calculateFutureBalance = (dataList) => {
+    if (dataList && dataList.length > 0) {
+      const currentBalance = dataList.reduce(
+        (total, item) => total + item.amount,
+        0
+      );
+      return currentBalance;
+    }
+    return 0;
+  };
+
+  const handleCreateData = async () => {
+    const newSubmittedData = {
+      account_id: account.id,
+      description: editData.description,
+      amount: editData.amount,
+      date: editData.date,
+    };
+    const updatedDataList = dataList
+    ? dataList.map((data) =>
+        data.id === editData.id ? { ...data, ...editData } : data
+      )
+    : [];
+
+  setDataList(updatedDataList);
+  updateAccountData(account.id, updatedDataList);
+
+    try {
+      const token = localStorage.getItem("accessToken");
+      const headersWithToken = {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      };
+
+      const response = await fetch("http://192.168.1.30:1323/transactions/", {
+        method: "POST",
+        headers: headersWithToken,
+        body: JSON.stringify(newSubmittedData),
+      });
+
+      if (response.ok) {
+        fetchAccountData();
+        // handleUpdateData();
+        closeModal();
+      } else {
+        console.log("Error adding data to the database.");
+      }
+    } catch (error) {
+      console.log("Error adding data to the database:", error);
+    }
+  };
+
+  const handleUpdateData = async () => {
+    const updatedDataList = dataList
+      ? dataList.map((data) =>
+          data.id === editData.id ? { ...data, ...editData } : data
+        )
+      : [];
+
+    setDataList(updatedDataList);
+    updateAccountData(account.id, updatedDataList);
+
+    try {
+      const token = localStorage.getItem("accessToken");
+      const headersWithToken = {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      };
+
+      const response = await fetch(
+        `http://192.168.1.30:1323/transactions/${editData.id}`,
+        {
+          method: "PUT",
+          headers: headersWithToken,
+          body: JSON.stringify(editData),
+        }
+      );
+
+      if (!response.ok) {
+        console.log("Error updating data in the database.");
+      } else {
+        fetchAccountData();
+      }
+    } catch (error) {
+      console.log("Error updating data in the database:", error);
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     if (editData.id !== null) {
-      // Update existing data
-      const updatedDataList = dataList.map((data) =>
-        data.id === editData.id ? { ...data, ...editData } : data
-      );
-      setDataList(updatedDataList);
-      updateAccountData(account.id, updatedDataList);
-  
-      try {
-        // Make the PUT request to update the data in the database
-        const token = localStorage.getItem("accessToken");
-        const headersWithToken = {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        };
-        const response = await fetch(
-          `http://192.168.1.30:1323/transactions/${editData.id}`,
-          {
-            method: "PUT",
-            headers: headersWithToken,
-            body: JSON.stringify(editData),
-          }
-        );
-  
-        if (!response.ok) {
-          console.log("Error updating data in the database.");
-        }
-      } catch (error) {
-        console.log("Error updating data in the database:", error);
-      }
+      await handleUpdateData();
     } else {
-      // Create new data
-      const newSubmittedData = {
-        account_id: account.id,
-        description: editData.description,
-        amount: editData.amount,
-        date: editData.date,
-      };
-  
-      try {
-        // Make the POST request to add the data to the database
-        const token = localStorage.getItem("accessToken");
-        const headersWithToken = {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        };
-        const response = await fetch("http://192.168.1.30:1323/transactions/", {
-          method: "POST",
-          headers: headersWithToken,
-          body: JSON.stringify(newSubmittedData),
-        });
-  
-        if (response.ok) {
-          await fetchAccountData(); // Fetch the updated account data
-        } else {
-          console.log("Error adding data to the database.");
-        }
-      } catch (error) {
-        console.log("Error adding data to the database:", error);
-      }
+      await handleCreateData();
     }
-  
+
     closeModal();
   };
-  
-  
-
-
-
-
-
-
-
-
-
-
-
-
 
   const handleEdit = (data) => {
-    setEditData({ ...data });
+    setEditData({
+      id: data.id,
+      description: data.description,
+      amount: data.amount,
+      date: data.date,
+    });
     openModal();
   };
 
-
   const handleDelete = async (accountId, dataId) => {
     try {
-      const token = localStorage.getItem("accessToken"); // Retrieve the token from localStorage
+      const token = localStorage.getItem("accessToken");
       const headersWithToken = {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`
+        Authorization: `Bearer ${token}`,
       };
       const response = await fetch(
         `http://192.168.1.30:1323/transactions/${dataId}`,
@@ -217,7 +213,6 @@ const Dashboard = ({
           headers: headersWithToken,
         }
       );
-
 
       if (response.ok) {
         const updatedDataList = dataList.filter((data) => data.id !== dataId);
@@ -234,7 +229,6 @@ const Dashboard = ({
     setIsModalOpen(true);
   };
 
-
   const closeModal = () => {
     setIsModalOpen(false);
     setEditData({
@@ -244,7 +238,6 @@ const Dashboard = ({
       date: "",
     });
   };
-
 
   const handleDescriptionChange = (e) => {
     const { value } = e.target;
@@ -260,9 +253,6 @@ const Dashboard = ({
     }
   };
 
-
-
-
   const formatDateForInput = (date) => {
     if (!date) {
       return "";
@@ -275,18 +265,22 @@ const Dashboard = ({
     const formattedDate = date + timeString;
     return formattedDate;
   };
- 
- 
+
   if (!account) {
     return null;
   }
 
+  const formatBalance = (balance) => {
+    if (typeof balance === "number" && !isNaN(balance)) {
+      return balance.toFixed(2);
+    }
+    return "";
+  };
 
   return (
-   
-    <div className={`mainField ${isDarkMode ? "dark" : "light"}`}>  
+    <div className={`mainField ${isDarkMode ? "dark" : "light"}`}>
       <div key={account.id}>
-        {isModalOpen && 
+        {isModalOpen && (
           <div className="modal">
             <div className={`modalContent ${isDarkMode ? "dark" : "light"}`}>
               <h3>Enter the data</h3>
@@ -304,7 +298,6 @@ const Dashboard = ({
                   placeholder="amount"
                 />
 
-
                 <input
                   type="date"
                   value={editData.date ? formatDateForInput(editData.date) : ""}
@@ -315,10 +308,6 @@ const Dashboard = ({
                   }}
                   placeholder="date"
                 />
-
-
-             
-
 
                 <button
                   className={`modalBtn ${isDarkMode ? "dark" : "light"}`}
@@ -335,37 +324,26 @@ const Dashboard = ({
               </form>
             </div>
           </div>
-        }    
+        )}
 
-
-
-<BalanceSheet
-  futureBalance={account.futureBalance}
-  currentBalance={account.currentBalance}
-/>
-
-         <TransactionTable
-           account={account}
-           dataList={dataList}
-           isDarkMode={isDarkMode}
-           handleEdit={handleEdit}
-           handleDelete={handleDelete}
-           handleDescriptionChange={handleDescriptionChange} // Add this prop
-           handleAmountChange={handleAmountChange} // Add this prop
-           formatDateForInput={formatDateForInput} // Add this prop
-           formatDateTime={formatDateTime}
-           openModal={openModal} 
-           formatBalance={formatBalance} 
+        <TransactionTable
+          account={account}
+          dataList={dataList}
+          isDarkMode={isDarkMode}
+          handleEdit={handleEdit}
+          handleDelete={handleDelete}
+          handleDescriptionChange={handleDescriptionChange}
+          handleAmountChange={handleAmountChange}
+          formatDateForInput={formatDateForInput}
+          formatDateTime={formatDateTime}
+          openModal={openModal}
+          formatBalance={formatBalance}
         />
+
         {!dataList || (dataList.length === 0 && <p>No submitted data</p>)}
-
-
-
       </div>
-     
     </div>
   );
 };
-
 
 export default Dashboard;

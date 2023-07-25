@@ -2,13 +2,10 @@ import React, { useState, useEffect } from "react";
 import Header from "./Header";
 import SideMenu from "./SideMenu";
 import Dashboard from "./Dashboard";
+import Footer from "./Footer";
 import "./Style.css";
 
 function App() {
-
-
-
-
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [accounts, setAccounts] = useState([]);
@@ -16,13 +13,10 @@ function App() {
   const [activeAccount, setActiveAccount] = useState(
     accounts.length > 0 ? accounts[0] : null
   );
- 
+  const [dataList, setDataList] = useState([]); 
 
-  const setActiveModal = (modal) => {
-    // Function implementation
-  };
-  
-  
+  const setActiveModal = (modal) => {};
+
   const headersWithToken = {};
 
   useEffect(() => {
@@ -36,8 +30,8 @@ function App() {
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
   };
- 
 
+  const onAccountUpdate = (account) => {};
 
   const createAccount = (newAccount, currency) => {
     const account = {
@@ -65,8 +59,13 @@ function App() {
         ? { ...prevActiveAccount, ...account }
         : prevActiveAccount
     );
-  };
 
+    setAccounts((prevAccounts) =>
+      prevAccounts.map((acc) =>
+        acc.id === account.id ? { ...acc, ...account } : acc
+      )
+    );
+  };
   const handleCurrencyChange = (e) => {
     setCurrency(e.target.value);
   };
@@ -86,8 +85,6 @@ function App() {
 
   return (
     <div className={isDarkMode ? "dark" : "light"}>
-     
-    
       {activeAccount ? (
         <Dashboard
           isDarkMode={isDarkMode}
@@ -98,52 +95,48 @@ function App() {
           submittedDataList={activeAccount.submittedDataList}
           headersWithToken={headersWithToken}
           isModalOpen={isModalOpen}
-          updateAccountCaption={updateAccountCaption} 
+          updateAccountCaption={updateAccountCaption}
           handleCurrencyChange={handleCurrencyChange}
-
-          
-         
-          
+          dataList={dataList}
         />
       ) : (
         <div className={`mainField ${isDarkMode ? "dark" : "light"}`}>
-          <div className={`text ${isDarkMode ? "dark" : "light"}`}>Budget Buddy is your reliable companion for efficient financial 
-          management! No matter where you're heading or in which currency 
-          you conduct your transactions, our application provides you with 
-        all the necessary tools to control and plan your finances.
-        
-         With Budget Buddy, you can create multiple accounts with different currencies 
-         that reflect your financial flows. For example, you can have an account for
-          regular expenses in your local currency, as well as accounts for vacations
-          or foreign investments in another currency. This allows you to accurately 
-         track your expenses and income for each account.
-        </div></div>
+          <div className={`text ${isDarkMode ? "dark" : "light"}`}>
+            Budget Buddy is your reliable companion for efficient financial
+            management! No matter where you're heading or in which currency you
+            conduct your transactions, our application provides you with all the
+            necessary tools to control and plan your finances. With Budget
+            Buddy, you can create multiple accounts with different currencies
+            that reflect your financial flows. For example, you can have an
+            account for regular expenses in your local currency, as well as
+            accounts for vacations or foreign investments in another currency.
+            This allows you to accurately track your expenses and income for
+            each account.
+          </div>
+        </div>
       )}
-   <SideMenu
-  isDarkMode={isDarkMode}
-  createAccount={createAccount}
-  setActiveAccount={setActiveAccount}
-  setAccounts={setAccounts}
-  accountList={accounts}
-  activeAccount={activeAccount}
-  currency={currency}
-  handleCurrencyChange={handleCurrencyChange}
-  handleDeleteAccount={handleDeleteAccount}
-  updateAccountCaption={updateAccountCaption}
-  headersWithToken={headersWithToken}
-  setActiveModal={setActiveModal} // Add this prop
-/>
-
-      
-      
-      
-      
-      <Header isDarkMode={isDarkMode} 
-      toggleTheme={toggleTheme} 
-      isModalOpen={isModalOpen}
-
+      <SideMenu
+        isDarkMode={isDarkMode}
+        createAccount={createAccount}
+        setActiveAccount={setActiveAccount}
+        setAccounts={setAccounts}
+        accountList={accounts}
+        activeAccount={activeAccount}
+        currency={currency}
+        handleCurrencyChange={handleCurrencyChange}
+        handleDeleteAccount={handleDeleteAccount}
+        updateAccountCaption={updateAccountCaption}
+        headersWithToken={headersWithToken}
+        setActiveModal={setActiveModal}
+        onAccountUpdate={onAccountUpdate}
       />
 
+      <Header
+        isDarkMode={isDarkMode}
+        toggleTheme={toggleTheme}
+        isModalOpen={isModalOpen}
+      />
+      <Footer isDarkMode={isDarkMode} />
     </div>
   );
 }

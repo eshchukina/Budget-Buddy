@@ -2,7 +2,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
+  width: 100%;
   height: 60px;
   display: flex;
   align-items: center;
@@ -10,9 +10,6 @@
   box-shadow: 5.9cm 0 4px #2d313a;
   transition: 0.5s;
   background-size: 200% auto;
-}
-
-.header.light {
   background-color: #6a707c;
   color: #fff; 
 }
@@ -22,6 +19,20 @@
   color: #81858e; 
 }
 
+
+.headerLogo{
+  text-shadow:
+  -1px -1px #c9a713,
+  0 1px 0 #444;
+
+}
+
+.letter {
+  color: #bc881b; 
+  font-size: 110%; 
+ } 
+ 
+
 .buttonTheme {
   position: absolute;
   cursor: pointer;
@@ -30,18 +41,18 @@
   font-size: 24px;
   transition: 0.5s;
   background-size: 200% auto;
-  
+  text-shadow:
+  -1px -1px #af9108,
+  0 1px 0 #c2b00e;
+
 }
+
 .buttonTheme.dark {
   left: 1470px;
 }
 
 
-.letter {
-  color: #bc881b; /* Цвет символа */
-  font-size: 110%; /* Размер шрифта */
- } 
- 
+
 button.dark {
   color: #3c4049;
   background-color: #3c4049;
@@ -76,3 +87,450 @@ button.light {
     left: 1250px;
     
   }
+
+  .burger {
+    display: none;
+    z-index: 1;
+  }
+
+  .menu {
+    display: flex;
+    position: absolute;
+    border: 2px solid #a4781b;
+    border-radius: 10px;
+    flex-grow: 1;
+    justify-content: stretch;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    padding: 10px;
+    margin-top: 100px;
+    z-index: 0;
+  }
+  
+  .menu button {
+    margin-bottom: 10px;
+  
+  }
+  
+  
+
+
+@media (max-width: 1600px) {
+ 
+  .logIn {
+    left: 1100px;
+  }
+
+  .SignUp {
+    left: 1050px;
+  }
+
+  .buttonTheme {
+    left: 1300px;
+  }
+
+  .buttonTheme.dark {
+    left: 1270px;
+  }
+
+}
+
+
+@media (max-width: 1400px) {
+ 
+  .logIn {
+    left: 1000px;
+  }
+  
+  .SignUp {
+    left: 950px;
+  }
+
+  .buttonTheme {
+    left: 1200px;
+  }
+
+  .buttonTheme.dark {
+    left: 1170px;
+  }
+
+}
+
+@media (max-width: 1260px) {
+ 
+  .logIn {
+    left: 900px;
+  }
+  
+  .SignUp {
+    left: 850px;
+  }
+ 
+  .buttonTheme {
+  left: 1000px;
+}
+
+  .buttonTheme.dark {
+    left: 970px;
+  }
+
+}
+
+
+@media (max-width: 1050px) {
+ 
+  .logIn {
+    left: 800px;
+  }
+  
+  .SignUp {
+    left: 750px;
+  }
+
+  .buttonTheme {
+    left: 900px;
+}
+  .buttonTheme.dark {
+    left: 870px;
+  }
+
+}
+
+@media (max-width: 950px) {
+
+  .logIn, .SignUp {
+    display: none;
+  }
+
+  .buttonTheme {
+    left: 800px;
+  }
+
+  .buttonTheme.dark {
+    left: 770px;
+  }
+
+  .burger {
+    display: block; 
+    position: absolute;
+    cursor: pointer;
+    border: none;
+    font-size: 23px;
+    transition: 0.5s;
+    background-size: 200% auto;
+    position: absolute;
+    left: 700px;
+    color: #bc881b;
+  }
+
+  .open + .logIn,
+  .open + .SignUp {
+    display: block;
+  }
+
+  .menu {
+    left: 690px;
+    flex-grow: 1;
+  }
+  
+}
+
+
+
+@media (max-width: 850px) {
+
+  .logIn, .SignUp {
+    display: none;
+
+  }
+
+  .buttonTheme {
+    left: 700px;
+  }
+
+  .buttonTheme.dark {
+    left: 710px;
+  }
+
+  .burger {
+    left: 600px;
+  }
+ 
+  .menu {
+    left: 590px;
+  }
+ 
+}
+
+@media (max-width: 800px) {
+
+  .header {
+    box-shadow: 4.3cm 0 4px #2d313a;
+  }
+}
+
+@media (max-width: 750px) {
+
+  .logIn, .SignUp {
+    display: none;
+  }
+
+  .buttonTheme {
+    left: 600px;
+  }
+
+  .header{
+    box-shadow: 4.3cm 0 4px #2d313a;
+  }
+
+  .buttonTheme.dark {
+    left: 630px;
+  }
+
+  .burger {
+    left: 530px;
+  }
+
+  .menu {
+    left: 520px;
+  }
+
+}
+
+
+@media (max-width: 680px) {
+
+  .burger {
+    left: 520px;
+  }
+
+  .menu {
+    left: 510px;
+  }
+
+}
+
+
+@media (max-width: 650px) {
+
+  .logIn, .SignUp {
+    display: none;
+    font-size: 5px;
+  }
+
+  .buttonTheme {
+    font-size: 30px;
+    left: 60px;
+    top:5px; 
+  }  
+
+  .buttonTheme.dark {
+    left: 70px;
+  }
+
+  .burger {
+    font-size: 35px;
+    left: 450px;
+  }
+
+  .menu {
+    padding: 20px;
+    left: 440px;
+   
+  }
+
+  .header {
+  font-size: 14px;
+  height: 50px;
+
+}
+
+  .letter {
+  font-size: 100%;
+ } 
+ 
+  .modalButtonLog {
+  font-size: 10px;
+ }
+
+  .header {
+    box-shadow:none;
+  }
+
+}
+
+
+@media (max-width:580px) {
+
+  .menu {
+    left: 350px;
+  }
+}
+
+@media (max-width:540px) {
+
+  .burger {
+    left: 400px;
+  }
+    
+  .menu {
+    left: 300px;
+   }
+    
+}
+
+
+@media (max-width: 500px) {
+
+  .logIn, .SignUp {
+    display: none;
+    font-size: 5px;
+  }
+
+  .buttonTheme {
+    top:10px;
+    left: 55px; 
+  }
+
+  .buttonTheme.dark {
+    left: 65px;
+  }
+
+  .burger {
+    left: 400px;
+  }
+
+  .menu {
+  font-size: 5px;
+  left: 300px;
+  }
+
+  .menu.dark{
+    background-color:#3c4049;
+  }
+
+  .header {
+    font-size: 13px;
+    height: 70px;
+    box-shadow: none;
+}
+
+  .letter {
+    font-size: 120%; 
+ } 
+ 
+  .modalButtonLog{
+    font-size: 10px;
+ }
+
+}
+
+@media (max-width:440px) {
+  .logIn, .SignUp {
+    display: none;
+    font-size: 5px;
+  }
+
+  .buttonTheme {
+    top:10px;
+    left: 20px;
+    font-size: 30px;
+    font-size: 30px; 
+  }
+
+  .buttonTheme.dark {
+    left: 30px;
+  }
+
+  .burger {
+    left: 350px;
+  }
+
+  .menu {
+    left: 250px;
+  }
+
+  .menu.dark{
+    background-color:#3c4049;
+  }
+
+  .header {
+    font-size: 13px;
+    height: 70px;
+    box-shadow: none;
+    position: fixed;
+ 
+  }
+
+  .letter {
+    font-size: 120%; 
+  } 
+ 
+  .modalButtonLog{
+    font-size: 10px;
+  }
+ 
+}
+
+
+@media (max-width:400px) {
+  .menu {
+    left: 250px;  
+  }
+}
+
+@media (max-width:380px) {
+
+  .burger {
+    left: 300px;
+  }
+
+  .menu {
+    left: 200px;
+  }
+
+}
+
+@media (max-width:350px) {
+  .burger {
+      left: 280px;
+  }
+ 
+  .menu {
+    left: 180px;
+  }
+
+}
+
+@media (max-width:315px) {
+  .burger {
+    left: 270px;
+  }
+
+  .menu {
+    left: 160px;
+  }
+
+}
+
+@media (max-width:300px) {
+  .burger {
+    left: 260px;
+  }
+
+  .buttonTheme {
+    top:10px;
+    left: 0px;
+    font-size: 30px;
+  }
+
+  .buttonTheme.dark {
+    left: 5px;
+  }
+
+  .menu {
+    left: 150px;
+  }
+  
+}
