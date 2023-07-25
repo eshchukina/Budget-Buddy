@@ -1,0 +1,35 @@
+:
+  - build
+  - publish
+  - deploy
+
+building:
+  stage: build
+  image: node:18
+  script:
+    - npm install
+    - npm build
+  artifacts:
+    paths:
+      - build/
+  tags:
+    - docker
+
+publish:
+  stage: publish
+  image: docker
+  script:
+    - docker build -t una_bb_ui .
+  tags:
+    - una_bb_ui
+
+deploy_app:
+  stage: deploy
+  image: docker
+  script:
+    - docker run -d \
+      --name una_bb_ui \
+      --network apps \
+      una_bb_ui
+  tags:
+    - una_bb_ui
