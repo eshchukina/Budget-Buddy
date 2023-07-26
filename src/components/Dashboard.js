@@ -25,10 +25,44 @@ const Dashboard = ({
 
 
 
-  // useEffect(() => {
-  //   fetchAccountData();
-  // }, [account]);
 
+
+  useEffect(() => {
+    const fetchAccountData = async () => {
+      try {
+        const token = localStorage.getItem("accessToken");
+        const headersWithToken = {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        };
+
+        const response = await fetch(
+          `http://192.168.1.30:1323/accounts/${account.id}/statement/`,
+          {
+            headers: headersWithToken,
+          }
+        );
+
+        if (!response.ok) {
+          console.log("Error fetching account data:", response);
+          return;
+        }
+        const data = await response.json();
+        setDataList(data);
+
+        const currentBalance = data.reduce(
+          (total, item) => total + item.amount,
+          0
+        );
+        setCurrentBalance(currentBalance);
+        setFutureBalance(currentBalance);
+      } catch (error) {
+        console.log("Error fetching account data:", error);
+      }
+    };
+
+    fetchAccountData();
+  }, [account]);
 
 
   useEffect(() => {
@@ -131,41 +165,50 @@ const Dashboard = ({
     }
   };
 
-  const handleUpdateData = async () => {
-    const updatedDataList = dataList
-      ? dataList.map((data) =>
-          data.id === editData.id ? { ...data, ...editData } : data
-        )
-      : [];
+ const handleUpdateData = async () => {
+  const updatedDataList = dataList
+    ? dataList.map((data) =>
+        data.id === editData.id ? { ...data, ...editData } : data
+      )
+    : [];
 
-    setDataList(updatedDataList);
-    updateAccountData(account.id, updatedDataList);
+  setDataList(updatedDataList);
+  updateAccountData(account.id, updatedDataList);
 
-    try {
-      const token = localStorage.getItem("accessToken");
-      const headersWithToken = {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      };
+  try {
+    const token = localStorage.getItem("accessToken");
+    const headersWithToken = {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    };
+    const updatedData = {
+      account_id: account.id,
+      description: editData.description,
+      amount: parseFloat(editData.amount),
+      date: editData.date,
+    };
 
-      const response = await fetch(
-        `http://192.168.1.30:1323/transactions/${editData.id}`,
-        {
-          method: "PUT",
-          headers: headersWithToken,
-          body: JSON.stringify(editData),
-        }
-      );
 
-      if (!response.ok) {
-        console.log("Error updating data in the database.");
-      } else {
-        fetchAccountData();
+    const response = await fetch(
+      `http://192.168.1.30:1323/transactions/${editData.id}`,
+      {
+        method: "PUT",
+        headers: headersWithToken,
+        body: JSON.stringify(updatedData), 
       }
-    } catch (error) {
-      console.log("Error updating data in the database:", error);
+    );
+
+ 
+
+    if (!response.ok) {
+      console.log("Error updating data in the database.");
+    } else {
+      fetchAccountData();
     }
-  };
+  } catch (error) {
+    console.log("Error updating data in the database:", error);
+  }
+};
 
   const handleSubmit = async (e) => {
     e.preventDefault();
