@@ -25,9 +25,9 @@ const Dashboard = ({
 
 
 
-  useEffect(() => {
-    fetchAccountData();
-  }, [account]);
+  // useEffect(() => {
+  //   fetchAccountData();
+  // }, [account]);
 
 
 
@@ -40,7 +40,7 @@ const Dashboard = ({
 
     setCurrentBalance(currentBalance);
     setFutureBalance(futureBalance);
-  }, [account]);
+  }, [currentBalance, futureBalance]);
 
   useEffect(() => {
     const futureBalance = calculateFutureBalance(dataList);

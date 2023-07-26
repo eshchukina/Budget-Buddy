@@ -6,14 +6,14 @@ import Footer from "./Footer";
 import "./Style.css";
 
 function App() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  // const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [accounts, setAccounts] = useState([]);
   const [currency, setCurrency] = useState("USD");
   const [activeAccount, setActiveAccount] = useState(
     accounts.length > 0 ? accounts[0] : null
   );
-  const [dataList, setDataList] = useState([]); 
+  // const [dataList, setDataList] = useState([]); 
 
   const setActiveModal = (modal) => {};
 
@@ -94,10 +94,10 @@ function App() {
           handleDelete={handleDelete}
           submittedDataList={activeAccount.submittedDataList}
           headersWithToken={headersWithToken}
-          isModalOpen={isModalOpen}
+          // isModalOpen={isModalOpen}
           updateAccountCaption={updateAccountCaption}
           handleCurrencyChange={handleCurrencyChange}
-          dataList={dataList}
+          // dataList={dataList}
         />
       ) : (
         <div className={`mainField ${isDarkMode ? "dark" : "light"}`}>
@@ -134,7 +134,7 @@ function App() {
       <Header
         isDarkMode={isDarkMode}
         toggleTheme={toggleTheme}
-        isModalOpen={isModalOpen}
+        // isModalOpen={isModalOpen}
       />
       <Footer isDarkMode={isDarkMode} />
     </div>

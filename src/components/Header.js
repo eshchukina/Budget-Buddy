@@ -10,6 +10,7 @@ import "./Header.css";
 
 const Header = ({ isDarkMode, toggleTheme, activeModal, setActiveModal }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
