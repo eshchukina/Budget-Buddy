@@ -63,6 +63,7 @@ const Header = ({ isDarkMode, toggleTheme, activeModal, setActiveModal }) => {
         setPassword("");
 
         setIsModalOpen(false);
+        window.location.reload();
       } else {
         console.log("Registration failed");
       }
@@ -129,7 +130,7 @@ const Header = ({ isDarkMode, toggleTheme, activeModal, setActiveModal }) => {
     }
     handleCloseLoginModal();
   
-    
+      window.location.reload();
   };
 
   const refreshTokenFunc = async () => {

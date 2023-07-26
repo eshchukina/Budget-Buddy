@@ -8,12 +8,9 @@ const Dashboard = ({
   isDarkMode,
   account,
   updateAccountData,
-  setActiveModal,
-  setActiveAccount,
-  onAccountUpdate,
-  setCurrency,
+
 }) => {
-  // ...
+
   const [editData, setEditData] = useState({
     id: null,
     description: "",
@@ -23,22 +20,16 @@ const Dashboard = ({
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [dataList, setDataList] = useState([]);
-  const [accountCaption, setAccountCaption] = useState("");
   const [currentBalance, setCurrentBalance] = useState(account.currentBalance);
   const [futureBalance, setFutureBalance] = useState(account.futureBalance);
 
-  useEffect(() => {
-    setCurrentBalance(account.currentBalance);
-    setFutureBalance(account.futureBalance);
-  }, [account]);
+
 
   useEffect(() => {
     fetchAccountData();
   }, [account]);
 
-  useEffect(() => {
-    setAccountCaption(`${account.name} (${account.currency})`);
-  }, [account]);
+
 
   useEffect(() => {
     const futureBalance = calculateFutureBalance(dataList);
@@ -46,9 +37,9 @@ const Dashboard = ({
   }, [dataList]);
 
   useEffect(() => {
-    setAccountCaption(`${account.name} (${account.currency})`);
-    setCurrentBalance(account.currentBalance);
-    setFutureBalance(account.futureBalance);
+
+    setCurrentBalance(currentBalance);
+    setFutureBalance(futureBalance);
   }, [account]);
 
   useEffect(() => {
@@ -131,7 +122,6 @@ const Dashboard = ({
 
       if (response.ok) {
         fetchAccountData();
-        // handleUpdateData();
         closeModal();
       } else {
         console.log("Error adding data to the database.");
