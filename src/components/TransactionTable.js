@@ -55,7 +55,7 @@ const TransactionTable = ({
       >
         <caption>
           {account.name.length > 20
-            ? `${account.name.substring(0, 14)}...`
+            ? `${account.name.substring(0, 13)}...`
             : account.name}
           ({account.currency})
         </caption>

@@ -14,7 +14,7 @@ const AccountButton = ({
   handleDelete,
 }) => {
   const formatAccountName = (name) => {
-    return name.length > 9 ? `${name.substring(0, 9)}...` : name;
+    return name.length > 10 ? `${name.substring(0, 8)}...` : name;
   };
 
   const [showDetails, setShowDetails] = useState(false);

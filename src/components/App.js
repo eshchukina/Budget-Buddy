@@ -3,6 +3,8 @@ import Header from "./Header";
 import SideMenu from "./SideMenu";
 import Dashboard from "./Dashboard";
 import Footer from "./Footer";
+import Converter from "./Converter";
+
 import "./Style.css";
 
 function App() {
@@ -87,7 +89,9 @@ function App() {
 
   return (
     <div className={isDarkMode ? "dark" : "light"}>
-      {activeAccount ? (
+      {/* <Converter isDarkMode={isDarkMode}/>   */}
+            {activeAccount ? (
+              <div>
         <Dashboard
           isDarkMode={isDarkMode}
           account={activeAccount}
@@ -100,8 +104,13 @@ function App() {
           updateAccountCaption={updateAccountCaption}
           handleCurrencyChange={handleCurrencyChange}
           // dataList={dataList}
-        />
-      ) : (
+        /> <Converter isDarkMode={isDarkMode}/>  
+        </div>
+      ) 
+      
+      
+      
+      : (
         <div className={`mainField ${isDarkMode ? "dark" : "light"}`}>
           <div className={`text ${isDarkMode ? "dark" : "light"}`}>
             Budget Buddy is your reliable companion for efficient financial

@@ -72,7 +72,7 @@
 }
 
 .active.accountButton.dark {
-  color: #bc881b;;
+  color: #bc881b;
 }
 
 .sidebar.dark {
@@ -285,6 +285,7 @@ button.accountButton.dark{
   }
 
   .accountButtons {
+   
     display: flex;
     flex-direction:row;
     flex-wrap:wrap; 
@@ -299,6 +300,7 @@ button.accountButton.dark{
     display: flex;
     flex-wrap:wrap; 
     flex-grow: 1;
+     font-size: 15px;
  
   }
 
@@ -312,12 +314,12 @@ button.accountButton.dark{
 
   .accountButton{
     margin: 0;
-    font-size: 12px;
+    font-size: 10px;
     text-align: center;
   }
 
   .label{
-    font-size:20px;
+    font-size:14px;
   }
 
   .detailsButton {

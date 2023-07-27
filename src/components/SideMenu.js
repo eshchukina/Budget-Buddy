@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShareNodes } from "@fortawesome/free-solid-svg-icons";
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
 import AccountButton from "./AccountButton";
+// import config from './config';
+
 import "./Style.css";
 import "./SideMenu.css";
 

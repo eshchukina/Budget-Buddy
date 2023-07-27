@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import TransactionTable from "./TransactionTable";
+// import config from './config';
+
 
 import "./Style.css";
 import "./Dashboard.css";

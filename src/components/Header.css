@@ -113,7 +113,9 @@ button.light {
   
   }
   
-  
+  .menu.dark{
+    background-color: #9fa0a1;
+  }
 
 
 @media (max-width: 1600px) {
