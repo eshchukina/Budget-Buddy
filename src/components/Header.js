@@ -10,7 +10,6 @@ import "./Header.css";
 
 const Header = ({ isDarkMode, toggleTheme, activeModal, setActiveModal }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -64,7 +63,6 @@ const Header = ({ isDarkMode, toggleTheme, activeModal, setActiveModal }) => {
         setPassword("");
 
         setIsModalOpen(false);
-        window.location.reload();
       } else {
         console.log("Registration failed");
       }
@@ -130,8 +128,8 @@ const Header = ({ isDarkMode, toggleTheme, activeModal, setActiveModal }) => {
       console.log("Error:", error);
     }
     handleCloseLoginModal();
-  
-      window.location.reload();
+    window.location.reload();
+    
   };
 
   const refreshTokenFunc = async () => {

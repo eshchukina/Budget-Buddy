@@ -10,6 +10,7 @@ const SideMenu = ({
   isDarkMode,
   setActiveAccount,
   accountList,
+
   activeAccount,
   currency,
   handleDeleteAccount,
@@ -75,7 +76,7 @@ const SideMenu = ({
           const createdAccount = await response.json();
           setAccounts([...accountList, createdAccount]);
           setNewAccount("");
-          closeModal();
+      
           fetchAccountList();
         } else {
           console.log("Failed to create account");
@@ -83,7 +84,7 @@ const SideMenu = ({
       } catch (error) {
         console.log("Error creating account:", error);
       }
-    }
+    }  closeModal();
   };
 
   const handleEditAccount = async (account) => {
@@ -118,7 +119,7 @@ const SideMenu = ({
 
       if (response.ok) {
         fetchAccountList();
-        closeModal();
+    
         updateAccountCaption({
           id: editAccountId,
           name: newAccount,
@@ -129,7 +130,7 @@ const SideMenu = ({
       }
     } catch (error) {
       console.log("Error updating account:", error);
-    }
+    }  closeModal();
   };
 
   const handleAccountChange = (account) => {
@@ -181,11 +182,11 @@ const SideMenu = ({
   };
 
   const openModal = () => {
-    setIsModalOpen(true);
+    setIsModalOpen(true); // Устанавливаем состояние для открытия модального окна
   };
 
   const closeModal = () => {
-    setIsModalOpen(false);
+    setIsModalOpen(false); // Устанавливаем состояние для закрытия модального окна
   };
 
   return (
@@ -193,9 +194,8 @@ const SideMenu = ({
       <div className={`sidebar ${isDarkMode ? "dark" : "light"}`}>
         <button
           className={`majorButton ${isDarkMode ? "dark" : "light"}`}
-          onClick={() => {
-            openModal();
-          }}
+          onClick={openModal}
+          
         >
           Create new account
         </button>
