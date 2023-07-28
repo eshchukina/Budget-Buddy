@@ -22,6 +22,7 @@ const Converter = ({ isDarkMode }) => {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       };
+                                    // const apiUrl = config.apiUrl;
                                    // fetch(`${config.apiUrl}endpoint`)
       const response = await fetch("http://192.168.1.30:1323/exchange", {
         headers: headersWithToken,

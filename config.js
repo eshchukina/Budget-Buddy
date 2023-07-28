@@ -1,9 +1,9 @@
 
 const config = {
-    apiUrl: process.env.NODE_ENV === 'production'
+    apiUrl: process.env.NODE_ENV === 'prod'
       ? process.env.REACT_APP_API_URL_PRODUCTION
       : process.env.REACT_APP_API_URL_DEVELOPMENT
   };
   
   export default config;
-  
+   
