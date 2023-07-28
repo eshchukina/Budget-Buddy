@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import TransactionTable from "./TransactionTable";
-// import config from './config';
-
+import config from '../config';
 
 import "./Style.css";
 import "./Dashboard.css";
@@ -37,9 +36,9 @@ const Dashboard = ({
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         };
-
-        const response = await fetch(
-          `http://192.168.1.30:1323/accounts/${account.id}/statement/`,
+       
+        const response = await 
+        fetch(`${config.apiUrl}accounts/${account.id}/statement/`,
           {
             headers: headersWithToken,
           }
@@ -91,8 +90,7 @@ const Dashboard = ({
         Authorization: `Bearer ${token}`,
       };
 
-      const response = await fetch(
-        `http://192.168.1.30:1323/accounts/${account.id}/statement/`,
+      const response = await fetch(`${config.apiUrl}accounts/${account.id}/statement/` ,
         {
           headers: headersWithToken,
         }
@@ -149,8 +147,8 @@ const Dashboard = ({
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       };
-
-      const response = await fetch("http://192.168.1.30:1323/transactions/", {
+      
+      const response = await fetch(`${config.apiUrl}transactions/`, {
         method: "POST",
         headers: headersWithToken,
         body: JSON.stringify(newSubmittedData),
@@ -189,18 +187,16 @@ const Dashboard = ({
       amount: parseFloat(editData.amount),
       date: editData.date,
     };
-
-
+   console.log(updatedData);
     const response = await fetch(
-      `http://192.168.1.30:1323/transactions/${editData.id}`,
+       `${config.apiUrl}transactions/${editData.id}`,
+      // `http://192.168.1.30:1323/transactions/${editData.id}`,
       {
         method: "PUT",
         headers: headersWithToken,
         body: JSON.stringify(updatedData), 
       }
     );
-
- 
 
     if (!response.ok) {
       console.log("Error updating data in the database.");
@@ -241,8 +237,7 @@ const Dashboard = ({
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       };
-      const response = await fetch(
-        `http://192.168.1.30:1323/transactions/${dataId}`,
+      const response = await fetch(`${config.apiUrl}transactions/${dataId}`,
         {
           method: "DELETE",
           headers: headersWithToken,

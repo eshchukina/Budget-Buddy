@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCoins, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
-
-// import config from './config';
+import config from '../config';
 
 import "./Converter.css";
 
@@ -11,7 +10,9 @@ const Converter = ({ isDarkMode }) => {
   const [amount, setAmount] = useState("");
   const [conversionRates, setConversionRates] = useState({});
   const [showConverterForm, setShowConverterForm] = useState(false); 
-  const [selectedCurrency, setSelectedCurrency] = useState("EUR"); 
+  // const [selectedCurrency, setSelectedCurrency] = useState("EUR"); 
+  const [sourceCurrency, setSourceCurrency] = useState("USD");
+  const [targetCurrency, setTargetCurrency] = useState("EUR");
   const currencies = ["EUR", "GBP", "GEL", "TRY", "RUB"]; 
 
 
@@ -22,9 +23,8 @@ const Converter = ({ isDarkMode }) => {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       };
-                                    // const apiUrl = config.apiUrl;
-                                   // fetch(`${config.apiUrl}endpoint`)
-      const response = await fetch("http://192.168.1.30:1323/exchange", {
+                                    
+      const response = await fetch(`${config.apiUrl}exchange` , {
         headers: headersWithToken,
       });
 
@@ -82,21 +82,30 @@ const Converter = ({ isDarkMode }) => {
     setAmount(value);
   };
 
-  const handleCurrencyChange = (e) => {
-    const { value } = e.target;
-    setSelectedCurrency(value); // Include the "USD" prefix when updating selectedCurrency
-  };
+  // const handleCurrencyChange = (e) => {
+  //   const { value } = e.target;
+  //   setSelectedCurrency(value); 
+  // };
 
   const convertCurrency = () => {
-    const rate = conversionRates[`USD${selectedCurrency}`]; // Use the correct key with the "USD" prefix
-    if (rate) {
-      return (amount * rate).toFixed(2);
+    const sourceRate = conversionRates[`USD${sourceCurrency}`];
+    const targetRate = conversionRates[`USD${targetCurrency}`];
+    if (sourceRate && targetRate) {
+      const convertedAmount = (amount * (targetRate / sourceRate)).toFixed(2);
+      return convertedAmount;
     }
     return "N/A";
   };
 
+  const handleSourceCurrencyChange = (e) => {
+    const { value } = e.target;
+    setSourceCurrency(value);
+  };
 
-
+  const handleTargetCurrencyChange = (e) => {
+    const { value } = e.target;
+    setTargetCurrency(value);
+  };
   const handleOpenConverterForm = () => {
     setShowConverterForm(true);
   };
@@ -105,7 +114,7 @@ const Converter = ({ isDarkMode }) => {
   const handleCloseConverterForm = () => {
     setShowConverterForm(false);  
     setAmount("");
-    setSelectedCurrency("EUR");
+    // setSelectedCurrency("EUR");
   };
 
 
@@ -123,19 +132,25 @@ return (
         </>
       )}
 
-      {showConverterForm && (
-        <>     <h3 className="headerCurrencyAdd"> Converter USD</h3>
+
+{showConverterForm && (
+        <>
+          <h3 className="headerCurrencyAdd">Converter {sourceCurrency}</h3>
           <div className="input-container">
-        
             <input
               type="text"
               value={amount}
               onChange={handleAmountChange}
-              placeholder="Enter amount in USD"
-
-              
+              placeholder={`Enter amount in ${sourceCurrency}`}
             />
-            <select onChange={handleCurrencyChange} value={selectedCurrency}>
+            <select onChange={handleSourceCurrencyChange} value={sourceCurrency}>
+              {currencies.map((currency) => (
+                <option key={currency} value={currency}>
+                  {currency}
+                </option>
+              ))}
+            </select>
+            <select onChange={handleTargetCurrencyChange} value={targetCurrency}>
               {currencies.map((currency) => (
                 <option key={currency} value={currency}>
                   {currency}
@@ -147,7 +162,7 @@ return (
             {amount !== "" ? (
               <>
                 <p>
-                  {amount} USD to {convertCurrency()} {selectedCurrency}
+                  {amount} {sourceCurrency} to {convertCurrency()} {targetCurrency}
                 </p>
               </>
             ) : (

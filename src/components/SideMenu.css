@@ -390,6 +390,6 @@ button.accountButton.dark{
   background-color: transparent; 
 }
 
-.carousel-container:hover::-webkit-scrollbar-thumb {
+/* .carousel-container:hover::-webkit-scrollbar-thumb {
   background-color: #555; 
-}
+} */

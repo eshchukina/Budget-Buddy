@@ -4,7 +4,7 @@ import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import ThemeToggle from "./ThemeToggle";
 import RegistrationButton from "./RegistrationButton";
 import LoginButton from "./LoginButton";
-// import config from './config';
+import config from '../config';
 
 import "./Style.css";
 import "./Header.css";
@@ -47,7 +47,7 @@ const Header = ({ isDarkMode, toggleTheme, activeModal, setActiveModal }) => {
     };
 
     try {
-      const response = await fetch("http://192.168.1.30:1323/user/", {
+      const response = await fetch(`${config.apiUrl}user/`, {
         method: "POST",
         mode: "cors",
         headers: {
@@ -81,7 +81,7 @@ const Header = ({ isDarkMode, toggleTheme, activeModal, setActiveModal }) => {
     };
 
     try {
-      const response = await fetch("http://192.168.1.30:1323/authorization/", {
+      const response = await fetch(`${config.apiUrl}authorization/`, {
         method: "POST",
         mode: "cors",
         headers: {
@@ -111,7 +111,7 @@ const Header = ({ isDarkMode, toggleTheme, activeModal, setActiveModal }) => {
    
 
           const s = localStorage.getItem("expiresIn");
-          const ss = parseInt(s, 10); // Второй параметр указывает на систему счисления (10 - десятичная)
+          const ss = parseInt(s, 10); 
 
           let expires_in1 = ss/1000;
           const dateObj = new Date(expires_in1* 1000);
@@ -139,7 +139,7 @@ const Header = ({ isDarkMode, toggleTheme, activeModal, setActiveModal }) => {
     if (storedRefreshToken) {
       try {
         console.log(JSON.stringify({ refreshToken: storedRefreshToken }));
-        const response = await fetch("http://192.168.1.30:1323/refresh/", {
+        const response = await fetch(`${config.apiUrl}refresh/`, {
           method: "POST",
           mode: "cors",
           headers: {
@@ -173,8 +173,6 @@ const Header = ({ isDarkMode, toggleTheme, activeModal, setActiveModal }) => {
   useEffect(() => {
     const storedAccessToken = localStorage.getItem("accessToken");
     const expiresIn = localStorage.getItem("expiresIn");
-
-
  
     if (!storedAccessToken || !expiresIn) {
       refreshTokenFunc();

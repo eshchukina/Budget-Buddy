@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShareNodes } from "@fortawesome/free-solid-svg-icons";
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
 import AccountButton from "./AccountButton";
-// import config from './config';
+import config from '../config';
 
 import "./Style.css";
 import "./SideMenu.css";
@@ -41,8 +41,8 @@ const SideMenu = ({
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       };
-
-      const response = await fetch("http://192.168.1.30:1323/accounts/", {
+    
+      const response = await fetch(`${config.apiUrl}accounts/`, {
         headers: headersWithToken,
       });
 
@@ -65,7 +65,7 @@ const SideMenu = ({
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         };
-        const response = await fetch("http://192.168.1.30:1323/accounts/", {
+        const response = await fetch(`${config.apiUrl}accounts/`, {
           method: "POST",
           mode: "cors",
           headers: headersWithToken,
@@ -106,8 +106,7 @@ const SideMenu = ({
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       };
-      const response = await fetch(
-        `http://192.168.1.30:1323/accounts/${editAccountId}`,
+      const response = await fetch(`${config.apiUrl}accounts/${editAccountId}`,
         {
           method: "PUT",
           mode: "cors",
@@ -147,8 +146,7 @@ const SideMenu = ({
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       };
-      const response = await fetch(
-        `http://192.168.1.30:1323/accounts/${account.id}`,
+      const response = await fetch(`${config.apiUrl}accounts/${account.id}`,
         {
           method: "DELETE",
           mode: "cors",
@@ -184,11 +182,11 @@ const SideMenu = ({
   };
 
   const openModal = () => {
-    setIsModalOpen(true); // Устанавливаем состояние для открытия модального окна
+    setIsModalOpen(true); 
   };
 
   const closeModal = () => {
-    setIsModalOpen(false); // Устанавливаем состояние для закрытия модального окна
+    setIsModalOpen(false);
   };
 
   return (

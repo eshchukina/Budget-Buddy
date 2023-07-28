@@ -3,7 +3,6 @@ import { useState } from "react";
 import TransactionRow from "./TransactionRow";
 
 import "./Style.css";
-
 import "./Dashboard.css";
 
 const TransactionTable = ({
