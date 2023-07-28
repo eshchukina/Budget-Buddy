@@ -5,7 +5,6 @@ import ThemeToggle from "./ThemeToggle";
 import RegistrationButton from "./RegistrationButton";
 import LoginButton from "./LoginButton";
 import config from '../config';
-
 import "./Style.css";
 import "./Header.css";
 
