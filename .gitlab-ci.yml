@@ -16,9 +16,10 @@ testing:
 building:
   stage: build
   image: node:18
+ 
   script:
-    - npm install
-    - npm run build
+    - NODE_ENV=production npm install
+    - NODE_ENV=production npm run build
   artifacts:
     paths:
       - build/
