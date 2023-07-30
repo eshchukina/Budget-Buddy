@@ -4,6 +4,7 @@ import SideMenu from "./SideMenu";
 import Dashboard from "./Dashboard";
 import Footer from "./Footer";
 import Converter from "./Converter";
+// import ApexChart from './ApexChart'; 
 
 import "./Style.css";
 
@@ -149,6 +150,9 @@ function App() {
      
       />
       <Footer isDarkMode={isDarkMode} />
+      {/* <ApexChart /> */}
+
+
     </div>
   );
 }
