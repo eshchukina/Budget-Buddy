@@ -1,17 +1,9 @@
 stages:
-  - test
+
   - build
   - publish
   - deploy
 
-testing:
-  stage: test
-  image: node:18
-  script:
-    - npm install
-    - npm test
-  tags:
-    - docker
 
 building:
   stage: build

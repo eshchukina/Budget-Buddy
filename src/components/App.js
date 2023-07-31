@@ -4,7 +4,6 @@ import SideMenu from "./SideMenu";
 import Dashboard from "./Dashboard";
 import Footer from "./Footer";
 import Converter from "./Converter";
-// import ApexChart from './ApexChart'; 
 
 import "./Style.css";
 
@@ -15,7 +14,6 @@ function App() {
   const [activeAccount, setActiveAccount] = useState(
     accounts.length > 0 ? accounts[0] : null
   );
-  // const [dataList, setDataList] = useState([]); 
 
   const setActiveModal = (modal) => {};
 
@@ -90,7 +88,7 @@ function App() {
 
   return (
     <div className={isDarkMode ? "dark" : "light"}>
-      {/* <Converter isDarkMode={isDarkMode}/>   */}
+   
             {activeAccount ? (
               <div>
         <Dashboard
@@ -150,7 +148,7 @@ function App() {
      
       />
       <Footer isDarkMode={isDarkMode} />
-      {/* <ApexChart /> */}
+     
 
 
     </div>

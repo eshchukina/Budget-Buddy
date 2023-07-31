@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
+
 import ThemeToggle from "./ThemeToggle";
 import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
-import RegistrationButton from "./RegistrationButton";
+
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import LoginButton from "./LoginButton";
 
@@ -17,13 +17,10 @@ const Header = ({ isDarkMode, toggleTheme, activeModal, setActiveModal }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isMenuOpen, setMenuOpen] = useState(false);
+  // const [isMenuOpen, setMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
 
-  const handleToggleMenu = () => {
-    setMenuOpen(!isMenuOpen);
-  };
 
   const handleOpenModal = () => {
     setIsModalOpen(true); setIsLoginModalOpen(false);
@@ -203,9 +200,9 @@ const Header = ({ isDarkMode, toggleTheme, activeModal, setActiveModal }) => {
 
  
   const handleButtonClick = () => {
-    // Ваш код обработки нажатия кнопки
+ 
     console.log('Кнопка была нажата!');
-    setSearchQuery(''); // Очищаем поле ввода
+    setSearchQuery(''); 
   };
 
   const handleChange = (event) => {

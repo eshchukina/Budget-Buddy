@@ -10,7 +10,6 @@ const Converter = ({ isDarkMode }) => {
   const [amount, setAmount] = useState("");
   const [conversionRates, setConversionRates] = useState({});
   const [showConverterForm, setShowConverterForm] = useState(false); 
-  // const [selectedCurrency, setSelectedCurrency] = useState("EUR"); 
   const [sourceCurrency, setSourceCurrency] = useState("USD");
   const [targetCurrency, setTargetCurrency] = useState("EUR");
   const currencies = ["EUR", "GBP", "GEL", "TRY", "RUB"]; 

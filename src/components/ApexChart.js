@@ -28,7 +28,7 @@ class ApexChart extends React.Component {
             }
           }
         }],
-        colors: ['#E96E94', '#5EC7DD', '#FFCD38', '#9DDD5E', '#3344FF'], // Задайте желаемые цвета для диаграммы
+        colors: ['#E96E94', '#5EC7DD', '#FFCD38', '#9DDD5E', '#3344FF'], 
       }
     };
   }

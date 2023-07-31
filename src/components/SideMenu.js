@@ -4,7 +4,6 @@ import { faShareNodes } from "@fortawesome/free-solid-svg-icons";
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import AccountButton from "./AccountButton";
-import ThemeToggle from "./ThemeToggle";
 
 import config from '../config';
 
