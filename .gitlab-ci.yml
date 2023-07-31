@@ -33,6 +33,6 @@ deploy_app:
     - docker run -d \
       --name una_bb_ui \
       --network minikube \
-      una_bb_ui
+      bbui
   tags:
     - una
