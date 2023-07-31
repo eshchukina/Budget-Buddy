@@ -32,8 +32,7 @@ deploy_app:
   script:
     - docker stop una_bb_ui || true
     - docker rm una_bb_ui || true
-    -> 
-      docker run -d
+    - docker run -d
       --name una_bb_ui
       --network minikube
       una_bb_ui
