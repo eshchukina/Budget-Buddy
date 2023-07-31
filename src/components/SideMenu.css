@@ -8,11 +8,19 @@
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
-  box-shadow: 1px 2px 3px #6a707c;
+  /* box-shadow: 1px 1px 50px #6a707c; */
   transition: 0.5s;
   background-size: 200% auto;
-  color: #fff;
+  color:  #9DAFB4;
+  background-color: #fff;
 }
+
+.sidebar.dark {
+  background-color: #1B414C;
+  color:#9DAFB4;
+}
+  
+
 
 .accountButtonActions {
   float: right;
@@ -20,6 +28,7 @@
   background-size: 200% auto;
   cursor: pointer;
   padding:4px;
+ 
  }
  
  .accountButtonContainer{
@@ -28,6 +37,7 @@
    padding: 2px;
    margin: 2px;
    justify-content: stretch;
+   
  
  }
  
@@ -36,7 +46,8 @@
    padding:4px;
    font-size: 14px;
    cursor: pointer;
-   color: #fff;
+
+
    cursor: pointer;
    transition: 0.5s;
    background-size: 200% auto;
@@ -47,7 +58,7 @@
    cursor: pointer;
    font-size: 20px;
    cursor: pointer;
-   color: #fff;
+ 
    transition: 0.5s;
    background-size: 200% auto;
  }
@@ -73,16 +84,10 @@
 
 .active.accountButton.dark {
   color: #bc881b;
+  
 }
 
-.sidebar.dark {
-  background-color: #3c4049;
-  color: #81858e;
-}
-  
-.sidebar.light {
-  background-color: #6a707c;
-}
+
 
 .label{
   text-align: center;
@@ -95,8 +100,8 @@
   position: relative;
   padding: 5px 10px;
   margin: 70px 0 20px 0;
-  background-color: #bc881b;
-  color: white;
+  background-color: #fff;
+  color:  #9DAFB4;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -104,7 +109,6 @@
   background-size: 200% auto;
   border-radius: 10px;
   box-shadow: 0px 2px 4px #81858e;
-  background-image: linear-gradient(to right, #bc881b 0%, #a4781b 50%, #cd9c36 100%);
 }
   
 .majorButton:hover {
@@ -130,7 +134,8 @@
   cursor: pointer;
   text-align: left;
   font-size: 16px;
-  color: #fff;
+  
+  color: #9DAFB4;
   border: none;
   cursor: pointer;
   transition: 0.5s;
@@ -138,7 +143,7 @@
 }
 
 button.accountButton.dark{
-  color: #8d919b;
+  color: #9DAFB4;
   cursor: pointer;
   
 }
@@ -182,7 +187,46 @@ button.accountButton.dark{
   }
   
 
+  .share {
+    padding: 10px;
 
+   position: relative;
+    
+     right: 10px;
+    top: 10px;
+ 
+  }
+  
+  .item {  
+ 
+    cursor: pointer;
+    text-align: left;
+    position: relative;
+    left: 10px;
+    font-size: 23px; 
+    margin: 7px;
+  
+  }
+
+ .textItem{
+padding-left: 20px;
+font-size: 18px; 
+
+ }
+
+
+ .item:hover{
+    color: #5EC7DD; 
+  }
+
+
+
+  hr {
+    border: 1px solid #9DAFB4; /* Set the color and border width */
+  /* Set the height of the horizontal line */
+  }
+  
+ 
   
 @media (max-width: 800px) {
 
@@ -310,6 +354,7 @@ button.accountButton.dark{
     top: 0;
     height : 300px;
     margin: 0;  
+    background-color: #EDF4F6;
   }
 
   .accountButton{
@@ -393,3 +438,4 @@ button.accountButton.dark{
 /* .carousel-container:hover::-webkit-scrollbar-thumb {
   background-color: #555; 
 } */
+

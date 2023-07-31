@@ -1,9 +1,9 @@
 /* styles.css (или любой другой файл со стилями) */
 
 #chart {
-    position: fixed;
+  position: absolute;
     top:100px;
-    left:200px;
+    left:1500px;
     max-width: 380px; /* Максимальная ширина графика */
     height: 420px; /* Высота графика */
     margin: 0 auto; /* Центрирование графика по горизонтали */

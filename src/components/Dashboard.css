@@ -3,23 +3,34 @@
   width: 100vw;
   min-height: 100vh;
   padding: 30px;
+
   box-sizing: border-box;
-  background-color: #fff;
+  background-color: #EDF4F6;
   transition: 0.5s;
   background-size: 200% auto;
 }
   
 .mainField.dark {
-  background-color: #9fa0a1;
+  background-color: #0E272E;
 }
+table.accountContent{
+  background-color: white; 
 
-.accountContent {
-  position: relative;
+}
+.accountContent{
+  margin: 0 100px;
+  width: 30%;
+  background: none;
+  border-radius: 20px;
+  color: #9DAFB4;
+  position: absolute;
+  /* position: relative; */
   left: 20%;
   top: 15%;
   transition: 0.5s;
   background-size: 200% auto;
 }
+
 
 .text {
   margin: 100px auto;
@@ -31,7 +42,7 @@
   background-size: 200% auto;
   font-size: 23px;
   background-color: #fff;
-  color: #2d313a;
+  color: #9DAFB4;
 }
 
 .text.dark{
@@ -45,12 +56,13 @@
 }
   
 table {
+  background-color: #fff;
   text-align: center;
   border-collapse: collapse;
   border-spacing: 5px;
-  background: #fff;
+ 
   border-radius: 20px;
-  color: #2d313a;
+  color: #9DAFB4;
   transition: 0.5s;
   background-size: 200% auto;
 }
@@ -87,6 +99,19 @@ table.accountContent.dark{
   border-radius: 20px;
   color: #000;
 }
+caption{
+  color: #455E63;
+
+}
+
+.positive {
+  color: #E96E94; /* Background color for rows with positive amount (red) */
+
+}
+
+.negative {
+color: #5EC7DD; /* Background color for rows with negative amount (blue) */
+}
 
 .pad {
   margin-top: 20px;
@@ -116,14 +141,7 @@ table.accountContent.dark{
   color:#2d313a;;
 }
 
-.accountContent{
-  margin: 0 100px;
-  width: 50%;
-  background: none;
-  border-radius: 20px;
-  color: #2d313a;
-  position: absolute;
-}
+
 
 .accountContent.dark th {
   font-size: 20px;
@@ -136,7 +154,7 @@ table.accountContent.dark{
   font-size: 20px;
   font-weight: 300;
   padding: 5px;
-  border-bottom: 2px solid #2d313a;
+  border-bottom: 5px solid  #EDF4F6;
 }
    
 .titleList{

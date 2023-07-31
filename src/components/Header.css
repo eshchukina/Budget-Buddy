@@ -7,31 +7,41 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 5.9cm 0 4px #2d313a;
+margin: 0;
+
+
+
+  color: #455E63; 
+  text-shadow:
+  -1px -1px #9DAFB4,
+  0 1px 0 #FFF;
+
+}
+.headerLogoMobile{
+  display: none;
+
+}
+.header.dark {
+
+  color: #fff; 
+  text-shadow:
+  0 1px 0 #455E63;
   transition: 0.5s;
   background-size: 200% auto;
-  background-color: #6a707c;
-  color: #fff; 
-}
-
-.header.dark {
-  background-color: #3c4049;
-  color: #81858e; 
 }
 
 
-.headerLogo{
-  text-shadow:
-  -1px -1px #c9a713,
-  0 1px 0 #444;
-
-}
 
 .letter {
-  color: #bc881b; 
+  color: #E96E94; 
   font-size: 110%; 
  } 
  
+
+.textModal{
+  text-align: center;
+  margin: 10px 0px 0px 0px;
+}
 
 .buttonTheme {
   position: absolute;
@@ -41,30 +51,40 @@
   font-size: 24px;
   transition: 0.5s;
   background-size: 200% auto;
-  text-shadow:
-  -1px -1px #af9108,
-  0 1px 0 #c2b00e;
+  
 
+
+  color: #E96E94; 
 }
 
 .buttonTheme.dark {
   left: 1470px;
+  background-color:#0E272E;
+   color: #E96E94; 
+
+    
+  
 }
-
-
 
 button.dark {
   color: #3c4049;
-  background-color: #3c4049;
+  background-color: #EDF4F6; transition: 0.5s;
+  background-size: 200% auto;
+
 
 }
 
 button.light {
-  background-color: #6a707c;
- 
+  background-color: #EDF4F6;
+  transition: 0.5s;
+  background-size: 200% auto;
+  
 }
 
 .logIn {
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: #9DAFB4; 
     position: absolute;
     cursor: pointer;
     border: none;
@@ -73,7 +93,79 @@ button.light {
     background-size: 200% auto;
     position: absolute;
     left: 1300px;
+
+      
     
+  }
+  .header.dark .logIn{
+    
+
+    background-color: #0E272E;
+   
+   
+
+  
+    color: #fff; 
+
+  }
+
+  .logIn :hover,
+  .SignUp:hover {
+    color: #5EC7DD; 
+  }
+  .inputContainer {
+    display: inline-block;
+    position: relative;
+  }
+  .headerLogo{
+    position: absolute;
+   left:300px
+ 
+
+  }
+
+ .searchContainer {
+    position: relative;
+    right:300px;
+    top:5px;
+  }
+  .searchInput{
+    font-size: 18px;
+    position: relative;
+    left:10px;
+
+    padding: 10px 30px;
+    margin: 25px 0 20px 0;
+    background-color: #fff;
+    color:  #9DAFB4;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.5s;
+    background-size: 200% auto;
+  
+
+  }
+ 
+  
+  .searchButton {
+    position: absolute;
+    top: 24px;
+    right: 0;
+    background: transparent;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    color:  #9DAFB4;
+    font-size: 20px;
+  }
+  
+  .searchIcon {
+    position: absolute;
+    top:55%;
+    right: 10px;
+    transform: translateY(-50%);
+  
   }
   
   .SignUp {
@@ -85,6 +177,7 @@ button.light {
     background-size: 200% auto;
     position: absolute;
     left: 1250px;
+    color: #9DAFB4; 
     
   }
 
@@ -106,6 +199,7 @@ button.light {
     padding: 10px;
     margin-top: 100px;
     z-index: 0;
+      color: #455E63; 
   }
   
   .menu button {
@@ -116,6 +210,25 @@ button.light {
   .menu.dark{
     background-color: #9fa0a1;
   }
+  
+  @media (max-width: 1850px) {
+  .searchContainer{
+  
+    right:200px;
+    top:5px;
+  
+  }
+  }
+
+  @media (max-width: 1650px) {
+    .searchContainer{
+    
+      right:100px;
+      top:5px;
+    
+    }
+    }
+  
 
 
 @media (max-width: 1600px) {
@@ -134,6 +247,12 @@ button.light {
 
   .buttonTheme.dark {
     left: 1270px;
+  }
+  .searchContainer{
+    
+    right:50px;
+    top:5px;
+  
   }
 
 }
@@ -156,6 +275,13 @@ button.light {
   .buttonTheme.dark {
     left: 1170px;
   }
+  .searchContainer{
+    
+    display: none;
+      
+     
+     }
+ 
 
 }
 
@@ -177,6 +303,7 @@ button.light {
     left: 970px;
   }
 
+
 }
 
 
@@ -197,12 +324,15 @@ button.light {
     left: 870px;
   }
 
+ 
+ 
 }
 
 @media (max-width: 950px) {
 
-  .logIn, .SignUp {
-    display: none;
+  .logIn {
+    left: 700px;
+   
   }
 
   .buttonTheme {
@@ -213,7 +343,7 @@ button.light {
     left: 770px;
   }
 
-  .burger {
+  /* .burger {
     display: block; 
     position: absolute;
     cursor: pointer;
@@ -234,7 +364,7 @@ button.light {
   .menu {
     left: 690px;
     flex-grow: 1;
-  }
+  } */
   
 }
 
@@ -242,9 +372,9 @@ button.light {
 
 @media (max-width: 850px) {
 
-  .logIn, .SignUp {
-    display: none;
-
+  .logIn {
+    
+    left: 600px;
   }
 
   .buttonTheme {
@@ -255,52 +385,46 @@ button.light {
     left: 710px;
   }
 
-  .burger {
+  /* .burger {
     left: 600px;
   }
  
   .menu {
     left: 590px;
   }
- 
+  */
 }
 
-@media (max-width: 800px) {
 
-  .header {
-    box-shadow: 4.3cm 0 4px #2d313a;
-  }
-}
 
 @media (max-width: 750px) {
 
-  .logIn, .SignUp {
-    display: none;
+  .logIn {
+    left: 530px;
+    
   }
 
   .buttonTheme {
     left: 600px;
   }
 
-  .header{
-    box-shadow: 4.3cm 0 4px #2d313a;
-  }
+
 
   .buttonTheme.dark {
     left: 630px;
   }
 
-  .burger {
+  /* .burger {
     left: 530px;
   }
 
   .menu {
     left: 520px;
-  }
+  } */
 
 }
 
-
+/* 
 @media (max-width: 680px) {
 
   .burger {
@@ -311,27 +435,45 @@ button.light {
     left: 510px;
   }
 
-}
+} */
 
 
 @media (max-width: 650px) {
 
-  .logIn, .SignUp {
-    display: none;
-    font-size: 5px;
-  }
+  .logIn {
+    left: 550px;
 
-  .buttonTheme {
-    font-size: 30px;
+  }
+.headerLogo{
+  left:250px;
+}
+.buttonTheme{
+
+  font-size: 30px;
+
+}
+  .buttonTheme.light {
+
     left: 60px;
-    top:5px; 
+  
+    background-color: #fff;
+   
+  
   }  
+  
+  .logIn.dark{
+    background-color: #1B414C;
+   
+   
+
+  }
 
   .buttonTheme.dark {
     left: 70px;
+    background-color: #1B414C;
   }
 
-  .burger {
+  /* .burger {
     font-size: 35px;
     left: 450px;
   }
@@ -340,7 +482,7 @@ button.light {
     padding: 20px;
     left: 440px;
    
-  }
+  } */
 
   .header {
   font-size: 14px;
@@ -362,42 +504,78 @@ button.light {
 
 }
 
+@media (max-width: 600px) {
 
-@media (max-width:580px) {
 
-  .menu {
-    left: 350px;
+  .headerLogoMobile{
+    display: block;
+    font-size: 40px;
+    position: relative;
+    right:200px;
+  
+  
   }
+  .logIn {
+
+    left: 500px;
+    font-size: 30px;
+
+  }.letter{
+    color: #455E63;
+  }
+
+
+  .header.dark .logIn{
+    
+    background-color: #1B414C;
+   
+   
+
+  }
+.headerLogo{
+ display: none;
 }
+
+
+  .buttonTheme.light {
+    left: 400px;
+
+
+    background-color: #EDF4F6;
+   
+  
+  }  
+
+  .buttonTheme.dark {
+    left: 390px;
+    background-color: #1B414C;
+  }
+
+
+
+}
+
+
 
 @media (max-width:540px) {
 
-  .burger {
-    left: 400px;
+  .logIn {
+    left: 450px;
   }
-    
-  .menu {
-    left: 300px;
-   }
+ 
     
 }
 
 
 @media (max-width: 500px) {
 
-  .logIn, .SignUp {
-    display: none;
-    font-size: 5px;
+  .logIn {
+    left:320px;
+    
   }
 
-  .buttonTheme {
-    top:10px;
-    left: 55px; 
-  }
+ 
 
-  .buttonTheme.dark {
-    left: 65px;
-  }
 
   .burger {
     left: 400px;
@@ -413,7 +591,7 @@ button.light {
   }
 
   .header {
-    font-size: 13px;
+
     height: 70px;
     box-shadow: none;
 }
@@ -426,36 +604,8 @@ button.light {
     font-size: 10px;
  }
 
-}
 
-@media (max-width:440px) {
-  .logIn, .SignUp {
-    display: none;
-    font-size: 5px;
-  }
 
-  .buttonTheme {
-    top:10px;
-    left: 20px;
-    font-size: 30px;
-    font-size: 30px; 
-  }
-
-  .buttonTheme.dark {
-    left: 30px;
-  }
-
-  .burger {
-    left: 350px;
-  }
-
-  .menu {
-    left: 250px;
-  }
-
-  .menu.dark{
-    background-color:#3c4049;
-  }
 
   .header {
     font-size: 13px;
@@ -463,6 +613,13 @@ button.light {
     box-shadow: none;
     position: fixed;
  
+  }
+  .headerLogoMobile{
+
+
+    right:150px;
+  
+  
   }
 
   .letter {
@@ -476,31 +633,70 @@ button.light {
 }
 
 
-@media (max-width:400px) {
-  .menu {
-    left: 250px;  
+
+@media (max-width:430px) {
+  .logIn {
+    left:310px;
+    
+  }
+
+  .buttonTheme.light {
+    left: 360px;
+
+
+ 
+   
+  
+  }  
+
+  .buttonTheme.dark {
+    left: 365px;
   }
 }
 
-@media (max-width:380px) {
+@media (max-width:390px) {
 
-  .burger {
-    left: 300px;
+
+  .logIn {
+    left:270px;
+    
   }
 
-  .menu {
-    left: 200px;
+  .buttonTheme.light {
+    left: 310px;
+
+
+ 
+   
+  
+  }  
+
+  .buttonTheme.dark {
+    left: 315px;
   }
 
 }
 
 @media (max-width:350px) {
-  .burger {
-      left: 280px;
+  .headerLogoMobile{
+    right:120px;
   }
+  .logIn {
+    left:230px;
+    
+  }
+
+  .buttonTheme.light {
+    left: 280px;
+
+
  
-  .menu {
-    left: 180px;
+   
+  
+  }  
+
+  .buttonTheme.dark {
+    left: 285px;
   }
 
 }

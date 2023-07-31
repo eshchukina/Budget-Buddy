@@ -3,16 +3,16 @@ html {
 }
 
 body {
-  background-color:#fff;
+  background-color:#EDF4F6;
   transition: 0.5s;
   background-size: 200% auto;
 }
 
 
 body.dark  {
-  background-color: #9fa0a1;
+  background-color: #0E272E;
   transition: 0.5s;
-  background-size: 200% auto; 
+  background-size: 200% auto;
 }
 
 .modal {
@@ -143,23 +143,6 @@ button.modalBtn:hover {
 }
 
 
-.share {
-  padding: 10px;
-  margin: 20px;
-  position: relative;
-  top: 10px;
-}
-
-.item {   
-  cursor: pointer;
-  float: left;
-  margin-right: 30px;
-  font-size: 25px; 
-}
-
-.item:last-child {
-  margin-right: 0; 
-}
 
 
 .modalButtonLog {

@@ -2,7 +2,10 @@ import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShareNodes } from "@fortawesome/free-solid-svg-icons";
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import AccountButton from "./AccountButton";
+import ThemeToggle from "./ThemeToggle";
+
 import config from '../config';
 
 import "./Style.css";
@@ -12,7 +15,7 @@ const SideMenu = ({
   isDarkMode,
   setActiveAccount,
   accountList,
-
+  toggleTheme,
   activeAccount,
   currency,
   handleDeleteAccount,
@@ -261,18 +264,30 @@ const SideMenu = ({
                 />
               </div>
             ))}
-          </div>{" "}
+          </div>{" "}  <hr/> 
         </div>
 
+      
+
         <div className="share">
+            
           <div className="item" onClick={handleShare}>
-            <FontAwesomeIcon icon={faShareNodes} />
+            <FontAwesomeIcon icon={faShareNodes} /> <span className="textItem">share</span>
           </div>
+
           <div className="item">
-            <FontAwesomeIcon icon={faEnvelope} />
+            <FontAwesomeIcon icon={faEnvelope} /> <span className="textItem">connect with us</span>
+          </div>
+
+              
+          <div className="item">
+          <FontAwesomeIcon icon={faArrowRight} />  <span className="textItem">log out</span>
           </div>
         </div>
-      </div>
+
+
+          
+         </div>
     </div>
   );
 };

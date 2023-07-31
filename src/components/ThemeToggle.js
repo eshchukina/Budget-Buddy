@@ -11,14 +11,15 @@ const ThemeToggle = ({ isDarkMode, toggleTheme }) => {
   };
 
   return (
+
     <button
       className={`buttonTheme ${isDarkMode ? "dark" : "light"}`}
       onClick={handleThemeToggle}
     >
       {isDarkMode ? (
-        <FontAwesomeIcon icon={faMoon} style={{ color: "#bc881b" }} />
+        <FontAwesomeIcon icon={faMoon} />
       ) : (
-        <FontAwesomeIcon icon={faSun} style={{ color: "#bc881b" }} />
+        <FontAwesomeIcon icon={faSun} />
       )}
     </button>
   );

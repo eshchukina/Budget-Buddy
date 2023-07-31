@@ -2,7 +2,8 @@ import React from 'react';
 import ReactApexChart from 'react-apexcharts';
 
 import "./ApexChart.css";
-
+import "./Style.css";
+import "./Dashboard.css";
 
 class ApexChart extends React.Component {
   constructor(props) {
@@ -26,18 +27,22 @@ class ApexChart extends React.Component {
               position: 'bottom'
             }
           }
-        }]
+        }],
+        colors: ['#E96E94', '#5EC7DD', '#FFCD38', '#9DDD5E', '#3344FF'], // Задайте желаемые цвета для диаграммы
       }
     };
   }
 
   render() {
     return (
-      <div id="chart">
-        <ReactApexChart options={this.state.options} series={this.state.series} type="pie" width={380} />
+      <div className="mainField">
+        <div id="chart">
+          <ReactApexChart options={this.state.options} series={this.state.series} type="pie" width={380} />
+        </div>
       </div>
-    );
+    )
   }
 }
 
 export default ApexChart;
+

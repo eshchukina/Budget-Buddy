@@ -8,7 +8,7 @@ const RegistrationButton = ({ isDarkMode, handleOpenModal }) => {
       className={`SignUp ${isDarkMode ? "dark" : "light"}`}
       onClick={handleOpenModal}
     >
-      <FontAwesomeIcon icon={faUserPlus} style={{ color: "#bc881b" }} />
+      <FontAwesomeIcon icon={faUserPlus}/>
     </button>
   );
 };

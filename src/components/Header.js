@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import ThemeToggle from "./ThemeToggle";
+import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
 import RegistrationButton from "./RegistrationButton";
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import LoginButton from "./LoginButton";
 
 import config from '../config';
@@ -16,25 +18,32 @@ const Header = ({ isDarkMode, toggleTheme, activeModal, setActiveModal }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isMenuOpen, setMenuOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+
 
   const handleToggleMenu = () => {
     setMenuOpen(!isMenuOpen);
   };
 
   const handleOpenModal = () => {
-    setIsModalOpen(true);
+    setIsModalOpen(true); setIsLoginModalOpen(false);
+  
   };
 
   const handleCloseModal = () => {
+    setIsLoginModalOpen(false);
     setIsModalOpen(false);
   };
 
   const handleOpenLoginModal = () => {
     setIsLoginModalOpen(true);
+    setIsModalOpen(false);
+    
   };
 
   const handleCloseLoginModal = () => {
     setIsLoginModalOpen(false);
+    setIsModalOpen(false);
   };
 
   const handleRegistration = async (e) => {
@@ -192,12 +201,44 @@ const Header = ({ isDarkMode, toggleTheme, activeModal, setActiveModal }) => {
     }
   }, []);
 
+ 
+  const handleButtonClick = () => {
+    // Ваш код обработки нажатия кнопки
+    console.log('Кнопка была нажата!');
+    setSearchQuery(''); // Очищаем поле ввода
+  };
+
+  const handleChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
   return (
     <div className={`header ${isDarkMode ? "dark" : "light"}`}>
+      
+    
       <h1 className="headerLogo">
-        <span className="letter">B</span>udget <span className="letter">B</span>
-        uddy
-      </h1>
+
+        <span className="letter">B</span>udget <span className="letter">B</span>uddy</h1>  
+
+         <h1 className="headerLogoMobile">
+
+        <span className="letter">BB</span>
+        
+      </h1>   
+      <div className="searchContainer">
+      <div className="inputContainer">
+        <input
+          className="searchInput"
+          type="text"
+          placeholder="search"
+          value={searchQuery}
+          onChange={handleChange}
+        />
+        <button className="searchButton" onClick={handleButtonClick}>
+          <FontAwesomeIcon icon={faSearch} />
+        </button>
+      </div>
+    </div>
 
       <ThemeToggle isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
 
@@ -237,15 +278,24 @@ const Header = ({ isDarkMode, toggleTheme, activeModal, setActiveModal }) => {
               >
                 Close
               </button>
-            </form>
-          </div>
+           
+              <p className="textModal"> create a new account</p>
+              <button
+                className={`modalButtonLog ${isDarkMode ? "dark" : "light"}`}
+                onClick={handleOpenModal}
+              >
+               Create   <FontAwesomeIcon icon={faUserPlus}/>
+              </button>
+            </form> 
+          </div> 
+
         </div>
       )}
 
-      <RegistrationButton
+      {/* <RegistrationButton
         isDarkMode={isDarkMode}
         handleOpenModal={handleOpenModal}
-      />
+      /> */}
 
       {isModalOpen && (
         <div className="modal">
@@ -280,16 +330,19 @@ const Header = ({ isDarkMode, toggleTheme, activeModal, setActiveModal }) => {
               </button>
               <button
                 className={`modalButtonLog ${isDarkMode ? "dark" : "light"}`}
-                onClick={handleCloseModal}
+                onClick={handleCloseModal} 
               >
                 Close
               </button>
+            
+             
             </form>
-          </div>
+          </div>  
+
         </div>
       )}
 
-      <div
+      {/* <div
         className={`burger ${isMenuOpen ? "open" : ""} ${
           isDarkMode ? "dark" : "light"
         }`}
@@ -312,7 +365,7 @@ const Header = ({ isDarkMode, toggleTheme, activeModal, setActiveModal }) => {
             Login
           </button>
         </div>
-      )}
+      )} */}
     </div>
   );
 };

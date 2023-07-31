@@ -17,39 +17,46 @@ const TransactionRow = ({
   formatBalance,
 }) => {
 
+  const isPositiveAmount = data.amount >= 0;
 
     const isHighlighted = new Date(data.date.substring(0, 10)) < new Date().setHours(0, 0, 0, 0);
 
-  return (
-    <tr className={isHighlighted ? "highlight" : ""}>
-    <td>{data.id}</td>
-    <td>
-      <span
-        className="descriptionText"
-        onClick={() => handleExpandDescription(data.id)}
+    return (
+      <tr
+        className={`transactionRow ${isHighlighted ? "highlight" : ""} `}
       >
-          {expandedDescription === data.id
-            ? data.description
-            : formatData(data.description)}
-        </span>
-      </td>
-      <td>{data.amount}</td>
-      <td>{formatDate(data.date)}</td>
-      <td>{formatBalance(data.balance)}</td>
-      <td>
-        <FontAwesomeIcon
-          icon={faPencilAlt}
-          className={`editIcon1 ${isDarkMode ? "dark" : "light"}`}
-          onClick={() => handleEdit(data)}
-        />
-        <FontAwesomeIcon
-          icon={faTimes}
-          className={`deleteIcon1 ${isDarkMode ? "dark" : "light"}`}
-          onClick={() => handleDelete(data.account_id, data.id)}
-        />
-      </td>
-    </tr>
-  );
-};
-
-export default TransactionRow;
+        <td>{data.id}</td>
+        <td>
+          <span
+            className="descriptionText"
+            onClick={() => handleExpandDescription(data.id)}
+          >
+            {expandedDescription === data.id
+              ? data.description
+              : formatData(data.description)}
+          </span>
+        </td>
+        <td>{formatBalance(data.amount)}</td>
+        <td>{formatDate(data.date)}</td>
+        <td
+        className={`transactionRow ${
+          isPositiveAmount ? "positive" : "negative"
+        }`}
+      >{formatBalance(data.balance)}</td>
+        <td>
+          <FontAwesomeIcon
+            icon={faPencilAlt}
+            className={`editIcon1 ${isDarkMode ? "dark" : "light"}`}
+            onClick={() => handleEdit(data)}
+          />
+          <FontAwesomeIcon
+            icon={faTimes}
+            className={`deleteIcon1 ${isDarkMode ? "dark" : "light"}`}
+            onClick={() => handleDelete(data.account_id, data.id)}
+          />
+        </td>
+      </tr>
+    );
+  };
+  
+  export default TransactionRow;
