@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import TransactionTable from "./TransactionTable";
- import ApexChart from './ApexChart'; 
 import config from '../config';
 
 import "./Style.css";
@@ -373,7 +372,7 @@ const Dashboard = ({
 
         {!dataList || (dataList.length === 0 && <p>No submitted data</p>)}
       </div>
-  <ApexChart/>
+
     </div>
   );
 };
