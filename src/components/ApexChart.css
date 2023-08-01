@@ -153,6 +153,21 @@ margin: 20%;
           }
 
 
+          @media (max-width: 450px) {
+
+            .mainField #chart {
+            
+             
+           
+              margin: 50% 35%;
+              width: 200px;
+              height: 150px; 
+           
+           
+            }
+            
+          }
+  
 
           @media (max-width: 390px) {
 
@@ -162,7 +177,8 @@ margin: 20%;
            
               margin: 50% 35%;
               width: 200px;
-              height: 150px; 
+            top:30px;
+        
            
            
             }
