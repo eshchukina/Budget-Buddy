@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import TransactionTable from "./TransactionTable";
  import ApexChart from './ApexChart'; 
+ import Converter from "./Converter";
 import config from '../config';
 
 import "./Style.css";
@@ -39,7 +40,7 @@ const Dashboard = ({
         breakpoint: 480,
         options: {
           chart: {
-            width: 200
+            width: 380
           },
           legend: {
             position: 'bottom'
@@ -517,7 +518,7 @@ const Dashboard = ({
             </div>
           </div>
         )}
-
+<div class="container">
         <TransactionTable
           account={account}
           dataList={dataList}
@@ -533,14 +534,14 @@ const Dashboard = ({
         />
 
         {!dataList || (dataList.length === 0 && <p>No submitted data</p>)}
-      </div>
+     
       <ApexChart account={account}
        isDarkMode={isDarkMode} 
        chartData={chartData} 
         fetchChartData={fetchChartData} 
-       />
+       /><Converter isDarkMode={isDarkMode}/>  
 
-    </div>
+    </div> </div></div>
   );
 };
 

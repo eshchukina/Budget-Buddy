@@ -209,17 +209,20 @@ const Header = ({ isDarkMode, toggleTheme, activeModal, setActiveModal }) => {
     setSearchQuery(event.target.value);
   };
 
+  const reloadPage = () => {
+    window.location.reload();
+  };
   return (
     <div className={`header ${isDarkMode ? "dark" : "light"}`}>
       
     
-      <h1 className="headerLogo">
+      <h1 className="headerLogo" onClick={reloadPage}>
 
         <span className="letter">B</span>udget <span className="letter">B</span>uddy</h1>  
 
          <h1 className="headerLogoMobile">
 
-        <span className="letter">BB</span>
+        <span className="letter" onClick={reloadPage}>BB</span>
         
       </h1>   
       <div className="searchContainer">

@@ -110,7 +110,7 @@ function App() {
           updateAccountCaption={updateAccountCaption}
           handleCurrencyChange={handleCurrencyChange}
           // dataList={dataList}
-        /> <Converter isDarkMode={isDarkMode}/>  
+        /> 
         </div>
       ) 
       

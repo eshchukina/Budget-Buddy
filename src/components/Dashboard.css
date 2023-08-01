@@ -290,6 +290,14 @@ color: #5EC7DD;
     width:100%;
    
  }
+ .container {
+  display: flex;
+  flex-direction: column;
+  gap: 100px; 
+
+}
+
+
 
 }
   

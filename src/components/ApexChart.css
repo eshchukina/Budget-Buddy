@@ -5,7 +5,7 @@
 background-color: #fff;
 
     transition: 0.5s;
-    background-size: 200% auto;
+    
     height: 280px; 
     border-radius: 20px;
     font-size: 20px;
@@ -145,7 +145,8 @@ margin: 20%;
               position: relative;
               top:-280px;
              
-              margin: 0 25%;
+              margin: 0 20%;
+            
            
            
             }
@@ -154,14 +155,14 @@ margin: 20%;
 
 
           @media (max-width: 450px) {
-
+      
+           
             .mainField #chart {
             
              
            
-              margin: 50% 35%;
-              width: 200px;
-              height: 150px; 
+             
+           
            
            
             }
@@ -174,10 +175,11 @@ margin: 20%;
             .mainField #chart {
             
              
+           top:-180px;
+           margin: 5px 30px;
+            
            
-              margin: 50% 35%;
-              width: 200px;
-            top:30px;
+        
         
            
            

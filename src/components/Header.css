@@ -41,6 +41,7 @@ margin: 0;
 .letter {
   color: #E96E94; 
   font-size: 110%; 
+  cursor: pointer;
  } 
  
 
@@ -119,7 +120,8 @@ margin: 0;
   }
   .headerLogo{
     position: absolute;
-   left:300px
+   left:300px;
+    cursor: pointer;
  
 
   }
