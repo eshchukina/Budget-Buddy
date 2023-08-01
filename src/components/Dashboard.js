@@ -16,6 +16,7 @@ const Dashboard = ({
   const [editData, setEditData] = useState({
     id: null,
     description: "",
+    tag: "",
     amount: "",
     date: "",
   });
@@ -130,6 +131,7 @@ const Dashboard = ({
     const newSubmittedData = {
       account_id: account.id,
       description: editData.description,
+      tag: editData.tag,
       amount: editData.amount,
       date: editData.date,
     };
@@ -185,6 +187,7 @@ const Dashboard = ({
     const updatedData = {
       account_id: account.id,
       description: editData.description,
+      tag: editData.tag,
       amount: parseFloat(editData.amount),
       date: editData.date,
     };
@@ -225,6 +228,7 @@ const Dashboard = ({
     setEditData({
       id: data.id,
       description: data.description,
+      tag: data.tag,
       amount: data.amount,
       date: data.date,
     });
@@ -276,6 +280,12 @@ const Dashboard = ({
       setEditData({ ...editData, description: value });
     }
   };
+
+
+  const handleTagChange = (e) => {
+    setEditData({ ...editData, tag: e.target.value });
+  };
+
   const handleAmountChange = (e) => {
     const { value } = e.target;
     const floatValue = parseFloat(value);
@@ -308,6 +318,8 @@ const Dashboard = ({
     return "";
   };
 
+  
+
   return (
     <div className={`mainField ${isDarkMode ? "dark" : "light"}`}>
       <div key={account.id}>
@@ -322,6 +334,21 @@ const Dashboard = ({
                   onChange={handleDescriptionChange}
                   placeholder="description"
                 />
+                    <select value={editData.tag} onChange={handleTagChange} >
+      <option value="">category</option>
+      <option value="food">food</option>
+      <option value="transport">transport</option>
+      <option value="health">health</option>
+      <option value="entertaiment">entertaimen</option>
+      <option value="cloth">cloth</option>
+      <option value="saving">saving</option>
+      <option value="pets">pets</option>
+      <option value="gifts">gifts</option>
+      <option value="hobby">hobby</option>
+      <option value="trips">trips</option>
+      <option value="other">other</option>
+
+    </select>
                 <input
                   type="text"
                   value={editData.amount}
@@ -373,7 +400,7 @@ const Dashboard = ({
 
         {!dataList || (dataList.length === 0 && <p>No submitted data</p>)}
       </div>
-  <ApexChart/>
+  <ApexChart   account={account} isDarkMode={isDarkMode}/>
     </div>
   );
 };

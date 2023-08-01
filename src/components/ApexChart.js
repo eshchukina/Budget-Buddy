@@ -1,47 +1,91 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactApexChart from 'react-apexcharts';
+import config from '../config';
 
 import "./ApexChart.css";
 import "./Style.css";
 import "./Dashboard.css";
 
-class ApexChart extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      series: [50, 55, 13, 43, 22],
-      options: {
-        chart: {
-          width: 380,
-          type: 'pie',
-        },
-        labels: ['Team A', 'Team B', 'Team C', 'Team D', 'Team E'],
-        responsive: [{
-          breakpoint: 480,
-          options: {
-            chart: {
-              width: 200
-            },
-            legend: {
-              position: 'bottom'
-            }
+const ApexChart = ({ account, isDarkMode }) => {
+  const [chartData, setChartData] = useState({
+    series: [], 
+    options: {
+      chart: {
+        width: 380,
+        type: 'pie',
+      },
+      labels: [], 
+      responsive: [{
+        breakpoint: 480,
+        options: {
+          chart: {
+            width: 200
+          },
+          legend: {
+            position: 'bottom'
           }
-        }],
-        colors: ['#E96E94', '#5EC7DD', '#FFCD38', '#9DDD5E', '#3344FF'], 
+        }
+      }],
+      colors: ['#E96E94', '#5EC7DD', '#ffcd38', '#9ddd5e', '#1b414c'],
+      dataLabels: {
+        style: {
+          colors: ['#fff'] // Set the desired font color here
+        }
       }
-    };
-  }
+    }
+  });
+  useEffect(() => {
+    if (account) {
+      fetchData();
+    }
+  }, [account]);
 
-  render() {
-    return (
-      <div className="mainField">
-        <div id="chart">
-          <ReactApexChart options={this.state.options} series={this.state.series} type="pie" width={380} />
-        </div>
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const token = localStorage.getItem("accessToken");
+      const headersWithToken = {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      };
+
+      const response = await fetch(`${config.apiUrl}accounts/${account.id}/statistics`, {
+        headers: headersWithToken,
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch account statistics");
+      }
+
+      const data = await response.json();
+
+      // Extract the labels and values from the API response data
+      const chartLabels = Object.keys(data);
+      const seriesData = Object.values(data).map(value => parseFloat(value));
+
+      setChartData(prevState => ({
+        ...prevState,
+        series: seriesData,
+        options: {
+          ...prevState.options,
+          labels: chartLabels,
+        },
+      }));
+    } catch (error) {
+      console.log("Error fetching account statistics:", error.message);
+    }
+  };
+
+  return (
+    <div className={`mainField ${isDarkMode ? "dark" : "light"}`}>
+      <div id="chart">
+      <ReactApexChart options={chartData.options} series={chartData.series} type="pie" width={380} />
       </div>
-    )
-  }
+    </div>
+  );
 }
 
 export default ApexChart;

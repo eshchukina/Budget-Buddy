@@ -2,12 +2,14 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShareNodes } from "@fortawesome/free-solid-svg-icons";
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+
 
 import "./Style.css";
 import "./SideMenu.css";
 import "./Footer.css";
 
-const Footer = ({ isDarkMode, toggleTheme }) => {
+const Footer = ({ isDarkMode }) => {
   const handleShare = () => {
     if (navigator.share) {
       navigator
@@ -25,15 +27,28 @@ const Footer = ({ isDarkMode, toggleTheme }) => {
   return (
     <div className={`footer ${isDarkMode ? "dark" : "light"}`}>
       <div className={`shareFooter ${isDarkMode ? "dark" : "light"}`}>
-        <div
-          className={`itemFooter ${isDarkMode ? "dark" : "light"}`}
-          onClick={handleShare}
-        >
-          <FontAwesomeIcon icon={faShareNodes} />
-        </div>
-        <div className={`itemFooter ${isDarkMode ? "dark" : "light"}`}>
-          <FontAwesomeIcon icon={faEnvelope} />
-        </div>
+  
+      
+
+
+     
+    
+          <div className="item" onClick={handleShare}>
+            <FontAwesomeIcon icon={faShareNodes} /> <span className="textItem">share</span>
+          </div>
+
+          <div className="item">
+            <FontAwesomeIcon icon={faEnvelope} /> <span className="textItem">connect with us</span>
+          </div>
+
+              
+          <div className="item">
+          <FontAwesomeIcon icon={faArrowRight} />  <span className="textItem">log out</span>
+          </div>
+     
+
+
+
       </div>
     </div>
   );

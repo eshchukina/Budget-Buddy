@@ -48,6 +48,9 @@ const TransactionTable = ({
 
   return (
     <div className={`mainField ${isDarkMode ? "dark" : "light"}`}>
+
+
+<div class="scroll-table">
       <table
         key={account.id}
         className={`accountContent ${isDarkMode ? "dark" : "light"}`}
@@ -70,20 +73,21 @@ const TransactionTable = ({
         </thead>
         {dataList && dataList.length > 0 ? (
           <tbody>
-            {dataList.map((data) => (
-              <TransactionRow
-                key={data.id}
-                data={data}
-                isDarkMode={isDarkMode}
-                handleEdit={handleEdit}
-                handleDelete={handleDelete}
-                handleExpandDescription={handleExpandDescription}
-                expandedDescription={expandedDescription}
-                formatData={formatData}
-                formatDate={formatDate}
-                formatBalance={formatBalance}
-              />
-            ))}
+          {dataList.map((data, index) => (
+  <TransactionRow
+    key={data.id}
+    index={index}
+    data={data}
+    isDarkMode={isDarkMode}
+    handleEdit={handleEdit}
+    handleDelete={handleDelete}
+    handleExpandDescription={handleExpandDescription}
+    expandedDescription={expandedDescription}
+    formatData={formatData}
+    formatDate={formatDate}
+    formatBalance={formatBalance}
+  />
+))}
           </tbody>
         ) : (
           <tbody>
@@ -115,7 +119,8 @@ const TransactionTable = ({
           </tr>
         </tfoot>
       </table>{" "}
-    </div>
+    </div> </div>
+  
   );
 };
 

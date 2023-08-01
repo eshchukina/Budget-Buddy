@@ -248,7 +248,9 @@ const SideMenu = ({
         <div className="accountButtons">
           <div className="titleList">Your account list:</div>
           <div className="carousel-container">
+    
             {fetchedAccountList.map((account) => (
+              
               <div key={account.id} className="carousel-item">
                 <AccountButton
                   key={account.id}
@@ -263,13 +265,13 @@ const SideMenu = ({
                 />
               </div>
             ))}
-          </div>{" "}  <hr/> 
+          </div>{" "} 
         </div>
 
       
 
         <div className="share">
-            
+    
           <div className="item" onClick={handleShare}>
             <FontAwesomeIcon icon={faShareNodes} /> <span className="textItem">share</span>
           </div>

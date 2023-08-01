@@ -1,7 +1,7 @@
 import React from "react";
-import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
+import { faMoon } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import { faSun } from '@fortawesome/free-solid-svg-icons';
 import "./Style.css";
 import "./Header.css";
 
@@ -11,7 +11,6 @@ const ThemeToggle = ({ isDarkMode, toggleTheme }) => {
   };
 
   return (
-
     <button
       className={`buttonTheme ${isDarkMode ? "dark" : "light"}`}
       onClick={handleThemeToggle}
@@ -19,7 +18,7 @@ const ThemeToggle = ({ isDarkMode, toggleTheme }) => {
       {isDarkMode ? (
         <FontAwesomeIcon icon={faMoon} />
       ) : (
-        <FontAwesomeIcon icon={faSun} />
+        <FontAwesomeIcon icon={faSun}  />
       )}
     </button>
   );

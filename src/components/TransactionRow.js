@@ -15,6 +15,7 @@ const TransactionRow = ({
   formatData,
   formatDate,
   formatBalance,
+  index
 }) => {
 
   const isPositiveAmount = data.amount >= 0;
@@ -22,10 +23,11 @@ const TransactionRow = ({
     const isHighlighted = new Date(data.date.substring(0, 10)) < new Date().setHours(0, 0, 0, 0);
 
     return (
+    
       <tr
         className={`transactionRow ${isHighlighted ? "highlight" : ""} `}
       >
-        <td>{data.id}</td>
+        <td>{index + 1}</td>
         <td>
           <span
             className="descriptionText"
@@ -55,8 +57,8 @@ const TransactionRow = ({
             onClick={() => handleDelete(data.account_id, data.id)}
           />
         </td>
-      </tr>
-    );
+      </tr> 
+    ); 
   };
   
   export default TransactionRow;

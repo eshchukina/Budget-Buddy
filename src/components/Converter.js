@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCoins, faTimes } from "@fortawesome/free-solid-svg-icons";
-import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faCoins, faTimes } from "@fortawesome/free-solid-svg-icons";
+// import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import config from '../config';
 
 import "./Converter.css";
@@ -9,7 +9,8 @@ import "./Converter.css";
 const Converter = ({ isDarkMode }) => {
   const [amount, setAmount] = useState("");
   const [conversionRates, setConversionRates] = useState({});
-  const [showConverterForm, setShowConverterForm] = useState(false); 
+  // const [showConverterForm, setShowConverterForm] = useState(false); 
+  // const [selectedCurrency, setSelectedCurrency] = useState("EUR"); 
   const [sourceCurrency, setSourceCurrency] = useState("USD");
   const [targetCurrency, setTargetCurrency] = useState("EUR");
   const currencies = ["EUR", "GBP", "GEL", "TRY", "RUB"]; 
@@ -78,6 +79,7 @@ const Converter = ({ isDarkMode }) => {
 
   const handleAmountChange = (e) => {
     const { value } = e.target;
+    
     setAmount(value);
   };
 
@@ -105,13 +107,10 @@ const Converter = ({ isDarkMode }) => {
     const { value } = e.target;
     setTargetCurrency(value);
   };
-  const handleOpenConverterForm = () => {
-    setShowConverterForm(true);
-  };
 
 
   const handleCloseConverterForm = () => {
-    setShowConverterForm(false);  
+  
     setAmount("");
     // setSelectedCurrency("EUR");
   };
@@ -120,7 +119,7 @@ const Converter = ({ isDarkMode }) => {
 return (
     <div className={`converter ${isDarkMode ? "dark" : "light"}`}>
       <h3 className="headerCurrency">Converter USD</h3>
-      {!showConverterForm && (
+      {/* {!showConverterForm && (
         <>
           <button className="buttonArrow" onClick={handleOpenConverterForm}>
           <FontAwesomeIcon icon={faChevronDown} />
@@ -129,10 +128,10 @@ return (
             <FontAwesomeIcon icon={faCoins} />
           </button>
         </>
-      )}
+      )} */}
 
 
-{showConverterForm && (
+
         <>
           <h3 className="headerCurrencyAdd">Converter {sourceCurrency}</h3>
           <div className="input-container">
@@ -169,10 +168,10 @@ return (
             )}
           </div>
           <button className="modalBtn cross" onClick={handleCloseConverterForm}>
-            <FontAwesomeIcon icon={faTimes} />
+             clear
           </button>
         </>
-      )}
+      
     </div>
   );
 };

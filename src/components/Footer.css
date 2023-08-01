@@ -17,7 +17,7 @@
   }
 
   .footer.dark{
-    background-color: #3c4049;
+    background-color: #1b414c;
   }
 
   
@@ -34,9 +34,9 @@
 
    .shareFooter.dark{
     display: flex;
-    color:#bc881b;
+    color:#9dafb4;
    }
    .itemFooter{
-    padding: 10px;
+    padding: 5px;
    }
 

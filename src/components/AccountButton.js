@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencilAlt, faTimes } from "@fortawesome/free-solid-svg-icons";
 
@@ -17,11 +17,11 @@ const AccountButton = ({
     return name.length > 10 ? `${name.substring(0, 8)}...` : name;
   };
 
-  const [showDetails, setShowDetails] = useState(false);
+  // const [showDetails, setShowDetails] = useState(false);
 
-  const handleToggleDetails = () => {
-    setShowDetails(!showDetails);
-  };
+  // const handleToggleDetails = () => {
+  //   setShowDetails(!showDetails);
+  // };
 
   return (
     <div key={account.id} className="accountButtonContainer">
@@ -33,10 +33,10 @@ const AccountButton = ({
       >
         <div className="label">
           {formatAccountName(account.name)}
-          <span className="currency"> {account.currency}</span>{" "}
+          <span className="currency"> ({account.currency})</span>
         </div>
 
-        <div className="balance">
+        {/* <div className="balance">
           <div className="balanceWord"> Balance:</div>
           <div>future {account.futureBalance}</div>
           <div>current {account.currentBalance}</div>
@@ -52,9 +52,9 @@ const AccountButton = ({
               onClick={() => handleDelete(account)}
             />
           </div>
-        </div>
+        </div> */}
 
-        {showDetails && (
+     
           <div className="balance1">
             <div className="balanceWord"> Balance:</div>
             <div>future {account.futureBalance}</div>
@@ -72,15 +72,15 @@ const AccountButton = ({
               />
             </div>
           </div>
-        )}
-        <div
+       
+        {/* <div
           className={`detailsButton majorButton ${
             isDarkMode ? "dark" : "light"
           }`}
           onClick={handleToggleDetails}
         >
           detail
-        </div>
+        </div> */}
       </button>
     </div>
   );

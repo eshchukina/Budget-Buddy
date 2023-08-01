@@ -1,13 +1,158 @@
 /* styles.css (или любой другой файл со стилями) */
 
 #chart {
-  position: absolute;
 
-    top:170px;
-    left:1200px;
+background-color: #fff;
+
     transition: 0.5s;
     background-size: 200% auto;
-    height: 420px; /* Высота графика */
-    margin: 0 auto; /* Центрирование графика по горизонтали */
+    height: 280px; 
+    border-radius: 20px;
+    font-size: 20px;
+    margin: 0 auto; 
   }
+  
+  .mainField.dark #chart {
+    background-color: #1b414c;
+    color:#fff;
+  }
+  .apexcharts-pie-label,
+.apexcharts-datalabel,
+.apexcharts-category-text {
+  fill: #fff !important;
+}
+
+.mainField.dark .apexcharts-legend-text {
+  color:#fff !important;
+}
+
+.mainField #chart {
+  position: fixed;
+  right: 350px;
+  top: 190px;
+ width: 400px;
+ 
+
+}
+@media (max-width: 1666px) {
+
+  .mainField #chart {
+ 
+    right: 300px;
+    top: 190px;
+  
+   
+  
+  }
+  
+  }
+
+  @media (max-width: 1540px) {
+
+    .mainField #chart {
+   
+      right: 200px;
+      top: 190px;
+     width: 370px;
+     
+    
+    }
+    
+    }
+
+    @media (max-width: 1370px) {
+
+      .mainField #chart {
+     
+        right: 100px;
+      
+       
+      
+      }
+      
+      }
+      @media (max-width: 1250px) {
+
+        .mainField #chart {
+       
+          right: 20px;
+      
+         
+        
+        }
+        
+        }
+
+        
+
+        @media (max-width: 1110px) {
+
+          .mainField #chart {
+         
+            right: 5px;
+        
+           
+          
+          }
+          .mainField #chart {
+            
+            right: 430px;
+            top:700px;
+           width: 380px;
+           
+          
+          }
+            
+          
+          }
+
+          @media (max-width: 1000px) {
+
+            .mainField #chart {
+              right: 200px;
+              padding: 5px;
+              margin: 5px;
+           
+            }
+            
+          }
+
+
+          @media (max-width: 750px) {
+
+            .mainField #chart {
+              right: 100px;
+           
+           
+            }
+            
+          }
+          
+          @media (max-width: 600px) {
+
+            .mainField #chart {
+              position: relative;
+              top:-120px;
+             
+              margin: 0 25%;
+           
+           
+            }
+            
+          }
+
+
+
+          @media (max-width: 390px) {
+
+            .mainField #chart {
+              position: relative;
+              top:30px;
+             
+              margin: 0 10%;
+           
+           
+            }
+            
+          }
   

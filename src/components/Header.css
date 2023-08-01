@@ -12,9 +12,7 @@ margin: 0;
 
 
   color: #455E63; 
-  text-shadow:
-  -1px -1px #9DAFB4,
-  0 1px 0 #FFF;
+
 
 }
 .headerLogoMobile{
@@ -24,8 +22,7 @@ margin: 0;
 .header.dark {
 
   color: #fff; 
-  text-shadow:
-  0 1px 0 #455E63;
+
   transition: 0.5s;
   background-size: 200% auto;
 }
@@ -91,7 +88,7 @@ button.light {
     font-size: 24px;
     transition: 0.5s;
     background-size: 200% auto;
-    position: absolute;
+  
     left: 1300px;
 
       
@@ -146,11 +143,15 @@ button.light {
   
 
   }
- 
+  .header.dark .searchInput{
+    background-color: #1b414c;
+  
+  }
+
   
   .searchButton {
     position: absolute;
-    top: 24px;
+    top: 27px;
     right: 0;
     background: transparent;
     border: none;
@@ -521,13 +522,24 @@ button.light {
     font-size: 30px;
 
   }.letter{
-    color: #455E63;
+    color: #9dafb4;
+
   }
 
 
   .header.dark .logIn{
     
-    background-color: #1B414C;
+    background-color: #0e272e;
+   
+   
+
+  }
+
+
+
+  .header.light{
+    
+    background-color:#EDF4F6;
    
    
 
@@ -548,8 +560,7 @@ button.light {
 
   .buttonTheme.dark {
     left: 390px;
-    background-color: #1B414C;
-  }
+    background-color: #0e272e;  }
 
 
 
@@ -656,6 +667,11 @@ button.light {
 
 @media (max-width:390px) {
 
+  .header {
+   
+    height: 60px;
+  
+  }
 
   .logIn {
     left:270px;
