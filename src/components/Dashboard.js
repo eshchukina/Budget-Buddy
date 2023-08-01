@@ -91,13 +91,63 @@ const Dashboard = ({
         );
         setCurrentBalance(currentBalance);
         setFutureBalance(currentBalance);
+        
       } catch (error) {
         console.log("Error fetching account data:", error);
       }
     };
 
     fetchAccountData();
+ 
+  
+   
   }, [account]);
+
+
+
+
+  useEffect(() => {
+  
+    const fetchChartData = async () => {
+      try {
+        const token = localStorage.getItem("accessToken");
+        const headersWithToken = {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        };
+  
+        const response = await fetch(`${config.apiUrl}accounts/${account.id}/statistics`, {
+          headers: headersWithToken,
+        });
+  
+        if (!response.ok) {
+          throw new Error("Failed to fetch account statistics");
+        }
+  
+        const data = await response.json();
+  
+        const chartLabels = Object.keys(data);
+        const seriesData = Object.values(data).map((value) => parseFloat(value));
+        setChartData((prevState) => ({
+          ...prevState,
+          series: seriesData,
+          options: {
+            ...prevState.options,
+            labels: chartLabels,
+          },
+        }));
+      } catch (error) {
+        console.log("Error fetching account statistics:", error.message);
+      }
+    };
+
+    fetchChartData();
+  
+   
+  }, [account]);
+
+
+
 
 
     const fetchChartData = async () => {
@@ -134,11 +184,7 @@ const Dashboard = ({
     };
   
   
-    useEffect(() => {
-      fetchAccountData();
-      fetchChartData();
-    }, [account]);
-  
+
 
 
   useEffect(() => {
@@ -152,10 +198,7 @@ const Dashboard = ({
     setFutureBalance(futureBalance);
   }, [currentBalance, futureBalance]);
 
-  useEffect(() => {
-    const futureBalance = calculateFutureBalance(dataList);
-    setFutureBalance(futureBalance);
-  }, [dataList]);
+  
 
   const fetchAccountData = async () => {
     try {
@@ -185,6 +228,7 @@ const Dashboard = ({
       setCurrentBalance(currentBalance);
       setFutureBalance(currentBalance);
       fetchChartData();
+    
     
     } catch (error) {
       console.log("Error fetching account data:", error);
@@ -236,6 +280,7 @@ const Dashboard = ({
         fetchAccountData();
         fetchChartData();
       
+      
         closeModal();
       } else {
         console.log("Error adding data to the database.");
@@ -284,6 +329,7 @@ const Dashboard = ({
     } else {
       fetchAccountData();
       fetchChartData();
+ 
       
     }
   } catch (error) {
@@ -488,7 +534,11 @@ const Dashboard = ({
 
         {!dataList || (dataList.length === 0 && <p>No submitted data</p>)}
       </div>
-      <ApexChart account={account} isDarkMode={isDarkMode} chartData={chartData} fetchChartData={fetchChartData} />
+      <ApexChart account={account}
+       isDarkMode={isDarkMode} 
+       chartData={chartData} 
+        fetchChartData={fetchChartData} 
+       />
 
     </div>
   );

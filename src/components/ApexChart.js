@@ -1,43 +1,42 @@
-import React from 'react';
-import ReactApexChart from 'react-apexcharts';
-// import config from '../config';
+import React, { useState, useEffect } from "react";import ReactApexChart from 'react-apexcharts';
+import config from '../config';
 
 import "./ApexChart.css";
 import "./Style.css";
 import "./Dashboard.css";
 
-const ApexChart = ({ account, isDarkMode, chartData, fetchChartData }) => {
-  // const [chartData, setChartData] = useState({
-  //   series: [], 
-  //   options: {
-  //     chart: {
-  //       width: 380,
-  //       type: 'pie',
-  //     },
-  //     labels: [], 
-  //     responsive: [{
-  //       breakpoint: 480,
-  //       options: {
-  //         chart: {
-  //           width: 200
-  //         },
-  //         legend: {
-  //           position: 'bottom'
-  //         }
-  //       }
-  //     }],
-  //     colors: ['#E96E94', '#5EC7DD', '#ffcd38', '#9ddd5e', '#1b414c'],
-  //     dataLabels: {
-  //       style: {
-  //         colors: ['#fff'] 
-  //       }
-  //     }
-  //   }
-  // });
+const ApexChart = ({ account, isDarkMode, chartData }) => {
+//   const [chartData, setChartData] = useState({
+//     series: [], 
+//     options: {
+//       chart: {
+//         width: 380,
+//         type: 'pie',
+//       },
+//       labels: [], 
+//       responsive: [{
+//         breakpoint: 480,
+//         options: {
+//           chart: {
+//             width: 200
+//           },
+//           legend: {
+//             position: 'bottom'
+//           }
+//         }
+//       }],
+//       colors: ['#E96E94', '#5EC7DD', '#ffcd38', '#9ddd5e', '#1b414c'],
+//       dataLabels: {
+//         style: {
+//           colors: ['#fff'] 
+//         }
+//       }
+//     }
+//   });
   
 
 //   useEffect(() => {
-//   const fetchData = async () => {
+//   const fetchChartData = async () => {
 //     try {
 //       const token = localStorage.getItem("accessToken");
 //       const headersWithToken = {
@@ -71,24 +70,17 @@ const ApexChart = ({ account, isDarkMode, chartData, fetchChartData }) => {
 //     }
 //   };
 //   if (account) {
-//     fetchData();
+//     fetchChartData()
 //   }
 // }, [account]);
 
 
-  // useEffect(() => {
- 
-  //     fetchChartData();
-    
-  // }, [account]);
+
 
 
   const chartIsEmpty = chartData.series.length === 0;
 
-  // useEffect(() => {
-  //   fetchChartData();
-  // }, [fetchChartData]);
-  
+
 
   return (
     <div className={`mainField ${isDarkMode ? 'dark' : 'light'}`}>
