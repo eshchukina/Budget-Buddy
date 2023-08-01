@@ -40,9 +40,7 @@ const ApexChart = ({ account, isDarkMode }) => {
     }
   }, [account]);
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+
 
   const fetchData = async () => {
     try {
