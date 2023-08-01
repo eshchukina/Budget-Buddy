@@ -27,7 +27,7 @@ const TransactionRow = ({
       <tr
         className={`transactionRow ${isHighlighted ? "highlight" : ""} `}
       >
-        <td>{index + 1}</td>
+        <td className="hideOnMobile">{index + 1}</td>
         <td>
           <span
             className="descriptionText"

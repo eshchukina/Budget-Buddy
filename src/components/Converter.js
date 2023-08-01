@@ -92,11 +92,13 @@ const Converter = ({ isDarkMode }) => {
     const sourceRate = conversionRates[`USD${sourceCurrency}`];
     const targetRate = conversionRates[`USD${targetCurrency}`];
     if (sourceRate && targetRate) {
-      const convertedAmount = (amount * (targetRate / sourceRate)).toFixed(2);
-      return convertedAmount;
+      const convertedAmount = (amount / sourceRate) * targetRate;
+      return convertedAmount.toFixed(2);
     }
     return "N/A";
   };
+  
+  
 
   const handleSourceCurrencyChange = (e) => {
     const { value } = e.target;
@@ -112,7 +114,7 @@ const Converter = ({ isDarkMode }) => {
   const handleCloseConverterForm = () => {
   
     setAmount("");
-    // setSelectedCurrency("EUR");
+ 
   };
 
 

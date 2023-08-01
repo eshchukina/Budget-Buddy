@@ -124,11 +124,7 @@ function App() {
             each account.
           </div>
         </div>
-      )}<Header
-        isDarkMode={isDarkMode}
-        toggleTheme={toggleTheme}
-     
-      />
+      )}
       <SideMenu
         isDarkMode={isDarkMode}
         createAccount={createAccount}
@@ -145,7 +141,11 @@ function App() {
         onAccountUpdate={onAccountUpdate}
       
       />
-
+<Header
+        isDarkMode={isDarkMode}
+        toggleTheme={toggleTheme}
+     
+      />
       
       <Footer isDarkMode={isDarkMode} />
      

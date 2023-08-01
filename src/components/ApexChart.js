@@ -29,7 +29,7 @@ const ApexChart = ({ account, isDarkMode }) => {
       colors: ['#E96E94', '#5EC7DD', '#ffcd38', '#9ddd5e', '#1b414c'],
       dataLabels: {
         style: {
-          colors: ['#fff'] // Set the desired font color here
+          colors: ['#fff'] 
         }
       }
     }
@@ -57,10 +57,9 @@ const ApexChart = ({ account, isDarkMode }) => {
 
       const data = await response.json();
 
-      // Extract the labels and values from the API response data
+     
       const chartLabels = Object.keys(data);
       const seriesData = Object.values(data).map(value => parseFloat(value));
-
       setChartData(prevState => ({
         ...prevState,
         series: seriesData,
@@ -84,16 +83,21 @@ const ApexChart = ({ account, isDarkMode }) => {
   //     fetchData();
   //   }
   // }, [account, fetchData]);
-  
+  const chartIsEmpty = chartData.series.length === 0;
+
 
   return (
-    <div className={`mainField ${isDarkMode ? "dark" : "light"}`}>
-      <div id="chart">
-      <ReactApexChart options={chartData.options} series={chartData.series} type="pie" width={380} />
-      </div>
+    <div className={`mainField ${isDarkMode ? 'dark' : 'light'}`}>
+    <div id="chart">
+      {chartIsEmpty ? (
+        <p className='textShedule'>here is your spending schedule</p>
+      ) : (
+        <ReactApexChart options={chartData.options} series={chartData.series} type="pie" width={380} />
+      )}
     </div>
-  );
-}
+  </div>
+);
+};
 
 export default ApexChart;
 

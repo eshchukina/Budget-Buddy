@@ -50,7 +50,7 @@ const TransactionTable = ({
     <div className={`mainField ${isDarkMode ? "dark" : "light"}`}>
 
 
-<div class="scroll-table">
+<div className="scroll-table">
       <table
         key={account.id}
         className={`accountContent ${isDarkMode ? "dark" : "light"}`}
@@ -63,7 +63,7 @@ const TransactionTable = ({
         </caption>
         <thead>
           <tr>
-            <th>Number</th>
+          <th className="hideOnMobile">Number</th>
             <th>Description</th>
             <th>Amount</th>
             <th>Date</th>

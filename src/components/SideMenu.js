@@ -219,6 +219,9 @@ const SideMenu = ({
                 <option value="USD">USD</option>
                 <option value="EUR">EUR</option>
                 <option value="GBP">GBP</option>
+                <option value="GEL">GEL</option>
+                <option value="TRY">TRY</option>
+                <option value="RUB">RUB</option>
               </select>
               {editAccountId ? (
                 <button
@@ -249,7 +252,7 @@ const SideMenu = ({
           <div className="titleList">Your account list:</div>
           <div className="carousel-container">
     
-            {fetchedAccountList.map((account) => (
+            {fetchedAccountList?.map((account) => (
               
               <div key={account.id} className="carousel-item">
                 <AccountButton

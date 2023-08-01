@@ -242,7 +242,17 @@
   }
   
 }
+@media (max-width: 815px) {
 
+  .converter {
+  
+
+    right: 100px;
+    padding: 5px;
+ 
+  }
+
+}
 
 
 @media (max-width: 750px) {
@@ -257,7 +267,17 @@
 
 }
 
+@media (max-width: 650px) {
 
+  .converter {
+  
+    right: 80px;
+ 
+ 
+ 
+  }
+
+}
 
 @media (max-width: 600px) {
 
@@ -266,7 +286,7 @@
  
  
     position: relative;
-    top:-800px;
+    top:-1210px;
     right: 60px;
     margin: 20px 25%;
  

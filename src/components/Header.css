@@ -143,6 +143,16 @@ button.light {
   
 
   }
+ 
+ 
+
+.searchInput:focus {
+  outline: none;
+  border: 1px solid #5ec7dd; 
+}
+
+
+
   .header.dark .searchInput{
     background-color: #1b414c;
   

@@ -1,9 +1,22 @@
 html {
  
-    overflow-x: hidden;
+    overflow: hidden;
   
   }
   
+
+  @media (max-width: 1370px) {
+
+
+    html {
+ 
+      overflow-y:scroll;
+    
+    }
+    
+  }
+
+
   body {
     background-color:#EDF4F6;
     transition: 0.5s;
