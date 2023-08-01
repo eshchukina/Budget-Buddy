@@ -34,14 +34,11 @@ const ApexChart = ({ account, isDarkMode }) => {
       }
     }
   });
+  
+
+
+
   useEffect(() => {
-    if (account) {
-      fetchData();
-    }
-  }, [account]);
-
-
-
   const fetchData = async () => {
     try {
       const token = localStorage.getItem("accessToken");
@@ -76,6 +73,18 @@ const ApexChart = ({ account, isDarkMode }) => {
       console.log("Error fetching account statistics:", error.message);
     }
   };
+  if (account) {
+    fetchData();
+  }
+}, [account]);
+
+
+  // useEffect(() => {
+  //   if (account) {
+  //     fetchData();
+  //   }
+  // }, [account, fetchData]);
+  
 
   return (
     <div className={`mainField ${isDarkMode ? "dark" : "light"}`}>
