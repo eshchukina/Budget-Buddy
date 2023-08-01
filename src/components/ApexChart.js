@@ -1,90 +1,94 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import ReactApexChart from 'react-apexcharts';
-import config from '../config';
+// import config from '../config';
 
 import "./ApexChart.css";
 import "./Style.css";
 import "./Dashboard.css";
 
-const ApexChart = ({ account, isDarkMode }) => {
-  const [chartData, setChartData] = useState({
-    series: [], 
-    options: {
-      chart: {
-        width: 380,
-        type: 'pie',
-      },
-      labels: [], 
-      responsive: [{
-        breakpoint: 480,
-        options: {
-          chart: {
-            width: 200
-          },
-          legend: {
-            position: 'bottom'
-          }
-        }
-      }],
-      colors: ['#E96E94', '#5EC7DD', '#ffcd38', '#9ddd5e', '#1b414c'],
-      dataLabels: {
-        style: {
-          colors: ['#fff'] 
-        }
-      }
-    }
-  });
+const ApexChart = ({ account, isDarkMode, chartData, fetchChartData }) => {
+  // const [chartData, setChartData] = useState({
+  //   series: [], 
+  //   options: {
+  //     chart: {
+  //       width: 380,
+  //       type: 'pie',
+  //     },
+  //     labels: [], 
+  //     responsive: [{
+  //       breakpoint: 480,
+  //       options: {
+  //         chart: {
+  //           width: 200
+  //         },
+  //         legend: {
+  //           position: 'bottom'
+  //         }
+  //       }
+  //     }],
+  //     colors: ['#E96E94', '#5EC7DD', '#ffcd38', '#9ddd5e', '#1b414c'],
+  //     dataLabels: {
+  //       style: {
+  //         colors: ['#fff'] 
+  //       }
+  //     }
+  //   }
+  // });
   
 
+//   useEffect(() => {
+//   const fetchData = async () => {
+//     try {
+//       const token = localStorage.getItem("accessToken");
+//       const headersWithToken = {
+//         "Content-Type": "application/json",
+//         Authorization: `Bearer ${token}`,
+//       };
 
+//       const response = await fetch(`${config.apiUrl}accounts/${account.id}/statistics`, {
+//         headers: headersWithToken,
+//       });
 
-  useEffect(() => {
-  const fetchData = async () => {
-    try {
-      const token = localStorage.getItem("accessToken");
-      const headersWithToken = {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      };
+//       if (!response.ok) {
+//         throw new Error("Failed to fetch account statistics");
+//       }
 
-      const response = await fetch(`${config.apiUrl}accounts/${account.id}/statistics`, {
-        headers: headersWithToken,
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to fetch account statistics");
-      }
-
-      const data = await response.json();
+//       const data = await response.json();
 
      
-      const chartLabels = Object.keys(data);
-      const seriesData = Object.values(data).map(value => parseFloat(value));
-      setChartData(prevState => ({
-        ...prevState,
-        series: seriesData,
-        options: {
-          ...prevState.options,
-          labels: chartLabels,
-        },
-      }));
-    } catch (error) {
-      console.log("Error fetching account statistics:", error.message);
-    }
-  };
-  if (account) {
-    fetchData();
-  }
-}, [account]);
+//       const chartLabels = Object.keys(data);
+//       const seriesData = Object.values(data).map(value => parseFloat(value));
+//       setChartData(prevState => ({
+//         ...prevState,
+//         series: seriesData,
+//         options: {
+//           ...prevState.options,
+//           labels: chartLabels,
+//         },
+//       }));
+//     } catch (error) {
+//       console.log("Error fetching account statistics:", error.message);
+//     }
+//   };
+//   if (account) {
+//     fetchData();
+//   }
+// }, [account]);
 
 
   // useEffect(() => {
-  //   if (account) {
-  //     fetchData();
-  //   }
-  // }, [account, fetchData]);
+ 
+  //     fetchChartData();
+    
+  // }, [account]);
+
+
   const chartIsEmpty = chartData.series.length === 0;
 
+  // useEffect(() => {
+  //   fetchChartData();
+  // }, [fetchChartData]);
+  
 
   return (
     <div className={`mainField ${isDarkMode ? 'dark' : 'light'}`}>

@@ -24,6 +24,17 @@ const Footer = ({ isDarkMode }) => {
     }
   };
 
+  const handleLogout = () => {
+  
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
+    localStorage.removeItem("expiresIn");
+  
+ 
+    window.location.reload();
+  };
+  
+
   return (
     <div className={`footer ${isDarkMode ? "dark" : "light"}`}>
       <div className={`shareFooter ${isDarkMode ? "dark" : "light"}`}>
@@ -42,9 +53,9 @@ const Footer = ({ isDarkMode }) => {
           </div>
 
               
-          <div className="item">
+          <div className="item" onClick={handleLogout}>
           <FontAwesomeIcon icon={faArrowRight} />  <span className="textItem">log out</span>
-          </div>
+        </div>
      
 
 

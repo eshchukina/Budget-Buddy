@@ -286,8 +286,9 @@ color: #5EC7DD;
   .text {
     position: relative;
     top:220px;
-    font-size: 15px;
-    width: 70%;
+    font-size: 12px;
+    width:100%;
+   
  }
 
 }

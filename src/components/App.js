@@ -8,7 +8,12 @@ import Converter from "./Converter";
 import "./Style.css";
 
 function App() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    // Get the theme preference from localStorage
+    const storedTheme = localStorage.getItem("isDarkMode");
+    // Return the stored theme if available, or set the initial state to false (light mode)
+    return storedTheme ? JSON.parse(storedTheme) : false;
+  });
   const [accounts, setAccounts] = useState([]);
   const [currency, setCurrency] = useState("USD");
   const [activeAccount, setActiveAccount] = useState(
@@ -25,11 +30,13 @@ function App() {
     } else {
       document.body.classList.remove("dark");
     }
+    localStorage.setItem("isDarkMode", JSON.stringify(isDarkMode));
   }, [isDarkMode]);
 
   const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
+    setIsDarkMode((prevMode) => !prevMode);
   };
+
 
   const onAccountUpdate = (account) => {};
 
@@ -121,7 +128,7 @@ function App() {
             account for regular expenses in your local currency, as well as
             accounts for vacations or foreign investments in another currency.
             This allows you to accurately track your expenses and income for
-            each account.
+            each account
           </div>
         </div>
       )}

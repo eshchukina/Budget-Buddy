@@ -202,7 +202,7 @@ const Header = ({ isDarkMode, toggleTheme, activeModal, setActiveModal }) => {
   const handleButtonClick = () => {
  
     console.log('Кнопка была нажата!');
-    setSearchQuery(''); 
+    setSearchQuery(''); // Очищаем поле ввода
   };
 
   const handleChange = (event) => {

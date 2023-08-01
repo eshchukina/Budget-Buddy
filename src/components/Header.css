@@ -22,7 +22,7 @@ margin: 0;
 }
 .header.dark {
 
-
+  transition: 0.5s;
   color: #fff; 
 
 
@@ -79,21 +79,7 @@ margin: 0;
   
 }
 
-/* button.dark {
-  color: #3c4049;
-  background-color: #EDF4F6;
 
-
-
-
-
-}
-
-button.light {
-  background-color: #EDF4F6;
-
-  
-} */
 
 .logIn {
 
@@ -111,7 +97,7 @@ button.light {
       
     
   }
-  .header.dark .logIn{
+ .logIn.dark{
     
 
     background-color: #0E272E;
@@ -237,12 +223,32 @@ button.light {
   .menu.dark{
     background-color: #9fa0a1;
   }
+
+  
+  @media (max-width: 3500px) {
+    .searchContainer{
+    
+      left:1000px;
+     
+    
+    }
+    }
+
+     
+  @media (max-width: 2300px) {
+    .searchContainer{
+    
+      left:800px;
+     
+    
+    }
+    }
   
   @media (max-width: 1850px) {
   .searchContainer{
   
-    right:200px;
-    top:5px;
+    left:100px;
+    
   
   }
   }
@@ -278,7 +284,7 @@ button.light {
   .searchContainer{
     
     right:50px;
-    top:5px;
+   
   
   }
 
@@ -302,12 +308,7 @@ button.light {
   .buttonTheme.dark {
     left: 1170px;
   }
-  .searchContainer{
-    
-    display: none;
-      
-     
-     }
+ 
  
 
 }
@@ -351,7 +352,23 @@ button.light {
     left: 870px;
   }
 
- 
+  .searchContainer{
+    top:0px;
+    left:140px;
+     
+  }
+  .searchInput{
+    font-size: 18px;
+    position: relative;
+    left:10px;
+
+    padding: 6px;
+    margin: 25px 0 20px 0;
+
+   
+  
+
+  }
  
 }
 
@@ -370,28 +387,23 @@ button.light {
     left: 770px;
   }
 
-  /* .burger {
-    display: block; 
-    position: absolute;
-    cursor: pointer;
-    border: none;
-    font-size: 23px;
-    transition: 0.5s;
-    background-size: 200% auto;
-    position: absolute;
-    left: 700px;
-    color: #bc881b;
+  .searchContainer{
+    top:0px;
+    left:130px;
+     
   }
+  .searchInput{
+    font-size: 16px;
+    position: relative;
+    left:10px;
+width: 120px;
+    padding: 6px;
+    margin: 25px 0 20px 0;
 
-  .open + .logIn,
-  .open + .SignUp {
-    display: block;
+   
+  
+
   }
-
-  .menu {
-    left: 690px;
-    flex-grow: 1;
-  } */
   
 }
 
@@ -412,14 +424,13 @@ button.light {
     left: 710px;
   }
 
-  /* .burger {
-    left: 600px;
+
+  .searchContainer{
+   display: none;
+     
   }
- 
-  .menu {
-    left: 590px;
-  }
-  */
+
+  
 }
 
 
@@ -552,9 +563,14 @@ button.light {
     color: #9dafb4;
 
   }
+.header.light {
+  background-color:#EDF4F6;
+}
+.header.dark {
+  background-color:#0e272e;
+}
 
-
-  .header.dark .logIn{
+  .logIn.dark{
     
     background-color: #0e272e;
    
@@ -564,7 +580,7 @@ button.light {
 
 
 
-  .header.light .logIn{
+.logIn.light{
     
     background-color:#EDF4F6;
    
@@ -589,11 +605,33 @@ button.light {
     left: 390px;
     background-color: #0e272e;  }
 
+    .searchContainer{
+      display: inline-block;
+      margin: 0px;
+      left: 20px;
+      top:70px;
+      position: absolute;
+   
+      padding: 10px;
+     }
+     .header.dark .searchInput{
+      background-color:#0e272e;
+
+}
+.searchInput{
+
+  border-radius:25px;
+ 
+font-size: 20px;
+  padding: 15px 55px;
+  margin: 25px 0 20px 0;
+
+ 
 
 
 }
 
-
+}
 
 @media (max-width:540px) {
 

@@ -191,6 +191,21 @@ const SideMenu = ({
     setIsModalOpen(false);
   };
 
+
+  const handleLogout = () => {
+    // Удалите все данные из localStorage, связанные с авторизацией (accessToken, refreshToken и т. д.)
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
+    localStorage.removeItem("expiresIn");
+  
+    // Здесь также можно добавить другие действия, связанные с выходом из аккаунта, если необходимо.
+  
+    // Перезагрузите страницу для очистки состояния приложения.
+    window.location.reload();
+  };
+
+
+
   return (
     <div>
       <div className={`sidebar ${isDarkMode ? "dark" : "light"}`}>
@@ -284,9 +299,10 @@ const SideMenu = ({
           </div>
 
               
-          <div className="item">
+          <div className="item" onClick={handleLogout}>
           <FontAwesomeIcon icon={faArrowRight} />  <span className="textItem">log out</span>
-          </div>
+        </div>
+     
         </div>
 
 

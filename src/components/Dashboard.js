@@ -17,7 +17,7 @@ const Dashboard = ({
     id: null,
     description: "",
     tag: "",
-    amount: "",
+    amount: null,
     date: "",
   });
 
@@ -25,6 +25,37 @@ const Dashboard = ({
   const [dataList, setDataList] = useState([]);
   const [currentBalance, setCurrentBalance] = useState(account.currentBalance);
   const [futureBalance, setFutureBalance] = useState(account.futureBalance);
+
+
+  const [chartData, setChartData] = useState({
+    series: [], 
+    options: {
+      chart: {
+        width: 380,
+        type: 'pie',
+      },
+      labels: [], 
+      responsive: [{
+        breakpoint: 480,
+        options: {
+          chart: {
+            width: 200
+          },
+          legend: {
+            position: 'bottom'
+          }
+        }
+      }],
+      colors: ['#E96E94', '#5EC7DD', '#ffcd38', '#9ddd5e', '#1b414c'],
+      dataLabels: {
+        style: {
+          colors: ['#fff'] 
+        }
+      }
+    }
+  });
+  
+
 
 
 
@@ -45,13 +76,14 @@ const Dashboard = ({
             headers: headersWithToken,
           }
         );
-
+        
         if (!response.ok) {
           console.log("Error fetching account data:", response);
           return;
         }
         const data = await response.json();
         setDataList(data);
+      
 
         const currentBalance = data.reduce(
           (total, item) => total + item.amount,
@@ -66,6 +98,47 @@ const Dashboard = ({
 
     fetchAccountData();
   }, [account]);
+
+
+    const fetchChartData = async () => {
+      try {
+        const token = localStorage.getItem("accessToken");
+        const headersWithToken = {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        };
+  
+        const response = await fetch(`${config.apiUrl}accounts/${account.id}/statistics`, {
+          headers: headersWithToken,
+        });
+  
+        if (!response.ok) {
+          throw new Error("Failed to fetch account statistics");
+        }
+  
+        const data = await response.json();
+  
+        const chartLabels = Object.keys(data);
+        const seriesData = Object.values(data).map((value) => parseFloat(value));
+        setChartData((prevState) => ({
+          ...prevState,
+          series: seriesData,
+          options: {
+            ...prevState.options,
+            labels: chartLabels,
+          },
+        }));
+      } catch (error) {
+        console.log("Error fetching account statistics:", error.message);
+      }
+    };
+  
+  
+    useEffect(() => {
+      fetchAccountData();
+      fetchChartData();
+    }, [account]);
+  
 
 
   useEffect(() => {
@@ -111,6 +184,8 @@ const Dashboard = ({
       );
       setCurrentBalance(currentBalance);
       setFutureBalance(currentBalance);
+      fetchChartData();
+    
     } catch (error) {
       console.log("Error fetching account data:", error);
     }
@@ -159,6 +234,8 @@ const Dashboard = ({
 
       if (response.ok) {
         fetchAccountData();
+        fetchChartData();
+      
         closeModal();
       } else {
         console.log("Error adding data to the database.");
@@ -206,6 +283,8 @@ const Dashboard = ({
       console.log("Error updating data in the database.");
     } else {
       fetchAccountData();
+      fetchChartData();
+      
     }
   } catch (error) {
     console.log("Error updating data in the database:", error);
@@ -253,6 +332,8 @@ const Dashboard = ({
         const updatedDataList = dataList.filter((data) => data.id !== dataId);
         setDataList(updatedDataList);
         updateAccountData(accountId, updatedDataList);
+        fetchChartData();
+       
       } else {
         console.log("Error deleting data from the database.");
       }
@@ -294,6 +375,8 @@ const Dashboard = ({
     }
   };
 
+
+
   const formatDateForInput = (date) => {
     if (!date) {
       return "";
@@ -318,7 +401,10 @@ const Dashboard = ({
     return "";
   };
 
-  
+
+
+
+
 
   return (
     <div className={`mainField ${isDarkMode ? "dark" : "light"}`}>
@@ -355,7 +441,7 @@ const Dashboard = ({
                   onChange={handleAmountChange}
                   placeholder="amount"
                 />
-
+              
                 <input
                   type="date"
                   value={editData.date ? formatDateForInput(editData.date) : ""}
@@ -366,7 +452,9 @@ const Dashboard = ({
                   }}
                   placeholder="date"
                 />
-
+ 
+              
+              
                 <button
                   className={`modalBtn ${isDarkMode ? "dark" : "light"}`}
                   type="submit"
@@ -400,7 +488,8 @@ const Dashboard = ({
 
         {!dataList || (dataList.length === 0 && <p>No submitted data</p>)}
       </div>
-  <ApexChart   account={account} isDarkMode={isDarkMode}/>
+      <ApexChart account={account} isDarkMode={isDarkMode} chartData={chartData} fetchChartData={fetchChartData} />
+
     </div>
   );
 };
