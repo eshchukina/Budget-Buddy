@@ -272,6 +272,7 @@ color: #5EC7DD;
 
 
 @media (max-width: 600px) {
+
 .hideOnMobile{
   display: none;
 }
@@ -284,7 +285,7 @@ color: #5EC7DD;
 
   .text {
     position: relative;
-    top:200px;
+    top:220px;
     font-size: 15px;
     width: 70%;
  }
@@ -316,7 +317,7 @@ color: #5EC7DD;
   .accountContent {
     width: 99%;
     left: 0px;
-    top: 50%;
+    top: 55%;
     margin: 0;
     padding: 0;
     font-size: 15px;
@@ -324,27 +325,17 @@ color: #5EC7DD;
   }
   
 
-  table caption { 
-  
-    font-size: 18px;
-    
-  }
-
-  
   
   
   table {
     background-color: #fff;
     text-align: center;
+    
 
     }
     
   
-  th {  
-
-    font-size: 18px;
-  
-  }
+ 
     
  
   

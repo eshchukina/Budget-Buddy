@@ -27,19 +27,14 @@ html {
 
 
 
-body {
-  background-color:#EDF4F6;
+body .light {
   transition: 0.5s;
-  background-size: 200% auto;
-
- 
 }
-
 
 body.dark  {
   background-color: #0E272E;
   transition: 0.5s;
-  background-size: 200% auto;
+ 
 }
 
 .modal {

@@ -64,7 +64,7 @@ const TransactionTable = ({
         <thead>
           <tr>
           <th className="hideOnMobile">Number</th>
-            <th>Description</th>
+            <th>Name</th>
             <th>Amount</th>
             <th>Date</th>
             <th>Balance</th>
