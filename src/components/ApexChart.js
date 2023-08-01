@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";import ReactApexChart from 'react-apexcharts';
-import config from '../config';
+import React from "react";import ReactApexChart from 'react-apexcharts';
+// import config from '../config';
 
 import "./ApexChart.css";
 import "./Style.css";
