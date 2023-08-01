@@ -756,6 +756,35 @@ font-size: 20px;
     left: 315px;
   }
 
+
+.searchInput{
+
+border-radius:25px;
+
+font-size: 20px;
+padding: 10px 30px;
+margin: 25px 0 20px 0;
+
+
+
+
+}
+
+.searchContainer{
+
+  margin: 0px;
+  left:0px;
+  top:60px;
+
+
+  padding: 10px;
+ }
+ .header.dark .searchInput{
+  background-color:#0e272e;
+
+}
+
+
 }
 
 @media (max-width:350px) {
