@@ -105,7 +105,10 @@ const Header = ({ isDarkMode, toggleTheme, activeModal, setActiveModal }) => {
           localStorage.setItem("refreshToken", refreshToken);
           localStorage.setItem("expiresIn", expires_in.toString());
         
+
+         
           console.log("Login successful");
+       
           console.log(accessToken);
           console.log(refreshToken);
           console.log(expires_in);
@@ -137,6 +140,7 @@ const Header = ({ isDarkMode, toggleTheme, activeModal, setActiveModal }) => {
     handleCloseLoginModal();
     window.location.reload();
     
+
   };
 
   const refreshTokenFunc = async () => {
@@ -215,7 +219,7 @@ const Header = ({ isDarkMode, toggleTheme, activeModal, setActiveModal }) => {
   return (
     <div className={`header ${isDarkMode ? "dark" : "light"}`}>
       
-    
+  
       <h1 className="headerLogo" onClick={reloadPage}>
 
         <span className="letter">B</span>udget <span className="letter">B</span>uddy</h1>  
@@ -342,30 +346,7 @@ const Header = ({ isDarkMode, toggleTheme, activeModal, setActiveModal }) => {
         </div>
       )}
 
-      {/* <div
-        className={`burger ${isMenuOpen ? "open" : ""} ${
-          isDarkMode ? "dark" : "light"
-        }`}
-        onClick={handleToggleMenu}
-      >
-        <FontAwesomeIcon icon={isMenuOpen ? faTimes : faBars} />
-      </div>
-      {isMenuOpen && (
-        <div className={`menu ${isDarkMode ? "dark" : "light"}`}>
-          <button
-            className={`modalButtonLog ${isDarkMode ? "dark" : "light"}`}
-            onClick={handleOpenModal}
-          >
-            Registration
-          </button>
-          <button
-            className={`modalButtonLog ${isDarkMode ? "dark" : "light"}`}
-            onClick={handleOpenLoginModal}
-          >
-            Login
-          </button>
-        </div>
-      )} */}
+
     </div>
   );
 };

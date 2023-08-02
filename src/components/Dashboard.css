@@ -3,7 +3,8 @@
   width: 100vw;
   min-height: 100vh;
   padding: 30px;
-
+  display: flex;
+  flex-wrap: wrap;
   box-sizing: border-box;
   background-color: #EDF4F6;
   transition: 0.5s;
@@ -34,6 +35,12 @@ table.accountContent{
 
 
 
+.container {  
+  display: flex;
+  flex-wrap: wrap;
+
+} 
+
 
 
 
@@ -58,7 +65,8 @@ table.accountContent{
 .titleList {
   text-align: center;
 }
-  
+
+
 
 table::-webkit-scrollbar {
   width:0;
@@ -85,7 +93,7 @@ table {
   border-radius: 20px;
   color: #9DAFB4;
   transition: 0.5s;
-  background-size: 200% auto;
+
 
 
     display: block;
@@ -96,7 +104,7 @@ table {
 
 th {  
   transition: 0.5s;
-  background-size: 200% auto;
+
   font-size: 20px;
   font-weight: 300;
   padding: 0px;
@@ -104,13 +112,11 @@ th {
   
 td {  
   transition: 0.5s;
-  background-size: 200% auto;
   padding: 0px;
 }
 
 table caption { 
   transition: 0.5s;
-  background-size: 200% auto;
   font-size: 22px;
   font-weight: 600;
   text-align: center;
@@ -195,55 +201,142 @@ color: #5EC7DD;
 
 
 
+@media (max-width: 3440px) {
 
-@media (max-width: 1666px) {
-
-.accountContent{
-  width: 40%;
-  left: 11%;
-  top: 15%;
-
-}
-
-}
-
-@media (max-width: 1540px) {
 
   .accountContent{
-    width: 40%;
-    left: 15%;
-    top: 15%;
-  
+   position: relative;
+    width: 150%;
+    left:600px;
   }
   
   }
+
+
+  @media (max-width: 2900px) {
+
+
+    .accountContent{
+  
+      width: 150%;
+      left:400px;
+    }
+    
+    }
+  
+
+    @media (max-width: 2700px) {
+
+
+      .accountContent{
+    
+        width: 150%;
+        left:300px;
+      }
+      
+      }
+    
+  
+      @media (max-width: 2600px) {
+
+
+        .accountContent{
+      
+          width: 100%;
+          left:400px;
+        }
+        
+        }
+      
+  
+        @media (max-width: 2600px) {
+
+
+          .accountContent{
+        
+            
+            left:300px;
+          }
+          
+          }
+        
+    
+          @media (max-width: 2400px) {
+
+
+            .accountContent{
+          
+              
+              left:150px;
+            }
+            
+            }
+          
+            
+          @media (max-width: 2200px) {
+
+
+            .accountContent{
+          
+              
+              left:200px;
+            }
+            
+            }
+          
+      
+
+
+
+
+
 
 @media (max-width: 1250px) {
 
   .accountContent{
-    width: 45%;
-    left: 15%;
+
+  left: 25%;
  
   }
   
   }
-  @media (max-width: 1110px) {
+  @media (max-width: 1145px) {
 
     .accountContent{
-     width: 70%;
-     left: 20%;
+  
+     left: 50%;
      
     }
     
     }
 
+    @media (max-width: 900px) {
+
+      .accountContent{
+    
+        right:200px;
+        margin: 0;
+       
+      }
+      
+      }
+  
+
+@media (max-width: 760px) {
+
+  .accountContent {
+    left: 40%;
+ 
+  }
+
+
+}
 
 @media (max-width: 720px) {
 
   .accountContent {
-    left: 10%;
-    top: 15%;
-    margin: 0 110px;
+    left: 30%;
+ 
   }
 
 
@@ -251,13 +344,13 @@ color: #5EC7DD;
 
 
 
-@media (max-width: 650px) {
+
+@media (max-width: 670px) {
 
   .accountContent {
-    width: 80%;
-    left: 5%;
-    top: 15%;
-    margin: 0 110px;
+ 
+    left: 25%;
+   
   }
 
   table caption { 
@@ -277,10 +370,11 @@ color: #5EC7DD;
   display: none;
 }
   .accountContent {
-    width: 90%;
-    left: 20px;
+  
+   left :0%;
     top: 40%;
-    margin: 0px auto;
+    margin: 0 30px;
+ 
   }
 
   .text {
@@ -324,8 +418,8 @@ color: #5EC7DD;
 @media (max-width: 390px) {
 
   .accountContent {
-    width: 99%;
-    left: 0px;
+    width: 110%;
+    left: -50px;
     top: 55%;
     margin: 0;
     padding: 0;
@@ -339,7 +433,11 @@ color: #5EC7DD;
   table {
     background-color: #fff;
     text-align: center;
-    
+  
+  
+        max-height: 300px;
+      
+      
 
     }
     

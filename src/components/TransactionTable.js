@@ -12,6 +12,7 @@ const TransactionTable = ({
   handleEdit,
   handleDelete,
   openModal,
+  
 }) => {
   const [expandedDescription, setExpandedDescription] = useState(null);
 
@@ -92,7 +93,7 @@ const TransactionTable = ({
         ) : (
           <tbody>
             <tr>
-              <td colSpan="6">No data available</td>
+              <td colSpan="6"><br/><br/><p>No data available </p></td>
             </tr>
           </tbody>
         )}{" "}

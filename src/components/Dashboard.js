@@ -40,7 +40,7 @@ const Dashboard = ({
         breakpoint: 480,
         options: {
           chart: {
-            width: 380
+            width: 370
           },
           legend: {
             position: 'bottom'
@@ -518,8 +518,9 @@ const Dashboard = ({
             </div>
           </div>
         )}
-<div class="container">
-        <TransactionTable
+<div className="container">
+<div>
+   <TransactionTable
           account={account}
           dataList={dataList}
           isDarkMode={isDarkMode}
@@ -531,17 +532,19 @@ const Dashboard = ({
           formatDateTime={formatDateTime}
           openModal={openModal}
           formatBalance={formatBalance}
-        />
+        /></div>
 
         {!dataList || (dataList.length === 0 && <p>No submitted data</p>)}
      
-      <ApexChart account={account}
+        <div><ApexChart account={account}
        isDarkMode={isDarkMode} 
        chartData={chartData} 
         fetchChartData={fetchChartData} 
-       /><Converter isDarkMode={isDarkMode}/>  
+       /></div>
+       
+       <div><Converter isDarkMode={isDarkMode}/>  </div>
 
-    </div> </div></div>
+    </div></div></div>
   );
 };
 

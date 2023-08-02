@@ -5,13 +5,13 @@ import React, { useState, useEffect } from "react";
 import config from '../config';
 
 import "./Converter.css";
-
+import "./Dashboard";
 const Converter = ({ isDarkMode }) => {
   const [amount, setAmount] = useState("");
   const [conversionRates, setConversionRates] = useState({});
   // const [showConverterForm, setShowConverterForm] = useState(false); 
   // const [selectedCurrency, setSelectedCurrency] = useState("EUR"); 
-  const [sourceCurrency, setSourceCurrency] = useState("USD");
+  const [sourceCurrency, setSourceCurrency] = useState("EUR");
   const [targetCurrency, setTargetCurrency] = useState("EUR");
   const currencies = ["EUR", "GBP", "GEL", "TRY", "RUB"]; 
 
@@ -120,17 +120,8 @@ const Converter = ({ isDarkMode }) => {
 
 return (
     <div className={`converter ${isDarkMode ? "dark" : "light"}`}>
-      <h3 className="headerCurrency">Converter USD</h3>
-      {/* {!showConverterForm && (
-        <>
-          <button className="buttonArrow" onClick={handleOpenConverterForm}>
-          <FontAwesomeIcon icon={faChevronDown} />
-          </button>
-          <button className="buttonCoins" onClick={handleOpenConverterForm}>
-            <FontAwesomeIcon icon={faCoins} />
-          </button>
-        </>
-      )} */}
+      <h3 className="headerCurrency">Converter</h3>
+
 
 
 

@@ -12,6 +12,7 @@ const AccountButton = ({
   handleAccountChange,
   handleEditAccount,
   handleDelete,
+
 }) => {
   const formatAccountName = (name) => {
     return name.length > 10 ? `${name.substring(0, 8)}...` : name;
@@ -25,6 +26,7 @@ const AccountButton = ({
 
   return (
     <div key={account.id} className="accountButtonContainer">
+      
       <button
         className={`accountButton ${isDarkMode ? "dark" : "light"} ${
           account === activeAccount ? "active" : ""
@@ -36,25 +38,7 @@ const AccountButton = ({
           <span className="currency"> ({account.currency})</span>
         </div>
 
-        {/* <div className="balance">
-          <div className="balanceWord"> Balance:</div>
-          <div>future {account.futureBalance}</div>
-          <div>current {account.currentBalance}</div>
-          <div className="accountButtonActions">
-            <FontAwesomeIcon
-              icon={faPencilAlt}
-              className={`editButton ${isDarkMode ? "dark" : "light"}`}
-              onClick={() => handleEditAccount(account)}
-            />
-            <FontAwesomeIcon
-              icon={faTimes}
-              className={`deleteButton ${isDarkMode ? "dark" : "light"}`}
-              onClick={() => handleDelete(account)}
-            />
-          </div>
-        </div> */}
-
-     
+      
           <div className="balance1">
             <div className="balanceWord"> Balance:</div>
             <div>future {account.futureBalance}</div>
@@ -73,14 +57,7 @@ const AccountButton = ({
             </div>
           </div>
        
-        {/* <div
-          className={`detailsButton majorButton ${
-            isDarkMode ? "dark" : "light"
-          }`}
-          onClick={handleToggleDetails}
-        >
-          detail
-        </div> */}
+     
       </button>
     </div>
   );

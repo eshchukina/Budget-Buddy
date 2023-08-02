@@ -21,6 +21,38 @@
 }
   
 
+
+.neonText{
+position: relative;
+  bottom: 130px;
+}
+
+.neonText.dark {
+  color: #fff;
+  text-shadow:
+      0 0 7px #e96e94,
+      0 0 10px #e96e94,
+      0 0 21px #e96e94,
+      0 0 42px #e96e94,
+      0 0 82px #e96e94,
+      0 0 92px #e96e94,
+      0 0 102px #e96e94,
+      0 0 151px#e96e94;
+}
+
+.neonText.light {
+  color: #fff;
+  text-shadow:
+  0 0 7px #1B414C,
+  0 0 10px #1B414C,
+  0 0 21px #1B414C,
+  0 0 42px #9DAFB4,
+  0 0 82px #9DAFB4,
+  0 0 92px #9DAFB4,
+  0 0 102px #9DAFB4,
+  0 0 151px#9DAFB4;
+
+}
 .accountButtonActions {
   float: right;
 color:  #ffcd38;
@@ -258,7 +290,7 @@ font-size: 18px;
 @media (max-width: 800px) {
 
   .sidebar {
-    font-size: 8px;
+
     width: 180px;
   }
 
@@ -515,5 +547,8 @@ font-size: 18px;
  
 }
 
+.neonText{
+    bottom: 110px;
+  }
 
 }

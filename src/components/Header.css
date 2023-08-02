@@ -844,3 +844,9 @@ margin: 25px 0 20px 0;
   }
   
 }
+
+.loginMessage {
+  font-size: 240px;
+  font-weight: bold;
+  color: green;
+}

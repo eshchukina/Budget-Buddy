@@ -28,6 +28,11 @@ const SideMenu = ({
   const [newCurrency, setNewCurrency] = useState(currency);
   const [fetchedAccountList, setFetchedAccountList] = useState([]);
 
+
+  const [accountsAvailable, setAccountsAvailable] = useState(false);
+
+
+
   useEffect(() => {
     setNewCurrency(currency);
   }, [currency]);
@@ -35,6 +40,13 @@ const SideMenu = ({
   useEffect(() => {
     fetchAccountList();
   }, [accountList, editAccountId]);
+
+
+
+  useEffect(() => {
+    // Set the accountsAvailable state based on the length of fetchedAccountList
+    setAccountsAvailable(fetchedAccountList.length > 0);
+  }, [fetchedAccountList]);
 
   const fetchAccountList = async () => {
     try {
@@ -197,6 +209,7 @@ const SideMenu = ({
     localStorage.removeItem("accessToken");
     localStorage.removeItem("refreshToken");
     localStorage.removeItem("expiresIn");
+
   
     // Здесь также можно добавить другие действия, связанные с выходом из аккаунта, если необходимо.
   
@@ -209,13 +222,23 @@ const SideMenu = ({
   return (
     <div>
       <div className={`sidebar ${isDarkMode ? "dark" : "light"}`}>
-        <button
-          className={`majorButton ${isDarkMode ? "dark" : "light"}`}
-          onClick={openModal}
+      {accountsAvailable && (
+        
+        <>  <button
+            className={`majorButton ${isDarkMode ? "dark" : "light"}`}
+            onClick={openModal}
+          >
+            Create new account
+          </button>    <h2  className={`neonText ${isDarkMode ? "dark" : "light"}`}
+        
+          >
+            online
+            </h2>
+ 
           
-        >
-          Create new account
-        </button>
+          </>
+        )}
+       
 
         {isModalOpen && (
           <div className="modal">
@@ -264,9 +287,9 @@ const SideMenu = ({
         )}
 
         <div className="accountButtons">
-          <div className="titleList">Your account list:</div>
+          {/* <div className="titleList">Your account list:</div> */}
           <div className="carousel-container">
-    
+       
             {fetchedAccountList?.map((account) => (
               
               <div key={account.id} className="carousel-item">
@@ -286,8 +309,7 @@ const SideMenu = ({
           </div>{" "} 
         </div>
 
-      
-
+    
         <div className="share">
     
           <div className="item" onClick={handleShare}>
@@ -304,10 +326,12 @@ const SideMenu = ({
         </div>
      
         </div>
-
-
-          
+ 
          </div>
+     
+
+   
+     
     </div>
   );
 };

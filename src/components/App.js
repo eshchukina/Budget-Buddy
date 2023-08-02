@@ -92,6 +92,21 @@ function App() {
 
 
 
+  const handleLogout = () => {
+    // Удалите все данные из localStorage, связанные с авторизацией (accessToken, refreshToken и т. д.)
+
+    localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
+    localStorage.removeItem("expiresIn");
+  
+    // Здесь также можно добавить другие действия, связанные с выходом из аккаунта, если необходимо.
+  
+    // Перезагрузите страницу для очистки состояния приложения.
+    window.location.reload();
+  };
+
+
 
   return (
     <div className={isDarkMode ? "dark" : "light"}>
@@ -106,10 +121,24 @@ function App() {
           handleDelete={handleDelete}
           submittedDataList={activeAccount.submittedDataList}
           headersWithToken={headersWithToken}
-       
+          setActiveAccount={setActiveAccount}
           updateAccountCaption={updateAccountCaption}
           handleCurrencyChange={handleCurrencyChange}
           // dataList={dataList}
+
+          
+          createAccount={createAccount}
+        
+          setAccounts={setAccounts}
+          accountList={accounts}
+          activeAccount={activeAccount}
+        
+     
+          handleDeleteAccount={handleDeleteAccount}
+       
+          setActiveModal={setActiveModal}
+          onAccountUpdate={onAccountUpdate}
+        
         /> 
         </div>
       ) 
@@ -146,11 +175,13 @@ function App() {
         headersWithToken={headersWithToken}
         setActiveModal={setActiveModal}
         onAccountUpdate={onAccountUpdate}
+        handleLogout={handleLogout}
       
       />
 <Header
         isDarkMode={isDarkMode}
         toggleTheme={toggleTheme}
+        handleLogout={handleLogout}
      
       />
       
