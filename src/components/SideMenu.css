@@ -541,8 +541,8 @@ font-size: 18px;
   font-size: 18px;
   padding: 10px;
   left:100px;
-  top:80px;
-  width: 100px;
+  top:60px;
+  width: 90px;
  margin: 0;
  
 }
@@ -559,11 +559,15 @@ font-size: 18px;
     margin: 1px;
     font-size: 18px;
     text-align: center;
+    margin: 10px;
    
   }
 
   .accountButtonContainer {
-  
+    position: relative;
+  top:20px;
+
+   
 
   }
 

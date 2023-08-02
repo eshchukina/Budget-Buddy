@@ -302,12 +302,12 @@ margin: 20%;
        
   
 
-          @media (max-width: 391px) {
+          @media (max-width: 390px) {
 
             .mainField #chart {
             
     
-              top:-200px;
+              top:-150px;
              
      
             
