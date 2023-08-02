@@ -15,6 +15,17 @@ html {
     }
     
   }
+  
+  @media (max-width: 390px) {
+
+
+    html {
+ 
+      overflow-x:hidden;
+    
+    }
+    
+  }
 
 
   body {
