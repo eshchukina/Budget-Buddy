@@ -418,7 +418,7 @@ color: #5EC7DD;
 @media (max-width: 390px) {
 
   .accountContent {
-    width: 110%;
+    width: 100%;
     left: -50px;
     top: 55%;
     margin: 0;
