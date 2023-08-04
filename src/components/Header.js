@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import ThemeToggle from "./ThemeToggle";
-import { faUserPlus, faLock, faUnlock } from "@fortawesome/free-solid-svg-icons"; // Импорт иконок
+import { faUserPlus, faLock, faUnlock } from "@fortawesome/free-solid-svg-icons"; 
 import LoginButton from "./LoginButton";
 
 import config from '../config';
@@ -46,11 +46,7 @@ const Header = ({ isDarkMode, toggleTheme, activeAccount, setActiveAccount }) =>
   };
 
   useEffect(() => {
-    const lastVisitedAccountId = localStorage.getItem("lastVisitedAccount");
-    if (lastVisitedAccountId) {
-      fetchAccountById(lastVisitedAccountId); 
-    }
-  }, []);
+ 
 
 
   const fetchAccountById = async (accountId) => {
@@ -75,6 +71,11 @@ const Header = ({ isDarkMode, toggleTheme, activeAccount, setActiveAccount }) =>
       console.log("Error fetching account by id:", error);
     }
   };
+  const lastVisitedAccountId = localStorage.getItem("lastVisitedAccount");
+  if (lastVisitedAccountId) {
+    fetchAccountById(lastVisitedAccountId); 
+  }
+}, [setActiveAccount]);
 
 
   const handleRegistration = async (e) => {
