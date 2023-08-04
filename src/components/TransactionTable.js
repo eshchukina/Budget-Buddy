@@ -1,9 +1,17 @@
 import React from "react";
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowTurnDown } from "@fortawesome/free-solid-svg-icons";
+
 import TransactionRow from "./TransactionRow";
 
 import "./Style.css";
 import "./Dashboard.css";
+
+
+
+
+
 
 const TransactionTable = ({
   account,
@@ -12,6 +20,7 @@ const TransactionTable = ({
   handleEdit,
   handleDelete,
   openModal,
+  handleTagChange,
   
 }) => {
   const [expandedDescription, setExpandedDescription] = useState(null);
@@ -64,8 +73,11 @@ const TransactionTable = ({
         </caption>
         <thead>
           <tr>
-          <th className="hideOnMobile">Number</th>
+       
             <th>Name</th>
+         
+      
+         
             <th>Amount</th>
             <th>Date</th>
             <th>Balance</th>
@@ -87,13 +99,15 @@ const TransactionTable = ({
     formatData={formatData}
     formatDate={formatDate}
     formatBalance={formatBalance}
+    handleTagChange={handleTagChange}
+    
   />
 ))}
           </tbody>
         ) : (
           <tbody>
             <tr>
-              <td colSpan="6"><br/><br/><p>No data available </p></td>
+              <td colSpan="6"><br/><br/><p>Create your first transaction  <span>  <FontAwesomeIcon icon={faArrowTurnDown} className="blinking-icon"/> </span></p></td>
             </tr>
           </tbody>
         )}{" "}

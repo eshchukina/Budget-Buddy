@@ -15,7 +15,8 @@ const TransactionRow = ({
   formatData,
   formatDate,
   formatBalance,
-  index
+  index,
+  handleTagChange,
 }) => {
 
   const isPositiveAmount = data.amount >= 0;
@@ -27,7 +28,7 @@ const TransactionRow = ({
       <tr
         className={`transactionRow ${isHighlighted ? "highlight" : ""} `}
       >
-        <td className="hideOnMobile">{index + 1}</td>
+      
         <td>
           <span
             className="descriptionText"
@@ -38,6 +39,8 @@ const TransactionRow = ({
               : formatData(data.description)}
           </span>
         </td>
+     
+
         <td>{formatBalance(data.amount)}</td>
         <td>{formatDate(data.date)}</td>
         <td

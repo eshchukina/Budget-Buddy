@@ -1,9 +1,17 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Ysabeau+SC:wght@1;100;200;300;500&display=swap');*{
+  font-family: 'Ysabeau SC', sans-serif;
+
+
+
+
+
 html {
  
     overflow: hidden;
   
   }
-  
+}
 
   @media (max-width: 1370px) {
 
@@ -78,6 +86,7 @@ body.dark  {
 .modalContent.dark,
 .modalContent.dark select,
 .modalContent.dark input[type="text"],
+.modalContent.dark input[type="email"],
 .modalContent.dark input[type="number"],
 .modalContent.dark input[type="date"] {
   background-color: #b8bbc4;

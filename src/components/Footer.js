@@ -33,6 +33,17 @@ const Footer = ({ isDarkMode }) => {
  
     window.location.reload();
   };
+  const handleContactUs = () => {
+    const emailSubject = "Contact Us Inquiry"; 
+    const emailAddress = "frankkat377@gmail.com";
+
+   
+    const mailtoLink = `mailto:${emailAddress}?subject=${encodeURIComponent(emailSubject)}`;
+
+ 
+    window.open(mailtoLink, "_blank");
+  };
+
   
 
   return (
@@ -48,10 +59,9 @@ const Footer = ({ isDarkMode }) => {
             <FontAwesomeIcon icon={faShareNodes} /> <span className="textItem">share</span>
           </div>
 
-          <div className="item">
-            <FontAwesomeIcon icon={faEnvelope} /> <span className="textItem">connect with us</span>
-          </div>
-
+          <div className="item" onClick={handleContactUs}>
+    <FontAwesomeIcon icon={faEnvelope} /> <span className="textItem">connect with us</span>
+  </div>
               
           <div className="item" onClick={handleLogout}>
           <FontAwesomeIcon icon={faArrowRight} />  <span className="textItem">log out</span>

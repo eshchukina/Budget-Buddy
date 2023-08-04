@@ -1,12 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Ysabeau+SC:wght@1;100;200;300;500&display=swap');*{
-  font-family: 'Ysabeau SC', sans-serif;
+/* @import url('https://fonts.googleapis.com/css2?family=Ysabeau+SC:wght@1;100;200;300;500&display=swap');
+*{
+  font-family: 'Ysabeau SC', sans-serif; */
 
   html {
     overflow: hidden;
   }
   
 
-}
+
 body {
 height: 100%;
 overflow: hidden;

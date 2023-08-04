@@ -1,20 +1,19 @@
-import React, { useState, useEffect } from "react";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faCoins, faTimes } from "@fortawesome/free-solid-svg-icons";
-// import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import React, { useState, useEffect, useRef } from "react";
+
 import config from '../config';
 
 import "./Converter.css";
-import "./Dashboard";
 const Converter = ({ isDarkMode }) => {
-  const [amount, setAmount] = useState("");
+  const [amount1, setAmount1] = useState("");
+  const [amount2, setAmount2] = useState("");
   const [conversionRates, setConversionRates] = useState({});
-  // const [showConverterForm, setShowConverterForm] = useState(false); 
-  // const [selectedCurrency, setSelectedCurrency] = useState("EUR"); 
+
   const [sourceCurrency, setSourceCurrency] = useState("EUR");
   const [targetCurrency, setTargetCurrency] = useState("EUR");
-  const currencies = ["EUR", "GBP", "GEL", "TRY", "RUB"]; 
+  const currencies = ["EUR", "GBP", "GEL", "TRY", "RUB"];
 
+  const inputRef1 = useRef(null);
+  const inputRef2 = useRef(null);
 
   const updateConversionRates = async () => {
     try {
@@ -77,95 +76,113 @@ const Converter = ({ isDarkMode }) => {
 
   
 
-  const handleAmountChange = (e) => {
+
+
+  const handleAmountChange1 = (e) => {
     const { value } = e.target;
-    
-    setAmount(value);
+    setAmount1(value);
+    const convertedAmount = convertCurrency(value, sourceCurrency, targetCurrency);
+    setAmount2(convertedAmount);
   };
 
-  // const handleCurrencyChange = (e) => {
-  //   const { value } = e.target;
-  //   setSelectedCurrency(value); 
-  // };
+  const handleAmountChange2 = (e) => {
+    const { value } = e.target;
+    setAmount2(value);
+    const convertedAmount = convertCurrency(value, targetCurrency, sourceCurrency);
+    setAmount1(convertedAmount);
+  };
 
-  const convertCurrency = () => {
-    const sourceRate = conversionRates[`USD${sourceCurrency}`];
-    const targetRate = conversionRates[`USD${targetCurrency}`];
+  const convertCurrency = (amount, fromCurrency, toCurrency) => {
+    const sourceRate = conversionRates[`USD${fromCurrency}`];
+    const targetRate = conversionRates[`USD${toCurrency}`];
     if (sourceRate && targetRate) {
       const convertedAmount = (amount / sourceRate) * targetRate;
       return convertedAmount.toFixed(2);
     }
-    return "N/A";
+    return "";
   };
-  
-  
 
   const handleSourceCurrencyChange = (e) => {
     const { value } = e.target;
     setSourceCurrency(value);
+    const convertedAmount = convertCurrency(amount1, value, targetCurrency);
+    setAmount2(convertedAmount);
   };
 
   const handleTargetCurrencyChange = (e) => {
     const { value } = e.target;
     setTargetCurrency(value);
+    const convertedAmount = convertCurrency(amount2, value, sourceCurrency);
+    setAmount1(convertedAmount);
   };
-
 
   const handleCloseConverterForm = () => {
-  
-    setAmount("");
- 
+    setAmount1("");
+    setAmount2("");
+    if (inputRef1.current) {
+      inputRef1.current.focus();
+    }
   };
 
+  return (
+    <div className={`mainField ${isDarkMode ? "dark" : "light"}`}>
 
-return (
     <div className={`converter ${isDarkMode ? "dark" : "light"}`}>
-      <h3 className="headerCurrency">Converter</h3>
-
-
-
-
-        <>
-          <h3 className="headerCurrencyAdd">Converter {sourceCurrency}</h3>
-          <div className="input-container">
-            <input
-              type="text"
-              value={amount}
-              onChange={handleAmountChange}
-              placeholder={`Enter amount in ${sourceCurrency}`}
-            />
-            <select onChange={handleSourceCurrencyChange} value={sourceCurrency}>
-              {currencies.map((currency) => (
-                <option key={currency} value={currency}>
-                  {currency}
-                </option>
-              ))}
-            </select>
-            <select onChange={handleTargetCurrencyChange} value={targetCurrency}>
-              {currencies.map((currency) => (
-                <option key={currency} value={currency}>
-                  {currency}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="result">
-            {amount !== "" ? (
-              <>
-                <p>
-                  {amount} {sourceCurrency} to {convertCurrency()} {targetCurrency}
-                </p>
-              </>
-            ) : (
-              <p>currency conversion: </p>
-            )}
-          </div>
-          <button className="modalBtn cross" onClick={handleCloseConverterForm}>
-             clear
-          </button>
-        </>
+      <h3 className="headerCurrency">converter</h3>
+      <>
+        <div className="input-container">
+          <input
+            ref={inputRef1}
+            type="text"
+            value={amount1}
+            onChange={handleAmountChange1}
+            placeholder={`enter amount in ${sourceCurrency}`}
+          />
+          <select
+            onChange={handleSourceCurrencyChange}
+            value={sourceCurrency}
+          >
+            {currencies.map((currency) => (
+              <option key={currency} value={currency}>
+                {currency}
+              </option>
+            ))}
+          </select>
       
-    </div>
+        </div>
+       
+      
+      </>
+      <>
+        <br/>
+        <div className="input-container">
+          
+          <input
+            ref={inputRef2}
+            type="text"
+            value={amount2}
+            onChange={handleAmountChange2}
+            placeholder={`enter amount in ${targetCurrency}`}
+          />
+           <select
+            onChange={handleTargetCurrencyChange}
+            value={targetCurrency}
+          >
+            {currencies.map((currency) => (
+              <option key={currency} value={currency}>
+                {currency}
+              </option>
+            ))}
+          </select>
+        </div>
+      
+        
+        <button className="modalBtn cross" onClick={handleCloseConverterForm}>
+          clear
+        </button>
+      </>
+    </div>    </div>
   );
 };
+
 export default Converter;

@@ -18,11 +18,7 @@ const AccountButton = ({
     return name.length > 10 ? `${name.substring(0, 8)}...` : name;
   };
 
-  // const [showDetails, setShowDetails] = useState(false);
 
-  // const handleToggleDetails = () => {
-  //   setShowDetails(!showDetails);
-  // };
 
   return (
     <div key={account.id} className="accountButtonContainer">
@@ -41,8 +37,12 @@ const AccountButton = ({
       
           <div className="balance1">
             <div className="balanceWord"> Balance:</div>
-            <div>future {account.futureBalance}</div>
-            <div>current {account.currentBalance}</div>
+            <div>future <span className={`balanceFC ${account.futureBalance < 0 ? 'minus' : ''}`}>
+    {account.futureBalance}
+  </span></div>
+            <div>current <span className={`balanceFC ${account.currentBalance < 0 ? 'minus' : ''}`}>
+    {account.currentBalance}
+  </span></div>
             <div className="accountButtonActions">
               <FontAwesomeIcon
                 icon={faPencilAlt}

@@ -1,8 +1,20 @@
 
+
+.mainField {
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+
+}
 .converter {
+  top: 500px;
+  transition: 0.5s;
+
   position: absolute;
-  right: 350px;
-  top: 550px;
+  width: 350px;
+  left: 1400px;
+  margin: 0 auto; 
+
   padding: 10px;
   color: #9dafb4;
   border: none;
@@ -10,7 +22,6 @@
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: 0.5s;
-  background-size: 200% auto;
 }
 
 .converter h3 {
@@ -20,6 +31,7 @@
 }
 
 .input-container {
+  
   display: flex;
   align-items: center;
 }
@@ -31,7 +43,6 @@
   border-radius:10px;
   font-size: 16px;
   transition: 0.5s;
-  background-size: 200% auto;
 }
 
 .active.input-container input {
@@ -51,7 +62,6 @@
   border-radius: 5px;
   cursor: pointer;
   transition: 0.5s;
-  background-size: 200% auto;
   border-radius: 10px;
  
 
@@ -148,21 +158,21 @@
 }
 
 
-@media (max-width: 3440px) {
+ @media (max-width: 3050px) {
 
   .converter {
-    right: 1200px;
-    top:600px;
+        left: 1300px;
   
    
   }
   
   }
 
-  @media (max-width: 3090px) {
+  @media (max-width: 2900px) {
 
     .converter {
-      right: 1000px;
+    
+      left: 1200px;
   
      
     }
@@ -170,26 +180,25 @@
     }
 
 
-
-    @media (max-width: 2900px) {
+    @media (max-width: 2700px) {
 
 
       .converter {
-        right: 1000px;
+        left: 1100px;
     
       
       }
       
       }
+     
+
       
-      
-      @media (max-width: 2200px) {
+      @media (max-width: 2500px) {
 
         .converter {
        
-          right: 700px;
        
-        
+         left:950px;
          
         
         }
@@ -198,25 +207,15 @@
     
 
 
-        @media (max-width: 1950px) {
-
-          .converter {
-            right: 500px;
-         
-          
-           
-          
-          }
-          
-          }
+       
 
 
 
 
-          @media (max-width: 1750px) {
+          @media (max-width: 1950px) {
 
             .converter {
-              right: 300px;
+              left:900px;
            
             
              
@@ -227,7 +226,7 @@
 
 
 
-      
+       /*
 
 
 @media (max-width: 1666px) {
@@ -422,4 +421,4 @@
  
   }
 
-}
+} */

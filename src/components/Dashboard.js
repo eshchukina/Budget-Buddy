@@ -11,8 +11,9 @@ const Dashboard = ({
   isDarkMode,
   account,
   updateAccountData,
+  activeAccount
 
-}) => {
+}) => { 
 
   const [editData, setEditData] = useState({
     id: null,
@@ -33,26 +34,32 @@ const Dashboard = ({
     options: {
       chart: {
         width: 380,
-        type: 'pie',
+        type: 'donut',
       },
       labels: [], 
-      responsive: [{
-        breakpoint: 480,
+      responsive: [
+        {
+       
         options: {
-          chart: {
-            width: 370
-          },
+         
           legend: {
             position: 'bottom'
           }
         }
-      }],
-      colors: ['#E96E94', '#5EC7DD', '#ffcd38', '#9ddd5e', '#1b414c'],
-      dataLabels: {
-        style: {
-          colors: ['#fff'] 
-        }
       }
+    ],
+      colors: ['#E96E94', '#5EC7DD', '#ffcd38', '#9ddd5e', '#1b414c'],
+      title: {
+        text: 'most common monthly expenses',
+        align: 'center', 
+    
+        style: {
+          fontSize: '18px', 
+          fontFamily: "'Ysabeau SC', sans-serif", 
+          color: "#9dafb4"
+         
+        },
+      },  
     }
   });
   
@@ -317,7 +324,7 @@ const Dashboard = ({
    console.log(updatedData);
     const response = await fetch(
        `${config.apiUrl}transactions/${editData.id}`,
-      // `http://192.168.1.30:1323/transactions/${editData.id}`,
+    
       {
         method: "PUT",
         headers: headersWithToken,
@@ -362,6 +369,8 @@ const Dashboard = ({
   };
 
   const handleDelete = async (accountId, dataId) => {
+    const shouldDelete = window.confirm("Are you sure you want to delete this transaction?");
+    if (shouldDelete) {
     try {
       const token = localStorage.getItem("accessToken");
       const headersWithToken = {
@@ -386,7 +395,7 @@ const Dashboard = ({
       }
     } catch (error) {
       console.log("Error deleting data from the database:", error);
-    }
+    }}
   };
   const openModal = () => {
     setIsModalOpen(true);
@@ -454,7 +463,10 @@ const Dashboard = ({
 
 
   return (
+ 
+
     <div className={`mainField ${isDarkMode ? "dark" : "light"}`}>
+      
       <div key={account.id}>
         {isModalOpen && (
           <div className="modal">
@@ -467,21 +479,21 @@ const Dashboard = ({
                   onChange={handleDescriptionChange}
                   placeholder="description"
                 />
-                    <select value={editData.tag} onChange={handleTagChange} >
-      <option value="">category</option>
-      <option value="food">food</option>
-      <option value="transport">transport</option>
-      <option value="health">health</option>
-      <option value="entertaiment">entertaimen</option>
-      <option value="cloth">cloth</option>
-      <option value="saving">saving</option>
-      <option value="pets">pets</option>
-      <option value="gifts">gifts</option>
-      <option value="hobby">hobby</option>
-      <option value="trips">trips</option>
-      <option value="other">other</option>
+       <select value={editData.tag} onChange={handleTagChange}>
+  <option value=""></option>
+  <option value="food">food</option>
+  <option value="transport">transport</option>
+  <option value="health">health</option>
+  <option value="entertainment">entertainment</option> {/* Correct the typo here */}
+  <option value="cloth">cloth</option>
+  <option value="saving">saving</option>
+  <option value="pets">pets</option>
+  <option value="gifts">gifts</option>
+  <option value="hobby">hobby</option>
+  <option value="trips">trips</option>
+  <option value="other">other</option>
+</select>
 
-    </select>
                 <input
                   type="text"
                   value={editData.amount}
@@ -532,6 +544,7 @@ const Dashboard = ({
           formatDateTime={formatDateTime}
           openModal={openModal}
           formatBalance={formatBalance}
+          handleTagChange={handleTagChange} 
         /></div>
 
         {!dataList || (dataList.length === 0 && <p>No submitted data</p>)}
@@ -542,7 +555,7 @@ const Dashboard = ({
         fetchChartData={fetchChartData} 
        /></div>
        
-       <div><Converter isDarkMode={isDarkMode}/>  </div>
+      <Converter isDarkMode={isDarkMode}/>  
 
     </div></div></div>
   );

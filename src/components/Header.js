@@ -2,23 +2,25 @@ import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import ThemeToggle from "./ThemeToggle";
-import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
-
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faUserPlus, faLock, faUnlock } from "@fortawesome/free-solid-svg-icons"; // Импорт иконок
 import LoginButton from "./LoginButton";
 
 import config from '../config';
 import "./Style.css";
 import "./Header.css";
+import SearchPage from "./SearchPage";
 
-const Header = ({ isDarkMode, toggleTheme, activeModal, setActiveModal }) => {
+const Header = ({ isDarkMode, toggleTheme, activeAccount, setActiveAccount }) => {
+
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const [isMenuOpen, setMenuOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
+
+
+  const [showPassword, setShowPassword] = useState(false); 
 
 
 
@@ -42,6 +44,38 @@ const Header = ({ isDarkMode, toggleTheme, activeModal, setActiveModal }) => {
     setIsLoginModalOpen(false);
     setIsModalOpen(false);
   };
+
+  useEffect(() => {
+    const lastVisitedAccountId = localStorage.getItem("lastVisitedAccount");
+    if (lastVisitedAccountId) {
+      fetchAccountById(lastVisitedAccountId); 
+    }
+  }, []);
+
+
+  const fetchAccountById = async (accountId) => {
+    try {
+
+      const token = localStorage.getItem("accessToken");
+      const headersWithToken = {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      };
+      const response = await fetch(`${config.apiUrl}accounts/${accountId}`, {
+        headers: headersWithToken,
+      });
+
+      if (response.ok) {
+        const account = await response.json();
+        setActiveAccount(account);
+      } else {
+        console.log("Failed to fetch account by id");
+      }
+    } catch (error) {
+      console.log("Error fetching account by id:", error);
+    }
+  };
+
 
   const handleRegistration = async (e) => {
     e.preventDefault();
@@ -96,6 +130,7 @@ const Header = ({ isDarkMode, toggleTheme, activeModal, setActiveModal }) => {
         body: JSON.stringify(newUser),
       });
 
+
       if (response.ok) {
         const data = await response.json();
         if (data && data.accessToken) {
@@ -105,19 +140,19 @@ const Header = ({ isDarkMode, toggleTheme, activeModal, setActiveModal }) => {
           localStorage.setItem("refreshToken", refreshToken);
           localStorage.setItem("expiresIn", expires_in.toString());
         
+          localStorage.setItem("lastVisitedAccount", activeAccount.id);
 
          
           console.log("Login successful");
        
-          console.log(accessToken);
-          console.log(refreshToken);
-          console.log(expires_in);
+        
 
           setEmail("");
           setPassword("");
           setIsModalOpen(false);
 
    
+          
 
           const s = localStorage.getItem("expiresIn");
           const ss = parseInt(s, 10); 
@@ -186,11 +221,14 @@ const Header = ({ isDarkMode, toggleTheme, activeModal, setActiveModal }) => {
  
     if (!storedAccessToken || !expiresIn) {
       refreshTokenFunc();
+   
     } else {
       const expiresInMilliseconds = parseInt(expiresIn, 10);
 
       if (Date.now() >= expiresInMilliseconds) {
         refreshTokenFunc();
+     
+     
       } else {
     
         const timeLeft = expiresInMilliseconds - Date.now()- 5 * 60 * 1000;
@@ -198,28 +236,28 @@ const Header = ({ isDarkMode, toggleTheme, activeModal, setActiveModal }) => {
   
       
         return () => clearTimeout(timerId);
+        
       }
     }
   }, []);
 
  
-  const handleButtonClick = () => {
- 
-    console.log('Кнопка была нажата!');
-    setSearchQuery(''); // Очищаем поле ввода
-  };
 
-  const handleChange = (event) => {
-    setSearchQuery(event.target.value);
-  };
 
   const reloadPage = () => {
-    window.location.reload();
+   
   };
+  const handlePasswordVisibility = () => {
+    setShowPassword(!showPassword); 
+  };
+
+
+
+  
   return (
     <div className={`header ${isDarkMode ? "dark" : "light"}`}>
       
-  
+    
       <h1 className="headerLogo" onClick={reloadPage}>
 
         <span className="letter">B</span>udget <span className="letter">B</span>uddy</h1>  
@@ -229,20 +267,9 @@ const Header = ({ isDarkMode, toggleTheme, activeModal, setActiveModal }) => {
         <span className="letter" onClick={reloadPage}>BB</span>
         
       </h1>   
-      <div className="searchContainer">
-      <div className="inputContainer">
-        <input
-          className="searchInput"
-          type="text"
-          placeholder="search"
-          value={searchQuery}
-          onChange={handleChange}
-        />
-        <button className="searchButton" onClick={handleButtonClick}>
-          <FontAwesomeIcon icon={faSearch} />
-        </button>
-      </div>
-    </div>
+
+
+    <SearchPage/>
 
       <ThemeToggle isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
 
@@ -264,12 +291,22 @@ const Header = ({ isDarkMode, toggleTheme, activeModal, setActiveModal }) => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
-              <input
-                type="password"
-                placeholder="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
+                <div className="passwordInputContainer">
+                <input
+                  type={showPassword ? "text" : "password"} 
+                  placeholder="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+                   <button type="button"   className={`modalButtonLog ${isDarkMode ? "dark" : "light"}`} onClick={handlePasswordVisibility}>
+                  {showPassword ? <FontAwesomeIcon icon={faUnlock}/> : <FontAwesomeIcon icon={faLock} /> }
+                </button>
+
+
+              </div>
+
+
+
               <button
                 type="submit"
                 className={`modalButtonLog ${isDarkMode ? "dark" : "light"}`}
@@ -296,10 +333,7 @@ const Header = ({ isDarkMode, toggleTheme, activeModal, setActiveModal }) => {
         </div>
       )}
 
-      {/* <RegistrationButton
-        isDarkMode={isDarkMode}
-        handleOpenModal={handleOpenModal}
-      /> */}
+      
 
       {isModalOpen && (
         <div className="modal">
@@ -320,12 +354,19 @@ const Header = ({ isDarkMode, toggleTheme, activeModal, setActiveModal }) => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
-              <input
-                type="password"
-                placeholder="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
+                 <div className="passwordInputContainer"> 
+                <input
+                  type={showPassword ? "text" : "password"} 
+                  placeholder="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+                   <button type="button"   className={`modalButtonLog ${isDarkMode ? "dark" : "light"}`} onClick={handlePasswordVisibility}>
+                  {showPassword ? <FontAwesomeIcon icon={faUnlock}/> : <FontAwesomeIcon icon={faLock} /> }
+                </button>
+
+
+              </div>
               <button
                 type="submit"
                 className={`modalButtonLog ${isDarkMode ? "dark" : "light"}`}

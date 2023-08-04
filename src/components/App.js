@@ -3,27 +3,35 @@ import Header from "./Header";
 import SideMenu from "./SideMenu";
 import Dashboard from "./Dashboard";
 import Footer from "./Footer";
-
-
 import "./Style.css";
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(() => {
-    // Get the theme preference from localStorage
     const storedTheme = localStorage.getItem("isDarkMode");
-    // Return the stored theme if available, or set the initial state to false (light mode)
     return storedTheme ? JSON.parse(storedTheme) : false;
   });
   const [accounts, setAccounts] = useState([]);
   const [currency, setCurrency] = useState("USD");
-  const [activeAccount, setActiveAccount] = useState(
-    accounts.length > 0 ? accounts[0] : null
-  );
+  // const [activeAccount, setActiveAccount] = useState(
+  //   accounts.length > 0 ? accounts[0] : null 
+  // );
 
   const setActiveModal = (modal) => {};
 
   const headersWithToken = {};
 
+
+// Inside the App component
+// const [activeAccount, setActiveAccount] = useState(() => {
+//   const lastVisitedAccountId = localStorage.getItem("lastVisitedAccount");
+//   return accounts.find((account) => account.id === parseInt(lastVisitedAccountId)) || null;
+// });
+
+const [activeAccount, setActiveAccount] = useState(null);
+
+
+
+  
   useEffect(() => {
     if (isDarkMode) {
       document.body.classList.add("dark");
@@ -36,6 +44,12 @@ function App() {
   const toggleTheme = () => {
     setIsDarkMode((prevMode) => !prevMode);
   };
+
+
+
+ 
+
+
 
 
   const onAccountUpdate = (account) => {};
@@ -93,19 +107,26 @@ function App() {
 
 
   const handleLogout = () => {
-    // Удалите все данные из localStorage, связанные с авторизацией (accessToken, refreshToken и т. д.)
 
     localStorage.removeItem("isLoggedIn");
     localStorage.removeItem("accessToken");
     localStorage.removeItem("refreshToken");
     localStorage.removeItem("expiresIn");
   
-    // Здесь также можно добавить другие действия, связанные с выходом из аккаунта, если необходимо.
   
-    // Перезагрузите страницу для очистки состояния приложения.
+   
     window.location.reload();
   };
 
+
+
+
+
+useEffect(() => {
+  if (activeAccount) {
+    localStorage.setItem("lastVisitedAccount", activeAccount.id);
+  }
+}, [activeAccount]);
 
 
   return (
@@ -124,7 +145,7 @@ function App() {
           setActiveAccount={setActiveAccount}
           updateAccountCaption={updateAccountCaption}
           handleCurrencyChange={handleCurrencyChange}
-          // dataList={dataList}
+        
 
           
           createAccount={createAccount}
@@ -160,28 +181,35 @@ function App() {
             each account
           </div>
         </div>
-      )}
-      <SideMenu
-        isDarkMode={isDarkMode}
-        createAccount={createAccount}
-        setActiveAccount={setActiveAccount}
-        setAccounts={setAccounts}
-        accountList={accounts}
-        activeAccount={activeAccount}
-        currency={currency}
-        handleCurrencyChange={handleCurrencyChange}
-        handleDeleteAccount={handleDeleteAccount}
-        updateAccountCaption={updateAccountCaption}
-        headersWithToken={headersWithToken}
-        setActiveModal={setActiveModal}
-        onAccountUpdate={onAccountUpdate}
-        handleLogout={handleLogout}
+      )
       
-      />
+      
+      }
+  <SideMenu
+  isDarkMode={isDarkMode}
+  createAccount={createAccount}
+  setActiveAccount={setActiveAccount}
+  setAccounts={setAccounts}
+  accountList={accounts}
+  activeAccount={activeAccount}
+  currency={currency}
+  handleCurrencyChange={handleCurrencyChange}
+  handleDeleteAccount={handleDeleteAccount}
+  updateAccountCaption={updateAccountCaption}
+  onAccountUpdate={onAccountUpdate}
+  handleLogout={handleLogout}
+
+/>
+
 <Header
         isDarkMode={isDarkMode}
         toggleTheme={toggleTheme}
         handleLogout={handleLogout}
+
+        activeModal={null} 
+        setActiveModal={() => {}} 
+        activeAccount={activeAccount}
+        setActiveAccount={setActiveAccount}
      
       />
       

@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShareNodes } from "@fortawesome/free-solid-svg-icons";
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+
 import AccountButton from "./AccountButton";
 
 import config from '../config';
@@ -29,9 +30,20 @@ const SideMenu = ({
   const [fetchedAccountList, setFetchedAccountList] = useState([]);
 
 
-  const [accountsAvailable, setAccountsAvailable] = useState(false);
+  // const [accountsAvailable, setAccountsAvailable] = useState(false);
+  const [isTokenAvailable, setTokenAvailable] = useState(false);
+
+  useEffect(() => {
+
+    const token = localStorage.getItem("accessToken");
+    setTokenAvailable(!!token);
+  }, []);
 
 
+  useEffect(() => {
+    setFetchedAccountList(fetchedAccountList || []);
+  }, [fetchedAccountList]);
+   
 
   useEffect(() => {
     setNewCurrency(currency);
@@ -43,10 +55,10 @@ const SideMenu = ({
 
 
 
-  useEffect(() => {
-    // Set the accountsAvailable state based on the length of fetchedAccountList
-    setAccountsAvailable(fetchedAccountList.length > 0);
-  }, [fetchedAccountList]);
+  // useEffect(() => {
+
+  //   setAccountsAvailable(fetchedAccountList.length > 0);
+  // }, [fetchedAccountList]);
 
   const fetchAccountList = async () => {
     try {
@@ -62,7 +74,9 @@ const SideMenu = ({
 
       if (response.ok) {
         const data = await response.json();
-        setFetchedAccountList(data);
+        // setFetchedAccountList(data);
+        setFetchedAccountList(data || []);
+      
       } else {
         console.log("Failed to fetch account list");
       }
@@ -92,6 +106,10 @@ const SideMenu = ({
           const createdAccount = await response.json();
           setAccounts([...accountList, createdAccount]);
           setNewAccount("");
+
+
+
+
       
           fetchAccountList();
         } else {
@@ -154,6 +172,9 @@ const SideMenu = ({
   };
 
   const handleDelete = async (account) => {
+    const shouldDelete = window.confirm("Are you sure you want to delete this account?");
+    if (shouldDelete) {
+
     try {
       const token = localStorage.getItem("accessToken");
       const headersWithToken = {
@@ -178,7 +199,7 @@ const SideMenu = ({
       }
     } catch (error) {
       console.log("Error deleting account:", error);
-    }
+    }}
   };
 
   const handleShare = () => {
@@ -205,36 +226,43 @@ const SideMenu = ({
 
 
   const handleLogout = () => {
-    // Удалите все данные из localStorage, связанные с авторизацией (accessToken, refreshToken и т. д.)
     localStorage.removeItem("accessToken");
     localStorage.removeItem("refreshToken");
     localStorage.removeItem("expiresIn");
 
-  
-    // Здесь также можно добавить другие действия, связанные с выходом из аккаунта, если необходимо.
-  
-    // Перезагрузите страницу для очистки состояния приложения.
     window.location.reload();
   };
 
+  const handleContactUs = () => {
+    const emailSubject = "Contact Us Inquiry"; 
+    const emailAddress = "frankkat377@gmail.com";
 
+
+    const mailtoLink = `mailto:${emailAddress}?subject=${encodeURIComponent(emailSubject)}`;
+
+ 
+    window.open(mailtoLink, "_blank");
+  };
+
+
+   
 
   return (
     <div>
       <div className={`sidebar ${isDarkMode ? "dark" : "light"}`}>
-      {accountsAvailable && (
+      
+        
+      {isTokenAvailable  && (
         
         <>  <button
             className={`majorButton ${isDarkMode ? "dark" : "light"}`}
             onClick={openModal}
           >
             Create new account
-          </button>    <h2  className={`neonText ${isDarkMode ? "dark" : "light"}`}
-        
-          >
+          </button>   <div className={`neonText ${isDarkMode ? "dark" : "light"}`}>
             online
-            </h2>
- 
+           {/* fsdfsdfdsf <FontAwesomeIcon  icon={faCoins} /> */}
+ </div>
           
           </>
         )}
@@ -287,7 +315,7 @@ const SideMenu = ({
         )}
 
         <div className="accountButtons">
-          {/* <div className="titleList">Your account list:</div> */}
+       
           <div className="carousel-container">
        
             {fetchedAccountList?.map((account) => (
@@ -311,15 +339,14 @@ const SideMenu = ({
 
     
         <div className="share">
-    
+  
           <div className="item" onClick={handleShare}>
             <FontAwesomeIcon icon={faShareNodes} /> <span className="textItem">share</span>
           </div>
 
-          <div className="item">
-            <FontAwesomeIcon icon={faEnvelope} /> <span className="textItem">connect with us</span>
-          </div>
-
+          <div className="item" onClick={handleContactUs}>
+    <FontAwesomeIcon icon={faEnvelope} /> <span className="textItem">connect with us</span>
+  </div>
               
           <div className="item" onClick={handleLogout}>
           <FontAwesomeIcon icon={faArrowRight} />  <span className="textItem">log out</span>
