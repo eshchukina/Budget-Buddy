@@ -64,8 +64,28 @@ const Dashboard = ({
   });
   
 
-
-
+  useEffect(() => {
+    const handleOutsideClick = (e) => {
+      if (
+        isModalOpen &&
+        e.target.classList.contains("modal") &&
+        !e.target.classList.contains("modalContent")
+      ) {
+        closeModal();
+      }
+    };
+  
+    if (isModalOpen) {
+      document.addEventListener("click", handleOutsideClick);
+    } else {
+      document.removeEventListener("click", handleOutsideClick);
+    }
+  
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+    };
+  }, [isModalOpen]);
+  
 
 
 
@@ -91,14 +111,15 @@ const Dashboard = ({
         }
         const data = await response.json();
         setDataList(data);
-      
-
+        console.log(data);
+    
         const currentBalance = data.reduce(
           (total, item) => total + item.amount,
           0
         );
         setCurrentBalance(currentBalance);
         setFutureBalance(currentBalance);
+   
         
       } catch (error) {
         console.log("Error fetching account data:", error);
@@ -133,7 +154,7 @@ const Dashboard = ({
         }
   
         const data = await response.json();
-  
+
         const chartLabels = Object.keys(data);
         const seriesData = Object.values(data).map((value) => parseFloat(value));
         setChartData((prevState) => ({
@@ -175,7 +196,7 @@ const Dashboard = ({
         }
   
         const data = await response.json();
-  
+        console.log(data);
         const chartLabels = Object.keys(data);
         const seriesData = Object.values(data).map((value) => parseFloat(value));
         setChartData((prevState) => ({
@@ -185,7 +206,9 @@ const Dashboard = ({
             ...prevState.options,
             labels: chartLabels,
           },
+          
         }));
+        
       } catch (error) {
         console.log("Error fetching account statistics:", error.message);
       }
@@ -236,6 +259,8 @@ const Dashboard = ({
       setCurrentBalance(currentBalance);
       setFutureBalance(currentBalance);
       fetchChartData();
+      console.log(data);
+    
     
     
     } catch (error) {
@@ -292,6 +317,7 @@ const Dashboard = ({
         closeModal();
       } else {
         console.log("Error adding data to the database.");
+        fetchAccountData();
       }
     } catch (error) {
       console.log("Error adding data to the database:", error);
@@ -321,7 +347,7 @@ const Dashboard = ({
       amount: parseFloat(editData.amount),
       date: editData.date,
     };
-   console.log(updatedData);
+ 
     const response = await fetch(
        `${config.apiUrl}transactions/${editData.id}`,
     
@@ -330,22 +356,20 @@ const Dashboard = ({
         headers: headersWithToken,
         body: JSON.stringify(updatedData), 
       }
-    );
+    ); 
 
     if (!response.ok) {
       console.log("Error updating data in the database.");
-    } else {
-      fetchAccountData();
-      fetchChartData();
- 
-      
-    }
+    }  
   } catch (error) {
     console.log("Error updating data in the database:", error);
   }
+ 
+  fetchAccountData();
 };
 
   const handleSubmit = async (e) => {
+    
     e.preventDefault();
 
     if (editData.id !== null) {
@@ -389,6 +413,7 @@ const Dashboard = ({
         setDataList(updatedDataList);
         updateAccountData(accountId, updatedDataList);
         fetchChartData();
+        fetchAccountData();
        
       } else {
         console.log("Error deleting data from the database.");
@@ -406,6 +431,7 @@ const Dashboard = ({
     setEditData({
       id: null,
       description: "",
+      tag: "",
       amount: "",
       date: "",
     });
@@ -420,8 +446,11 @@ const Dashboard = ({
 
 
   const handleTagChange = (e) => {
-    setEditData({ ...editData, tag: e.target.value });
+    const { value } = e.target;
+    setEditData({ ...editData, tag: value });
   };
+  
+  
 
   const handleAmountChange = (e) => {
     const { value } = e.target;
@@ -431,7 +460,11 @@ const Dashboard = ({
     }
   };
 
-
+  // const handleAmountChange = (e) => {
+  //   const { value } = e.target;
+  //   setEditData({ ...editData, amount: value });
+  // };
+  
 
   const formatDateForInput = (date) => {
     if (!date) {
@@ -479,20 +512,35 @@ const Dashboard = ({
                   onChange={handleDescriptionChange}
                   placeholder="description"
                 />
-       <select value={editData.tag} onChange={handleTagChange}>
-  <option value=""></option>
-  <option value="food">food</option>
-  <option value="transport">transport</option>
-  <option value="health">health</option>
-  <option value="entertainment">entertainment</option> {/* Correct the typo here */}
-  <option value="cloth">cloth</option>
-  <option value="saving">saving</option>
-  <option value="pets">pets</option>
-  <option value="gifts">gifts</option>
-  <option value="hobby">hobby</option>
-  <option value="trips">trips</option>
-  <option value="other">other</option>
-</select>
+  <div>
+
+<input
+  type="text"
+  value={editData.tag}
+  onChange={handleTagChange}
+  placeholder="Enter tag"
+/>
+
+
+{/* <select
+                  value={editData.tag} // Set the value of the select element to the 'editData.tag' state
+                  onChange={handleTagChange}
+                  required
+                >
+                  <option value="">Select a tag</option>
+                  <option value="food">food</option>
+                  <option value="transport">transport</option>
+                  <option value="salary">salary</option> 
+                    <option value="other">other</option>
+                 
+                  <option value="pets">pets</option>
+                 
+                  <option value="trips">trips</option>
+                
+               
+                </select> */}
+
+</div>
 
                 <input
                   type="text"

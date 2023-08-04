@@ -16,10 +16,11 @@ const TransactionRow = ({
   formatDate,
   formatBalance,
   index,
-  handleTagChange,
+  handleTagChange
+
 }) => {
 
-  const isPositiveAmount = data.amount >= 0;
+  const isPositiveAmount = data.balance >= 0;
 
     const isHighlighted = new Date(data.date.substring(0, 10)) < new Date().setHours(0, 0, 0, 0);
 
@@ -40,7 +41,7 @@ const TransactionRow = ({
           </span>
         </td>
      
-
+        <td>{data.tag}</td> 
         <td>{formatBalance(data.amount)}</td>
         <td>{formatDate(data.date)}</td>
         <td

@@ -20,7 +20,7 @@ const TransactionTable = ({
   handleEdit,
   handleDelete,
   openModal,
-  handleTagChange,
+  handleTagChange
   
 }) => {
   const [expandedDescription, setExpandedDescription] = useState(null);
@@ -56,6 +56,9 @@ const TransactionTable = ({
     }
   };
 
+
+  
+
   return (
     <div className={`mainField ${isDarkMode ? "dark" : "light"}`}>
 
@@ -73,11 +76,8 @@ const TransactionTable = ({
         </caption>
         <thead>
           <tr>
-       
             <th>Name</th>
-         
-      
-         
+            <th>Tag</th>
             <th>Amount</th>
             <th>Date</th>
             <th>Balance</th>

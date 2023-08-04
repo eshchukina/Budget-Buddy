@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import ThemeToggle from "./ThemeToggle";
-import { faUserPlus, faLock, faUnlock } from "@fortawesome/free-solid-svg-icons"; 
+import { faUserPlus,  faEye, faEyeSlash, faArrowRightToBracket } from "@fortawesome/free-solid-svg-icons"; 
 import LoginButton from "./LoginButton";
 
 import config from '../config';
@@ -254,6 +254,30 @@ const Header = ({ isDarkMode, toggleTheme, activeAccount, setActiveAccount }) =>
 
 
 
+
+
+
+
+useEffect(() => {
+  const handleOutsideClick = (e) => {
+    if (e.target.classList.contains("modal")) {
+      handleCloseModal();
+      handleCloseLoginModal();
+    }
+  };
+
+  if (isModalOpen || isLoginModalOpen) {
+    document.addEventListener("click", handleOutsideClick);
+  } else {
+    document.removeEventListener("click", handleOutsideClick);
+  }
+
+  return () => {
+    document.removeEventListener("click", handleOutsideClick);
+  };
+}, [isModalOpen, isLoginModalOpen]);
+  
+
   
   return (
     <div className={`header ${isDarkMode ? "dark" : "light"}`}>
@@ -284,7 +308,7 @@ const Header = ({ isDarkMode, toggleTheme, activeAccount, setActiveAccount }) =>
           <div
             className={`modalLog modalContent ${isDarkMode ? "dark" : "light"}`}
           >
-            <h3>Login</h3>
+            <h3  className={`modalText ${isDarkMode ? "dark" : "light"}`}>Login</h3>
             <form onSubmit={handleLogin}>
               <input
                 type="email"
@@ -292,20 +316,23 @@ const Header = ({ isDarkMode, toggleTheme, activeAccount, setActiveAccount }) =>
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
-                <div className="passwordInputContainer">
+             
                 <input
                   type={showPassword ? "text" : "password"} 
                   placeholder="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
-                   <button type="button"   className={`modalButtonLog ${isDarkMode ? "dark" : "light"}`} onClick={handlePasswordVisibility}>
-                  {showPassword ? <FontAwesomeIcon icon={faUnlock}/> : <FontAwesomeIcon icon={faLock} /> }
-                </button>
 
 
-              </div>
 
+                
+                   <div type="button" className="lock" onClick={handlePasswordVisibility}>
+                  {showPassword ? <FontAwesomeIcon icon={faEye} /> : <FontAwesomeIcon icon={faEyeSlash} /> }
+                </div>
+
+
+            
 
 
               <button
@@ -315,13 +342,13 @@ const Header = ({ isDarkMode, toggleTheme, activeAccount, setActiveAccount }) =>
                 Login
               </button>
               <button
-                className={`modalButtonLog ${isDarkMode ? "dark" : "light"}`}
+                className={`buttonCLose modalButtonLog ${isDarkMode ? "dark" : "light"}`}
                 onClick={handleCloseLoginModal}
               >
                 Close
               </button>
            
-              <p className="textModal"> create a new account</p>
+              <p  className={`modalText ${isDarkMode ? "dark" : "light"}`}> create a new account</p>
               <button
                 className={`modalButtonLog ${isDarkMode ? "dark" : "light"}`}
                 onClick={handleOpenModal}
@@ -341,7 +368,7 @@ const Header = ({ isDarkMode, toggleTheme, activeAccount, setActiveAccount }) =>
           <div
             className={`modalLog modalContent ${isDarkMode ? "dark" : "light"}`}
           >
-            <h3>Registration</h3>
+           <h3  className={`modalText ${isDarkMode ? "dark" : "light"}`}>Registration</h3>
             <form onSubmit={handleRegistration}>
               <input
                 type="text"
@@ -362,9 +389,9 @@ const Header = ({ isDarkMode, toggleTheme, activeAccount, setActiveAccount }) =>
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
-                   <button type="button"   className={`modalButtonLog ${isDarkMode ? "dark" : "light"}`} onClick={handlePasswordVisibility}>
-                  {showPassword ? <FontAwesomeIcon icon={faUnlock}/> : <FontAwesomeIcon icon={faLock} /> }
-                </button>
+                   <div type="button" className="lock" onClick={handlePasswordVisibility}>
+                  {showPassword ?<FontAwesomeIcon icon={faEye} /> : <FontAwesomeIcon icon={faEyeSlash} /> }
+                </div>
 
 
               </div>
@@ -375,12 +402,19 @@ const Header = ({ isDarkMode, toggleTheme, activeAccount, setActiveAccount }) =>
                 Register
               </button>
               <button
-                className={`modalButtonLog ${isDarkMode ? "dark" : "light"}`}
+                className={`buttonCLose modalButtonLog ${isDarkMode ? "dark" : "light"}`}
                 onClick={handleCloseModal} 
               >
                 Close
               </button>
-            
+             
+              <p  className={`modalText ${isDarkMode ? "dark" : "light"}`}> enter login</p>
+              <button
+                className={`modalButtonLog ${isDarkMode ? "dark" : "light"}`}
+                onClick={handleOpenLoginModal}
+              >
+               Login   <FontAwesomeIcon icon={faArrowRightToBracket}/>
+              </button>
              
             </form>
           </div>  

@@ -36,6 +36,16 @@ margin: 0;
 
 }
 
+.modalText{
+  text-align: center;
+}
+.modalText.dark{
+  color: #455e63; 
+}
+
+.modalText.light{
+  color: #455e63; 
+}
 
 
 .letter {
@@ -44,7 +54,21 @@ margin: 0;
   cursor: pointer;
  } 
  
-
+ .lock{
+  position: relative;
+  left:150px;
+  bottom: 40px;
+  padding:  5px;
+  width: 40px;
+  border:none;
+  background-color:none;
+  color: #455e63; 
+  
+ }
+.buttonCLose{
+  background-color: #9ddd5e!important;
+ color: #455e63!important;
+}
 .textModal{
   text-align: center;
   margin: 10px 0px 0px 0px;

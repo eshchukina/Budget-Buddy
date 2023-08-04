@@ -8,8 +8,8 @@ const Converter = ({ isDarkMode }) => {
   const [amount2, setAmount2] = useState("");
   const [conversionRates, setConversionRates] = useState({});
 
-  const [sourceCurrency, setSourceCurrency] = useState("EUR");
-  const [targetCurrency, setTargetCurrency] = useState("EUR");
+  const [sourceCurrency, setSourceCurrency] = useState("GBP");
+  const [targetCurrency, setTargetCurrency] = useState("GEL");
   const currencies = ["EUR", "GBP", "GEL", "TRY", "RUB"];
 
   const inputRef1 = useRef(null);

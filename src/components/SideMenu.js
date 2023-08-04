@@ -245,6 +245,26 @@ const SideMenu = ({
   };
 
 
+  
+  useEffect(() => {
+  const handleOutsideClick = (e) => {
+    if (e.target.classList.contains("modal")) {
+      closeModal();
+    }
+  };
+
+    if (isModalOpen) {
+      document.addEventListener("click", handleOutsideClick);
+    } else {
+      document.removeEventListener("click", handleOutsideClick);
+    }
+  
+
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+    };
+  }, [isModalOpen]);
+  
    
 
   return (
@@ -261,7 +281,7 @@ const SideMenu = ({
             Create new account
           </button>   <div className={`neonText ${isDarkMode ? "dark" : "light"}`}>
             online
-           {/* fsdfsdfdsf <FontAwesomeIcon  icon={faCoins} /> */}
+       
  </div>
           
           </>
