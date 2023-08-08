@@ -23,7 +23,7 @@ const ApexChart = ({ account, isDarkMode, chartData }) => {
               },
 
               responsive: [{
-                breakpoint: 390,
+                breakpoint: 490,
                 options: {
                   chart: {
                     width: 340
