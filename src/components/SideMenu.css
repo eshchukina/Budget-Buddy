@@ -405,14 +405,21 @@ font-size: 18px;
      }
 }
 
+.majorButtonSmall{
+  display: none;
+}
+
+
+
 
 @media (max-width:600px) {
 
   .majorButton {
     font-size: 20px;
     padding: 10px;
-    left:150px;
+    left:130px;
     bottom:10px;
+  border-radius:20px;
    
   }
   .currency {
@@ -460,7 +467,7 @@ font-size: 18px;
     width: 100%;
     left: 0;
     top: 50px;
-    height : 200px;
+    height : 350px;
     margin: 0;  
     background-color: #EDF4F6;
   }
@@ -514,6 +521,16 @@ font-size: 18px;
 }
 
 
+.majorButtonSmall{
+  display: block;
+}
+
+.majorButtonBig{
+  display: none;
+
+}
+
+
 }
 
 
@@ -550,50 +567,14 @@ font-size: 18px;
   }
 
 
-  @media (max-width:390px) {
-}
-
-.majorButton {
-  font-size: 18px;
-  padding: 10px;
-  left:100px;
-  top:60px;
-  width: 90px;
- margin: 0;
- 
-}
-
-.neonText{
-   display: none;
-  }
-  .accountButtons {
+  .majorButton {
+    font-size: 20px;
+    padding: 10px;
+    left:100px;
+    bottom:10px;
+  border-radius:20px;
    
-    display: flex;
-    flex-direction:row;
-    flex-wrap:wrap; 
-    flex-basis: 250px;
-    margin: 1px;
-    font-size: 18px;
-    text-align: center;
-    margin: 10px;
-   
-  }
-
-  .accountButtonContainer {
-    position: relative;
-  top:20px;
-
-   
-
-  }
-
-  .sidebar{
-   
-
-    top: 0px;
-    height : 360px;
-    margin: 0;  
-    background-color: #EDF4F6;
   }
 
 }
+

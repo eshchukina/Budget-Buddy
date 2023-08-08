@@ -25,14 +25,17 @@ const Footer = ({ isDarkMode }) => {
   };
 
   const handleLogout = () => {
-  
     localStorage.removeItem("accessToken");
-    localStorage.removeItem("refreshToken");
+    localStorage.removeItem("refreshToken");   
+
+    localStorage.removeItem("userEmail");
+     localStorage.removeItem("userName");
+
     localStorage.removeItem("expiresIn");
-  
- 
+
     window.location.reload();
   };
+
   const handleContactUs = () => {
     const emailSubject = "Contact Us Inquiry"; 
     const emailAddress = "frankkat377@gmail.com";

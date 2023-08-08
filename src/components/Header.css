@@ -95,6 +95,38 @@ margin: 0;
   
 }
 
+
+.loginMessage {
+  font-size: 240px;
+  font-weight: bold;
+  color: green;
+
+}
+
+
+.buttonCabinet{
+
+  position: absolute;
+  left: 2000px;
+
+
+}
+
+.buttonCab{
+  transition: 0.5s;
+border:none;
+color: #5ec7dd;
+font-size: 24px;
+background-color:#edf4f6;
+
+}
+
+.buttonCab.dark{
+
+
+  background-color:#0e272e;
+  
+  }
 .buttonTheme.light {
 
   background-color:#edf4f6;
@@ -154,12 +186,13 @@ margin: 0;
     position: relative;
     right:300px;
     top:5px;
+   
   }
   .searchInput{
     font-size: 18px;
     position: relative;
     left:10px;
-
+    transition: 0.5s;
     padding: 10px 30px;
     margin: 25px 0 20px 0;
     background-color: #fff;
@@ -235,35 +268,9 @@ margin: 0;
     
   }
 
-  .burger {
-    display: none;
-    z-index: 1;
-  }
+ 
+  
 
-  .menu {
-    display: flex;
-    position: absolute;
-    border: 2px solid #a4781b;
-    border-radius: 10px;
-    flex-grow: 1;
-    justify-content: stretch;
-    flex-direction: column;
-    align-items: center;
-    background-color: #fff;
-    padding: 10px;
-    margin-top: 100px;
-    z-index: 0;
-      color: #455E63; 
-  }
-  
-  .menu button {
-    margin-bottom: 10px;
-  
-  }
-  
-  .menu.dark{
-    background-color: #9fa0a1;
-  }
 
   
   @media (max-width: 3500px) {
@@ -283,6 +290,36 @@ margin: 0;
      
     
     }
+
+
+    .buttonCabinet{
+
+ 
+      left: 1600px;
+    
+    
+    }
+  }
+
+    @media (max-width: 1900px) {
+     
+  
+  
+      .buttonCabinet{
+  
+   
+        left: 1200px;
+      
+      
+      }
+      
+  
+
+
+
+
+
+
     }
   
   @media (max-width: 1850px) {
@@ -292,6 +329,33 @@ margin: 0;
     
   
   }
+
+  
+.loginMessage {
+  font-size: 240px;
+  font-weight: bold;
+  color: green;
+
+}
+
+
+
+
+.buttonCab{
+  transition: 0.5s;
+border:none;
+color: #5ec7dd;
+font-size: 24px;
+background-color:#edf4f6;
+
+}
+
+
+
+
+
+
+
   }
 
   @media (max-width: 1650px) {
@@ -350,7 +414,15 @@ margin: 0;
     left: 1170px;
   }
  
- 
+  .buttonCabinet{
+  
+   
+    left:550px;
+  
+  
+  }
+  
+
 
 }
 
@@ -371,7 +443,14 @@ margin: 0;
   .buttonTheme.dark {
     left: 970px;
   }
-
+  .buttonCabinet{
+  
+   
+    left:250px;
+  
+  
+  }
+  
 
 }
 
@@ -493,31 +572,23 @@ width: 120px;
     left: 630px;
   }
 
-  /* .burger {
-    left: 530px;
-  }
 
-  .menu {
-    left: 520px;
-  } */
 
 }
 
-/* 
-@media (max-width: 680px) {
-
-  .burger {
-    left: 520px;
-  }
-
-  .menu {
-    left: 510px;
-  }
-
-} */
 
 
 @media (max-width: 650px) {
+
+  .buttonCabinet{
+  
+   
+    left:200px;
+  
+  
+  }
+
+  .neonText{ display: none;}
 
   .logIn {
     left: 550px;
@@ -540,12 +611,7 @@ width: 120px;
   
   }  
   
-  .logIn.dark{
-    background-color: #1B414C;
-   
-   
 
-  }
 
   .buttonTheme.dark {
 
@@ -553,16 +619,7 @@ width: 120px;
     background-color: #1B414C;
   }
 
-  /* .burger {
-    font-size: 35px;
-    left: 450px;
-  }
 
-  .menu {
-    padding: 20px;
-    left: 440px;
-   
-  } */
 
   .header {
   font-size: 14px;
@@ -771,6 +828,9 @@ font-size: 20px;
   }
 }
 
+
+
+
 @media (max-width:390px) {
 
   .header {
@@ -815,7 +875,7 @@ margin: 25px 0 20px 0;
 
   margin: 0px;
   left:0px;
-  top:60px;
+  top:80px;
 
 
   padding: 10px;
@@ -884,8 +944,6 @@ margin: 25px 0 20px 0;
   
 }
 
-.loginMessage {
-  font-size: 240px;
-  font-weight: bold;
-  color: green;
-}
+
+
+

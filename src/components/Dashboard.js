@@ -3,7 +3,6 @@ import TransactionTable from "./TransactionTable";
  import ApexChart from './ApexChart'; 
  import Converter from "./Converter";
 import config from '../config';
-
 import "./Style.css";
 import "./Dashboard.css";
 
@@ -27,6 +26,13 @@ const Dashboard = ({
   const [dataList, setDataList] = useState([]);
   const [currentBalance, setCurrentBalance] = useState(account.currentBalance);
   const [futureBalance, setFutureBalance] = useState(account.futureBalance);
+
+
+
+
+
+
+
 
 
   const [chartData, setChartData] = useState({
@@ -111,7 +117,6 @@ const Dashboard = ({
         }
         const data = await response.json();
         setDataList(data);
-        console.log(data);
     
         const currentBalance = data.reduce(
           (total, item) => total + item.amount,
@@ -125,12 +130,13 @@ const Dashboard = ({
         console.log("Error fetching account data:", error);
       }
     };
-
+   
     fetchAccountData();
  
   
    
   }, [account]);
+
 
 
 
@@ -144,75 +150,89 @@ const Dashboard = ({
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         };
-  
+    
         const response = await fetch(`${config.apiUrl}accounts/${account.id}/statistics`, {
           headers: headersWithToken,
         });
-  
+    
         if (!response.ok) {
           throw new Error("Failed to fetch account statistics");
         }
-  
+    
         const data = await response.json();
-
-        const chartLabels = Object.keys(data);
-        const seriesData = Object.values(data).map((value) => parseFloat(value));
+    
+        const sortedData = Object.entries(data).sort((a, b) => parseFloat(b[1]) - parseFloat(a[1]));
+    
+        const chartLabels = sortedData.slice(0, 5).map(([label]) => label);
+        const seriesData = sortedData.slice(0, 5).map(([, value]) => parseFloat(value));
+    
+        const chartColors = ['#E96E94', '#5EC7DD', '#ffcd38', '#9ddd5e', '#9dafb4'];
+    
         setChartData((prevState) => ({
           ...prevState,
           series: seriesData,
           options: {
             ...prevState.options,
             labels: chartLabels,
+            colors: chartColors,
           },
         }));
       } catch (error) {
         console.log("Error fetching account statistics:", error.message);
       }
     };
+    
 
     fetchChartData();
-  
-   
   }, [account]);
 
 
 
 
 
-    const fetchChartData = async () => {
-      try {
-        const token = localStorage.getItem("accessToken");
-        const headersWithToken = {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        };
+
+  const fetchChartData = async () => {
+    try {
+      const token = localStorage.getItem("accessToken");
+      const headersWithToken = {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      };
   
-        const response = await fetch(`${config.apiUrl}accounts/${account.id}/statistics`, {
-          headers: headersWithToken,
-        });
+      const response = await fetch(`${config.apiUrl}accounts/${account.id}/statistics`, {
+        headers: headersWithToken,
+      });
   
-        if (!response.ok) {
-          throw new Error("Failed to fetch account statistics");
-        }
-  
-        const data = await response.json();
-        console.log(data);
-        const chartLabels = Object.keys(data);
-        const seriesData = Object.values(data).map((value) => parseFloat(value));
-        setChartData((prevState) => ({
-          ...prevState,
-          series: seriesData,
-          options: {
-            ...prevState.options,
-            labels: chartLabels,
-          },
-          
-        }));
-        
-      } catch (error) {
-        console.log("Error fetching account statistics:", error.message);
+      if (!response.ok) {
+        throw new Error("Failed to fetch account statistics");
       }
-    };
+  
+      const data = await response.json();
+  
+      // Sort the data by value in descending order
+      const sortedData = Object.entries(data).sort((a, b) => parseFloat(b[1]) - parseFloat(a[1]));
+  
+      // Take the first five elements to display in the chart
+      const chartLabels = sortedData.slice(0, 5).map(([label]) => label);
+      const seriesData = sortedData.slice(0, 5).map(([, value]) => parseFloat(value));
+  
+      // Map category colors to chart colors
+      const chartColors = ['#E96E94', '#5EC7DD', '#ffcd38', '#9ddd5e', '#9dafb4'];
+  
+      setChartData((prevState) => ({
+        ...prevState,
+        series: seriesData,
+        options: {
+          ...prevState.options,
+          labels: chartLabels,
+          colors: chartColors,
+        },
+      }));
+    } catch (error) {
+      console.log("Error fetching account statistics:", error.message);
+    }
+  };
+  
   
   
 
@@ -259,7 +279,6 @@ const Dashboard = ({
       setCurrentBalance(currentBalance);
       setFutureBalance(currentBalance);
       fetchChartData();
-      console.log(data);
     
     
     
@@ -454,17 +473,21 @@ const Dashboard = ({
 
   const handleAmountChange = (e) => {
     const { value } = e.target;
-    const floatValue = parseFloat(value);
-    if (!isNaN(floatValue)) {
-      setEditData({ ...editData, amount: floatValue });
-    }
-  };
-
-  // const handleAmountChange = (e) => {
-  //   const { value } = e.target;
-  //   setEditData({ ...editData, amount: value });
-  // };
+    let sanitizedValue = value.replace(/[^0-9.-]/g, ""); // Remove non-numeric characters except minus sign
+    let floatValue;
   
+    // Ensure there is only one minus sign at the beginning
+    if (sanitizedValue.indexOf("-") === 0) {
+      sanitizedValue = sanitizedValue.replace(/-/g, "");
+      floatValue = sanitizedValue ? -parseFloat(sanitizedValue) : "";
+    } else {
+      floatValue = sanitizedValue ? parseFloat(sanitizedValue) : "";
+    }
+  
+    setEditData({ ...editData, amount: floatValue });
+  };
+  
+
 
   const formatDateForInput = (date) => {
     if (!date) {
@@ -512,38 +535,38 @@ const Dashboard = ({
                   onChange={handleDescriptionChange}
                   placeholder="description"
                 />
-  <div>
 
-<input
-  type="text"
+
+
+
+<select
   value={editData.tag}
   onChange={handleTagChange}
-  placeholder="Enter tag"
-/>
+  required
+  className="tagSelect"
+>
+  <option value="other" className="tagOther">Select a tag</option>
+  <option value="food" className="tagFood">food</option>
+  <option value="transport" className="tagTransport">transport</option>
+  <option value="salary" className="tagSalary">salary</option>
+  <option value="health" className="tagHealth">health</option>
+  <option value="pets" className="tagPets">pets</option>
+  <option value="gifts" className="tagGifts">gifts</option>
+  <option value="hobby" className="tagHobby">hobby</option>
+  <option value="entertainment" className="tagEntertainment">entertainment</option>
+  <option value="cloth" className="tagCloth">cloth</option>
+  <option value="savings" className="tagSavings">savings</option>
+  <option value="trips" className="tagTrips">trips</option>
+  <option value="credit" className="tagCredit">credit</option>
+  <option value="other" className="tagOther">other</option>
+</select>
 
 
-{/* <select
-                  value={editData.tag} // Set the value of the select element to the 'editData.tag' state
-                  onChange={handleTagChange}
-                  required
-                >
-                  <option value="">Select a tag</option>
-                  <option value="food">food</option>
-                  <option value="transport">transport</option>
-                  <option value="salary">salary</option> 
-                    <option value="other">other</option>
-                 
-                  <option value="pets">pets</option>
-                 
-                  <option value="trips">trips</option>
-                
-               
-                </select> */}
 
-</div>
 
                 <input
-                  type="text"
+                  type="number"
+                  inputMode="decimal"
                   value={editData.amount}
                   onChange={handleAmountChange}
                   placeholder="amount"
@@ -578,8 +601,13 @@ const Dashboard = ({
             </div>
           </div>
         )}
-<div className="container">
-<div>
+      
+      <div className="flex-container">
+<div className="firstt">
+
+
+
+
    <TransactionTable
           account={account}
           dataList={dataList}
@@ -593,19 +621,22 @@ const Dashboard = ({
           openModal={openModal}
           formatBalance={formatBalance}
           handleTagChange={handleTagChange} 
-        /></div>
-
-        {!dataList || (dataList.length === 0 && <p>No submitted data</p>)}
+        />
+        {!dataList || (dataList.length === 0 && <p>No submitted data</p>)}</div>
      
-        <div><ApexChart account={account}
+      <div className="secondt"> <ApexChart account={account}
        isDarkMode={isDarkMode} 
        chartData={chartData} 
-        fetchChartData={fetchChartData} 
-       /></div>
-       
-      <Converter isDarkMode={isDarkMode}/>  
+        fetchChartData={fetchChartData}  
+       />  <Converter isDarkMode={isDarkMode}/>
+   
+</div>
 
-    </div></div></div>
+</div>
+     </div>  
+  
+
+     </div>  
   );
 };
 

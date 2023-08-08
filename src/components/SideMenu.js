@@ -227,7 +227,11 @@ const SideMenu = ({
 
   const handleLogout = () => {
     localStorage.removeItem("accessToken");
-    localStorage.removeItem("refreshToken");
+    localStorage.removeItem("refreshToken");   
+
+    localStorage.removeItem("userEmail");
+     localStorage.removeItem("userName");
+
     localStorage.removeItem("expiresIn");
 
     window.location.reload();
@@ -278,7 +282,8 @@ const SideMenu = ({
             className={`majorButton ${isDarkMode ? "dark" : "light"}`}
             onClick={openModal}
           >
-            Create new account
+           <span className="majorButtonBig"> Create new account</span>
+           <span className="majorButtonSmall">+ account</span>
           </button>   <div className={`neonText ${isDarkMode ? "dark" : "light"}`}>
             online
        

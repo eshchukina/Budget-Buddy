@@ -1,8 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 
 import config from '../config';
-
+import "./Dashboard.css"
 import "./Converter.css";
+import "./Style.css";
+
+
+
 const Converter = ({ isDarkMode }) => {
   const [amount1, setAmount1] = useState("");
   const [amount2, setAmount2] = useState("");
@@ -10,7 +14,7 @@ const Converter = ({ isDarkMode }) => {
 
   const [sourceCurrency, setSourceCurrency] = useState("GBP");
   const [targetCurrency, setTargetCurrency] = useState("GEL");
-  const currencies = ["EUR", "GBP", "GEL", "TRY", "RUB"];
+  const currencies = ["EUR", "GBP", "GEL", "TRY", "RUB", "USD"];
 
   const inputRef1 = useRef(null);
   const inputRef2 = useRef(null);
@@ -34,8 +38,8 @@ const Converter = ({ isDarkMode }) => {
 
       const data = await response.json();
       const newConversionRates = data.quotes;
-      console.log(newConversionRates);
-
+  
+      // Use the directly received conversion rates (already in terms of USD)
       if (Object.values(newConversionRates).some(rate => rate !== 0)) {
         localStorage.setItem("conversionRates", JSON.stringify(newConversionRates));
         localStorage.setItem("lastUpdateTimestamp", Date.now());
@@ -95,12 +99,15 @@ const Converter = ({ isDarkMode }) => {
   const convertCurrency = (amount, fromCurrency, toCurrency) => {
     const sourceRate = conversionRates[`USD${fromCurrency}`];
     const targetRate = conversionRates[`USD${toCurrency}`];
+  
     if (sourceRate && targetRate) {
       const convertedAmount = (amount / sourceRate) * targetRate;
       return convertedAmount.toFixed(2);
     }
     return "";
   };
+  
+  
 
   const handleSourceCurrencyChange = (e) => {
     const { value } = e.target;
@@ -127,7 +134,7 @@ const Converter = ({ isDarkMode }) => {
   return (
     <div className={`mainField ${isDarkMode ? "dark" : "light"}`}>
 
-    <div className={`converter ${isDarkMode ? "dark" : "light"}`}>
+    <div className={`secondt converter ${isDarkMode ? "dark" : "light"}`}>
       <h3 className="headerCurrency">converter</h3>
       <>
         <div className="input-container">
@@ -175,7 +182,7 @@ const Converter = ({ isDarkMode }) => {
             ))}
           </select>
         </div>
-      
+      <br/>
         
         <button className="modalBtn cross" onClick={handleCloseConverterForm}>
           clear

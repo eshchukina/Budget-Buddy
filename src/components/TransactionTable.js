@@ -5,6 +5,8 @@ import { faArrowTurnDown } from "@fortawesome/free-solid-svg-icons";
 
 import TransactionRow from "./TransactionRow";
 
+
+
 import "./Style.css";
 import "./Dashboard.css";
 
@@ -57,13 +59,15 @@ const TransactionTable = ({
   };
 
 
-  
+
 
   return (
     <div className={`mainField ${isDarkMode ? "dark" : "light"}`}>
 
+<div className=" table-container">
 
-<div className="scroll-table">
+<div className="firstt">
+  
       <table
         key={account.id}
         className={`accountContent ${isDarkMode ? "dark" : "light"}`}
@@ -74,10 +78,14 @@ const TransactionTable = ({
             : account.name}
           ({account.currency})
         </caption>
+
+
         <thead>
           <tr>
+          <th></th>
+       
             <th>Name</th>
-            <th>Tag</th>
+           
             <th>Amount</th>
             <th>Date</th>
             <th>Balance</th>
@@ -86,6 +94,7 @@ const TransactionTable = ({
         </thead>
         {dataList && dataList.length > 0 ? (
           <tbody>
+            
           {dataList.map((data, index) => (
   <TransactionRow
     key={data.id}
@@ -134,8 +143,8 @@ const TransactionTable = ({
           </tr>
         </tfoot>
       </table>{" "}
+    </div> 
     </div> </div>
-  
   );
 };
 

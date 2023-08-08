@@ -1,19 +1,20 @@
 
 
-.mainField {
+/* .mainField {
   display: flex;
   flex-wrap: wrap;
   box-sizing: border-box;
 
-}
+} */
 .converter {
-  top: 500px;
+
   transition: 0.5s;
 
-  position: absolute;
+
   width: 350px;
-  left: 1400px;
-  margin: 0 auto; 
+
+
+
 
   padding: 10px;
   color: #9dafb4;
@@ -157,268 +158,44 @@
 
 }
 
+@media (max-width: 1350px) {
 
- @media (max-width: 3050px) {
 
+  
   .converter {
-        left: 1300px;
+
+
+
+
+
+
+position: relative;
+left: 400px;
+bottom: 290px;
+
+}
   
-   
+  
   }
   
-  }
+  @media (max-width: 1000px) {
 
-  @media (max-width: 2900px) {
 
+  
     .converter {
-    
-      left: 1200px;
   
-     
-    }
-    
-    }
-
-
-    @media (max-width: 2700px) {
-
-
-      .converter {
-        left: 1100px;
-    
-      
-      }
-      
-      }
-     
-
-      
-      @media (max-width: 2500px) {
-
-        .converter {
-       
-       
-         left:950px;
-         
-        
-        }
-        
-        }
-    
-
-
-       
-
-
-
-
-          @media (max-width: 1950px) {
-
-            .converter {
-              left:900px;
-           
-            
-             
-            
-            }
-            
-            }
-
-
-
-       /*
-
-
-@media (max-width: 1666px) {
-
-  .converter {
-    right: 300px;
-   
-  }
+  
+  
+  
+  
+  
+  position: relative;
+  left:0px;
+  bottom: 0px;
   
   }
-  @media (max-width: 1540px) {
-
-    .converter {
-      right: 200px;
-     
-    }
+    
     
     }
-    @media (max-width: 1390px) {
-
-      .converter {
-     
-        right: 100px;
+   
       
-       
-      
-      }}
-
-
-          
-    @media (max-width: 1300px) {
-
-      .converter {
-     
-   
-        right: 50px;
-      
-       
-      
-      }}
-
-
-
-@media (max-width: 1250px) {
-
-  .converter {
-    right: 20px;
-    padding: 8px;
-
-  }
-  
-}
-@media (max-width: 1145px) {
-
-  .converter {
-
-
-            
-      right:100px;
-      top:600px;
-   
-     
-    
-    
-   
-  }
-  
-  }
-
-
-
-  @media (max-width: 1080px) {
-
-    .converter {
-   
-      right: 5px;
-     
-  
-   
-    }
-    
-  }
-
-  @media (max-width: 960px) {
-
-    .converter {
-      top:950px;
- 
-      right:200px;
-     
-  
-   
-    }
-
-
-        
-    
-  }
-
-
-@media (max-width: 815px) {
-
-  .converter {
-  
-
-    right: 100px;
-    padding: 5px;
- 
-  }
-
-}
-
-
-@media (max-width: 750px) {
-
-  .converter {
-  
-
-    right: 100px;
-    padding: 5px;
- 
-  }
-
-}
-
-@media (max-width: 650px) {
-
-  .converter {
-  
-    right: 80px;
- 
- 
- 
-  }
-
-}
-
-@media (max-width: 600px) {
-
-  .converter {
-  
- 
- 
-    position: relative;
-    top:-1210px;
-    right: 50px;
-    margin: 50px 20% 0 20%;
- 
-  }
-
-}
-
-@media (max-width: 550px) {
-
-  .converter {
-  
- 
- width: 70%;
-    position: relative;
-    top:-1210px;
-    right: 50px;
-  
- 
-  }
-
-}
-
-@media (max-width: 450px) {
-
-  .converter {
-  
-    top:-1010px;
- width: 80%;
-  
- margin: 50px 10% ;
- 
-  }
-
-}
-
-
-
-@media (max-width: 390px) {
-
-  .converter {
-    top:-800px;
- 
-    margin: 200px 0 0  25px;
-    width: 90%;
-
- 
- 
-  }
-
-} */

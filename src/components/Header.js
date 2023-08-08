@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 import ThemeToggle from "./ThemeToggle";
 import { faUserPlus,  faEye, faEyeSlash, faArrowRightToBracket } from "@fortawesome/free-solid-svg-icons"; 
@@ -8,7 +9,9 @@ import LoginButton from "./LoginButton";
 import config from '../config';
 import "./Style.css";
 import "./Header.css";
+import "./PersonalCabinet";
 import SearchPage from "./SearchPage";
+import PersonalCabinet from './PersonalCabinet';
 
 const Header = ({ isDarkMode, toggleTheme, activeAccount, setActiveAccount }) => {
 
@@ -19,8 +22,22 @@ const Header = ({ isDarkMode, toggleTheme, activeAccount, setActiveAccount }) =>
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const [isCabinetOpen, setIsCabinetOpen] = useState(false);
+
 
   const [showPassword, setShowPassword] = useState(false); 
+
+  const [userName, setUserName] = useState(localStorage.getItem('userName') || '');
+  const [userEmail, setUserEmail] = useState(localStorage.getItem('userEmail') || '');
+  
+
+
+
+  const toggleCabinet = () => {
+    setIsCabinetOpen(!isCabinetOpen);
+  };
+
+
 
 
 
@@ -135,24 +152,37 @@ const Header = ({ isDarkMode, toggleTheme, activeAccount, setActiveAccount }) =>
       if (response.ok) {
         const data = await response.json();
         if (data && data.accessToken) {
-          const { accessToken, refreshToken, expires_in } = data;
-         
+          const { name, email, accessToken, refreshToken, expires_in } = data;
+       
+
+          setUserName(name);
+          setUserEmail(email);
+      
+        
+          localStorage.setItem('userName', name);
+          localStorage.setItem('userEmail', email);
+
+
           localStorage.setItem("accessToken", accessToken);
           localStorage.setItem("refreshToken", refreshToken);
           localStorage.setItem("expiresIn", expires_in.toString());
         
-          localStorage.setItem("lastVisitedAccount", activeAccount.id);
+          // localStorage.setItem("lastVisitedAccount", activeAccount.id);
+          if (activeAccount && activeAccount.id) {
+            localStorage.setItem("lastVisitedAccount", activeAccount.id);
+          }
+          
 
          
           console.log("Login successful");
        
-        
-
+       
+          
           setEmail("");
           setPassword("");
           setIsModalOpen(false);
 
-   
+          console.log(data);
           
 
           const s = localStorage.getItem("expiresIn");
@@ -162,7 +192,7 @@ const Header = ({ isDarkMode, toggleTheme, activeAccount, setActiveAccount }) =>
           const dateObj = new Date(expires_in1* 1000);
           const formattedDate = dateObj.toLocaleString();
           console.log(formattedDate);
-
+         
 
         } else {
           console.log("Access token is missing in the server response");
@@ -175,7 +205,8 @@ const Header = ({ isDarkMode, toggleTheme, activeAccount, setActiveAccount }) =>
     }
     handleCloseLoginModal();
     window.location.reload();
-    
+
+
 
   };
 
@@ -202,6 +233,8 @@ const Header = ({ isDarkMode, toggleTheme, activeAccount, setActiveAccount }) =>
               localStorage.setItem("accessToken", accessToken);
               localStorage.setItem("refreshToken", refreshToken);
               localStorage.setItem("expiresIn", expires_in.toString());
+              window.location.reload();
+
 
             } else {
               console.log("Access token is missing in the token refresh response");
@@ -219,6 +252,13 @@ const Header = ({ isDarkMode, toggleTheme, activeAccount, setActiveAccount }) =>
   useEffect(() => {
     const storedAccessToken = localStorage.getItem("accessToken");
     const expiresIn = localStorage.getItem("expiresIn");
+    const savedUserName = localStorage.getItem('userName');
+    const savedUserEmail = localStorage.getItem('userEmail');
+    if (savedUserName && savedUserEmail) {
+      setUserName(savedUserName);
+      setUserEmail(savedUserEmail);
+    }
+  
  
     if (!storedAccessToken || !expiresIn) {
       refreshTokenFunc();
@@ -421,8 +461,22 @@ useEffect(() => {
 
         </div>
       )}
-
-
+ {userName && userEmail && (
+        <div className="buttonCabinet">
+          {isCabinetOpen ? (
+            <PersonalCabinet
+              name={userName}
+              email={userEmail}
+              isDarkMode={isDarkMode}
+              onClose={toggleCabinet}
+            />
+          ) : (
+            <button className={`buttonCab ${isDarkMode ? "dark" : "light"}`} onClick={toggleCabinet}>
+              <FontAwesomeIcon icon={faUser} /> 
+            </button>
+          )}
+        </div>
+      )}
     </div>
   );
 };
