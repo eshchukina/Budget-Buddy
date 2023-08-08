@@ -21,6 +21,20 @@ const ApexChart = ({ account, isDarkMode, chartData }) => {
                 width: 400,
                 type: "donut",
               },
+
+              responsive: [{
+                breakpoint: 390,
+                options: {
+                  chart: {
+                    width: 340
+                  },
+                
+                }
+              }],
+
+
+
+              
               labels: ["Category 1", "Category 2", "Category 3"],
               
               legend: {
@@ -48,7 +62,7 @@ const ApexChart = ({ account, isDarkMode, chartData }) => {
               legend: {
                 position: "bottom",
               },
-            }}
+            }}  
             series={chartData.series}
             type="donut"
             width={345}
