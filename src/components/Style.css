@@ -466,9 +466,16 @@ top:150px;
 
  
     .flex-container{
+
+      display: flex;
     
-   
-      margin: 0;
+    position: relative;
+    
+    
+       justify-content:center;
+      align-content:flex-start;
+      align-items: flex-start;
+      margin: 0 0 20px 0;
     }
     
     
@@ -481,7 +488,7 @@ top:150px;
       }
     .secondt {
       
-  
+
       margin: 0; 
    
     
@@ -489,9 +496,35 @@ top:150px;
     
     
     }
+
+
+    body {
+    
+        overflow-y:scroll;
+      
+      }
+    
+    
+     html {
+    
+        overflow-y:scroll;
+      
+      }
+    
+/* 
+     .flex-container {
+    
+        overflow-y:scroll;
+      
+      } */
+    
+
+
+
     .mainField {
     position: relative;
     top:200px;
+    overflow-y:scroll;
     
     
     }
@@ -499,3 +532,42 @@ top:150px;
         
       }  
     
+
+
+
+      @media (max-width: 390px) {
+.flex-container{
+
+  display: flex;
+
+position: relative;
+
+
+   justify-content: flex-start;
+  align-content:center;
+  align-items: flex-start;
+  margin: 0;
+}
+
+
+.firstt {
+
+  margin: 0; 
+align-items:center;
+
+  order: 0;
+  flex: 1 1 auto;
+ 
+
+  }
+.secondt {
+  
+  padding: 10px;
+  margin: 0; 
+  order: 0;
+  flex: 1 1 auto;
+
+ 
+
+
+}}

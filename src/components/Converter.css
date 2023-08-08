@@ -198,4 +198,20 @@ bottom: 290px;
     
     }
    
-      
+ 
+
+    @media (max-width: 390px) {
+
+      .converter {
+    
+        margin-bottom: 60px;
+        width:340px;
+        
+        
+        }
+        
+    
+    
+    }
+    
+     
