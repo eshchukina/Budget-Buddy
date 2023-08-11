@@ -217,10 +217,11 @@ bottom: 290px;
 
       .converter {
     
-     
+      
+        bottom: 60px;
         width:340px;
-        margin: 20px 0 0 0;
-       
+        margin: 10px 0 0 0;
+   
         
         }
         

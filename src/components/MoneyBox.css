@@ -290,3 +290,32 @@
            
               
             }
+
+
+            @media (max-width: 400px) {
+
+ 
+  
+              .moneyBox {
+            
+         position: relative;
+         top: 130px;
+              transition: 0.5s;
+              padding: 10px;
+          
+              background-color: #1b414c;
+              border-radius: 20px;
+              width: 340px;
+              left:20px;
+          
+     
+          
+            
+            
+                
+             
+               }
+              
+             
+                
+              }

@@ -367,7 +367,7 @@ padding-left: 4px;
       margin: 30px 0 0 0;
       overflow: hidden;
     
-      width: 380px;
+      width: 370px;
   
     
     }
@@ -376,7 +376,7 @@ padding-left: 4px;
 
     #SvgjsSvg1327{
 
-      width: 250px;
+      width: 0px;
 
       margin: 0;
     }
@@ -384,7 +384,8 @@ padding-left: 4px;
 
     .labelG{
   
-      right: 500px;
+      right: 550px;
+      padding-bottom: 10px;
     
     
     
