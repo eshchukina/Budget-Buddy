@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShareNodes } from "@fortawesome/free-solid-svg-icons";
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 
 import AccountButton from "./AccountButton";
 
@@ -385,7 +385,7 @@ const SideMenu = ({
   </div>
               
           <div className="item" onClick={handleLogout}>
-          <FontAwesomeIcon icon={faArrowRight} />  <span className="textItem">log out</span>
+          <FontAwesomeIcon icon={faArrowRightFromBracket} />  <span className="textItem">log out</span>
         </div>
      
         </div>

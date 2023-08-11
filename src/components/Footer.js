@@ -2,7 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShareNodes } from "@fortawesome/free-solid-svg-icons";
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 
 
 import "./Style.css";
@@ -59,15 +59,15 @@ const Footer = ({ isDarkMode }) => {
      
     
           <div className="item" onClick={handleShare}>
-            <FontAwesomeIcon icon={faShareNodes} /> <span className="textItem">share</span>
+            <FontAwesomeIcon icon={faShareNodes} /> <span className="textItem"></span>
           </div>
 
           <div className="item" onClick={handleContactUs}>
-    <FontAwesomeIcon icon={faEnvelope} /> <span className="textItem">connect with us</span>
+    <FontAwesomeIcon icon={faEnvelope} /> <span className="textItem"></span>
   </div>
               
           <div className="item" onClick={handleLogout}>
-          <FontAwesomeIcon icon={faArrowRight} />  <span className="textItem">log out</span>
+          <FontAwesomeIcon icon={faArrowRightFromBracket} />  <span className="textItem"></span>
         </div>
      
 

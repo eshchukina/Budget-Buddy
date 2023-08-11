@@ -10,7 +10,7 @@
     justify-content: center;
     box-shadow: 0cm 0 4px #2d313a;
     transition: 0.5s;
-    background-size: 200% auto;
+
     background-color:#6a707c;
   
   
@@ -25,11 +25,15 @@
    .footer{ display: flex;}
 
 }
+.textItem{
+  font-size: 12px;
+  padding: 7px 0 0 5px;
 
+}
 .shareFooter{
     display: flex;
     color:white;
-    font-size: 20px;
+    font-size: 10px;
 
    }
 
