@@ -1,0 +1,292 @@
+
+
+.moneyBox {
+    transition: 0.5s;
+    padding: 10px;
+
+    background-color: #1b414c;
+    border-radius: 20px;
+    width: 350px;
+
+
+    color:#fff;
+    font-size: 25px;
+
+  }
+  
+  .moneyBox.light{
+    color:#9dafb4;
+    background-color: #fff;
+
+  }
+
+  .progressContainer {
+    height: 20px;
+    background-color: #edf4f6;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 10px;
+  }
+
+  .logoMoneyBox{
+    color:#ffcd38;
+    padding-left:10px ;
+    font-size: 30px;
+  }
+  
+  .progressBar {
+    height: 100%;
+    background-color: #9ddd5e;
+  }
+  
+  .infoMoneyBox {
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    color: #fff;
+  }
+  
+.moneyBox.light .infoMoneyBox {
+    color:#9dafb4;
+   
+
+  }
+
+
+
+
+  .infoMoneyBox p {
+    margin: 0;
+  }
+  
+
+  @media (max-width: 1930px) {
+
+    .moneyBox {
+     margin: 0 auto;
+  
+    }
+  }
+
+  @media (max-width: 1530px) {
+
+    .moneyBox {
+     margin: 0 15% 0 15%;
+
+
+     
+   
+
+     
+     
+  
+    }
+  }
+
+  @media (max-width: 1350px) {
+
+    .moneyBox {
+     margin: 0 15% 0 10%;
+
+      margin-top: 40px;
+     
+      width: 610px;
+
+     
+     
+  
+    }
+  }
+
+
+
+
+
+
+  @media (max-width: 1040px) {
+
+    .moneyBox {
+     margin: 0 15% 0 17%;
+
+      margin-top: 40px;
+     
+      width: 610px;
+
+     
+     
+  
+    }
+  }
+
+
+  @media (max-width: 1030px) {
+
+ 
+  
+    .moneyBox {
+      margin: 0 0 0 3%;
+ 
+       margin-top: 40px;
+      
+       width: 610px;
+ 
+      
+      
+   
+     }
+    
+   
+      
+    }
+
+
+    @media (max-width: 860px) {
+
+ 
+  
+      .moneyBox {
+        margin: 0 0 0 5%;
+   
+         margin-top: 40px;
+        
+         width: 550px;
+   
+        
+        
+     
+       }
+      
+     
+        
+      }
+
+
+      
+    @media (max-width: 800px) {
+
+ 
+  
+      .moneyBox {
+        margin: 0 0 0 5%;
+   
+         margin-top: 40px;
+        
+         width: 500px;
+   
+        
+        
+     
+       }
+      
+     
+        
+      }
+
+            
+    @media (max-width: 730px) {
+
+ 
+  
+      .moneyBox {
+        margin: 0 0 0 15%;
+   
+         margin-top: 40px;
+        
+         width: 400px;
+   
+        
+        
+     
+       }
+      
+     
+        
+      }
+
+
+
+
+      @media (max-width: 700px) {
+
+ 
+  
+        .moneyBox {
+          margin: 0 0 0 15%;
+     
+           margin-top: 40px;
+          
+           width: 400px;
+     
+          
+          
+       
+         }
+        
+       
+          
+        }
+
+
+        @media (max-width: 600px) {
+
+ 
+  
+          .moneyBox {
+            /* margin: 0 0 0 15%;
+       
+             margin-top: 300px;
+            
+             width: 400px;
+        */
+     position: relative;
+     top: 140px;
+          transition: 0.5s;
+          padding: 10px;
+      
+          background-color: #1b414c;
+          border-radius: 20px;
+          width: 350px;
+      
+      margin: 10% 0 0 10%;
+          color:#fff;
+          font-size: 25px;
+      
+        
+        
+            
+         
+           }
+          
+         
+            
+          }
+
+
+          @media (max-width: 600px) {
+
+ 
+  
+            .moneyBox {
+          
+       position: relative;
+       top: 140px;
+            transition: 0.5s;
+            padding: 10px;
+        
+            background-color: #1b414c;
+            border-radius: 20px;
+            width: 350px;
+        
+        margin: 10% 0 0 -5%;
+            color:#fff;
+            font-size: 25px;
+        
+          
+          
+              
+           
+             }
+            
+           
+              
+            }

@@ -7,12 +7,13 @@ import "./PersonalCabinet.css";
 
 const PersonalCabinet = ({  name, email, onClose, isDarkMode }) => {
   return (
-    <div className= {`personal-cabinet ${isDarkMode ? "dark" : "light"}`}>
+    <div className= {`personalAccount ${isDarkMode ? "dark" : "light"}`}>
             <button className= {`buttonCabCross ${isDarkMode ? "dark" : "light"}`} onClick={onClose}>
         <FontAwesomeIcon icon={faTimes} />
       </button>
      
 
+   
       <div className="cat-container">
       <div className="cat">
         <div className="cat-eye left-eye"></div>
@@ -22,7 +23,9 @@ const PersonalCabinet = ({  name, email, onClose, isDarkMode }) => {
         <div className="cat-tongue"></div>
         <div className="cat-head"></div>
       </div>
-    </div>
+{/* <FontAwesomeIcon id="logoUser" icon={faUser} /> */}
+ </div>
+
       <div className="user-details">
         <h3>{name}</h3>
         <p>{email}</p>

@@ -1,7 +1,7 @@
 import React from "react";
-import { faMoon } from "@fortawesome/free-solid-svg-icons";
+import { faMoon, faSun  } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSun } from '@fortawesome/free-solid-svg-icons';
+
 import "./Style.css";
 import "./Header.css";
 

@@ -40,8 +40,8 @@ const TransactionRow = ({
       salary: { icon: faMoneyBill, color: "#ffcd38" },
       entertainment: { icon: faFaceSmile, color: "#ffcd38" },
       cloth: { icon: faShirt, color: "#5ec7dd" },
-      savings: { icon: faPiggyBank, color: "#ffcd38" },
-
+      // savings: { icon: faPiggyBank, color: "#ffcd38" },
+      moneyBox: { icon: faPiggyBank, color: "#ffcd38" },
 
     };
 

@@ -1,5 +1,5 @@
 .header {
-  position: fixed;
+  position:static;
   top: 0;
   left: 0;
   width: 100%;
@@ -7,34 +7,33 @@
   display: flex;
   align-items: center;
   justify-content: center;
-margin: 0;
+  margin: 0;
+  color: #455E63; 
  
 
+}
+
+.blur {
+  backdrop-filter: blur(10px);
+}
 
 
-  color: #455E63; 
 
+.header.light {
+  transition: 0.5s;
 
 }
 .headerLogoMobile{
   display: none;
 
 }
+
 .header.dark {
-
-  transition: 0.5s;
   color: #fff; 
-
-
-}
-
-.header.light {
-
-  transition: 0.5s;
- 
-
+  transition: 0.5s
 
 }
+
 
 .modalText{
   text-align: center;
@@ -48,13 +47,13 @@ margin: 0;
 }
 
 
-.letter {
+.headerLogoletter {
   color: #E96E94; 
   font-size: 110%; 
   cursor: pointer;
  } 
  
- .lock{
+ .lockPassword{
   position: relative;
   left:150px;
   bottom: 40px;
@@ -66,6 +65,7 @@ margin: 0;
   
  }
 .buttonCLose{
+  
   background-color: #9ddd5e!important;
  color: #455e63!important;
 }
@@ -105,7 +105,7 @@ margin: 0;
 
 
 .buttonCabinet{
-
+  transition: 0.5s;
   position: absolute;
   left: 2000px;
 
@@ -115,7 +115,7 @@ margin: 0;
 .buttonCab{
   transition: 0.5s;
 border:none;
-color: #5ec7dd;
+color: #9dafba;
 font-size: 24px;
 background-color:#edf4f6;
 
@@ -123,7 +123,7 @@ background-color:#edf4f6;
 
 .buttonCab.dark{
 
-
+  color: #fff;
   background-color:#0e272e;
   
   }
@@ -167,7 +167,8 @@ background-color:#edf4f6;
   }
 
   .logIn :hover,
-  .SignUp:hover {
+  .SignUp:hover,
+  .buttonCab:hover {
     color: #5EC7DD; 
   }
   .inputContainer {
@@ -185,7 +186,7 @@ background-color:#edf4f6;
  .searchContainer {
     position: relative;
     right:300px;
-    top:5px;
+   
    
   }
   .searchInput{
@@ -344,7 +345,7 @@ background-color:#edf4f6;
 .buttonCab{
   transition: 0.5s;
 border:none;
-color: #5ec7dd;
+
 font-size: 24px;
 background-color:#edf4f6;
 
@@ -455,7 +456,7 @@ background-color:#edf4f6;
 }
 
 
-@media (max-width: 1050px) {
+@media (max-width: 1060px) {
  
   .logIn {
     left: 800px;
@@ -529,7 +530,7 @@ width: 120px;
 
 
 
-@media (max-width: 850px) {
+@media (max-width: 860px) {
 
   .logIn {
     
@@ -627,7 +628,7 @@ width: 120px;
 
 }
 
-  .letter {
+  .headerLogoletter {
   font-size: 100%;
  } 
  
@@ -665,17 +666,22 @@ width: 120px;
   background-color:#EDF4F6;
 }
 .header.dark {
-  background-color:#0e272e;
+  background-color:#1B414C;
 }
 
   .logIn.dark{
     
-    background-color: #0e272e;
+    background-color: #1B414C;
    
    
 
   }
+  .buttonCab.dark{
 
+    
+    background-color:#1B414C;
+    
+    }
 
 
 .logIn.light{
@@ -701,7 +707,7 @@ width: 120px;
 
   .buttonTheme.dark {
     left: 390px;
-    background-color: #0e272e;  }
+    background-color: #1B414C;  }
 
     .searchContainer{
       display: inline-block;
@@ -710,7 +716,7 @@ width: 120px;
       top:70px;
       position: absolute;
    
-      padding: 10px;
+      padding: 5px;
      }
      .header.dark .searchInput{
       background-color:#0e272e;
@@ -721,12 +727,19 @@ width: 120px;
   border-radius:25px;
  
 font-size: 20px;
-  padding: 15px 55px;
+  padding: 15px 30px;
   margin: 25px 0 20px 0;
 
  
 
 
+}
+.searchButton {
+
+  top: 30px;
+
+  font-size: 25px;
+ 
 }
 
 }
@@ -741,6 +754,9 @@ font-size: 20px;
 }
 
 
+
+
+
 @media (max-width: 500px) {
 
   .logIn {
@@ -751,26 +767,16 @@ font-size: 20px;
  
 
 
-  .burger {
-    left: 400px;
-  }
 
-  .menu {
-  font-size: 5px;
-  left: 300px;
-  }
-
-  .menu.dark{
-    background-color:#3c4049;
-  }
 
   .header {
 
     height: 70px;
+ 
     box-shadow: none;
 }
 
-  .letter {
+  .headerLogoletter {
     font-size: 120%; 
  } 
  
@@ -796,7 +802,7 @@ font-size: 20px;
   
   }
 
-  .letter {
+  .headerLogoletter {
     font-size: 120%; 
   } 
  
@@ -871,20 +877,20 @@ margin: 25px 0 20px 0;
 
 }
 
-.searchContainer{
 
-  margin: 0px;
-  left:0px;
-  top:80px;
-
-
-  padding: 10px;
- }
  .header.dark .searchInput{
   background-color:#0e272e;
 
 }
+.searchContainer{
 
+  margin: 0px;
+  left:0px;
+
+
+
+  padding: 10px;
+ }
 
 }
 
@@ -912,21 +918,9 @@ margin: 25px 0 20px 0;
 
 }
 
-@media (max-width:315px) {
-  .burger {
-    left: 270px;
-  }
-
-  .menu {
-    left: 160px;
-  }
-
-}
 
 @media (max-width:300px) {
-  .burger {
-    left: 260px;
-  }
+ 
 
   .buttonTheme {
     top:10px;
@@ -938,9 +932,7 @@ margin: 25px 0 20px 0;
     left: 5px;
   }
 
-  .menu {
-    left: 150px;
-  }
+
   
 }
 

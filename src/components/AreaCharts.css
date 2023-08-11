@@ -1,0 +1,398 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Ysabeau+SC:wght@1;100;200;300;500&display=swap');
+
+*{
+  font-family: 'Ysabeau SC', sans-serif;
+
+ 
+}
+
+.mainField #chart2 {
+  background-color: #1b414c;
+  color: #fff;
+  border-radius: 20px;
+padding: 20px 20px 0 20px;
+  margin: 30px 40% 0 40%;
+  display: flex;
+
+width: 610px;
+transition: 0.5s;
+  align-items: center;
+
+
+}
+.mainField.light #chart2 {
+  background-color: #fff;
+}
+
+apexcharts-tooltip .apexcharts-theme-light apexcharts-active{
+  display: none;
+}
+
+.labelG{
+  position: relative;
+  bottom: 100px;
+  right: 450px;
+
+
+
+}
+
+
+.labelT{
+  width: 400px;
+  font-weight: 600;
+
+}
+
+
+.mainField.light .labelT {
+  color:#9dafb4 !important;
+}
+
+
+
+
+#apexcharts5bx1w9xl > div.apexcharts-tooltip.apexcharts-theme-light.apexcharts-active{
+  display: none;
+}
+
+
+
+
+.pos{
+color: #e96e94;
+padding-right: 20px;
+padding-left: 5px;
+}
+
+
+.neg{
+  color:#5EC7DD;
+ 
+padding-left: 4px;
+}
+
+.apexcharts-tooltip-title{  display: none;}
+
+
+
+.apexcharts-legend-marker[rel="2"] {
+  background-color: #5EC7DD !important; /* Замените на желаемый цвет для второго маркера */
+  color: #5EC7DD !important; 
+  display: none;
+}
+
+
+#chart2 .apexcharts-legend-marker[rel="1"] {
+
+  display: none;
+}
+
+
+
+.apexcharts-canvas {
+  border-radius: 5px;
+    width: 600px;
+
+}
+
+
+.apexcharts-tooltip {
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 3px;
+  padding: 5px 10px;
+}
+
+
+.apexcharts-tooltip.apexcharts-theme-light:after,
+.apexcharts-tooltip.apexcharts-theme-dark:after {
+ display: none;
+}
+
+
+.apexcharts-toolbar {
+  display: none!important;
+}
+
+.apexcharts-tooltip-title,
+.apexcharts-tooltip-series-group {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+
+.apexcharts-tooltip-marker {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+
+
+
+.apexcharts-legend {
+  font-size: 12px;
+  font-family: Arial, sans-serif;
+  padding: 5px;
+}
+
+
+.apexcharts-legend-series-marker {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.apexcharts-legend-text {
+  cursor: pointer;
+}
+
+
+.apexcharts-gridline {
+  stroke-dasharray: 2;
+}
+
+
+.apexcharts-area-series {
+  fill-opacity: 0.5;
+}
+
+
+.apexcharts-line-series {
+  stroke-width: 2;
+}
+
+
+.apexcharts-marker {
+  stroke-width: 2;
+}
+
+
+@media (max-width: 930px) {
+
+ 
+  
+  .mainField #chart2 {
+    background-color: #1b414c;
+    color: #fff;
+    border-radius: 20px;
+  padding: 20px 20px 0 20px;
+    margin: 30px 0 0 35%;
+    display: flex;
+  
+  width: 610px;
+  transition: 0.5s;
+    align-items: center;
+  
+  
+  }
+ 
+    
+  } 
+
+
+
+
+
+  @media (max-width: 860px) {
+
+ 
+  
+    .mainField #chart2 {
+      background-color: #1b414c;
+      color: #fff;
+      border-radius: 20px;
+    padding: 20px 0 0 0;
+      margin: 30px 0 0 40%;
+      display: flex;
+    
+      width: 550px;
+  
+    
+    
+    }
+
+
+
+    #SvgjsSvg1327{
+
+      width: 500px;
+
+      margin: 2% 0 0 0;
+    }
+
+
+  }
+  
+  
+  @media (max-width: 780px) {
+
+ 
+  
+    .mainField #chart2 {
+   
+      margin: 30px 0 0 50%;
+     
+    
+      width: 450px;
+  
+    
+    
+    }
+
+
+
+    #SvgjsSvg1327{
+
+      width: 400px;
+
+      margin: 2% 0 0 2%;
+    }
+
+
+    .labelG{
+  
+      right: 500px;
+    
+    
+    
+    }
+    
+    
+  
+
+
+
+  }
+  
+
+
+  @media (max-width: 700px) {
+
+ 
+  
+    .mainField #chart2 {
+   
+      margin: 30px 0 0 40%;
+     
+    
+      width: 450px;
+  
+    
+    
+    }
+
+
+
+    #SvgjsSvg1327{
+
+      width: 400px;
+
+      margin: 2% 0 0 2%;
+    }
+
+
+    .labelG{
+  
+      right: 500px;
+    
+    
+    
+    }
+    
+    
+  
+
+
+
+  }
+
+
+  @media (max-width: 600px) {
+
+ 
+  
+    .mainField #chart2 {
+   
+      margin: 30px 0 0 2%;
+      overflow: hidden;
+    
+      width: 580px;
+  
+    height: 100%;
+    
+    }
+
+
+
+    #SvgjsSvg1327{
+
+      width: 570px;
+
+      margin: 2% 0 0 2%;
+    }
+
+
+    .labelG{
+  
+      right: 500px;
+    
+    
+    
+    }
+    
+    
+  
+
+
+
+  }
+
+
+  
+  @media (max-width: 400px) {
+
+ 
+  
+    .mainField #chart2 {
+   
+      margin: 30px 0 0 0;
+      overflow: hidden;
+    
+      width: 380px;
+  
+    
+    }
+
+
+
+    #SvgjsSvg1327{
+
+      width: 250px;
+
+      margin: 0;
+    }
+
+
+    .labelG{
+  
+      right: 500px;
+    
+    
+    
+    }
+    
+    
+  
+
+
+
+  }

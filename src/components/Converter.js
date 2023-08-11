@@ -39,7 +39,6 @@ const Converter = ({ isDarkMode }) => {
       const data = await response.json();
       const newConversionRates = data.quotes;
   
-      // Use the directly received conversion rates (already in terms of USD)
       if (Object.values(newConversionRates).some(rate => rate !== 0)) {
         localStorage.setItem("conversionRates", JSON.stringify(newConversionRates));
         localStorage.setItem("lastUpdateTimestamp", Date.now());
@@ -57,9 +56,17 @@ const Converter = ({ isDarkMode }) => {
     const storedConversionRates = localStorage.getItem("conversionRates");
     const lastUpdateTimestamp = localStorage.getItem("lastUpdateTimestamp");
 
+
+
+
+
+
+
+    
+
     if (storedConversionRates && lastUpdateTimestamp) {
       const parsedConversionRates = JSON.parse(storedConversionRates);
-      const hoursElapsed = (Date.now() - parseInt(lastUpdateTimestamp)) / (1000 * 60 * 60);
+      const hoursElapsed = (Date.now() - parseInt(lastUpdateTimestamp)) / (1000 * 60 * 30);
 
       if (hoursElapsed < 1) {
         setConversionRates(parsedConversionRates);
@@ -72,7 +79,7 @@ const Converter = ({ isDarkMode }) => {
     }
 
 
-    const intervalId = setInterval(updateConversionRates, 1000 *60 * 60);
+    const intervalId = setInterval(updateConversionRates, 1000 * 60 * 30);
 
 
     return () => clearInterval(intervalId);
@@ -129,8 +136,14 @@ const Converter = ({ isDarkMode }) => {
     if (inputRef1.current) {
       inputRef1.current.focus();
     }
+     updateConversionRates();
+
   };
 
+
+
+
+  
   return (
     <div className={`mainField ${isDarkMode ? "dark" : "light"}`}>
 

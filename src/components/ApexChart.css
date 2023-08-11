@@ -32,8 +32,7 @@ background-color: #fff;
 
 
 .mainField #chart {
-
-margin-bottom: 20px;
+margin-bottom: 40px;
 width:350px;
 
 
@@ -49,12 +48,24 @@ text-align: center;
 
 }
 
-
-@media (max-width: 390px) {
+@media (max-width: 600px) {
 
   .mainField #chart {
 
-    margin-bottom: 20px;
+    top:-60px;
+    position: relative;
+    margin: 15% 0 0 10%;
+    }
+    
+
+
+}
+
+@media (max-width: 400px) {
+
+  .mainField #chart {
+
+    margin: 60px 0 0 0;
     width:340px;
     
     

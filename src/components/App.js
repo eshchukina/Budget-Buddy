@@ -4,7 +4,7 @@ import SideMenu from "./SideMenu";
 import Dashboard from "./Dashboard";
 import Footer from "./Footer";
 import "./Style.css";
-
+import Instruction from "./Instruction";
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(() => {
     const storedTheme = localStorage.getItem("isDarkMode");
@@ -131,9 +131,22 @@ useEffect(() => {
 
   return (
     <div className={isDarkMode ? "dark" : "light"}>
+
+<Header
+        isDarkMode={isDarkMode}
+        toggleTheme={toggleTheme}
+        handleLogout={handleLogout}
+
+        activeModal={null} 
+        setActiveModal={() => {}} 
+        activeAccount={activeAccount}
+        setActiveAccount={setActiveAccount}
+     
+      />
+      
    
             {activeAccount ? (
-              <div>
+           
         <Dashboard
           isDarkMode={isDarkMode}
           account={activeAccount}
@@ -161,14 +174,14 @@ useEffect(() => {
           onAccountUpdate={onAccountUpdate}
         
         /> 
-        </div>
+      
       ) 
       
       
       
       : (
         <div className={`mainField ${isDarkMode ? "dark" : "light"}`}>
-          <div className={`text ${isDarkMode ? "dark" : "light"}`}>
+          {/* <div className={`text ${isDarkMode ? "dark" : "light"}`}>
             Budget Buddy is your reliable companion for efficient financial
             management! No matter where you're heading or in which currency you
             conduct your transactions, our application provides you with all the
@@ -179,7 +192,10 @@ useEffect(() => {
             accounts for vacations or foreign investments in another currency.
             This allows you to accurately track your expenses and income for
             each account
-          </div>
+          </div> */}
+          <Instruction />
+
+          
         </div>
       )
       
@@ -201,18 +217,7 @@ useEffect(() => {
 
 />
 
-<Header
-        isDarkMode={isDarkMode}
-        toggleTheme={toggleTheme}
-        handleLogout={handleLogout}
 
-        activeModal={null} 
-        setActiveModal={() => {}} 
-        activeAccount={activeAccount}
-        setActiveAccount={setActiveAccount}
-     
-      />
-      
       <Footer isDarkMode={isDarkMode} />
      
 

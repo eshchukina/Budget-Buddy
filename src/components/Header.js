@@ -1,48 +1,42 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser } from '@fortawesome/free-solid-svg-icons';
-
+import { faUser, faUserPlus,  faEye, faEyeSlash, faArrowRightToBracket } from '@fortawesome/free-solid-svg-icons';
+import SearchPage from "./SearchPage";
+import PersonalCabinet from './PersonalCabinet';
 import ThemeToggle from "./ThemeToggle";
-import { faUserPlus,  faEye, faEyeSlash, faArrowRightToBracket } from "@fortawesome/free-solid-svg-icons"; 
 import LoginButton from "./LoginButton";
 
 import config from '../config';
 import "./Style.css";
 import "./Header.css";
 import "./PersonalCabinet";
-import SearchPage from "./SearchPage";
-import PersonalCabinet from './PersonalCabinet';
 
-const Header = ({ isDarkMode, toggleTheme, activeAccount, setActiveAccount }) => {
 
+const Header = ({
+  isDarkMode,
+  toggleTheme,
+  activeAccount,
+  setActiveAccount }) => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const [isCabinetOpen, setIsCabinetOpen] = useState(false);
-
-
   const [showPassword, setShowPassword] = useState(false); 
-
   const [userName, setUserName] = useState(localStorage.getItem('userName') || '');
   const [userEmail, setUserEmail] = useState(localStorage.getItem('userEmail') || '');
   
-
-
 
   const toggleCabinet = () => {
     setIsCabinetOpen(!isCabinetOpen);
   };
 
 
-
-
-
   const handleOpenModal = () => {
-    setIsModalOpen(true); setIsLoginModalOpen(false);
+    setIsModalOpen(true); 
+    setIsLoginModalOpen(false);
   
   };
 
@@ -64,7 +58,6 @@ const Header = ({ isDarkMode, toggleTheme, activeAccount, setActiveAccount }) =>
 
   useEffect(() => {
  
-
 
   const fetchAccountById = async (accountId) => {
     try {
@@ -122,6 +115,8 @@ const Header = ({ isDarkMode, toggleTheme, activeAccount, setActiveAccount }) =>
         setPassword("");
 
         setIsModalOpen(false);
+
+        handleOpenLoginModal();
       } else {
         console.log("Registration failed");
       }
@@ -171,12 +166,10 @@ const Header = ({ isDarkMode, toggleTheme, activeAccount, setActiveAccount }) =>
           if (activeAccount && activeAccount.id) {
             localStorage.setItem("lastVisitedAccount", activeAccount.id);
           }
-          
-
-         
+        
+  
           console.log("Login successful");
-       
-       
+      
           
           setEmail("");
           setPassword("");
@@ -249,6 +242,8 @@ const Header = ({ isDarkMode, toggleTheme, activeAccount, setActiveAccount }) =>
         console.log("Refresh token is missing");
       }
     };
+
+
   useEffect(() => {
     const storedAccessToken = localStorage.getItem("accessToken");
     const expiresIn = localStorage.getItem("expiresIn");
@@ -286,7 +281,7 @@ const Header = ({ isDarkMode, toggleTheme, activeAccount, setActiveAccount }) =>
 
 
   const reloadPage = () => {
-   
+    window.location.reload();
   };
   const handlePasswordVisibility = () => {
     setShowPassword(!showPassword); 
@@ -296,16 +291,18 @@ const Header = ({ isDarkMode, toggleTheme, activeAccount, setActiveAccount }) =>
 
 
 
-
-
+  
 useEffect(() => {
   const handleOutsideClick = (e) => {
-    if (e.target.classList.contains("modal")) {
+    if (e.target.classList.contains("modalWindow")) {
       handleCloseModal();
       handleCloseLoginModal();
     }
   };
 
+
+
+  
   if (isModalOpen || isLoginModalOpen) {
     document.addEventListener("click", handleOutsideClick);
   } else {
@@ -318,18 +315,25 @@ useEffect(() => {
 }, [isModalOpen, isLoginModalOpen]);
   
 
+
+
+
+
+
+
+
+
   
   return (
     <div className={`header ${isDarkMode ? "dark" : "light"}`}>
-      
     
       <h1 className="headerLogo" onClick={reloadPage}>
 
-        <span className="letter">B</span>udget <span className="letter">B</span>uddy</h1>  
+        <span className="headerLogoletter">B</span>udget <span className="headerLogoletter">B</span>uddy</h1>  
 
          <h1 className="headerLogoMobile">
 
-        <span className="letter" onClick={reloadPage}>BB</span>
+        <span className="headerLogoletter" onClick={reloadPage}>BB</span>
         
       </h1>   
 
@@ -344,9 +348,9 @@ useEffect(() => {
       />
 
       {isLoginModalOpen && (
-        <div className="modal">
+        <div className="modalWindow">
           <div
-            className={`modalLog modalContent ${isDarkMode ? "dark" : "light"}`}
+            className={`modalLogin modalContent ${isDarkMode ? "dark" : "light"}`}
           >
             <h3  className={`modalText ${isDarkMode ? "dark" : "light"}`}>Login</h3>
             <form onSubmit={handleLogin}>
@@ -367,7 +371,7 @@ useEffect(() => {
 
 
                 
-                   <div type="button" className="lock" onClick={handlePasswordVisibility}>
+                   <div type="button" className="lockPassword" onClick={handlePasswordVisibility}>
                   {showPassword ? <FontAwesomeIcon icon={faEye} /> : <FontAwesomeIcon icon={faEyeSlash} /> }
                 </div>
 
@@ -404,9 +408,9 @@ useEffect(() => {
       
 
       {isModalOpen && (
-        <div className="modal">
+        <div className="modalWindow">
           <div
-            className={`modalLog modalContent ${isDarkMode ? "dark" : "light"}`}
+            className={`modalLogin modalContent ${isDarkMode ? "dark" : "light"}`}
           >
            <h3  className={`modalText ${isDarkMode ? "dark" : "light"}`}>Registration</h3>
             <form onSubmit={handleRegistration}>
@@ -429,7 +433,7 @@ useEffect(() => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
-                   <div type="button" className="lock" onClick={handlePasswordVisibility}>
+                   <div type="button" className="lockPassword" onClick={handlePasswordVisibility}>
                   {showPassword ?<FontAwesomeIcon icon={faEye} /> : <FontAwesomeIcon icon={faEyeSlash} /> }
                 </div>
 
@@ -461,7 +465,7 @@ useEffect(() => {
 
         </div>
       )}
- {userName && userEmail && (
+{userName && userEmail && (
         <div className="buttonCabinet">
           {isCabinetOpen ? (
             <PersonalCabinet
@@ -471,13 +475,16 @@ useEffect(() => {
               onClose={toggleCabinet}
             />
           ) : (
-            <button className={`buttonCab ${isDarkMode ? "dark" : "light"}`} onClick={toggleCabinet}>
-              <FontAwesomeIcon icon={faUser} /> 
+            <button
+              className={`buttonCab ${isDarkMode ? "dark" : "light"}`}
+              onClick={toggleCabinet}
+            >
+              <FontAwesomeIcon icon={faUser} />
             </button>
           )}
         </div>
       )}
-    </div>
+    </div>   
   );
 };
 

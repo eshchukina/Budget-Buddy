@@ -55,11 +55,21 @@ const SideMenu = ({
 
 
 
-  // useEffect(() => {
+  useEffect(() => {
+ 
+    setFetchedAccountList(fetchedAccountList || []);
+  }, [fetchedAccountList]);
+  
 
-  //   setAccountsAvailable(fetchedAccountList.length > 0);
-  // }, [fetchedAccountList]);
 
+
+
+
+
+
+
+
+  
   const fetchAccountList = async () => {
     try {
       const token = localStorage.getItem("accessToken");
@@ -284,17 +294,18 @@ const SideMenu = ({
           >
            <span className="majorButtonBig"> Create new account</span>
            <span className="majorButtonSmall">+ account</span>
-          </button>   <div className={`neonText ${isDarkMode ? "dark" : "light"}`}>
+          </button>  
+           {/* <div className={`neonText ${isDarkMode ? "dark" : "light"}`}>
             online
        
  </div>
-          
+           */}
           </>
         )}
        
 
         {isModalOpen && (
-          <div className="modal">
+          <div className="modalWindow">
             <div className={`modalContent ${isDarkMode ? "dark" : "light"}`}>
               <h3>Enter the data</h3>
               <input

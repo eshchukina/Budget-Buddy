@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from "react";
 import TransactionTable from "./TransactionTable";
- import ApexChart from './ApexChart'; 
+ import ApexChart from './ApexCharts'; 
+ import AreaCharts from "./AreaChart";
  import Converter from "./Converter";
 import config from '../config';
 import "./Style.css";
 import "./Dashboard.css";
+import MoneyBox from "./MoneyBox";
+import Instruction from "./Instruction";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 
 const Dashboard = ({
   isDarkMode,
@@ -30,8 +35,15 @@ const Dashboard = ({
 
 
 
+  const [positiveBalanceData, setPositiveBalanceData] = useState([]);
+  const [negativeBalanceData, setNegativeBalanceData] = useState([]);
 
 
+  const [showInstructions, setShowInstructions] = useState(false);
+
+  const toggleInstructions = () => {
+    setShowInstructions(!showInstructions);
+  };
 
 
 
@@ -70,11 +82,53 @@ const Dashboard = ({
   });
   
 
+  const [chartDataSchedule, setChartDataSchedule] = useState({
+    series: [
+      {
+        name: 'series1',
+        data: []
+      },
+      {
+        name: 'series2',
+        data: []
+      }
+    ],
+    options: {
+      chart: {
+        height: 350,
+        type: 'area'
+      },
+      dataLabels: {
+        enabled: false
+      },
+      stroke: {
+        curve: 'smooth'
+      },
+      xaxis: {
+        type: 'datetime',
+        categories: [
+       
+        ]
+      },
+      tooltip: {
+        x: {
+          format: 'dd/MM/yy HH:mm'
+        },
+      },
+    },
+  });
+  
+
+
+
+
+
+
   useEffect(() => {
     const handleOutsideClick = (e) => {
       if (
         isModalOpen &&
-        e.target.classList.contains("modal") &&
+        e.target.classList.contains("modalWindow") &&
         !e.target.classList.contains("modalContent")
       ) {
         closeModal();
@@ -110,6 +164,8 @@ const Dashboard = ({
             headers: headersWithToken,
           }
         );
+
+
         
         if (!response.ok) {
           console.log("Error fetching account data:", response);
@@ -117,6 +173,8 @@ const Dashboard = ({
         }
         const data = await response.json();
         setDataList(data);
+      
+        // console.log(data);
     
         const currentBalance = data.reduce(
           (total, item) => total + item.amount,
@@ -125,6 +183,13 @@ const Dashboard = ({
         setCurrentBalance(currentBalance);
         setFutureBalance(currentBalance);
    
+       
+  
+ 
+
+
+
+
         
       } catch (error) {
         console.log("Error fetching account data:", error);
@@ -184,6 +249,7 @@ const Dashboard = ({
     
 
     fetchChartData();
+ 
   }, [account]);
 
 
@@ -209,14 +275,11 @@ const Dashboard = ({
   
       const data = await response.json();
   
-      // Sort the data by value in descending order
       const sortedData = Object.entries(data).sort((a, b) => parseFloat(b[1]) - parseFloat(a[1]));
   
-      // Take the first five elements to display in the chart
       const chartLabels = sortedData.slice(0, 5).map(([label]) => label);
       const seriesData = sortedData.slice(0, 5).map(([, value]) => parseFloat(value));
   
-      // Map category colors to chart colors
       const chartColors = ['#E96E94', '#5EC7DD', '#ffcd38', '#9ddd5e', '#9dafb4'];
   
       setChartData((prevState) => ({
@@ -235,6 +298,145 @@ const Dashboard = ({
   
   
   
+
+
+
+
+  useEffect(() => {
+    const fetchChartDataSchedule = async () => {
+      try {
+        const token = localStorage.getItem("accessToken");
+        const headersWithToken = {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        };
+  
+        const response = await fetch(`${config.apiUrl}accounts/${account.id}/statement/`, {
+          headers: headersWithToken,
+        });
+  
+        if (!response.ok) {
+          console.log("Error fetching account data:", response);
+          return;
+        }
+  
+        const data = await response.json();
+        let positiveData = 0;
+        let negativeData = 0;
+        if (!data) {
+          console.log("Received null data:", data);
+        
+
+
+          positiveData = [];
+           negativeData = [];
+          
+        }
+        else {
+         positiveData = data.filter(item => item.amount >= 0);
+        negativeData = data.filter(item => item.amount < 0);
+      
+      }
+
+        setPositiveBalanceData(positiveData);
+        setNegativeBalanceData(negativeData);
+  
+        const categories = positiveData.map(item => item.date);
+  
+        setChartDataSchedule((prevState) => ({
+          ...prevState,
+          series: [
+            {
+              name: ' ',
+              data: positiveData.map(item => item.amount)
+            },
+            {
+              name: ' ',
+              data: negativeData.map(item => item.amount)
+            }
+          ],
+          options: {
+            ...prevState.options,
+            xaxis: {
+              ...prevState.options.xaxis,
+              categories: categories
+            }
+          }
+        }));
+      } catch (error) {
+        console.log("Error fetching account data:", error);
+      }
+    };
+  
+    fetchChartDataSchedule();
+  }, [account]);
+  
+  
+
+
+
+  const fetchChartDataSchedule = async () => {
+    try {
+      const token = localStorage.getItem("accessToken");
+      const headersWithToken = {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      };
+
+      const response = await fetch(`${config.apiUrl}accounts/${account.id}/statement/`, {
+        headers: headersWithToken,
+      });
+
+  
+      const data = await response.json();
+
+      const positiveData = data.filter(item => item.amount >= 0);
+      const negativeData = data.filter(item => item.amount < 0);
+
+
+      const categories = positiveData.map(item => item.date);
+
+      setChartDataSchedule((prevState) => ({
+        ...prevState,
+        series: [
+          {
+            name: ' ',
+            data: positiveData.map(item => item.amount)
+          },
+          {
+            name: ' ',
+            data: negativeData.map(item => item.amount)
+          }
+        ],
+        options: {
+          ...prevState.options,
+          xaxis: {
+            ...prevState.options.xaxis,
+            categories: categories
+          }
+        }
+      }));
+    } catch (error) {
+      console.log("Error fetching account data:", error);
+    }
+  };
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -272,16 +474,21 @@ const Dashboard = ({
       const data = await response.json();
       setDataList(data);
 
+
+
+      
       const currentBalance = data.reduce(
         (total, item) => total + item.amount,
         0
       );
       setCurrentBalance(currentBalance);
       setFutureBalance(currentBalance);
-      fetchChartData();
-    
-    
-    
+      // setChartDataSchedule({ series: [], options: chartDataSchedule.options }); // Обнулить данные графика
+      // fetchChartData();
+      // fetchChartDataSchedule();
+      fetchChartDataSchedule();
+
+      
     } catch (error) {
       console.log("Error fetching account data:", error);
     }
@@ -297,6 +504,8 @@ const Dashboard = ({
     }
     return 0;
   };
+
+  
 
   const handleCreateData = async () => {
     const newSubmittedData = {
@@ -331,7 +540,7 @@ const Dashboard = ({
       if (response.ok) {
         fetchAccountData();
         fetchChartData();
-      
+        fetchChartDataSchedule();
       
         closeModal();
       } else {
@@ -341,6 +550,7 @@ const Dashboard = ({
     } catch (error) {
       console.log("Error adding data to the database:", error);
     }
+    fetchAccountData();
   };
 
  const handleUpdateData = async () => {
@@ -376,7 +586,8 @@ const Dashboard = ({
         body: JSON.stringify(updatedData), 
       }
     ); 
-
+    fetchAccountData();
+   
     if (!response.ok) {
       console.log("Error updating data in the database.");
     }  
@@ -433,6 +644,7 @@ const Dashboard = ({
         updateAccountData(accountId, updatedDataList);
         fetchChartData();
         fetchAccountData();
+        fetchChartDataSchedule();
        
       } else {
         console.log("Error deleting data from the database.");
@@ -518,14 +730,27 @@ const Dashboard = ({
 
 
 
+
+
+
+
+
   return (
  
 
     <div className={`mainField ${isDarkMode ? "dark" : "light"}`}>
       
+     
+      <FontAwesomeIcon className="instructionButton" onClick={toggleInstructions}icon={faCircleInfo} />
+     
+ 
+    
+      {showInstructions ? (
+      <Instruction isDarkMode={isDarkMode} />
+    ) : (
       <div key={account.id}>
         {isModalOpen && (
-          <div className="modal">
+          <div className="modalWindow">
             <div className={`modalContent ${isDarkMode ? "dark" : "light"}`}>
               <h3>Enter the data</h3>
               <form onSubmit={handleSubmit}>
@@ -555,7 +780,10 @@ const Dashboard = ({
   <option value="hobby" className="tagHobby">hobby</option>
   <option value="entertainment" className="tagEntertainment">entertainment</option>
   <option value="cloth" className="tagCloth">cloth</option>
-  <option value="savings" className="tagSavings">savings</option>
+  {/* <option value="savings" className="tagSavings">savings</option> */}
+
+
+  <option value="moneyBox" className="tagmoneyBox">money box</option>
   <option value="trips" className="tagTrips">trips</option>
   <option value="credit" className="tagCredit">credit</option>
   <option value="other" className="tagOther">other</option>
@@ -622,22 +850,36 @@ const Dashboard = ({
           formatBalance={formatBalance}
           handleTagChange={handleTagChange} 
         />
-        {!dataList || (dataList.length === 0 && <p>No submitted data</p>)}</div>
+        {!dataList || (dataList.length === 0 && <p>No submitted data</p>)}
+        
+        <AreaCharts
+             isDarkMode={isDarkMode} 
+             formatBalance={formatBalance}
+              positiveBalanceData={positiveBalanceData}
+              negativeBalanceData={negativeBalanceData}
+              chartDataSchedule={chartDataSchedule}
+              fetchChartDataSchedule={fetchChartDataSchedule}
+            />
+   
+
+        </div>
      
-      <div className="secondt"> <ApexChart account={account}
+
+     
+      <div className="secondt">
+      <MoneyBox isDarkMode={isDarkMode} 
+       />
+         <ApexChart account={account}
        isDarkMode={isDarkMode} 
        chartData={chartData} 
         fetchChartData={fetchChartData}  
        />  <Converter isDarkMode={isDarkMode}/>
    
-</div>
-
-</div>
-     </div>  
-  
-
-     </div>  
-  );
-};
-
+   </div>
+        </div>
+      </div>
+    )}
+  </div>
+);
+                }
 export default Dashboard;

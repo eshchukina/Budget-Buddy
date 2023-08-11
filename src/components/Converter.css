@@ -198,15 +198,29 @@ bottom: 290px;
     
     }
    
- 
-
-    @media (max-width: 390px) {
+    @media (max-width: 600px) {
 
       .converter {
     
-        margin-bottom: 60px;
+        margin:0 0 15% 10%;
         width:340px;
+    
         
+        }
+        
+    
+    
+    }
+    
+
+    @media (max-width: 400px) {
+
+      .converter {
+    
+     
+        width:340px;
+        margin: 20px 0 0 0;
+       
         
         }
         

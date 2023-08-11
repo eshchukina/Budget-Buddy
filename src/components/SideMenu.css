@@ -7,7 +7,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-sizing: border-box;
 
   transition: 0.5s;
   background-size: 200% auto;
@@ -95,6 +94,9 @@ color:  #ffcd38;
   padding:2px;
   margin-top:5px;
   justify-content: stretch;
+
+
+  
 }
 
 
@@ -112,6 +114,19 @@ color:  #ffcd38;
    transition: 0.5s;
  
  }
+ .editButton:active,
+ .deleteButton:active,
+ .accountButton:active,
+ .majorButton:active,
+ .item:active
+ { 
+
+   transform: translate(0px,3px);
+  
+ }
+
+
+
 
  .deleteButton{
   border: 1px solid #8d919b;
@@ -145,16 +160,20 @@ margin: 2px;
   justify-content: start;
   align-items: center;
   width: 100%;
+  
 }
+
+
 
 .active.accountButton {
-  color: #455e63;
+ 
+  font-weight: 900;
 }
 
-.active.accountButton.dark {
+/* .active.accountButton.dark {
 text-shadow: #5EC7DD;  
 font-weight: 900;
-}
+} */
 
 
 
@@ -303,7 +322,7 @@ font-size: 18px;
   
  
   
-@media (max-width: 800px) {
+@media (max-width: 700px) {
 
   .sidebar {
 
@@ -319,25 +338,20 @@ font-size: 18px;
   
   .accountButtonActions {
     position: relative;
-    padding:2px;
+    padding:4px;
   }
 
-  .accountButtonContainer {
-    padding: 2px;
-    margin: 2px;
-    width: 90%;
-    text-align: center;
-  }
+
  
   .editButton {
     float: left;
-    padding:4px;
+    padding:6px;
     font-size: 12px;
   }
 
   .deleteButton {
     cursor: pointer;
-    font-size: 17px;
+    font-size: 16px;
     cursor: pointer;
   }
 
@@ -356,54 +370,6 @@ font-size: 18px;
 }
 
 
-@media (max-width:800px) {
-
-  .detailsButton {
-    left:20px;
-    margin: 10px;
-    display:inline-flex;
-    align-items:center;
-  }
-
-  .balance{
-    display: none;
-  }
-
-   .accountButtonContainer {
-    display: flex;
-    justify-content: center;
-    padding: 2px;
-    margin: 2px;
-  }
-
-  .sidebar {
-    width: 160px;
-  }
-
-  .accountButtons {
-    width: 90%;
-  }
-  .share {
-    left: -5px;
-    padding: 1px;
- 
-
-
-  }
-  .item {  
-
-   left: 1px;
-    font-size: 15px; 
-    margin: 5px 0;
-  
-  }
-  .textItem{
-    padding-left: 10px;
-    font-size: 15px; 
-  
-    
-     }
-}
 
 .majorButtonSmall{
   display: none;
@@ -416,9 +382,9 @@ font-size: 18px;
 
   .majorButton {
     font-size: 20px;
-    padding: 10px;
+    padding: 20px;
     left:130px;
-    bottom:10px;
+    bottom:30px;
   border-radius:20px;
    
   }
@@ -429,7 +395,7 @@ font-size: 18px;
   }
 
   .balance1{
-  font-size: 15px;
+  font-size: 17px;
   }
 
 
@@ -466,7 +432,7 @@ font-size: 18px;
   .sidebar{
     width: 100%;
     left: 0;
-    top: 50px;
+    top: 60px;
     height : 350px;
     margin: 0;  
     background-color: #EDF4F6;
@@ -479,17 +445,7 @@ font-size: 18px;
   }
 
 
-  .editButton{
-    padding: 2px;
-    font-size: 18px;
-  }
 
-  .deleteButton{
-    cursor: pointer;
-    padding:  0 0 0 20px;
-    font-size: 25px;
-    cursor: pointer;
-  }
 
   .share {
     position: fixed;
@@ -562,19 +518,26 @@ font-size: 18px;
 
  .accountButtonContainer {
 
-    margin: 0;
+  margin: 0 5%;
+ 
+
   
   }
 
 
   .majorButton {
     font-size: 20px;
-    padding: 10px;
+    padding: 15px;
     left:100px;
-    bottom:10px;
+    bottom:20px;
   border-radius:20px;
    
   }
+  
+.accountButton {
+  font-size: 50px;
+}
+
 
 }
 

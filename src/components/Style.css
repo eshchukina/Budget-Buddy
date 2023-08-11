@@ -6,11 +6,10 @@
 
 
 
-
 html {
   transition: 0.5s;
     overflow: hidden;
-  
+   
   }
 
 
@@ -19,7 +18,8 @@ html {
     background-color:#EDF4F6;
     min-height: 100vh;
     transition: 0.5s;
-   
+    
+
   }
 
 
@@ -31,7 +31,7 @@ body.dark  {
  
 }
 
-.modal {
+.modalWindow {
   position: fixed;
   top: 0;
   left: 0;
@@ -41,7 +41,7 @@ body.dark  {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 9999;
+z-index: 999999;
   transition: 0.5s;
   background-size: 200% auto;
 
@@ -55,7 +55,7 @@ body.dark  {
   transition: 0.5s;
   background-size: 200% auto;
   color: #3c4049;
- z-index: 1;
+ z-index: 999999999999;
 }
 
 .modalContent.dark,
@@ -196,21 +196,21 @@ button.modalBtn:hover {
   background-color: #b8bbc4;
 }
 
-.modalLog form {
+.modalLogin form {
   display: flex;
   flex-direction: column;
 }
 
 
-.modalLog form input {
+.modalLogin form input {
   margin-bottom: 10px;
 }
 
-.modalLog{
+.modalLogin{
   padding: 40px;
 }
 
-.modalLog h3 {
+.modalLogin h3 {
   text-align: center;
 }
 
@@ -250,12 +250,6 @@ button.modalBtn:hover {
   border-radius: 10px;
    transition: 0.5s;
 }
-table.accountContent {
-
-  border-radius: 10px;
-  transition: 0.5s;
-
-}
 
 
 .backdrop {
@@ -266,17 +260,22 @@ table.accountContent {
   right: 0;
   background-color: gray;
   opacity: 0.5;
-  z-index: 10;
+  /* z-index: 10; */
 }
 
 
 
 .flex-container{
 
+ 
+  
+
+
+
   display: flex;
 
 position: relative;
-top:50px;
+top:-20px;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: flex-start;
@@ -299,7 +298,7 @@ align-items:center;
 .secondt {
   /* margin: 0 auto; */
   padding: 10px;
-
+padding-top: 40px;
   order: 0;
   flex: 1 1 auto;
 
@@ -307,6 +306,19 @@ align-items:center;
 
 
 }
+
+
+@media (max-width: 4000px) {
+
+  .flex-container{
+
+padding-top: 100px ;
+  }
+
+
+  
+}
+
 
 
 
@@ -321,6 +333,13 @@ top:40px;
   
 @media (max-width: 1930px) {
 
+
+  .flex-container{
+
+    padding-top: 20px ;
+      }
+    
+
   .secondt {
      margin: 0 auto; 
    
@@ -330,6 +349,24 @@ top:40px;
   
   }
 }
+
+
+
+
+@media (max-width: 1650px) {
+
+  .flex-container{
+
+    padding-top: 0 ;
+   
+      }
+    
+
+ 
+   
+
+}
+
 
 @media (max-width: 1530px) {
 
@@ -341,6 +378,9 @@ top:40px;
   
   
   }
+   
+
+  
 }
 
 @media (max-width: 1350px) {
@@ -349,7 +389,7 @@ top:40px;
 
   display: flex;
 
-position: relative;
+
 top:50px;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -358,19 +398,26 @@ top:50px;
   align-items: flex-start;
   margin: 0 auto;
 }
+html {
+ 
+  overflow-y:scroll;
+
+}
+
+
 
 
 
 
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1030px) {
 
  
   
   .secondt {
   
-    margin: 0 30%; 
+    margin: 0 15%; 
   
    
   
@@ -385,6 +432,26 @@ top:50px;
     
   }
   
+
+  @media (max-width: 1030px) {
+
+ 
+  
+    .secondt {
+    
+      margin: 0 25%; 
+    
+     
+    
+    
+    }
+    
+   
+      
+    }
+
+
+
   
   
   @media (max-width: 850px) {
@@ -400,19 +467,29 @@ top:50px;
     
     }
   }  
-  @media (max-width: 640px) {
+
+
+
+  @media (max-width: 700px) {
 
  
   
     .secondt {
     
-      margin: 0 20%; 
+      margin: 0 15%; 
     
      
     
     
     }
   }  
+
+
+
+
+
+
+
 
   @media (max-width: 640px) {
 
@@ -444,7 +521,7 @@ align-items:center;
 .secondt {
   
   padding: 10px;
-  margin: 0; 
+  margin: 0 20%; 
   order: 0;
   flex: 1 1 auto;
 
@@ -452,12 +529,7 @@ align-items:center;
 
 
 }
-.mainField {
-position: relative;
-top:150px;
 
-
-}
   
     
   }  
@@ -475,28 +547,32 @@ top:150px;
        justify-content:center;
       align-content:flex-start;
       align-items: flex-start;
-      margin: 0 0 20px 0;
+      margin: 0;
     }
     
     
     .firstt {
     
-      margin: 0; 
    
+
+     
      
     
       }
     .secondt {
-      
-
-      margin: 0; 
    
-    
+      margin: 60px 0 0 5%;
+      width: 100%;
      
     
     
     }
 
+    html {
+ 
+      overflow-y:scroll;
+    
+    }
 
     body {
     
@@ -534,7 +610,7 @@ top:150px;
     
 
 
-
+/* 
       @media (max-width: 390px) {
 .flex-container{
 
@@ -567,7 +643,7 @@ align-items:center;
   order: 0;
   flex: 1 1 auto;
 
- 
 
 
-}}
+
+}} */

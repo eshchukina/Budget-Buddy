@@ -18,21 +18,11 @@ const ApexChart = ({ account, isDarkMode, chartData }) => {
           <ReactApexChart
             options={{
               chart: {
-                width: 400,
+                width: 345,
                 type: "donut",
               },
 
-              responsive: [{
-                breakpoint: 490,
-                options: {
-                  chart: {
-                    width: 340
-                  },
-                
-                }
-              }],
-
-
+             
 
               
               labels: ["Category 1", "Category 2", "Category 3"],
@@ -53,7 +43,7 @@ const ApexChart = ({ account, isDarkMode, chartData }) => {
             }}
             series={[50, 30, 20]}
             type="donut"
-            width={380}
+            width={345}
           />
         ) : (
           <ReactApexChart
