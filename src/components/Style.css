@@ -541,8 +541,8 @@ align-items:center;
 
       display: flex;
     
-    position: relative;
-    
+    position: absolute;
+    top:10px;
     
        justify-content:center;
       align-content:flex-start;
