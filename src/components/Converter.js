@@ -158,9 +158,9 @@ const Converter = ({ isDarkMode }) => {
             onChange={handleAmountChange1}
             placeholder={`enter amount in ${sourceCurrency}`}
           />
-          <select
-            onChange={handleSourceCurrencyChange}
-            value={sourceCurrency}
+            <select
+            onChange={handleTargetCurrencyChange}
+            value={targetCurrency}
           >
             {currencies.map((currency) => (
               <option key={currency} value={currency}>
@@ -184,9 +184,10 @@ const Converter = ({ isDarkMode }) => {
             onChange={handleAmountChange2}
             placeholder={`enter amount in ${targetCurrency}`}
           />
-           <select
-            onChange={handleTargetCurrencyChange}
-            value={targetCurrency}
+
+<select
+            onChange={handleSourceCurrencyChange}
+            value={sourceCurrency}
           >
             {currencies.map((currency) => (
               <option key={currency} value={currency}>
@@ -194,6 +195,11 @@ const Converter = ({ isDarkMode }) => {
               </option>
             ))}
           </select>
+
+
+
+
+       
         </div>
       <br/>
         

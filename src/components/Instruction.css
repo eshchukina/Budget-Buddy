@@ -1,0 +1,9 @@
+.instruction{
+    color: #fff;
+    padding: 50px 200px 0 300px;
+    text-align: center;
+}
+
+.instruction.light{
+    color: #9dafb4;
+}

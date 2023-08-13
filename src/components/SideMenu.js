@@ -283,7 +283,7 @@ const SideMenu = ({
 
   return (
     <div>
-      <div className={`sidebar ${isDarkMode ? "dark" : "light"}`}>
+      <div className={`sidebar ${isDarkMode ? "dark" : "light"} `}>
       
         
       {isTokenAvailable  && (

@@ -129,8 +129,25 @@ useEffect(() => {
 }, [activeAccount]);
 
 
+
+
+const [isDashboardView, setIsDashboardView] = useState(false); // Initialize with false for instruction view
+
+
+
+
+
   return (
     <div className={isDarkMode ? "dark" : "light"}>
+
+
+
+
+ <button onClick={() => setIsDashboardView(!isDashboardView)}>
+        {isDashboardView ? "Switch to Instruction View" : "Switch to Dashboard"}
+      </button>
+
+
 
 <Header
         isDarkMode={isDarkMode}
@@ -143,6 +160,9 @@ useEffect(() => {
         setActiveAccount={setActiveAccount}
      
       />
+      
+
+
       
    
             {activeAccount ? (
@@ -175,13 +195,17 @@ useEffect(() => {
         
         /> 
       
+
+
+
+        
       ) 
       
       
       
       : (
         <div className={`mainField ${isDarkMode ? "dark" : "light"}`}>
-          {/* <div className={`text ${isDarkMode ? "dark" : "light"}`}>
+          <div className={`text ${isDarkMode ? "dark" : "light"}`}>
             Budget Buddy is your reliable companion for efficient financial
             management! No matter where you're heading or in which currency you
             conduct your transactions, our application provides you with all the
@@ -192,8 +216,8 @@ useEffect(() => {
             accounts for vacations or foreign investments in another currency.
             This allows you to accurately track your expenses and income for
             each account
-          </div> */}
-          <Instruction />
+          </div>
+          {/* <Instruction /> */}
 
           
         </div>
@@ -201,6 +225,8 @@ useEffect(() => {
       
       
       }
+
+      
   <SideMenu
   isDarkMode={isDarkMode}
   createAccount={createAccount}

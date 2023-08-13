@@ -4,8 +4,12 @@ import TransactionTable from "./TransactionTable";
  import AreaCharts from "./AreaChart";
  import Converter from "./Converter";
 import config from '../config';
+
+
 import "./Style.css";
 import "./Dashboard.css";
+import "./SideMenu";
+
 import MoneyBox from "./MoneyBox";
 import Instruction from "./Instruction";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -43,6 +47,16 @@ const Dashboard = ({
 
   const toggleInstructions = () => {
     setShowInstructions(!showInstructions);
+
+    const hiddenContent = document.querySelector('.sidebar'); // Находим элемент с классом hidden-content
+
+ if (window.innerWidth <= 600) {
+        if (hiddenContent.style.display === 'none') {
+          hiddenContent.style.display = 'flex'; // Показываем элемент
+        } else {
+          hiddenContent.style.display = 'none'; // Скрываем элемент
+        }
+      }
   };
 
 
@@ -732,16 +746,13 @@ const Dashboard = ({
 
 
 
-
-
-
   return (
  
 
     <div className={`mainField ${isDarkMode ? "dark" : "light"}`}>
       
      
-      <FontAwesomeIcon className="instructionButton" onClick={toggleInstructions}icon={faCircleInfo} />
+      {/* <FontAwesomeIcon className="instructionButton" onClick={toggleInstructions}icon={faCircleInfo} /> */}
      
  
     

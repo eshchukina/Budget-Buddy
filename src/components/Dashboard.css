@@ -24,9 +24,9 @@ table.accountContent{
 
 
   background-color:#1b414c;
-  position: absolute;
-  left:90px;
-  top: -85px;
+  position: fixed;
+  left:100px;
+  top: 10px;
   color: #fff;
   font-size: 160%;
   z-index: 1;
@@ -461,10 +461,15 @@ margin: 1px;
 
           @media (max-width: 600px) {
 
-.instructionButton{
-  display: none;
-}
-            .accountContent{
+ .instructionButton{
+ top:-170px;
+ left:40px;
+
+position: absolute;
+} 
+
+
+            .accountContent{ 
           
               margin: 0 5%;
               width: 500px;
@@ -472,6 +477,26 @@ margin: 1px;
             }
             
           }    
+
+
+
+
+
+          @media (max-width: 500px) {
+
+
+            .instructionButton{
+            
+             } 
+             
+          
+         
+          
+
+
+
+          }    
+
 
 
 
@@ -495,6 +520,26 @@ margin: 1px;
           }    
 
 
+
+
+
+
+          @media (max-width: 390px) {
+
+
+            .instructionButton{
+              top:20px;
+              left:100px;
+            
+             } 
+             
+          
+         
+          
+
+
+
+          }    
 
 
 
