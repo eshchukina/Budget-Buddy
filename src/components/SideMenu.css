@@ -387,7 +387,7 @@ font-size: 18px;
     font-size: 20px;
     padding: 20px;
     left:150px;
-    top:-50px;
+    top:-500px;
   border-radius:20px;
    
   }
@@ -434,9 +434,7 @@ font-size: 18px;
 
 
 
-  .AccountButton {
-  height: 100%;
-  }
+
   .sidebar{
     border-radius:20px;
 position: sticky;
@@ -524,6 +522,7 @@ position: sticky;
 .carousel-container::-webkit-scrollbar-thumb {
   background-color: transparent; 
 }
+
 
 
 

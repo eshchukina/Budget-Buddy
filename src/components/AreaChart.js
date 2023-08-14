@@ -8,12 +8,12 @@ import "./Style.css";
 const AreaCharts = ({ account, chartDataSchedule, isDarkMode, formatBalance }) => {
   const chartIsEmpty = !chartDataSchedule.series || chartDataSchedule.series.length === 0;
 
-  const axisLabelColor = '#9dafb4'; // Desired text color
-  const axisLabelFontSize = '10px'; // Desired font size
-  const axisTitleFontSize = '10px'; // Desired font size for axis title
-  const axisTitleMargin = 10; // Desired margin for axis title
+  const axisLabelColor = '#9dafb4';
+  const axisLabelFontSize = '10px'; 
+  const axisTitleFontSize = '10px'; 
+  const axisTitleMargin = 10; 
   const lineColors = ['#E96E94', '#5EC7DD'];
-  const areaColors = ['#E96E94', '#5EC7DD']; // Desired area fill colors
+  const areaColors = ['#E96E94', '#5EC7DD']; 
 
 
 

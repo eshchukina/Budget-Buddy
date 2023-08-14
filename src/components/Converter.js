@@ -158,7 +158,8 @@ const Converter = ({ isDarkMode }) => {
             onChange={handleAmountChange1}
             placeholder={`enter amount in ${sourceCurrency}`}
           />
-            <select
+             
+             <select
             onChange={handleTargetCurrencyChange}
             value={targetCurrency}
           >
@@ -185,6 +186,8 @@ const Converter = ({ isDarkMode }) => {
             placeholder={`enter amount in ${targetCurrency}`}
           />
 
+
+
 <select
             onChange={handleSourceCurrencyChange}
             value={sourceCurrency}
@@ -196,10 +199,7 @@ const Converter = ({ isDarkMode }) => {
             ))}
           </select>
 
-
-
-
-       
+    
         </div>
       <br/>
         

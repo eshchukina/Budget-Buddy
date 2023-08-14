@@ -8,7 +8,8 @@ table.accountContent{
 }
 .accountContent{
   margin: 0 40%;
-
+  bottom: 350px;
+position: relative;
   background: none;
   border-radius: 20px;
   color: #9DAFB4;
@@ -24,9 +25,9 @@ table.accountContent{
 
 
   background-color:#1b414c;
-  position: fixed;
-  left:100px;
-  top: 10px;
+  position: absolute;
+  left:90px;
+  top: 5px;
   color: #fff;
   font-size: 160%;
   z-index: 1;
@@ -319,11 +320,11 @@ margin: 1px;
 }
 
 
-@media (max-width: 1350px) {
+@media (max-width: 1650px) {
 
 
   .accountContent{
-    margin: 0 50%;
+   top:-100px;
   
  
    
@@ -333,13 +334,16 @@ margin: 1px;
   
   
   }
+
   
 @media (max-width: 1350px) {
 
 
   .accountContent{
     margin: 0 40%;
-  
+
+    
+    top:-180px;
   
   }
   
@@ -461,52 +465,24 @@ margin: 1px;
 
           @media (max-width: 600px) {
 
- .instructionButton{
- top:-170px;
- left:40px;
-
-position: absolute;
-} 
-
-
-            .accountContent{ 
-          
-              margin: 0 5%;
-              width: 500px;
-            
-            }
-            
-          }    
+.instructionButton{
+  display: none;
+}  .accountContent{
+  top:100px;
+      margin: 0 auto;
+      width: 380px;
+    padding: 0;
+    }
+  }
 
 
-
-
-
-          @media (max-width: 500px) {
-
-
-            .instructionButton{
-            
-             } 
-             
-          
-         
-          
-
-
-
-          }    
-
-
-
-
-          @media (max-width: 420px) {
+          @media (max-width: 400px) {
 
 
             .accountContent{
-          
-              margin: 0;
-              width: 100%;
+          top:100px;
+              margin: 0 auto;
+              width: 380px;
             padding: 0;
             }
             
@@ -520,26 +496,6 @@ position: absolute;
           }    
 
 
-
-
-
-
-          @media (max-width: 390px) {
-
-
-            .instructionButton{
-              top:20px;
-              left:100px;
-            
-             } 
-             
-          
-         
-          
-
-
-
-          }    
 
 
 

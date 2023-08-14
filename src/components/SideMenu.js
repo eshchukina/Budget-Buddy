@@ -22,6 +22,9 @@ const SideMenu = ({
   setAccounts,
   updateAccountCaption,
   onAccountUpdate,
+
+  isInstructionViewOpen,
+  closeInstructionView,
 }) => {
   const [newAccount, setNewAccount] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -283,9 +286,14 @@ const SideMenu = ({
 
   return (
     <div>
-      <div className={`sidebar ${isDarkMode ? "dark" : "light"} `}>
       
-        
+      <div className={`sidebar ${isDarkMode ? "dark" : "light"} `} onClick={closeInstructionView}>
+      {/* {isInstructionViewOpen && (
+        <button className="closeInstructionButton" onClick={closeInstructionView}>
+          Close Instruction
+        </button>
+      )}
+         */}
       {isTokenAvailable  && (
         
         <>  <button

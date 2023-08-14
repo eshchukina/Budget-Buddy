@@ -91,7 +91,10 @@ z-index: 999999;
 
   
 }
-
+.instructionButton.light {
+  background-color:#fff;
+  color:#9dafba ;
+}
 .modalBtn{
   box-shadow: 0px 2px 4px #81858e;
   padding: 5px 10px;
@@ -331,12 +334,12 @@ top:40px;
   transition: 0.5s;
 }
   
-@media (max-width: 1930px) {
+@media (max-width: 2000px) {
 
 
   .flex-container{
 
-    padding-top: 20px ;
+    padding-top: 70px ;
       }
     
 
@@ -401,12 +404,17 @@ top:50px;
 html {
  
   overflow-y:scroll;
+  scrollbar-width: thin; /* Для Firefox */
+  scrollbar-color: transparent transparent; /* Для Firefox */
 
 }
+html::-webkit-scrollbar {
+  width:0px;
 
 
 
 
+}
 
 
 }
@@ -424,31 +432,11 @@ html {
   
   }
   
-    html {
  
-      overflow-y:scroll;
-    
-    }
     
   }
   
 
-  @media (max-width: 1030px) {
-
- 
-  
-    .secondt {
-    
-      margin: 0 25%; 
-    
-     
-    
-    
-    }
-    
-   
-      
-    }
 
 
 
@@ -469,20 +457,6 @@ html {
   }  
 
 
-
-  @media (max-width: 700px) {
-
- 
-  
-    .secondt {
-    
-      margin: 0 15%; 
-    
-     
-    
-    
-    }
-  }  
 
 
 
@@ -540,33 +514,18 @@ align-items:center;
     .flex-container{
 
       display: flex;
+    position: relative;
+   
+    top:100px;
     
+  
+    }
+    
+    .mainField{
+       
     position: absolute;
-    top:10px;
-    
-       justify-content:center;
-      align-content:flex-start;
-      align-items: flex-start;
-      margin: 0;
     }
-    
-    
-    .firstt {
-    
    
-
-     
-     
-    
-      }
-    .secondt {
-   
-      margin: 60px 0 0 5%;
-      width: 100%;
-     
-    
-    
-    }
 /* html {
  
         overflow-y:hidden;
@@ -598,14 +557,7 @@ body::-webkit-scrollbar-thumb {
 
 
 
-    .mainField {
-    position: relative;
-    top:200px;
-   
-    
-    
-    }
-      
+
         
       }  
     
@@ -622,9 +574,14 @@ body::-webkit-scrollbar-thumb {
 
 .secondt {
   
-margin: 50px 0 0 0 ;
+margin: 60px 0 0 0 ;
 
 
 
 
-}}
+}
+
+
+
+
+}

@@ -225,6 +225,18 @@ background-color:#edf4f6;
   
   }
 
+
+  .logIn :active,
+  .SignUp:active,
+  .buttonCab:active,
+  .searchButton:active
+  
+ { 
+
+   transform: translate(0px,3px);
+  
+ }
+
   
   .searchButton {
     position: absolute;

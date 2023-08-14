@@ -10,10 +10,8 @@ import "./Style.css";
 import "./Dashboard.css";
 import "./SideMenu";
 
-import MoneyBox from "./MoneyBox";
+
 import Instruction from "./Instruction";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 
 const Dashboard = ({
   isDarkMode,
@@ -48,13 +46,13 @@ const Dashboard = ({
   const toggleInstructions = () => {
     setShowInstructions(!showInstructions);
 
-    const hiddenContent = document.querySelector('.sidebar'); // Находим элемент с классом hidden-content
+    const hiddenContent = document.querySelector('.sidebar'); 
 
  if (window.innerWidth <= 600) {
         if (hiddenContent.style.display === 'none') {
-          hiddenContent.style.display = 'flex'; // Показываем элемент
+          hiddenContent.style.display = 'flex'; 
         } else {
-          hiddenContent.style.display = 'none'; // Скрываем элемент
+          hiddenContent.style.display = 'none'; 
         }
       }
   };
@@ -439,21 +437,6 @@ const Dashboard = ({
   
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   useEffect(() => {
     const futureBalance = calculateFutureBalance(dataList);
     setFutureBalance(futureBalance);
@@ -742,7 +725,16 @@ const Dashboard = ({
 
 
 
+  const transactionData = [
+    // ... Your transaction data ...
+  ];
 
+  // Calculate the current balance of "Money Box" transactions
+  // const moneyBoxTransactions = transactionData.filter((data) => data.tag === "moneyBox");
+  // const currentBalanceMoneyBox = moneyBoxTransactions.reduce(
+  //   (total, item) => total + item.amount,
+  //   0
+  // );
 
 
 
@@ -774,7 +766,6 @@ const Dashboard = ({
 
 
 
-
 <select
   value={editData.tag}
   onChange={handleTagChange}
@@ -791,7 +782,7 @@ const Dashboard = ({
   <option value="hobby" className="tagHobby">hobby</option>
   <option value="entertainment" className="tagEntertainment">entertainment</option>
   <option value="cloth" className="tagCloth">cloth</option>
-  {/* <option value="savings" className="tagSavings">savings</option> */}
+ 
 
 
   <option value="moneyBox" className="tagmoneyBox">money box</option>
@@ -850,6 +841,7 @@ const Dashboard = ({
    <TransactionTable
           account={account}
           dataList={dataList}
+          dataList1={transactionData}
           isDarkMode={isDarkMode}
           handleEdit={handleEdit}
           handleDelete={handleDelete}
@@ -860,6 +852,7 @@ const Dashboard = ({
           openModal={openModal}
           formatBalance={formatBalance}
           handleTagChange={handleTagChange} 
+          toggleInstructions = {toggleInstructions}
         />
         {!dataList || (dataList.length === 0 && <p>No submitted data</p>)}
         
@@ -878,13 +871,15 @@ const Dashboard = ({
 
      
       <div className="secondt">
-      <MoneyBox isDarkMode={isDarkMode} 
-       />
+      {/* <MoneyBox isDarkMode={isDarkMode}
+      currentBalanceMoneyBox={currentBalanceMoneyBox} 
+       /> */}
          <ApexChart account={account}
        isDarkMode={isDarkMode} 
        chartData={chartData} 
         fetchChartData={fetchChartData}  
        />  <Converter isDarkMode={isDarkMode}/>
+       
    
    </div>
         </div>

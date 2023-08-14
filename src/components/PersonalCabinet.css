@@ -13,8 +13,8 @@ transition: 0.5s;
 
 
 #logoUser{
-  font-size: 150px;
-  margin: 0 auto 30px auto;
+  font-size: 200px;
+  margin: 0 0 0 5%;
 
 }
 
@@ -223,15 +223,84 @@ font-size: 20px;
 
 
 
+  
+@media (max-width:2300px) {
+
+  #logoUser{
+   
+    margin: 0 0 0 5%;
+  
+  }
+
+}
+
+@media (max-width:1350px) {
+
+  #logoUser{
+   
+    margin: 0 0 0 2%;
+  
+  }
+
+}
+
+@media (max-width:1230px) {
+
+  #logoUser{
+    font-size: 180px;
+    margin: 0 0 0 0;
+   
+  
+  }
+
+}
+
+@media (max-width:930px) {
+
+  #logoUser{
+    font-size: 170px;
+    
+   
+  
+  }
+
+}
+
+
+@media (max-width:850px) {
+
+  #logoUser{
+    font-size: 150px;
+    
+   
+  
+  }
+
+}
+@media (max-width:770px) {
+
+  #logoUser{
+    font-size: 120px;
+    margin: 0 0 0 5%;
+  
+  }
+
+}
+
 
   
-@media (max-width:600px) {
+@media (max-width:660px) {
 
+  #logoUser{
+    font-size: 90px;
+  
+  
+  }
 
   .personalAccount{
     position: absolute;
     top:  0px;
-padding: 20px;
+
        background-color: #fff;
        color: #000;
        border: 3px solid #9dafb4;
@@ -285,17 +354,72 @@ padding: 20px;
     font-size: 15px;
     
     
-    }}
+    }
+  
+  }
 
+
+    @media (max-width:550px) {
+
+      #logoUser{
+        font-size: 80px;
+      
+      
+      }
+    
+      .user-details{
+        position: relative;
+    bottom:40px;
+    margin: 2px;
+ padding: 5px;
+    z-index: 3;
+    color: #000;
+    text-align: center;
+    font-size: 15px;
+    
+    
+    }
+    
+    }
+
+
+
+    @media (max-width:450px) {
+
+      #logoUser{
+        font-size: 70px;
+      
+      
+      }
+    
+      .user-details{
+        position: relative;
+    bottom:30px;
+    margin: 2px;
+ padding: 5px;
+    z-index: 3;
+    color: #000;
+    text-align: center;
+    font-size: 12px;
+    
+    
+    }
+    
+    }
 
 
      
 @media (max-width:370px) {
-
+  #logoUser{
+    font-size: 70px;
+    margin: 0 5% 0 0;
+  
+  
+  }
 
   .personalAccount {
     position: absolute;
-    top:  0px;
+
 padding: 10px;
        background-color: #fff;
        color: #000;
@@ -341,7 +465,7 @@ padding: 10px;
     
     .user-details{
         position: relative;
-    bottom:50px;
+    bottom:30px;
     margin: 2px;
  padding: 5px;
     z-index: 3;

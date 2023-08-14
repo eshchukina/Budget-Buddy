@@ -12,9 +12,9 @@
   color: #fff;
   border-radius: 20px;
 padding: 20px 20px 0 20px;
-  margin: 30px 40% 0 40%;
+  margin: 0px 40% 0 40%;
   display: flex;
-
+top:-300px;position: relative;
 width: 610px;
 transition: 0.5s;
   align-items: center;
@@ -51,6 +51,17 @@ apexcharts-tooltip .apexcharts-theme-light apexcharts-active{
 }
 
 
+.apexcharts-legend-marker[rel="2"] {
+  background-color: #5EC7DD !important; /* Замените на желаемый цвет для второго маркера */
+  color: #5EC7DD !important; 
+  display: none;
+}
+
+
+#chart2 .apexcharts-legend-marker[rel="1"] {
+
+  display: none;
+}
 
 
 #apexcharts5bx1w9xl > div.apexcharts-tooltip.apexcharts-theme-light.apexcharts-active{
@@ -176,6 +187,37 @@ padding-left: 4px;
 }
 
 
+@media (max-width: 1920px) {
+.mainField #chart2 {
+
+top:-320px;
+
+
+
+}}
+
+@media (max-width: 1650px) {
+
+
+
+  
+  .mainField #chart2 {
+    background-color: #1b414c;
+    color: #fff;
+    border-radius: 20px;
+  padding: 20px 20px 0 20px;
+    margin: 0px 40% 0 40%;
+    display: flex;
+  top:-100px;
+  position: relative;
+  width: 610px;
+  transition: 0.5s;
+    align-items: center;
+  
+  
+  }
+}
+
 @media (max-width: 930px) {
 
  
@@ -247,8 +289,7 @@ padding-left: 4px;
     
     
     }
-
-
+ 
 
     #SvgjsSvg1327{
 
@@ -321,13 +362,16 @@ padding-left: 4px;
  
   
     .mainField #chart2 {
-   
-      margin: 30px 0 0 2%;
-      overflow: hidden;
-    
-      width: 580px;
+      background-color: #1b414c;
+      color: #fff;
+      border-radius: 20px;
+    padding: 20px 0 0 0;
+      margin: 30px 0 0 40%;
+      display: flex;
+    top:1010px;
+      width: 540px;
   
-    height: 100%;
+   
     
     }
 
@@ -397,3 +441,6 @@ padding-left: 4px;
 
 
   }
+
+
+

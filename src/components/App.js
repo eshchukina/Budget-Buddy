@@ -4,6 +4,10 @@ import SideMenu from "./SideMenu";
 import Dashboard from "./Dashboard";
 import Footer from "./Footer";
 import "./Style.css";
+import "./Dashboard.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
+
 import Instruction from "./Instruction";
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(() => {
@@ -130,11 +134,22 @@ useEffect(() => {
 
 
 
-
-const [isDashboardView, setIsDashboardView] = useState(false); // Initialize with false for instruction view
-
+const [isDashboardView, setIsDashboardView] = useState(true); 
 
 
+const toggleInstructions = () => {
+
+
+  const hiddenContent = document.querySelector('.sidebar'); 
+
+if (window.innerWidth <= 600) {
+      if (hiddenContent.style.display === 'none') {
+        hiddenContent.style.display = 'flex'; 
+      } else {
+        hiddenContent.style.display = 'none'; 
+      }
+    }
+};
 
 
   return (
@@ -143,9 +158,6 @@ const [isDashboardView, setIsDashboardView] = useState(false); // Initialize wit
 
 
 
- <button onClick={() => setIsDashboardView(!isDashboardView)}>
-        {isDashboardView ? "Switch to Instruction View" : "Switch to Dashboard"}
-      </button>
 
 
 
@@ -161,13 +173,21 @@ const [isDashboardView, setIsDashboardView] = useState(false); // Initialize wit
      
       />
       
+      <FontAwesomeIcon
+  className={`instructionButton ${isDashboardView ? "active" : ""} ${isDarkMode ? "dark" : "light"}`}
+  icon={faCircleInfo}
+  onClick={() => {
+    setIsDashboardView(!isDashboardView);
+    toggleInstructions();
+  }}
+/>
 
-
+{!isDashboardView && <Instruction />}
       
-   
-            {activeAccount ? (
-           
-        <Dashboard
+      {
+  isDashboardView  ? (
+    activeAccount? (
+      <Dashboard
           isDarkMode={isDarkMode}
           account={activeAccount}
           updateAccountData={updateAccountData}
@@ -205,26 +225,19 @@ const [isDashboardView, setIsDashboardView] = useState(false); // Initialize wit
       
       : (
         <div className={`mainField ${isDarkMode ? "dark" : "light"}`}>
-          <div className={`text ${isDarkMode ? "dark" : "light"}`}>
-            Budget Buddy is your reliable companion for efficient financial
-            management! No matter where you're heading or in which currency you
-            conduct your transactions, our application provides you with all the
-            necessary tools to control and plan your finances. With Budget
-            Buddy, you can create multiple accounts with different currencies
-            that reflect your financial flows. For example, you can have an
-            account for regular expenses in your local currency, as well as
-            accounts for vacations or foreign investments in another currency.
-            This allows you to accurately track your expenses and income for
-            each account
-          </div>
-          {/* <Instruction /> */}
+      
+      <Instruction isDarkMode={isDarkMode} />
 
           
         </div>
       )
       
       
-      }
+      ) : (
+      
+        <div></div>
+      )
+    }
 
       
   <SideMenu
@@ -240,6 +253,10 @@ const [isDashboardView, setIsDashboardView] = useState(false); // Initialize wit
   updateAccountCaption={updateAccountCaption}
   onAccountUpdate={onAccountUpdate}
   handleLogout={handleLogout}
+
+
+  isInstructionViewOpen={!isDashboardView}
+  closeInstructionView={() => setIsDashboardView(true)}
 
 />
 

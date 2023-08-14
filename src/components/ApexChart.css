@@ -8,69 +8,116 @@
 #chart {
 
 
-background-color: #fff;
-
-    transition: 0.5s;
- 
-
-    border-radius: 20px;
-    font-size: 20px;
-
+  background-color: #fff;
+  
+      transition: 0.5s;
+   
+  
+      border-radius: 20px;
+      font-size: 20px;
+  
+    }
+    
+    .mainField.dark #chart {
+      background-color: #1b414c;
+     
+    }
+  
+  
+  .mainField.dark .apexcharts-legend-text {
+    color:#fff !important;
   }
   
-  .mainField.dark #chart {
-    background-color: #1b414c;
-   
+  
+  
+  
+  .mainField #chart {
+  margin-bottom: 40px;
+  width:350px;
+  
+  
+  }
+  
+  
+  
+  .textShedule{
+    color:  #9DAFB4;
+  text-align: center;
+  
+  
+  
   }
 
-
-.mainField.dark .apexcharts-legend-text {
-  color:#fff !important;
-}
-
-
-
-
-.mainField #chart {
-margin-bottom: 40px;
-width:350px;
-
-
-}
-
+  @media (max-width: 2000px) {
+  
+    .mainField #chart {
+  top:-100px;
+  position: relative;
+      margin-bottom: 0px;
+      width:350px;
+      }
+      
+  
+  
+  }
+  
 
 
-.textShedule{
-  color:  #9DAFB4;
-text-align: center;
+  @media (max-width: 1650px) {
+  
+    .mainField #chart {
+  top:-60px;
+  position: relative;
+      margin-bottom: 0px;
+      width:350px;
+   
+      }
+      
+  
+  
+  }
 
+  
+  @media (max-width: 900px) {
+  
+    .mainField #chart {
+  top:-70px;
+  position: relative;
+      margin-bottom: 0px;
+      width:350px;
+      left:20px;
+   
+      }
+      
+  
+  
+  }
 
-
-}
-
-@media (max-width: 600px) {
-
-  .mainField #chart {
-
-    top:-60px;
-    position: relative;
-    margin: 15% 0 0 10%;
-    }
-    
-
-
-}
-
-@media (max-width: 400px) {
-
-  .mainField #chart {
-
-    margin:  0;
-    width:340px;
-    
-    
-    }
-    
-
-
-}
+  @media (max-width: 600px) {
+  
+    .mainField #chart {
+  
+      top:1000px;
+  
+ 
+      }
+      
+  
+  
+  }
+  
+  @media (max-width: 400px) {
+ 
+    .mainField #chart {
+      top:1300px;
+      margin:  0 auto;
+      width:340px;
+      left:0px;
+     
+      
+      }
+      
+  
+  
+  }
+  

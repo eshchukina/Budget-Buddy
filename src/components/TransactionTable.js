@@ -2,13 +2,14 @@ import React from "react";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowTurnDown } from "@fortawesome/free-solid-svg-icons";
-
+import MoneyBox from "./MoneyBox";
 import TransactionRow from "./TransactionRow";
 
 
 
 import "./Style.css";
 import "./Dashboard.css";
+import "./MoneyBox";
 
 
 
@@ -58,13 +59,30 @@ const TransactionTable = ({
     }
   };
 
+  const moneyBoxTransactions = dataList ? dataList.filter((data) => data.tag === "moneyBox") : [];
 
+
+  const currentBalanceMoneyBox = moneyBoxTransactions.reduce(
+    (total, item) => total + Math.abs(item.amount), // Use Math.abs() to convert negative values to positive
+    0
+  );
+  
+  
 
 
   return (
+    <>
     <div className={`mainField ${isDarkMode ? "dark" : "light"}`}>
-
-<div className=" table-container">
+    <div className="flex-container">
+    <div className="secondt">
+    <MoneyBox
+        isDarkMode={isDarkMode}
+        currentBalanceMoneyBox={currentBalanceMoneyBox} 
+        dataList={dataList}
+        // Pass the current balance of Money Box transactions
+      />
+    </div>   </div> 
+<div className="flex-container">
 
 <div className="firstt">
   
@@ -143,8 +161,15 @@ const TransactionTable = ({
           </tr>
         </tfoot>
       </table>{" "}
-    </div> 
     </div> </div>
+
+
+  </div>
+
+    
+    
+    </>
+   
   );
 };
 
