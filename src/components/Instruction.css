@@ -129,6 +129,21 @@
   justify-content: center; /* Horizontally center */
   align-items: center;
     }
+    html {
+ 
+        overflow-y:scroll;
+        scrollbar-width: thin; /* Для Firefox */
+        scrollbar-color: transparent transparent; /* Для Firefox */
+      
+      }
+      html::-webkit-scrollbar {
+        width:0px;
+      
+      
+      
+      
+      }
+      
 
     @media (max-width: 1500px) {
 

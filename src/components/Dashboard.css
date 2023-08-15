@@ -488,7 +488,12 @@ margin: 1px;
             
 
           
-         
+            body{
+              overflow-x: hidden;
+            }
+            html{
+              overflow-x: hidden;
+            }
           
 
 

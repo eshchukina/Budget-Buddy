@@ -22,8 +22,16 @@
 
 
 @media (max-width: 600px) {
- .footer{ display: flex;
-;}
+ .footer{
+width: 95%;
+  
+  display: flex;
+;
+
+
+
+}
+
 
 }
 .textItem{
