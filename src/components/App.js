@@ -176,6 +176,7 @@ if (window.innerWidth <= 600) {
       <FontAwesomeIcon
   className={`instructionButton ${isDashboardView ? "active" : ""} ${isDarkMode ? "dark" : "light"}`}
   icon={faCircleInfo}
+  title="Instructions"
   onClick={() => {
     setIsDashboardView(!isDashboardView);
     toggleInstructions();
@@ -224,12 +225,12 @@ if (window.innerWidth <= 600) {
       
       
       : (
-        <div className={`mainField ${isDarkMode ? "dark" : "light"}`}>
+    
       
       <Instruction isDarkMode={isDarkMode} />
 
           
-        </div>
+       
       )
       
       

@@ -220,6 +220,10 @@ button.modalBtn:hover {
 .modalContent.dark input[type="password"] {
   background-color: #b8bbc4;
 }
+.modalLogin{
+  z-index: 999990000;
+
+}
 
 .modalLogin form {
   display: flex;
