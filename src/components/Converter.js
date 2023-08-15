@@ -91,10 +91,13 @@ const Converter = ({ isDarkMode }) => {
 
   const handleAmountChange1 = (e) => {
     const { value } = e.target;
-    setAmount1(value);
-    const convertedAmount = convertCurrency(value, sourceCurrency, targetCurrency);
-    setAmount2(convertedAmount);
+    if (!isNaN(value) || value === "") { // Check if the value is a valid number or an empty string
+      setAmount1(value);
+      const convertedAmount = convertCurrency(value, sourceCurrency, targetCurrency);
+      setAmount2(convertedAmount);
+    }
   };
+  
 
   const handleAmountChange2 = (e) => {
     const { value } = e.target;
@@ -158,10 +161,9 @@ const Converter = ({ isDarkMode }) => {
             onChange={handleAmountChange1}
             placeholder={`enter amount in ${sourceCurrency}`}
           />
-             
-             <select
-            onChange={handleTargetCurrencyChange}
-            value={targetCurrency}
+          <select
+            onChange={handleSourceCurrencyChange}
+            value={sourceCurrency}
           >
             {currencies.map((currency) => (
               <option key={currency} value={currency}>
@@ -188,9 +190,12 @@ const Converter = ({ isDarkMode }) => {
 
 
 
-<select
-            onChange={handleSourceCurrencyChange}
-            value={sourceCurrency}
+
+
+          
+           <select
+            onChange={handleTargetCurrencyChange}
+            value={targetCurrency}
           >
             {currencies.map((currency) => (
               <option key={currency} value={currency}>
@@ -198,8 +203,6 @@ const Converter = ({ isDarkMode }) => {
               </option>
             ))}
           </select>
-
-    
         </div>
       <br/>
         

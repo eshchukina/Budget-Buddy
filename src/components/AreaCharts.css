@@ -12,13 +12,14 @@
   color: #fff;
   border-radius: 20px;
 padding: 20px 20px 0 20px;
-  margin: 0px 40% 0 40%;
+margin: 0% 62% 0;
   display: flex;
-top:-310px;position: relative;
+top:410px;
+position: relative;
 width: 610px;
 transition: 0.5s;
   align-items: center;
-
+height: 190px;
 
 }
 .mainField.light #chart2 {
@@ -187,174 +188,92 @@ padding-left: 4px;
 }
 
 
-@media (max-width: 1920px) {
+@media (max-width: 2200px) {
 .mainField #chart2 {
 
-top:-320px;
-
+  margin: 0% 30% 0;
 
 
 }}
 
-@media (max-width: 1650px) {
+@media (max-width: 1450px) {
 
-
-
-  
   .mainField #chart2 {
-    background-color: #1b414c;
-    color: #fff;
-    border-radius: 20px;
-  padding: 20px 20px 0 20px;
-    margin: 0px 40% 0 40%;
-    display: flex;
-  top:-100px;
-  position: relative;
-  width: 610px;
-  transition: 0.5s;
-    align-items: center;
+
+    margin: 0% 20% 0;
   
   
   }
+  
+
 }
 
-@media (max-width: 930px) {
 
- 
-  
+@media (max-width: 900px) {
+
   .mainField #chart2 {
-    background-color: #1b414c;
-    color: #fff;
-    border-radius: 20px;
-  padding: 20px 20px 0 20px;
-    margin: 30px 0 0 35%;
-    display: flex;
-  
-  width: 610px;
-  transition: 0.5s;
-    align-items: center;
-  
+
+    margin: 0% 30% 0;
+  width: 500px;
   
   }
- 
-    
-  } 
+  #SvgjsSvg1327{
 
-
-
-
-
-  @media (max-width: 860px) {
+    width: 500px;
 
  
-  
-    .mainField #chart2 {
-      background-color: #1b414c;
-      color: #fff;
-      border-radius: 20px;
-    padding: 20px 0 0 0;
-      margin: 30px 0 0 40%;
-      display: flex;
-    
-      width: 550px;
-  
-    
-    
-    }
-
-
-
-    #SvgjsSvg1327{
-
-      width: 500px;
-
-      margin: 2% 0 0 0;
-    }
-
-
   }
+
+}
+
+
+
+@media (max-width: 820px) {
+
+  .mainField #chart2 {
+
+    margin: 0% 26% 0;
+  width: 450px;
   
-  
-  @media (max-width: 780px) {
-
- 
-  
-    .mainField #chart2 {
-   
-      margin: 30px 0 0 50%;
-     
-    
-      width: 450px;
-  
-    
-    
-    }
- 
-
-    #SvgjsSvg1327{
-
-      width: 400px;
-
-      margin: 2% 0 0 2%;
-    }
-
-
-    .labelG{
-  
-      right: 500px;
-    
-    
-    
-    }
-    
-    
-  
-
-
-
   }
-  
+  #SvgjsSvg1327{
 
-
-  @media (max-width: 700px) {
+    width: 450px;
 
  
-  
-    .mainField #chart2 {
-   
-      margin: 30px 0 0 40%;
-     
-    
-      width: 450px;
-  
-    
-    
-    }
-
-
-
-    #SvgjsSvg1327{
-
-      width: 400px;
-
-      margin: 2% 0 0 2%;
-    }
-
-
-    .labelG{
-  
-      right: 500px;
-    
-    
-    
-    }
-    
-    
-  
-
-
-
   }
+
+}
+
+
+@media (max-width: 700px) {
+
+  .mainField #chart2 {
+
+    margin: 0% 20% 0;
+
+  
+    width: 400px;
+  
+  }
+  #SvgjsSvg1327{
+
+    width: 400px;
+
+ 
+  }
+
+}
+
+
+
+
+
+
+  
+
+
+
 
 
   @media (max-width: 600px) {

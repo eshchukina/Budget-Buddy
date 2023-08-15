@@ -300,7 +300,7 @@ button.modalBtn:hover {
   display: flex;
 
 position: relative;
-top:-20px;
+
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: flex-start;
@@ -314,20 +314,19 @@ top:-20px;
 
 
 align-items:center;
-
+margin: 0 20%;
   order: 0;
   flex: 1 1 auto;
- 
+
 
   }
 .secondt {
-  /* margin: 0 auto; */
-  padding: 10px;
-padding-top: 40px;
+
+margin: 0 20% ;
   order: 0;
-  flex: 1 1 auto;
+  flex: 0 1 auto;
 
-
+  align-items:center;
 
 
 }
@@ -355,50 +354,58 @@ top:30px;
 
   transition: 0.5s;
 }
+
+
+
+@media (max-width: 800px) {
+
+.instructionButton{
+
+
+
+  left:80px;
+
+}
+
+}
   
-@media (max-width: 2000px) {
+@media (max-width: 2200px) {
 
 
-  .flex-container{
+  .firstt {
 
-    padding-top: 70px ;
-      }
+
+    align-items:center;
+    margin: 0 10%;
+      order: 0;
+      flex: 1 1 auto;
     
-
-  .secondt {
-     margin: 0 auto; 
-   
-  
-   
-  
-  
-  }
+    
+      }
+    .secondt {
+    
+    margin: 0 10% ;
+      order: 0;
+      flex: 0 1 auto;
+    
+      align-items:center;
+    
+    
+    }
 }
 
 
 
 
-@media (max-width: 1650px) {
 
-  .flex-container{
-
-    padding-top: 0 ;
-   
-      }
-    
-
- 
-   
-
-}
 
 
 @media (max-width: 1530px) {
 
   .secondt {
   
-    margin: 0 15%; 
-  
+ 
+    margin: 0 5% ;
    
   
   
@@ -408,135 +415,24 @@ top:30px;
   
 }
 
-@media (max-width: 1350px) {
-
-.flex-container{
-
-  display: flex;
-
-
-top:50px;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  align-content: stretch;
-  align-items: flex-start;
-  margin: 0 auto;
-}
-/* html {
- 
-  overflow-y:scroll;
-  scrollbar-width: thin;
-  scrollbar-color: transparent transparent; 
-
-}
-html::-webkit-scrollbar {
-  width:0px;
 
 
 
-
-} */
-
-
-}
-
-@media (max-width: 1030px) {
-
- 
-  
-  .secondt {
-  
-    margin: 0 15%; 
-  
-   
-  
-  
-  }
-  
- 
-    
-  }
-  
 
 
 
 
   
-  
-  @media (max-width: 850px) {
-
- 
-  
-    .secondt {
-    
-      margin: 0 25%; 
-    
-     
-    
-    
-    }
-  }  
-
 
   
-  @media (max-width: 850px) {
-
-  .instructionButton{
-
-
-    left:80px;
-
-  }
-  
-  }
 
 
 
 
-  @media (max-width: 640px) {
-
- 
-.flex-container{
-
-  display: flex;
-
-position: relative;
-
-
-   justify-content: flex-start;
-  align-content: stretch;
-  align-items: flex-start;
-  margin: 0;
-}
-
-
-.firstt {
-
-  margin: 0; 
-align-items:center;
-
-  order: 0;
-  flex: 1 1 auto;
- 
-
-  }
-.secondt {
-  
-  padding: 10px;
-  margin: 0 20%; 
-  order: 0;
-  flex: 1 1 auto;
-
- 
-
-
-}
 
   
     
-  }  
-
+  
   @media (max-width: 600px) {
 
  

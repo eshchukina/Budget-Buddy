@@ -32,11 +32,15 @@
   
   
   .mainField #chart {
-  margin-bottom: 30px;
+
   width:350px;
-  top:-70px;
-  position: relative;
-  
+  margin: 0 0 0 0;
+bottom: 70px;
+position: relative;
+left:500px;
+
+
+
   }
   
   
@@ -49,13 +53,14 @@
   
   }
 
-  @media (max-width: 2000px) {
+  @media (max-width: 2200px) {
   
     .mainField #chart {
-  top:-100px;
-  position: relative;
-      margin-bottom: 0px;
       width:350px;
+      margin: 0 0 0 0;
+    bottom: 70px;
+    position: relative;
+    left:300px;
       }
       
   
@@ -67,32 +72,91 @@
   @media (max-width: 1650px) {
   
     .mainField #chart {
-  top:-60px;
-  position: relative;
-      margin-bottom: 0px;
       width:350px;
-   
+      margin: 0 0 0 0;
+    bottom: 70px;
+    position: relative;
+    left:200px;
       }
+      
       
   
   
   }
 
-  
-  @media (max-width: 900px) {
+  @media (max-width: 1450px) {
   
     .mainField #chart {
-  top:-70px;
-  position: relative;
-      margin-bottom: 0px;
-      width:350px;
-      left:20px;
    
+    left:50px;
       }
+      
       
   
   
   }
+
+  @media (max-width: 1350px) {
+  
+    .mainField #chart {
+   
+    left:30px;
+      }
+      
+      
+  
+  
+  }
+
+  @media (max-width: 1350px) {
+  
+    .mainField #chart {
+   top:650px;
+    left:-650px;
+      }
+      
+   body {
+    overflow-y: scroll;
+   }
+  
+  
+  }
+
+  @media (max-width: 900px) {
+  
+    .mainField #chart {
+
+    left:-500px;
+      }
+ 
+  
+  }
+
+
+  @media (max-width: 820px) {
+  
+    .mainField #chart {
+
+    left:-480px;
+      }
+ 
+  
+  }
+
+
+
+  @media (max-width: 700px) {
+  
+    .mainField #chart {
+
+    left:-470px;
+      }
+ 
+  
+  }
+
+
+
 
   @media (max-width: 600px) {
   

@@ -73,15 +73,7 @@ const TransactionTable = ({
   return (
     <>
     <div className={`mainField ${isDarkMode ? "dark" : "light"}`}>
-    <div className="flex-container">
-    <div className="secondt">
-    <MoneyBox
-        isDarkMode={isDarkMode}
-        currentBalanceMoneyBox={currentBalanceMoneyBox} 
-        dataList={dataList}
-        // Pass the current balance of Money Box transactions
-      />
-    </div>   </div> 
+  
 <div className="flex-container">
 
 <div className="firstt">
@@ -163,6 +155,14 @@ const TransactionTable = ({
       </table>{" "}
     </div> </div>
 
+    <div className="secondt">
+    <MoneyBox
+        isDarkMode={isDarkMode}
+        currentBalanceMoneyBox={currentBalanceMoneyBox} 
+        dataList={dataList}
+        // Pass the current balance of Money Box transactions
+      />
+    </div>   
 
   </div>
 
