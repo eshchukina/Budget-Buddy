@@ -19,6 +19,7 @@ function App() {
   // const [activeAccount, setActiveAccount] = useState(
   //   accounts.length > 0 ? accounts[0] : null 
   // );
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const setActiveModal = (modal) => {};
 
@@ -170,7 +171,7 @@ if (window.innerWidth <= 600) {
         setActiveModal={() => {}} 
         activeAccount={activeAccount}
         setActiveAccount={setActiveAccount}
-     
+        setIsLoggedIn={setIsLoggedIn}
       />
       
       <FontAwesomeIcon
@@ -254,7 +255,7 @@ if (window.innerWidth <= 600) {
   updateAccountCaption={updateAccountCaption}
   onAccountUpdate={onAccountUpdate}
   handleLogout={handleLogout}
-
+  isLoggedIn={isLoggedIn}
 
   isInstructionViewOpen={!isDashboardView}
   closeInstructionView={() => setIsDashboardView(true)}

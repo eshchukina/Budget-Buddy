@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 import "./PersonalCabinet.css";
 
@@ -9,7 +9,7 @@ const PersonalCabinet = ({  name, email, onClose, isDarkMode }) => {
   return (
     <div className= {`personalAccount ${isDarkMode ? "dark" : "light"}`}>
             <button className= {`buttonCabCross ${isDarkMode ? "dark" : "light"}`} onClick={onClose}>
-        <FontAwesomeIcon icon={faTimes} />
+        <FontAwesomeIcon icon={faTimes} onClick={onClose}/>
       </button>
      
 
@@ -23,11 +23,11 @@ const PersonalCabinet = ({  name, email, onClose, isDarkMode }) => {
         <div className="cat-tongue"></div>
         <div className="cat-head"></div>
       </div> */}
-<FontAwesomeIcon id="logoUser" icon={faUser} />
+
  </div>
 
       <div className="user-details">
-        <h3>{name}</h3>
+        <p>{name}</p>
         <p>{email}</p>
      
       </div>

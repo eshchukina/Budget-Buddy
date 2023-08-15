@@ -16,7 +16,8 @@ const Header = ({
   isDarkMode,
   toggleTheme,
   activeAccount,
-  setActiveAccount }) => {
+  setActiveAccount,
+  setIsLoggedIn }) => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
@@ -153,7 +154,8 @@ const Header = ({
           setUserName(name);
           setUserEmail(email);
       
-        
+          setIsLoggedIn(true);
+
           localStorage.setItem('userName', name);
           localStorage.setItem('userEmail', email);
 
@@ -345,6 +347,7 @@ useEffect(() => {
       <LoginButton
         isDarkMode={isDarkMode}
         handleOpenLoginModal={handleOpenLoginModal}
+     
       />
 
       {isLoginModalOpen && (

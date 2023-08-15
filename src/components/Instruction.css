@@ -130,7 +130,7 @@
   align-items: center;
     }
      html {
- 
+
         overflow-y:scroll;
         scrollbar-width: thin; 
         scrollbar-color: transparent transparent; 
@@ -173,25 +173,6 @@
        
     }       
 
-    @media (max-width: 800px) {
-
-        .instruction{
-            color: #fff;
-            padding: 50px 0px 0 250px;
-            text-align: center;
-            transition: 0.5s;
-         margin: 0  ;
-              font-size: 18px;  
-            
-        }
-       
-        .two, 
-        .one,
-        .three,
-        .four,
-        .five {
-            margin: 50% 10% 0 10%; }
-    }       
 
     @media (max-width: 800px) {
 
@@ -200,7 +181,7 @@
             padding: 0;
             text-align: center;
             transition: 0.5s;
-         margin: 10% 20% 0 20% ;
+         margin: 10% 20% 0 30% ;
               font-size: 18px;  
             
         }
@@ -228,6 +209,36 @@
     }       
 
 
+    @media (max-width: 600px) {
+
+        .instruction{
+            color: #fff;
+            padding: 0;
+            text-align: center;
+            transition: 0.5s;
+         margin: 10% 10% 0 10% ;
+              font-size: 18px;  
+            
+        }
+       
+        .two {
+            margin: 0 10%;
+        }
+
+
+            
+.parent {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
+
+
+  justify-content: start; /* Horizontally center */
+  align-items: center;
+    }
+    }       
 
     
     @media (max-width: 400px) {
@@ -242,12 +253,8 @@
             
         }
        
-        .two, 
-        .one,
-        .three,
-        .four,
-        .five {
-            margin: 0 20%;
+        .two {
+            margin: 0 10%;
         }
 
             

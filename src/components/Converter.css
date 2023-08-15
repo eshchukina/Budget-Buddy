@@ -331,9 +331,10 @@ position: relative;
     @media (max-width: 600px) {
 
       .converter {
-    
-      top:1000px;
-        width:340px;
+    margin: 0 auto;
+      top: 830px;
+      left:50px;
+        width:400px;
         
     
         
@@ -348,10 +349,10 @@ position: relative;
 
       .converter {
     
-      top:1600px;
+      top:900px;
         bottom: 60px;
-        width:340px;
-        margin: 0 0 0 0;
+        width:350px;
+        margin: 0;
         left:0px;
         
         }

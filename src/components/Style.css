@@ -444,10 +444,22 @@ top:30px;
 
       display: flex;
     position: relative;
-   
-    top:100px;
+
+    top:250px;
     
   
+    }
+
+
+  
+
+    .instructionButton{
+
+
+
+      left:80px;
+      top:100px;
+    
     }
     
     .mainField{
@@ -498,9 +510,18 @@ body::-webkit-scrollbar-thumb {
 
 .secondt {
   
-margin: 60px 0 0 0 ;
+margin: 0 0 0 0 ;
 
 
+
+
+}
+
+.instructionButton{
+
+position: sticky;
+
+  left:40px;
 
 
 }

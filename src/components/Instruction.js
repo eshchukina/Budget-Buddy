@@ -84,7 +84,7 @@ income to be automatically transferred to your savings
 <p><h3>Currency converter:</h3>
 With the built-in currency converter, you can easily convert amounts from one currency to another 
 without extra effort
-<br/></p>
+</p>
 
  <div className={`five ${isDarkMode ? "dark" : "light"}`}  style={{ height: "200px" }}></div>
 
@@ -92,9 +92,8 @@ without extra effort
 
 <br/>
 </div> 
-<p><span className="highlighName">Budget Buddy</span> is your reliable companion in the world of finance. Free yourself from financial
-   stress, take control 
-of your money, and achieve financial independence with this convenient and functional application
+<p><span className="highlighName">Budget Buddy</span> is your reliable companion in the world of finance. 
+First, you need to register!
 </p>
 <br/><br/>
     

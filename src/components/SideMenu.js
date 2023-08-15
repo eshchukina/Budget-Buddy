@@ -25,6 +25,7 @@ const SideMenu = ({
 
   isInstructionViewOpen,
   closeInstructionView,
+  isLoggedIn
 }) => {
   const [newAccount, setNewAccount] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -385,7 +386,8 @@ const SideMenu = ({
         <div className="share">
   
           <div className="item" onClick={handleShare}>
-            <FontAwesomeIcon icon={faShareNodes} /> <span className="textItem">share</span>
+            <FontAwesomeIcon icon={faShareNodes} 
+            /> <span className="textItem">share</span>
           </div>
 
           <div className="item" onClick={handleContactUs}>

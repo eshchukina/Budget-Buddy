@@ -79,7 +79,10 @@ const SearchPage = () => {
             placeholder="search"
           />
           <button className="searchButton" onClick={handleSearch}>
-            <FontAwesomeIcon icon={faSearch} />
+            <FontAwesomeIcon icon={faSearch}
+                title="search"
+            
+            />
           </button>
         </div>
       </div>

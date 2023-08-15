@@ -311,9 +311,9 @@ padding-left: 4px;
       color: #fff;
       border-radius: 20px;
     padding: 20px 0 0 0;
-      margin: 30px 0 0 40%;
+    margin: 0 auto;
       display: flex;
-    top:1010px;
+    top:610px;
       width: 540px;
   
    
@@ -324,7 +324,7 @@ padding-left: 4px;
 
     #SvgjsSvg1327{
 
-      width: 570px;
+      width: 540px;
 
       margin: 2% 0 0 2%;
     }
@@ -352,10 +352,10 @@ padding-left: 4px;
  
   
     .mainField #chart2 {
-   
-      margin: 30px 0 0 0;
+   left:0px;
+      margin: 0 auto;
       overflow: hidden;
-    
+    top: 670px;
       width: 370px;
   
     

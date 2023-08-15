@@ -174,10 +174,11 @@ left:500px;
   @media (max-width: 400px) {
  
     .mainField #chart {
-      top:1300px;
+      top:1140px;
       margin:  0 auto;
-      width:340px;
+      width:356px;
       left:0px;
+      height: 350px;
      
       
       }

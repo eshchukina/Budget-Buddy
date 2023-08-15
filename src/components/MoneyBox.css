@@ -163,11 +163,37 @@
 
 
 
+
+
+
 @media (max-width: 720px) {
 
   .moneyBox{
- 
+ margin: 0 auto;
     left:50px;
+    top: 1100px;
+
+  }
+}
+
+@media (max-width: 600px) {
+
+  .moneyBox{
+ margin: 0 auto;
+    left:50px;
+    top: 730px;
+
+  }
+}
+
+
+@media (max-width: 400px) {
+
+  .moneyBox{
+ margin: 0 auto;
+    left:0px;
+    top: -240px;
+    width: 350px;
 
   }
 }

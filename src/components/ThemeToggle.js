@@ -14,6 +14,7 @@ const ThemeToggle = ({ isDarkMode, toggleTheme }) => {
     <button
       className={`buttonTheme ${isDarkMode ? "dark" : "light"}`}
       onClick={handleThemeToggle}
+      title="theme"
     >
       {isDarkMode ? (
         <FontAwesomeIcon icon={faMoon} />
