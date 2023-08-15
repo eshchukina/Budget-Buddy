@@ -385,7 +385,7 @@ font-size: 18px;
    margin-top: 30px;
 
     font-size: 20px;
-    padding: 30px;
+    padding: 20px;
     left:150px;
     top:-500px;
   border-radius:20px;
@@ -422,8 +422,9 @@ font-size: 18px;
    
   }
 
+
   .accountButtonContainer {
-    margin: 0 20%;
+    margin: 0 ;
     flex-basis: calc(20% - 30px);
     padding: 10px;
     width: 300px;
@@ -519,6 +520,7 @@ font-size: 18px;
 
 .carousel-container::-webkit-scrollbar {
   width: 0; 
+  height: 50px;
 }
 
 .carousel-container::-webkit-scrollbar-track {
@@ -536,7 +538,7 @@ font-size: 18px;
 
  .accountButtonContainer {
 
-  margin: 0 5%;
+  margin: 0;
  
 
   
