@@ -100,10 +100,10 @@ z-index: 999999;
 .instructionButton{
 
 
-  background-color:#1b414c;
+  background-color:#0E272E;
   position: fixed;
-  left:100px;
-  top: 5px;
+  left:250px;
+  top: 25px;
   color: #fff;
   font-size: 160%;
   z-index: 1;
@@ -361,17 +361,6 @@ top:30px;
 
 
 
-@media (max-width: 800px) {
-
-.instructionButton{
-
-
-
-  left:80px;
-
-}
-
-}
   
 @media (max-width: 2200px) {
 
@@ -420,22 +409,14 @@ top:30px;
 }
 
 
+@media (max-width: 650px) {
 
-
-
-
-
-
-  
-
-  
-
-
-
-
-
-  
-    
+  .instructionButton{
+left: 200px;
+top:15px;
+  }
+}
+ 
   
   @media (max-width: 600px) {
 
@@ -457,8 +438,8 @@ top:30px;
 
 
 
-      left:80px;
-      top:100px;
+      left:20px;
+      top:20px;
     
     }
     
@@ -505,7 +486,7 @@ body::-webkit-scrollbar-thumb {
 
 
 
-      @media (max-width: 390px) {
+      @media (max-width: 400px) {
 
 
 .secondt {
@@ -519,9 +500,9 @@ margin: 0 0 0 0 ;
 
 .instructionButton{
 
-position: sticky;
-
-  left:40px;
+position: relative;
+top:-40px;
+  left:150px;
 
 
 }

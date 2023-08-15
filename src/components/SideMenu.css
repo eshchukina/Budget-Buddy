@@ -440,15 +440,16 @@ font-size: 18px;
   } */
 
 
+
   .sidebar{
     border-radius:20px;
-
+  position: sticky;
     width: 100%;
     left: 0;
     top: 50px;
-    height : 350px;
-    margin: 20px 0 0 0 ;  
-
+    height : 300px;
+    margin: 0;  
+  
     background-color: #EDF4F6;
    
   }
