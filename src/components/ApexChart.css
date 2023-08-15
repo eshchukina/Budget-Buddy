@@ -145,11 +145,11 @@ left:500px;
 
 
 
-  @media (max-width: 700px) {
+  @media (max-width: 720px) {
   
     .mainField #chart {
 
-    left:-470px;
+    left:-465px;
       }
  
   

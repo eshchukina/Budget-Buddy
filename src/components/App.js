@@ -182,7 +182,7 @@ if (window.innerWidth <= 600) {
   }}
 />
 
-{!isDashboardView && <Instruction />}
+{!isDashboardView && <Instruction isDarkMode={isDarkMode} />}
       
       {
   isDashboardView  ? (
