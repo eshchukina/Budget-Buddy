@@ -21,24 +21,6 @@ position: relative;
 
 
 
-.instructionButton{
-
-
-  background-color:#1b414c;
-  position: absolute;
-  left:90px;
-  top: 5px;
-  color: #fff;
-  font-size: 160%;
-  z-index: 1;
-cursor: pointer;
-transition: 0.5s;
-}
-
-.instructionButton:hover{
-  color:#5EC7DD;
-}
-
 .mainField.light .instructionButton{
   color:#9dafb4;
   background-color: #fff;
@@ -131,7 +113,7 @@ table {
 
     display: block;
     overflow-y: auto;
-    max-height: 505px;
+    max-height: 470px;
   }
 
 

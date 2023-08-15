@@ -6,7 +6,7 @@
  margin: 0 10% ;
       font-size: 25px;  
  
-    
+
 }
 
 .highlighName{
@@ -129,11 +129,11 @@
   justify-content: center; /* Horizontally center */
   align-items: center;
     }
-    html {
+     html {
  
         overflow-y:scroll;
-        scrollbar-width: thin; /* Для Firefox */
-        scrollbar-color: transparent transparent; /* Для Firefox */
+        scrollbar-width: thin; 
+        scrollbar-color: transparent transparent; 
       
       }
       html::-webkit-scrollbar {
@@ -142,7 +142,7 @@
       
       
       
-      }
+      } 
       
 
     @media (max-width: 1500px) {

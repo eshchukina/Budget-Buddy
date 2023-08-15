@@ -95,6 +95,28 @@ z-index: 999999;
   background-color:#fff;
   color:#9dafba ;
 }
+
+
+.instructionButton{
+
+
+  background-color:#1b414c;
+  position: fixed;
+  left:100px;
+  top: 5px;
+  color: #fff;
+  font-size: 160%;
+  z-index: 1;
+cursor: pointer;
+transition: 0.5s;
+}
+
+.instructionButton:hover{
+  color:#5EC7DD;
+}
+
+
+
 .modalBtn{
   box-shadow: 0px 2px 4px #81858e;
   padding: 5px 10px;
@@ -305,7 +327,7 @@ padding-top: 40px;
   order: 0;
   flex: 1 1 auto;
 
- 
+
 
 
 }
@@ -315,7 +337,7 @@ padding-top: 40px;
 
   .flex-container{
 
-padding-top: 100px ;
+padding-top: 80px ;
   }
 
 
@@ -329,7 +351,7 @@ padding-top: 100px ;
 
 .mainField {
 position: relative;
-top:40px;
+top:30px;
 
   transition: 0.5s;
 }
@@ -401,11 +423,11 @@ top:50px;
   align-items: flex-start;
   margin: 0 auto;
 }
-html {
+/* html {
  
   overflow-y:scroll;
-  scrollbar-width: thin; /* Для Firefox */
-  scrollbar-color: transparent transparent; /* Для Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent; 
 
 }
 html::-webkit-scrollbar {
@@ -414,7 +436,7 @@ html::-webkit-scrollbar {
 
 
 
-}
+} */
 
 
 }
@@ -457,10 +479,17 @@ html::-webkit-scrollbar {
   }  
 
 
+  
+  @media (max-width: 850px) {
+
+  .instructionButton{
 
 
+    left:80px;
 
-
+  }
+  
+  }
 
 
 
@@ -532,7 +561,7 @@ align-items:center;
       
       }
     */
-    body {
+    /* body {
     
         overflow-y:scroll;
 
@@ -551,7 +580,7 @@ body::-webkit-scrollbar-thumb {
   background-color:#fff;
   border-radius: 10px;
  
-}
+} */
 
     
 
