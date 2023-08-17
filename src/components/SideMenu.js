@@ -122,9 +122,6 @@ const SideMenu = ({
           setNewAccount("");
 
 
-
-
-      
           fetchAccountList();
         } else {
           console.log("Failed to create account");

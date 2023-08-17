@@ -408,15 +408,28 @@ top:30px;
   
 }
 
-
-@media (max-width: 650px) {
+@media (max-width: 1260px) {
 
   .instructionButton{
-left: 200px;
-top:15px;
+left: 90px;
+background-color:#1b414c;
+
   }
 }
  
+@media (max-width: 800px) {
+
+  .instructionButton{
+left: 80px;
+
+
+  }
+}
+ 
+
+ 
+
+
   
   @media (max-width: 600px) {
 
@@ -435,11 +448,11 @@ top:15px;
   
 
     .instructionButton{
-
+position:sticky;
 
 
       left:20px;
-      top:20px;
+      top:100px;
     
     }
     
@@ -474,8 +487,9 @@ margin: 0 0 0 0 ;
 .instructionButton{
 
 position: relative;
-top:-40px;
-  left:150px;
+top:-38px;
+  left:140px;
+  background-color:#0E272E;
 
 
 }

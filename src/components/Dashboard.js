@@ -538,6 +538,8 @@ const Dashboard = ({
         fetchAccountData();
         fetchChartData();
         fetchChartDataSchedule();
+        setCurrentBalance(currentBalance);
+        setFutureBalance(currentBalance);
       
         closeModal();
       } else {
@@ -548,6 +550,8 @@ const Dashboard = ({
       console.log("Error adding data to the database:", error);
     }
     fetchAccountData();
+    setCurrentBalance(currentBalance);
+    setFutureBalance(currentBalance);
   };
 
  const handleUpdateData = async () => {
@@ -584,6 +588,8 @@ const Dashboard = ({
       }
     ); 
     fetchAccountData();
+    setCurrentBalance(currentBalance);
+    setFutureBalance(currentBalance);
    
     if (!response.ok) {
       console.log("Error updating data in the database.");
@@ -593,6 +599,8 @@ const Dashboard = ({
   }
  
   fetchAccountData();
+  setCurrentBalance(currentBalance);
+  setFutureBalance(currentBalance);
 };
 
   const handleSubmit = async (e) => {
@@ -642,6 +650,8 @@ const Dashboard = ({
         fetchChartData();
         fetchAccountData();
         fetchChartDataSchedule();
+        setCurrentBalance(currentBalance);
+        setFutureBalance(currentBalance);
        
       } else {
         console.log("Error deleting data from the database.");
