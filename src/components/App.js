@@ -5,8 +5,8 @@ import Dashboard from "./Dashboard";
 import Footer from "./Footer";
 import "./Style.css";
 import "./Dashboard.css";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 
 import Instruction from "./Instruction";
 function App() {
@@ -138,19 +138,19 @@ useEffect(() => {
 const [isDashboardView, setIsDashboardView] = useState(true); 
 
 
-// const toggleInstructions = () => {
+const toggleInstructions = () => {
 
 
-//   const hiddenContent = document.querySelector('.sidebar'); 
+  const hiddenContent = document.querySelector('.sidebar'); 
 
-// if (window.innerWidth <= 600) {
-//       if (hiddenContent.style.display === 'none') {
-//         hiddenContent.style.display = 'flex'; 
-//       } else {
-//         hiddenContent.style.display = 'none'; 
-//       }
-//     }
-// };
+if (window.innerWidth <= 600) {
+      if (hiddenContent.style.display === 'none') {
+        hiddenContent.style.display = 'flex'; 
+      } else {
+        hiddenContent.style.display = 'none'; 
+      }
+    }
+};
 
 
   return (
@@ -173,8 +173,11 @@ const [isDashboardView, setIsDashboardView] = useState(true);
         setActiveAccount={setActiveAccount}
         setIsLoggedIn={setIsLoggedIn}
       />
+            
+
+
       
-      {/* <FontAwesomeIcon
+      <FontAwesomeIcon
   className={`instructionButton ${isDashboardView ? "active" : ""} ${isDarkMode ? "dark" : "light"}`}
   icon={faCircleInfo}
   title="Instructions"
@@ -182,7 +185,7 @@ const [isDashboardView, setIsDashboardView] = useState(true);
     setIsDashboardView(!isDashboardView);
     toggleInstructions();
   }}
-/> */}
+/>
 
 {!isDashboardView && <Instruction isDarkMode={isDarkMode} />}
       
@@ -241,8 +244,12 @@ const [isDashboardView, setIsDashboardView] = useState(true);
       )
     }
 
-      
-  <SideMenu
+
+
+      <Footer isDarkMode={isDarkMode} />
+     
+
+      <SideMenu
   isDarkMode={isDarkMode}
   createAccount={createAccount}
   setActiveAccount={setActiveAccount}
@@ -261,12 +268,6 @@ const [isDashboardView, setIsDashboardView] = useState(true);
   closeInstructionView={() => setIsDashboardView(true)}
 
 />
-
-
-      <Footer isDarkMode={isDarkMode} />
-     
-
-
     </div>
   );
 }
