@@ -302,52 +302,9 @@ padding-left: 4px;
 
 
 
+
+  
   @media (max-width: 600px) {
-
- 
-  
-    .mainField #chart2 {
-      background-color: #1b414c;
-      color: #fff;
-      border-radius: 20px;
-    padding: 20px 0 0 0;
-    margin: 0 auto;
-      display: flex;
-    top:610px;
-      width: 540px;
-  
-   
-    
-    }
-
-
-
-    #SvgjsSvg1327{
-
-      width: 540px;
-
-      margin: 2% 0 0 2%;
-    }
-
-
-    .labelG{
-  
-      right: 500px;
-    
-    
-    
-    }
-    
-    
-  
-
-
-
-  }
-
-
-  
-  @media (max-width: 400px) {
 
  
   
@@ -380,7 +337,11 @@ padding-left: 4px;
     
     }
     
-    
+    .mainField.dark #chart2 {
+      background-color: #0e272e;
+     
+    }
+  
   
 
 
@@ -388,4 +349,53 @@ padding-left: 4px;
   }
 
 
+
+  
+  @media (max-width: 400px) {
+
+ 
+  
+    .mainField #chart2 {
+   left:-40px;
+     
+      overflow: hidden;
+    top: 670px;
+      width: 370px;
+  
+    
+    }
+
+
+
+    #SvgjsSvg1327{
+
+      width: 0px;
+
+      margin: 0;
+    }
+
+
+    .labelG{
+  
+      right: 550px;
+      padding-bottom: 10px;
+    
+    
+    
+    }
+    
+    .mainField.dark #chart2 {
+      background-color: #0e272e;
+     
+    }
+  
+  
+    .mainField.light #chart2 {
+      background-color: #edf4f6;
+     
+    }
+  
+
+
+  }
 

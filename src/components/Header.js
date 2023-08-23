@@ -17,7 +17,9 @@ const Header = ({
   toggleTheme,
   activeAccount,
   setActiveAccount,
-  setIsLoggedIn }) => {
+  setIsLoggedIn,
+  isDashboardView,
+  toggleInstructions }) => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
@@ -331,7 +333,20 @@ useEffect(() => {
     
       <h1 className="headerLogo" onClick={reloadPage}>
 
+
+
+
+
+
         <span className="headerLogoletter">B</span>udget <span className="headerLogoletter">B</span>uddy</h1>  
+
+
+
+
+
+
+
+        
 
          <h1 className="headerLogoMobile">
 

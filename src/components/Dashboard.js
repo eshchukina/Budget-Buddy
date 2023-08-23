@@ -759,8 +759,13 @@ const Dashboard = ({
  
     
       {showInstructions ? (
-      <Instruction isDarkMode={isDarkMode} />
+      <Instruction isDarkMode={isDarkMode} className="insrtuctionButton"/>
     ) : (
+
+
+
+
+      
       <div key={account.id}>
         {isModalOpen && (
           <div className="modalWindow">

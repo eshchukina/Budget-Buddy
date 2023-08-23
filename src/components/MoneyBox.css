@@ -195,5 +195,23 @@
     top: -240px;
     width: 350px;
 
+
+
+   
   }
+  .moneyBox.light{
+  
+    background-color: #edf4f6;
+   
+       
+      
+     }
+  .moneyBox.dark{
+  
+    background-color: #0e272e;
+   
+       
+      
+     }
+
 }

@@ -248,7 +248,7 @@
             padding: 0;
             text-align: center;
             transition: 0.5s;
-         margin: 10% 5% 5% 5% ;
+         margin: 5% 0% 5% 0% ;
               font-size: 18px;  
             
         }
@@ -256,14 +256,20 @@
         .two {
             margin: 0 10%;
         }
-
+        .three {
+            margin: 0 15%;
+        }
+        .four, .five {
+            margin: 0 15%;
+        }
+            
             
 .parent {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     grid-template-rows: repeat(1, 1fr);
-    grid-column-gap: 5px;
-    grid-row-gap: 5px;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
 
 
   justify-content: start; /* Horizontally center */

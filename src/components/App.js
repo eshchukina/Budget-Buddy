@@ -228,7 +228,8 @@ if (window.innerWidth <= 600) {
       : (
     
       
-      <Instruction isDarkMode={isDarkMode} />
+      <Instruction isDarkMode={isDarkMode} 
+      />
 
           
        

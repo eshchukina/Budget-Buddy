@@ -54,8 +54,14 @@ z-index: 999999;
   width: auto;
   transition: 0.5s;
   background-size: 200% auto;
-  color: #3c4049;
- z-index: 999999999999;
+  color: #455e63;
+ z-index: 999999999999999999999999999;
+}
+
+.modalContent select,
+.modalContent input
+ {
+  color: #455e63;
 }
 
 .modalContent.dark,
@@ -65,6 +71,7 @@ z-index: 999999;
 .modalContent.dark input[type="number"],
 .modalContent.dark input[type="date"] {
   background-color: #b8bbc4;
+  color: #455e63;
 }
 
 .modalContent select,
@@ -78,7 +85,37 @@ z-index: 999999;
   border: 1px solid #9ddd5e;
   border-radius: 10px;
   margin: 10px;
+  color: #455e63;
+  
 }
+
+
+
+
+.modalContent.dark select,
+.modalContent.dark input[type="text"]::placeholder ,
+.modalContent.dark input[type="password"]::placeholder,
+.modalContent.dark input[type="number"]::placeholder ,
+.modalContent.dark input[type="date"]::placeholder ,
+.modalContent.dark input[type="email"]::placeholder 
+  {
+  color: #455e63!important;
+  
+}
+
+
+.modalContent.light select,
+.modalContent.light input[type="text"]::placeholder ,
+.modalContent.light input[type="password"]::placeholder,
+.modalContent.light input[type="number"]::placeholder ,
+.modalContent.light input[type="date"]::placeholder ,
+.modalContent.light input[type="email"]::placeholder 
+  {
+  color: #455e63!important;
+  
+}
+
+
 
 .modalContent select:focus,
 .modalContent input[type="text"]:focus,
@@ -96,6 +133,9 @@ z-index: 999999;
   color:#9dafba ;
 }
 
+.modalContent select {
+  color: #455e63;
+}
 
 .instructionButton{
 
@@ -140,6 +180,7 @@ transition: 0.5s;
 
 .modalBtn.light{
   background-color: #9dafb4;
+  color: #455e63;
 }
 button.modalBtn:hover {
   background-position: right center;
@@ -445,16 +486,32 @@ left: 80px;
     }
 
 
-  
-
     .instructionButton{
-position:sticky;
+      position:sticky;
+      background-color:#9dafba;
+            left:20px;
+            top:100px;
+         
+          
+          }
 
+    .instructionButton.light{
 
-      left:20px;
-      top:100px;
+background-color:#edf4f6;
+     
+    
     
     }
+
+    .instructionButton.dark{
+   
+      background-color:#0E272E;
+      
+        
+          
+          }
+
+
     
     .mainField{
        

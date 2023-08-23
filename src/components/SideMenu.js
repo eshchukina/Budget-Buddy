@@ -347,7 +347,7 @@ const SideMenu = ({
                 </button>
               )}
               <button
-                className={`modalBtn ${isDarkMode ? "dark" : "light"}`}
+                className={`modalBtn  ${isDarkMode ? "dark" : "light"}`}
                 onClick={closeModal}
               >
                 Close

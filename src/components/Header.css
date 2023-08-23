@@ -11,8 +11,26 @@
   margin: 0;
   color: #455E63; 
   transition: 0.5s;
+  
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .blur {
   backdrop-filter: blur(10px);
@@ -76,6 +94,7 @@
 }
 
 .buttonTheme {
+  
   position: absolute;
   cursor: pointer;
   left: 1500px;
@@ -187,12 +206,13 @@ background-color:#edf4f6;
  .searchContainer {
     position: relative;
     right:300px;
+    
    
    
   }
   .searchInput{
     font-size: 18px;
-    position: relative;
+
     left:10px;
     transition: 0.5s;
     padding: 10px 30px;
@@ -896,11 +916,11 @@ font-size: 20px;
 .searchInput{
 
 border-radius:25px;
-
+width: 150px;
 font-size: 20px;
 padding: 10px 30px;
 margin: 25px 0 20px 0;
-
+z-index: 99999999999999999;
 
 
 
@@ -908,13 +928,18 @@ margin: 25px 0 20px 0;
 
 
  .header.dark .searchInput{
-  background-color:#0e272e;
+  background-color:#1b414c;
 
 }
+
+
+
 .searchContainer{
 
   margin: 0px;
-  left:0px;
+  left:10px;
+  z-index: 99999999999999999;
+top:22px;
 
 
 

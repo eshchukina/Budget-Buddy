@@ -8,8 +8,13 @@
   flex-direction: column;
   align-items: center;
 
+
+    
+
+
+
   transition: 0.5s;
-  background-size: 200% auto;
+
   color:  #9DAFB4;
   background-color: #fff;
 }
@@ -21,40 +26,7 @@
   
 
 
-.neonText{
-position: relative;
-  bottom: 100px;
-}
 
-
-
-
-.neonText.dark {
-  color: #fff;
-  text-shadow:
-      0 0 7px #e96e94,
-      0 0 10px #e96e94,
-      0 0 21px #e96e94,
-      0 0 42px #e96e94,
-      0 0 82px #e96e94,
-      0 0 92px #e96e94,
-      0 0 102px #e96e94,
-      0 0 151px#e96e94;
-}
-
-.neonText.light {
-  color: #e96e94;
-  text-shadow:
-  0 0 7px #1B414C,
-  0 0 10px #1B414C,
-  0 0 21px #1B414C,
-  0 0 42px #9DAFB4,
-  0 0 82px #9DAFB4,
-  0 0 92px #9DAFB4,
-  0 0 102px #9DAFB4,
-  0 0 151px#9DAFB4;
-
-}
 
 .minus{
   color: #5EC7DD!important;
@@ -73,6 +45,9 @@ position: relative;
 color:  #ffcd38;
   cursor: pointer;
   padding-top:10px;
+
+
+  
  
  }
  
@@ -96,7 +71,7 @@ color:  #ffcd38;
   justify-content: stretch;
 
 
-  
+
 }
 
 
@@ -161,10 +136,11 @@ margin: 2px;
   align-items: center;
   width: 100%;
   
+  
 }
 
 
-
+ 
 .active.accountButton {
  
   font-weight: 900;
@@ -188,8 +164,8 @@ font-weight: 900;
   position: relative;
   padding: 5px 10px;
   margin: 70px 0 20px 0;
-  background-color: #fff;
-  color:  #9DAFB4;
+  background-color: #9DAFB4;
+  color:  #fff;
   border: none;
   border-radius: 10px;
   cursor: pointer;
@@ -203,9 +179,15 @@ font-weight: 900;
   background-color: #5EC7DD;
   background-position: right center;
 }
+.majorButton.dark:hover {
+  background-color: #5EC7DD;
+  background-position: right center;
+}
+
   
 .majorButton.dark {
   color: #2d313a;
+  background-color: #edf4f6;
 }
 
 .balance{
@@ -215,12 +197,13 @@ font-weight: 900;
 .accountButtonContainer{
    width: 90%;
 margin: 2px auto;
-   padding: 2px 5px 5px 5px;
+   padding: 7px 5px 5px 5px;
+   
 }
 
 .accountButton {
   width: 100%;
-  padding: 2px 4px;
+  padding: 0px 4px;
   cursor: pointer;
   text-align: center;
   font-size: 16px;
@@ -229,8 +212,7 @@ margin: 2px auto;
   border: none;
   cursor: pointer;
   transition: 0.5s;
-  
-
+  background-color: #edf4f6;
   
 }
 
@@ -250,6 +232,7 @@ button.accountButton.dark{
   margin-top: 5px;
   text-align: center;
   margin-left: 10px;
+  
 
   }
  
@@ -282,12 +265,14 @@ button.accountButton.dark{
   
 
   .share {
-    padding: 10px;
+    padding-top: 50px;
 
    position: relative;
     
      right: 10px;
     top: 10px;
+
+    
  
   }
   
@@ -433,6 +418,7 @@ font-size: 18px;
     flex-wrap:wrap; 
     flex-grow: 1;
      font-size: 25px;
+     background-color: #fff;
  
   }
 
@@ -455,7 +441,16 @@ font-size: 18px;
    
   }
 
+  .sidebar.dark{
   
+  
+    background-color: #0e272e;
+   
+  }
+  
+  .sidebar.dark .accountButtonContainer{
+    background-color: #1b414c;
+  }
 
   .label{
     font-size:20px;
@@ -520,7 +515,7 @@ font-size: 18px;
 
 .carousel-container::-webkit-scrollbar {
   width: 0; 
-  height: 50px;
+  height: 150px;
 }
 
 .carousel-container::-webkit-scrollbar-track {
@@ -548,9 +543,10 @@ font-size: 18px;
   .majorButton {
     font-size: 20px;
     padding: 15px;
-    left:100px;
-    bottom:30px;
+
+
   border-radius:20px;
+  position: sticky;
    
   }
   
@@ -560,7 +556,7 @@ font-size: 18px;
 
 .sidebar{
   border-radius:20px;
-position: sticky;
+
   width: 100%;
   left: 0;
   top: 50px;
