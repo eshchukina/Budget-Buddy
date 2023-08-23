@@ -228,8 +228,7 @@ if (window.innerWidth <= 600) {
       : (
     
       
-      <Instruction isDarkMode={isDarkMode} 
-      />
+      <Instruction isDarkMode={isDarkMode} />
 
           
        
@@ -241,7 +240,7 @@ if (window.innerWidth <= 600) {
         <div></div>
       )
     }
-
+    <Footer isDarkMode={isDarkMode} />
       
   <SideMenu
   isDarkMode={isDarkMode}
@@ -264,7 +263,7 @@ if (window.innerWidth <= 600) {
 />
 
 
-      <Footer isDarkMode={isDarkMode} />
+  
      
 
 
