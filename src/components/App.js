@@ -240,7 +240,7 @@ if (window.innerWidth <= 600) {
         <div></div>
       )
     }
-    <Footer isDarkMode={isDarkMode} />
+
       
   <SideMenu
   isDarkMode={isDarkMode}
@@ -257,13 +257,12 @@ if (window.innerWidth <= 600) {
   handleLogout={handleLogout}
   isLoggedIn={isLoggedIn}
 
-  isInstructionViewOpen={!isDashboardView}
-  closeInstructionView={() => setIsDashboardView(true)}
+
 
 />
 
 
-  
+      <Footer isDarkMode={isDarkMode} />
      
 
 
