@@ -174,7 +174,7 @@ if (window.innerWidth <= 600) {
         setIsLoggedIn={setIsLoggedIn}
       />
       
-      <FontAwesomeIcon
+      {/* <FontAwesomeIcon
   className={`instructionButton ${isDashboardView ? "active" : ""} ${isDarkMode ? "dark" : "light"}`}
   icon={faCircleInfo}
   title="Instructions"
@@ -182,7 +182,7 @@ if (window.innerWidth <= 600) {
     setIsDashboardView(!isDashboardView);
     toggleInstructions();
   }}
-/>
+/> */}
 
 {!isDashboardView && <Instruction isDarkMode={isDarkMode} />}
       
