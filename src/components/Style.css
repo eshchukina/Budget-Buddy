@@ -41,7 +41,7 @@ body.dark  {
   display: flex;
   justify-content: center;
   align-items: center;
- z-index: 999999999999999999999999999;
+z-index: 999999;
   transition: 0.5s;
   background-size: 200% auto;
 
@@ -53,10 +53,9 @@ body.dark  {
   border-radius: 4px;
   width: auto;
   transition: 0.5s;
-  z-index: 9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999;
 
   color: #455e63;
-
+ z-index: 999999999999999999999999999;
 }
 
 .modalContent select,

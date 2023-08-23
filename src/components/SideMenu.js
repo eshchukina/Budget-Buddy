@@ -286,12 +286,7 @@ const SideMenu = ({
     <div>
       
       <div className={`sidebar ${isDarkMode ? "dark" : "light"} `} onClick={closeInstructionView}>
-      {/* {isInstructionViewOpen && (
-        <button className="closeInstructionButton" onClick={closeInstructionView}>
-          Close Instruction
-        </button>
-      )}
-         */}
+     
       {isTokenAvailable  && (
         
         <>  <button
@@ -301,11 +296,7 @@ const SideMenu = ({
            <span className="majorButtonBig"> Create new account</span>
            <span className="majorButtonSmall">+ account</span>
           </button>  
-           {/* <div className={`neonText ${isDarkMode ? "dark" : "light"}`}>
-            online
-       
- </div>
-           */}
+        
           </>
         )}
        
