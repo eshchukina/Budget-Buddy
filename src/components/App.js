@@ -257,7 +257,8 @@ if (window.innerWidth <= 600) {
   handleLogout={handleLogout}
   isLoggedIn={isLoggedIn}
 
-
+  isInstructionViewOpen={!isDashboardView}
+  closeInstructionView={() => setIsDashboardView(true)}
 
 />
 
