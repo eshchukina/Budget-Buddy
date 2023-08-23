@@ -41,6 +41,11 @@
     overflow: hidden;
     margin-bottom: 5px;
   }
+  .moneyBox.light .progressContainer {
+
+    background-color: #ffffff;
+    
+  }
 
   .logoMoneyBox{
     color:#ffcd38;

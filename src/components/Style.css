@@ -55,6 +55,7 @@ z-index: 999999;
   transition: 0.5s;
   background-size: 200% auto;
   color: #455e63;
+  position: relative;
  z-index: 999999999999999999999999999;
 }
 
