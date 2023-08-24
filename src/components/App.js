@@ -185,16 +185,20 @@ const toggleInstructions = () => {
             
 
 
-      
-      <FontAwesomeIcon
-  className={`instructionButton ${isDashboardView ? "active" : ""} ${isDarkMode ? "dark" : "light"}`}
-  icon={faCircleInfo}
-  title="Instructions"
-  onClick={() => {
-    setIsDashboardView(!isDashboardView);
-    toggleInstructions();
-  }}
-/>
+            {
+  isLoggedIn && (
+    <FontAwesomeIcon
+      className={`instructionButton ${isDashboardView ? "active" : ""} ${isDarkMode ? "dark" : "light"}`}
+      icon={faCircleInfo}
+      title="Instructions"
+      onClick={() => {
+        setIsDashboardView(!isDashboardView);
+        toggleInstructions();
+      }}
+    />
+  )
+}
+
 
 {!isDashboardView && <Instruction isDarkMode={isDarkMode} />}
       
