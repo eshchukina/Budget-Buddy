@@ -556,13 +556,13 @@ font-size: 18px;
 
 .sidebar{
   border-radius:20px;
-
+z-index: 999999999;
   width: 100%;
   left: 0;
   top: 50px;
   height : 300px;
   margin: 0;  
-
+position: relative;
   background-color: #EDF4F6;
  
 }
