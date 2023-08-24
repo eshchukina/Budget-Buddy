@@ -1,5 +1,5 @@
 .sidebar {
-  position: fixed;
+
   left: 0;
   top: 0;
   width: 220px; 
@@ -544,7 +544,7 @@ font-size: 18px;
     font-size: 20px;
     padding: 15px;
 
-
+    bottom:30px;
   border-radius:20px;
   position: sticky;
    
@@ -556,13 +556,13 @@ font-size: 18px;
 
 .sidebar{
   border-radius:20px;
-z-index: 999999999;
+
   width: 100%;
   left: 0;
   top: 50px;
   height : 300px;
   margin: 0;  
-position: relative;
+
   background-color: #EDF4F6;
  
 }
