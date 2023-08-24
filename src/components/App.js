@@ -21,6 +21,22 @@ function App() {
   // );
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  const [isInstructionOpen, setIsInstructionOpen] = useState(false);
+
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   const setActiveModal = (modal) => {};
 
   const headersWithToken = {};
@@ -139,18 +155,11 @@ const [isDashboardView, setIsDashboardView] = useState(true);
 
 
 const toggleInstructions = () => {
-
-
-  const hiddenContent = document.querySelector('.sidebar'); 
-
-if (window.innerWidth <= 600) {
-      if (hiddenContent.style.display === 'none') {
-        hiddenContent.style.display = 'flex'; 
-      } else {
-        hiddenContent.style.display = 'none'; 
-      }
-    }
+  if (windowWidth <= 600) {
+    setIsInstructionOpen(!isInstructionOpen);
+  }
 };
+
 
 
   return (
@@ -231,7 +240,8 @@ if (window.innerWidth <= 600) {
       : (
     
       
-      <Instruction isDarkMode={isDarkMode} />
+      <Instruction isDarkMode={isDarkMode}
+      isInstructionOpen={isInstructionOpen} />
 
           
        
@@ -248,26 +258,26 @@ if (window.innerWidth <= 600) {
 
       <Footer isDarkMode={isDarkMode} />
      
+      {!isInstructionOpen && (
+  <SideMenu
+    isDarkMode={isDarkMode}
+    createAccount={createAccount}
+    setActiveAccount={setActiveAccount}
+    setAccounts={setAccounts}
+    accountList={accounts}
+    activeAccount={activeAccount}
+    currency={currency}
+    handleCurrencyChange={handleCurrencyChange}
+    handleDeleteAccount={handleDeleteAccount}
+    updateAccountCaption={updateAccountCaption}
+    onAccountUpdate={onAccountUpdate}
+    handleLogout={handleLogout}
+    isLoggedIn={isLoggedIn}
+    isInstructionViewOpen={!isDashboardView}
+    closeInstructionView={() => setIsDashboardView(true)}
+  />
+)}
 
-      <SideMenu
-  isDarkMode={isDarkMode}
-  createAccount={createAccount}
-  setActiveAccount={setActiveAccount}
-  setAccounts={setAccounts}
-  accountList={accounts}
-  activeAccount={activeAccount}
-  currency={currency}
-  handleCurrencyChange={handleCurrencyChange}
-  handleDeleteAccount={handleDeleteAccount}
-  updateAccountCaption={updateAccountCaption}
-  onAccountUpdate={onAccountUpdate}
-  handleLogout={handleLogout}
-  isLoggedIn={isLoggedIn}
-
-  isInstructionViewOpen={!isDashboardView}
-  closeInstructionView={() => setIsDashboardView(true)}
-
-/>
     </div>
   );
 }

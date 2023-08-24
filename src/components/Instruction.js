@@ -3,11 +3,14 @@ import "./Instruction.css";
 import "./Style.css";
 
 
-function Instruction({ isDarkMode }) {
+function Instruction({ isDarkMode, isInstructionOpen }) {
+  const instructionClassName = `instruction ${isDarkMode ? "dark" : "light"} ${
+    isInstructionOpen ? "hidden" : ""
+  }`;
 
 
   return (
-    <div className={`instruction ${isDarkMode ? "dark" : "light"}`}>
+    <div className={instructionClassName}>
         
 
 
