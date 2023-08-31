@@ -23,7 +23,7 @@ const SideMenu = ({
   updateAccountCaption,
   onAccountUpdate,
 
-  isInstructionViewOpen,
+
   closeInstructionView,
   isLoggedIn
 }) => {
