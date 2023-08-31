@@ -139,10 +139,17 @@
       html::-webkit-scrollbar {
         width:0px;
       
-      
-      
+    
       
       } 
+
+      body{
+        overflow-y:scroll;
+
+      }
+      body::-webkit-scrollbar {
+        width:0px;
+      }
       
 
     @media (max-width: 1500px) {

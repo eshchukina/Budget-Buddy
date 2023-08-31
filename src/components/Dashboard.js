@@ -4,7 +4,8 @@ import TransactionTable from "./TransactionTable";
  import AreaCharts from "./AreaChart";
  import Converter from "./Converter";
 import config from '../config';
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 
 import "./Style.css";
 import "./Dashboard.css";
@@ -740,7 +741,6 @@ const Dashboard = ({
     // ... Your transaction data ...
   ];
 
-  // Calculate the current balance of "Money Box" transactions
   // const moneyBoxTransactions = transactionData.filter((data) => data.tag === "moneyBox");
   // const currentBalanceMoneyBox = moneyBoxTransactions.reduce(
   //   (total, item) => total + item.amount,

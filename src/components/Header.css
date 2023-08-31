@@ -16,22 +16,6 @@
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .blur {
   backdrop-filter: blur(10px);
 }
@@ -204,7 +188,7 @@ background-color:#edf4f6;
   }
 
  .searchContainer {
-    position: relative;
+    position: static;
     right:300px;
     
    
@@ -430,6 +414,8 @@ background-color:#edf4f6;
 }
 
 
+
+
 @media (max-width: 1400px) {
  
   .logIn {
@@ -456,6 +442,13 @@ background-color:#edf4f6;
   
   }
   
+  .searchContainer{
+    position: relative;
+    right:40px;
+   
+  
+  }
+
 
 
 }

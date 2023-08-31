@@ -179,7 +179,7 @@ const Header = ({
           setPassword("");
           setIsModalOpen(false);
 
-          console.log(data);
+          // console.log(data);
           
 
           const s = localStorage.getItem("expiresIn");
@@ -212,7 +212,7 @@ const Header = ({
 
     if (storedRefreshToken) {
       try {
-        console.log(JSON.stringify({ refreshToken: storedRefreshToken }));
+        // console.log(JSON.stringify({ refreshToken: storedRefreshToken }));
         const response = await fetch(`${config.apiUrl}refresh/`, {
           method: "POST",
           mode: "cors",

@@ -22,7 +22,7 @@ position: relative;
 
   display: inline;
 
-  z-index: 9999999999999999;
+
 
 }
 
@@ -51,6 +51,7 @@ position: relative;
 
 .text.dark{
   color:#fff;
+
 }
 
 
