@@ -185,8 +185,8 @@ const toggleInstructions = () => {
             
 
 
-            {
-  isLoggedIn && (
+            {/* {
+  isLoggedIn && ( */}
     <FontAwesomeIcon
       className={`instructionButton ${isDashboardView ? "active" : ""} ${isDarkMode ? "dark" : "light"}`}
       icon={faCircleInfo}
@@ -196,8 +196,8 @@ const toggleInstructions = () => {
         toggleInstructions();
       }}
     />
-  )
-}
+{/* //    )
+// }  */}
 
 
 {!isDashboardView && <Instruction isDarkMode={isDarkMode} />}
@@ -214,7 +214,7 @@ const toggleInstructions = () => {
           submittedDataList={activeAccount.submittedDataList}
           headersWithToken={headersWithToken}
           setActiveAccount={setActiveAccount}
-          updateAccountCaption={updateAccountCaption}
+          // updateAccountCaption={updateAcnpmcountCaption}
           handleCurrencyChange={handleCurrencyChange}
         
 

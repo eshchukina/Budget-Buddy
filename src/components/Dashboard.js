@@ -17,7 +17,8 @@ const Dashboard = ({
   isDarkMode,
   account,
   updateAccountData,
-  activeAccount
+  activeAccount,
+  updateAcnpmcountCaption
 
 }) => { 
 

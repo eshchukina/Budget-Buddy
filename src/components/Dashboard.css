@@ -18,18 +18,23 @@ position: relative;
  
 
 }
+.instructionButton {
 
+  display: inline;
 
+  z-index: 9999999999999999;
 
-.mainField.light .instructionButton{
+}
+
+ .mainField.light .instructionButton{
   color:#9dafb4;
   background-color: #fff;
 }
 
 .mainField.light .instructionButton:hover{
   color:#5EC7DD;
-}
 
+}
 
 
 .text {
