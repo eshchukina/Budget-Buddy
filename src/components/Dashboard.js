@@ -4,8 +4,8 @@ import TransactionTable from "./TransactionTable";
  import AreaCharts from "./AreaChart";
  import Converter from "./Converter";
 import config from '../config';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 
 import "./Style.css";
 import "./Dashboard.css";
