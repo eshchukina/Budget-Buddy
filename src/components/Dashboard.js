@@ -173,7 +173,7 @@ const Dashboard = ({
         };
        
         const response = await 
-        fetch(`${config.apiUrl}accounts/${account.id}/statement/`,
+        fetch(`${config.apiUrl}transactions/accounts/${account.id}/statement`,
           {
             headers: headersWithToken,
           }
@@ -230,7 +230,7 @@ const Dashboard = ({
           Authorization: `Bearer ${token}`,
         };
     
-        const response = await fetch(`${config.apiUrl}accounts/${account.id}/statistics`, {
+        const response = await fetch(`${config.apiUrl}transactions/accounts/${account.id}/statistics`, {
           headers: headersWithToken,
         });
     
@@ -279,7 +279,7 @@ const Dashboard = ({
         Authorization: `Bearer ${token}`,
       };
   
-      const response = await fetch(`${config.apiUrl}accounts/${account.id}/statistics`, {
+      const response = await fetch(`${config.apiUrl}transactions/accounts/${account.id}/statistics`, {
         headers: headersWithToken,
       });
   
@@ -325,7 +325,7 @@ const Dashboard = ({
           Authorization: `Bearer ${token}`,
         };
   
-        const response = await fetch(`${config.apiUrl}accounts/${account.id}/statement/`, {
+        const response = await fetch(`${config.apiUrl}transactions/accounts/${account.id}/statement`, {
           headers: headersWithToken,
         });
   
@@ -397,7 +397,7 @@ const Dashboard = ({
         Authorization: `Bearer ${token}`,
       };
 
-      const response = await fetch(`${config.apiUrl}accounts/${account.id}/statement/`, {
+      const response = await fetch(`${config.apiUrl}transactions/accounts/${account.id}/statement`, {
         headers: headersWithToken,
       });
 
@@ -460,7 +460,7 @@ const Dashboard = ({
         Authorization: `Bearer ${token}`,
       };
 
-      const response = await fetch(`${config.apiUrl}accounts/${account.id}/statement/` ,
+      const response = await fetch(`${config.apiUrl}transactions/accounts/${account.id}/statement` ,
         {
           headers: headersWithToken,
         }
@@ -530,7 +530,7 @@ const Dashboard = ({
         Authorization: `Bearer ${token}`,
       };
       
-      const response = await fetch(`${config.apiUrl}transactions/`, {
+      const response = await fetch(`${config.apiUrl}transactions`, {
         method: "POST",
         headers: headersWithToken,
         body: JSON.stringify(newSubmittedData),
@@ -870,7 +870,7 @@ const Dashboard = ({
           handleTagChange={handleTagChange} 
           toggleInstructions = {toggleInstructions}
         />
-        {!dataList || (dataList.length === 0 && <p>No submitted data</p>)}
+        {/* {!dataList || (dataList.length === 0 && <p></p>)} */}
         
         <AreaCharts
              isDarkMode={isDarkMode} 

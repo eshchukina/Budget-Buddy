@@ -82,7 +82,7 @@ const SideMenu = ({
         Authorization: `Bearer ${token}`,
       };
     
-      const response = await fetch(`${config.apiUrl}accounts/`, {
+      const response = await fetch(`${config.apiUrl}accounts`, {
         headers: headersWithToken,
       });
 
@@ -107,7 +107,7 @@ const SideMenu = ({
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         };
-        const response = await fetch(`${config.apiUrl}accounts/`, {
+        const response = await fetch(`${config.apiUrl}accounts`, {
           method: "POST",
           mode: "cors",
           headers: headersWithToken,
