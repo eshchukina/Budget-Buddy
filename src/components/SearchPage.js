@@ -24,7 +24,10 @@ const SearchPage = () => {
     const searchWordLowerCase = searchWord.toLowerCase();
 
     allElements.forEach((element) => {
-      if (element.innerText && element.innerText.toLowerCase().includes(searchWordLowerCase)) {
+      if (
+        element.innerText &&
+        element.innerText.toLowerCase().includes(searchWordLowerCase)
+      ) {
         highlightElement(element);
         foundElements.push(element);
       }
@@ -49,13 +52,16 @@ const SearchPage = () => {
     setFoundElements([]);
   }, [foundElements]);
 
-  const handleDocumentClick = useCallback((event) => {
-    const isSearchContainer = event.target.closest(".searchContainer");
-    if (!isSearchContainer) {
-      removeHighlight();
-      setSearchWord("");
-    }
-  }, [removeHighlight]);
+  const handleDocumentClick = useCallback(
+    (event) => {
+      const isSearchContainer = event.target.closest(".searchContainer");
+      if (!isSearchContainer) {
+        removeHighlight();
+        setSearchWord("");
+      }
+    },
+    [removeHighlight]
+  );
 
   useEffect(() => {
     document.addEventListener("click", handleDocumentClick);
@@ -79,10 +85,7 @@ const SearchPage = () => {
             placeholder="search"
           />
           <button className="searchButton" onClick={handleSearch}>
-            <FontAwesomeIcon icon={faSearch}
-                title="search"
-            
-            />
+            <FontAwesomeIcon icon={faSearch} title="search" />
           </button>
         </div>
       </div>

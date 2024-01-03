@@ -1,36 +1,24 @@
-
- 
-
-table.accountContent{
-  background-color: white; 
-
-
+table.accountContent {
+  background-color: white;
 }
-.accountContent{
+.accountContent {
   margin: 0% 40% 0;
   bottom: 150px;
-position: relative;
+  position: relative;
   background: none;
   border-radius: 20px;
-  color: #9DAFB4;
-
- transition: 0.5s;
- 
-
+  color: #9dafb4;
+  transition: 0.5s;
 }
 
-
-
-.mainField.light .instructionButton{
-  color:#9dafb4;
+.mainField.light .instructionButton {
+  color: #9dafb4;
   background-color: #fff;
 }
 
-.mainField.light .instructionButton:hover{
-  color:#5EC7DD;
+.mainField.light .instructionButton:hover {
+  color: #5ec7dd;
 }
-
-
 
 .text {
   margin: 100px auto;
@@ -41,227 +29,172 @@ position: relative;
   transition: 0.5s;
   background-size: 200% auto;
   font-size: 23px;
-  color: #9DAFB4;
+  color: #9dafb4;
 }
 
-.text.dark{
-  color:#fff;
+.text.dark {
+  color: #fff;
 }
-
 
 .titleList {
   text-align: center;
 }
 
-
- table::-webkit-scrollbar {
-  width:0px;
-
-
-
+table::-webkit-scrollbar {
+  width: 0px;
 }
-
 
 table::-webkit-scrollbar-thumb {
-  background-color:#fff;
+  background-color: #fff;
   border-radius: 10px;
- 
 }
 
-
-
-
-
 .mainField.light table {
-border: 5px solid #fff;
+  border: 5px solid #fff;
 }
 
 tfoot {
   position: sticky;
   bottom: 0;
   background-color: #1b414c;
- 
+
   transition: 0.5s;
 }
 
-
 .mainField.light tfoot {
-
   background-color: #fff;
 }
-
 
 thead {
   position: sticky;
   top: 50px;
-
   transition: 0.5s;
   background-color: #1b414c;
-
 }
 
 table {
-  
-
   text-align: center;
   border-collapse: collapse;
   border: 5px solid #1b414c;
-
   border-radius: 20px;
-  color: #9DAFB4;
+  color: #9dafb4;
   transition: 0.5s;
   width: 655px;
-
-    display: block;
-    overflow-y: auto;
-    max-height: 470px;
-  }
-
-
-
-th {  
-  transition: 0.5s;
-
-
-  font-weight: 300;
-  padding-bottom:5px;
-
+  display: block;
+  overflow-y: auto;
+  max-height: 470px;
 }
-  
- caption { 
+
+th {
+  transition: 0.5s;
+  font-weight: 300;
+  padding-bottom: 5px;
+}
+
+caption {
   transition: 0.5s;
   font-size: 23px;
   font-weight: 600;
   text-align: center;
+  padding-bottom: 20px;
+  position: sticky;
+  top: 0px;
+  background-color: #1b414c;
+}
 
-
-padding-bottom: 20px;
-    position: sticky; 
-    top: 0px;
-
-    background-color: #1b414c;
-   
-  }
-  
-
-
-  td:first-child {
-    font-size: 140%;
-    
-  }
+td:first-child {
+  font-size: 140%;
+}
 
 td:last-child {
   width: 10%;
 }
 
-table.accountContent.dark{ 
+table.accountContent.dark {
   border-radius: 20px;
   background-color: #1b414c;
 }
-caption{
-  color: #455E63;
+caption {
+  color: #455e63;
 }
 
 .positive {
-  color: #E96E94;
-
+  color: #e96e94;
 }
 
 .negative {
-color: #5EC7DD;
+  color: #5ec7dd;
 }
 
 .pad {
   margin-top: 5px;
   padding: 5px 5px 0 0;
-  
-
 }
-
-
-
-
-
-
-
-
 
 .editIcon1.light:hover,
 .deleteIcon1.light:hover {
- color: #5EC7DD;
- box-shadow: 0 0 5px #5EC7DD;
- text-shadow: 0 0 5px #5EC7DD;
- border-radius: 5px;
+  color: #5ec7dd;
+  box-shadow: 0 0 5px #5ec7dd;
+  text-shadow: 0 0 5px #5ec7dd;
+  border-radius: 5px;
 }
 
 .editIcon1.dark:hover,
 .deleteIcon1.dark:hover {
- color: #ffcd38;
- box-shadow: 0 0 5px #ffcd38;
- text-shadow: 0 0 5px #ffcd38;
- border-radius: 5px;
+  color: #ffcd38;
+  box-shadow: 0 0 5px #ffcd38;
+  text-shadow: 0 0 5px #ffcd38;
+  border-radius: 5px;
 }
 
-
-.editIcon1{
+.editIcon1 {
   padding: 8px;
   font-size: 16px;
-  color:#5EC7DD;
+  color: #5ec7dd;
   transition: 0.5s;
-margin: 1px;
+  margin: 1px;
   cursor: pointer;
 }
 
-.deleteIcon1{
+.deleteIcon1 {
   padding: 6px;
   font-size: 22px;
-  color:#5EC7DD; 
+  color: #5ec7dd;
   transition: 0.5s;
 
   cursor: pointer;
 }
 
-.editIcon1.dark{
-  color:#FFCD38;
-
+.editIcon1.dark {
+  color: #ffcd38;
 }
 
-.deleteIcon1.dark{
-  color:#FFCD38;   
+.deleteIcon1.dark {
+  color: #ffcd38;
 }
-
-
 
 .accountContent.dark th {
   font-size: 20px;
   font-weight: 300;
-
-  border-bottom: 5px solid #0E272E;
+  border-bottom: 5px solid #0e272e;
 }
 
 .accountContent.light th {
   font-size: 20px;
   font-weight: 300;
-
-  border-bottom: 5px solid  #EDF4F6;
+  border-bottom: 5px solid #edf4f6;
 }
-   
-.titleList{
+
+.titleList {
   position: relative;
   margin: auto;
   font-size: 20px;
   margin-top: 10px;
 }
 
-
-
-
-
-
-
-
 @keyframes blink {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0;
   }
   50% {
@@ -269,14 +202,12 @@ margin: 1px;
   }
 }
 
-/* Apply the 'blink' animation to the 'blinking-icon' class */
 .blinking-icon {
   animation: blink 3s infinite;
   position: relative;
- top: 5px;
- left: 10px;
+  top: 5px;
+  left: 10px;
 }
-
 
 .tagCircle {
   width: 20px;
@@ -285,181 +216,82 @@ margin: 1px;
   margin-right: 10px;
 }
 
-
-
-
-
 .mainField.light thead {
-
   background-color: #fff;
-
 }
 
 .mainField.light caption {
-
   background-color: #fff;
-
 }
 
-
-
-
-
 @media (max-width: 2200px) {
-
-  .accountContent{
-margin: 0% 20% 0;
+  .accountContent {
+    margin: 0% 20% 0;
   }
 }
 
 @media (max-width: 1650px) {
-
-
-  .accountContent{
-
+  .accountContent {
     margin: 0% 20% 0;
- 
-   
-  
   }
-  
-  
-  
-  }
+}
 
-  
 @media (max-width: 1450px) {
-
-
-  .accountContent{
+  .accountContent {
     margin: 0% 10% 0;
-  
   }
-  
-  
-  
+}
+
+@media (max-width: 1350px) {
+  .accountContent {
+    width: 550px;
+    margin: 0% 20% 0;
+  }
+}
+
+@media (max-width: 820px) {
+  .accountContent {
+    width: 500px;
+    margin: 0% 16% 0;
+  }
+}
+
+@media (max-width: 720px) {
+  .accountContent {
+    width: 480px;
+    margin: 0% 10% 0;
+  }
+}
+
+@media (max-width: 670px) {
+  .accountContent {
+    width: 440px;
+    margin: 0% 12% 0;
+  }
+}
+
+@media (max-width: 630px) {
+  .accountContent {
+    width: 420px;
+    margin: 0 auto;
+    top: -200px;
+  }
+}
+
+@media (max-width: 400px) {
+  .accountContent {
+    top: 0px;
+    margin: 0 auto;
+    width: 380px;
+    padding: 0;
+    height: 400px;
+    position: absolute;
   }
 
-
-  @media (max-width: 1350px) {
-
-
-    .accountContent{
-      width: 550px;
-      margin: 0% 20% 0;
-    }
-    
-    
-    
-    }
-  
-
-    @media (max-width: 820px) {
-
-
-      .accountContent{
-        width: 500px;
-        margin: 0% 16% 0;
-      }
-      
-      
-      
-      }
-    
-  
-  
-      
-
-
-      @media (max-width: 720px) {
-
-
-        .accountContent{
-          width: 480px;
-          margin: 0% 10% 0;
-        }
-        
-        
-        
-        }
-      
-   
-
-     
-
-
-        @media (max-width: 670px) {
-
-
-          .accountContent{
-            width: 440px;
-            margin: 0% 12% 0;
-          }
-          
-          
-          
-          }
-        
-     
-  
-  
-
-
-          @media (max-width: 630px) {
-
-
-            .accountContent{
-              width: 420px;
-              margin: 0 auto;
-              top: -200px;
-            }
-            
-            
-            
-            }
-          
-       
-
-
-
-
-
-
-
-          @media (max-width: 400px) {
-
-
-            .accountContent{
-          top: 0px;
-              margin: 0 auto;
-              width: 380px;
-            padding: 0;
-            height: 400px;
-            position: absolute;
-            }
-            
-
-          
-            body{
-              overflow-x: hidden;
-            }
-            html{
-              overflow-x: hidden;
-            }
-          
-
-
-
-          }    
-
-
-
-
-
-
-
-
-
-
-
-          
+  body {
+    overflow-x: hidden;
+  }
+  html {
+    overflow-x: hidden;
+  }
+}

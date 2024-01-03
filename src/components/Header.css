@@ -9,402 +9,277 @@
   align-items: center;
   justify-content: center;
   margin: 0;
-  color: #455E63; 
+  color: #455e63;
   transition: 0.5s;
-  
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .blur {
   backdrop-filter: blur(10px);
 }
 
-
-
 .header.light {
   transition: 0.5s;
-
 }
-.headerLogoMobile{
+.headerLogoMobile {
   display: none;
-
 }
 
 .header.dark {
-  color: #fff; 
-  transition: 0.5s
-
+  color: #fff;
+  transition: 0.5s;
 }
 
-
-.modalText{
+.modalText {
   text-align: center;
 }
-.modalText.dark{
-  color: #455e63; 
+
+.modalText.dark {
+  color: #455e63;
 }
 
-.modalText.light{
-  color: #455e63; 
+.modalText.light {
+  color: #455e63;
 }
-
 
 .headerLogoletter {
-  color: #E96E94; 
-  font-size: 110%; 
+  color: #e96e94;
+  font-size: 110%;
   cursor: pointer;
- } 
- 
- .lockPassword{
-  position: relative;
-  left:150px;
-  bottom: 40px;
-  padding:  5px;
-  width: 40px;
-  border:none;
-  background-color:none;
-  color: #455e63; 
-  
- }
-.buttonCLose{
-  
-  background-color: #9ddd5e!important;
- color: #455e63!important;
 }
-.textModal{
+
+.lockPassword {
+  position: relative;
+  left: 150px;
+  bottom: 40px;
+  padding: 5px;
+  width: 40px;
+  border: none;
+  background-color: none;
+  color: #455e63;
+}
+
+.buttonCLose {
+  background-color: #9ddd5e !important;
+  color: #455e63 !important;
+}
+
+.textModal {
   text-align: center;
   margin: 10px 0px 0px 0px;
 }
 
 .buttonTheme {
-  
   position: absolute;
   cursor: pointer;
   left: 1500px;
   border: none;
   font-size: 24px;
-
-  color: #E96E94; 
+  color: #e96e94;
 }
 
 .buttonTheme.dark {
   left: 1470px;
-  background-color:#0E272E;
-   color: #E96E94; 
-
-  
-   transition: 0.5s;
-    
-  
+  background-color: #0e272e;
+  color: #e96e94;
+  transition: 0.5s;
 }
-
 
 .loginMessage {
   font-size: 240px;
   font-weight: bold;
   color: green;
-
 }
 
-
-.buttonCabinet{
+.buttonCabinet {
   transition: 0.5s;
   position: absolute;
   left: 2000px;
-
-
 }
 
-.buttonCab{
+.buttonCab {
   transition: 0.5s;
-border:none;
-color: #9dafba;
-font-size: 24px;
-background-color:#edf4f6;
-
+  border: none;
+  color: #9dafba;
+  font-size: 24px;
+  background-color: #edf4f6;
 }
 
-.buttonCab.dark{
-
+.buttonCab.dark {
   color: #fff;
-  background-color:#0e272e;
-  
-  }
-.buttonTheme.light {
-
-  background-color:#edf4f6;
-
-   transition: 0.5s;
-    
-  
+  background-color: #0e272e;
 }
 
-
+.buttonTheme.light {
+  background-color: #edf4f6;
+  transition: 0.5s;
+}
 
 .logIn {
+  color: #9dafb4;
+  position: absolute;
+  cursor: pointer;
+  border: none;
+  font-size: 24px;
+  transition: 0.5s;
+  background-size: 200% auto;
+  background-color: #edf4f6;
+  left: 1300px;
+}
 
-  color: #9DAFB4; 
-    position: absolute;
-    cursor: pointer;
-    border: none;
-    font-size: 24px;
-    transition: 0.5s;
-    background-size: 200% auto;
-    background-color:#edf4f6;
+.logIn.dark {
+  background-color: #0e272e;
+  color: #fff;
+}
 
-    left: 1300px;
+.logIn :hover,
+.SignUp:hover,
+.buttonCab:hover {
+  color: #5ec7dd;
+}
 
-      
-    
-  }
- .logIn.dark{
-    
+.inputContainer {
+  display: inline-block;
+  position: relative;
+}
 
-    background-color: #0E272E;
-   
-   
+.headerLogo {
+  position: absolute;
+  left: 300px;
+  cursor: pointer;
+}
 
-  
-    color: #fff; 
+.searchContainer {
+  position: relative;
+  right: 300px;
+}
 
-  }
-
-  .logIn :hover,
-  .SignUp:hover,
-  .buttonCab:hover {
-    color: #5EC7DD; 
-  }
-  .inputContainer {
-    display: inline-block;
-    position: relative;
-  }
-  .headerLogo{
-    position: absolute;
-   left:300px;
-    cursor: pointer;
- 
-
-  }
-
- .searchContainer {
-    position: relative;
-    right:300px;
-    
-   
-   
-  }
-  .searchInput{
-    font-size: 18px;
-
-    left:10px;
-    transition: 0.5s;
-    padding: 10px 30px;
-    margin: 25px 0 20px 0;
-    background-color: #fff;
-    color:  #9DAFB4;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-   
-  
-
-  }
- 
- 
+.searchInput {
+  font-size: 18px;
+  left: 10px;
+  transition: 0.5s;
+  padding: 10px 30px;
+  margin: 25px 0 20px 0;
+  background-color: #fff;
+  color: #9dafb4;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
 
 .searchInput:focus {
   outline: none;
-  border: 1px solid #5ec7dd; 
+  border: 1px solid #5ec7dd;
 }
 
 .searchInput:hover {
-
-  border: 1px solid #5ec7dd; 
+  border: 1px solid #5ec7dd;
 }
 
-
-
-  .header.dark .searchInput{
-    background-color: #1b414c;
-  
-  }
-
-
-  .logIn :active,
-  .SignUp:active,
-  .buttonCab:active,
-  .searchButton:active
-  
- { 
-
-   transform: translate(0px,3px);
-  
- }
-
-  
-  .searchButton {
-    position: absolute;
-    top: 27px;
-    right: 0;
-    background: transparent;
-    border: none;
-    padding: 5px;
-    cursor: pointer;
-    color:  #9DAFB4;
-    font-size: 20px;
-  }
-  
-   .searchButton:hover {
-
-    color: #5ec7dd; 
-  } 
-
-  .searchButton:active {
-
-    color: #5ec7dd; 
-  }
-
-  .searchIcon {
-    position: absolute;
-    top:55%;
-    right: 10px;
-    transform: translateY(-50%);
-  
-  }
-  
-  .SignUp {
-    position: absolute;
-    cursor: pointer;
-    border: none;
-    font-size: 23px;
-    transition: 0.5s;
-    background-size: 200% auto;
-    position: absolute;
-    left: 1250px;
-    color: #9DAFB4; 
-    
-  }
-
- 
-  
-
-
-  
-  @media (max-width: 3500px) {
-    .searchContainer{
-    
-      left:1000px;
-     
-    
-    }
-    }
-
-     
-  @media (max-width: 2300px) {
-    .searchContainer{
-    
-      left:800px;
-     
-    
-    }
-
-
-    .buttonCabinet{
-
- 
-      left: 1600px;
-    
-    
-    }
-  }
-
-    @media (max-width: 1900px) {
-     
-  
-  
-      .buttonCabinet{
-  
-   
-        left: 1200px;
-      
-      
-      }
-      
-  
-
-
-
-
-
-
-    }
-  
-  @media (max-width: 1850px) {
-  .searchContainer{
-  
-    left:100px;
-    
-  
-  }
-
-  
-.loginMessage {
-  font-size: 240px;
-  font-weight: bold;
-  color: green;
-
+.header.dark .searchInput {
+  background-color: #1b414c;
 }
 
+.logIn :active,
+.SignUp:active,
+.buttonCab:active,
+.searchButton:active {
+  transform: translate(0px, 3px);
+}
 
+.searchButton {
+  position: absolute;
+  top: 27px;
+  right: 0;
+  background: transparent;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+  color: #9dafb4;
+  font-size: 20px;
+}
 
+.searchButton:hover {
+  color: #5ec7dd;
+}
 
-.buttonCab{
+.searchButton:active {
+  color: #5ec7dd;
+}
+
+.searchIcon {
+  position: absolute;
+  top: 55%;
+  right: 10px;
+  transform: translateY(-50%);
+}
+
+.SignUp {
+  position: absolute;
+  cursor: pointer;
+  border: none;
+  font-size: 23px;
   transition: 0.5s;
-border:none;
-
-font-size: 24px;
-background-color:#edf4f6;
-
+  background-size: 200% auto;
+  position: absolute;
+  left: 1250px;
+  color: #9dafb4;
 }
 
+@media (max-width: 3500px) {
 
+  .searchContainer {
+    left: 1000px;
+  }
+}
 
+@media (max-width: 2300px) {
 
-
-
-
+  .searchContainer {
+    left: 800px;
   }
 
-  @media (max-width: 1650px) {
-    .searchContainer{
-    
-      right:100px;
-      top:5px;
-    
-    }
-    }
-  
+  .buttonCabinet {
+    left: 1600px;
+  }
+}
 
+@media (max-width: 1900px) {
+
+  .buttonCabinet {
+    left: 1200px;
+  }
+}
+
+@media (max-width: 1850px) {
+
+  .searchContainer {
+    left: 100px;
+  }
+
+  .loginMessage {
+    font-size: 240px;
+    font-weight: bold;
+    color: green;
+  }
+
+  .buttonCab {
+    transition: 0.5s;
+    border: none;
+    font-size: 24px;
+    background-color: #edf4f6;
+  }
+}
+
+@media (max-width: 1650px) {
+
+  .searchContainer {
+    right: 100px;
+    top: 5px;
+  }
+}
 
 @media (max-width: 1600px) {
- 
+
   .logIn {
     left: 1100px;
   }
@@ -420,22 +295,17 @@ background-color:#edf4f6;
   .buttonTheme.dark {
     left: 1270px;
   }
-  .searchContainer{
-    
-    right:50px;
-   
-  
+  .searchContainer {
+    right: 50px;
   }
-
 }
 
-
 @media (max-width: 1400px) {
- 
+
   .logIn {
     left: 1000px;
   }
-  
+
   .SignUp {
     left: 950px;
   }
@@ -447,92 +317,72 @@ background-color:#edf4f6;
   .buttonTheme.dark {
     left: 1170px;
   }
- 
-  .buttonCabinet{
-  
-   
-    left:550px;
-  
-  
+
+  .buttonCabinet {
+    left: 550px;
   }
-  
-
-
 }
 
 @media (max-width: 1260px) {
- 
+
   .logIn {
     left: 900px;
   }
-  
+
   .SignUp {
     left: 850px;
   }
- 
+
   .buttonTheme {
-  left: 1000px;
-}
+    left: 1000px;
+  }
 
   .buttonTheme.dark {
     left: 970px;
   }
-  .buttonCabinet{
-  
-   
-    left:250px;
-  
-  
+  .buttonCabinet {
+    left: 250px;
   }
-  
-
 }
 
 @media (max-width: 1080px) {
-  .searchContainer{
-    top:0px;
-    left:140px;
-     
+
+  .searchContainer {
+    top: 0px;
+    left: 140px;
   }
-  .searchInput{
+  .searchInput {
     font-size: 18px;
     position: relative;
-    left:10px;
+    left: 10px;
 
     padding: 6px;
     margin: 25px 0 20px 0;
-
-   
-  
-
   }
 }
+
 @media (max-width: 1060px) {
- 
+
   .logIn {
     left: 800px;
   }
-  
+
   .SignUp {
     left: 750px;
   }
 
   .buttonTheme {
     left: 900px;
-}
+  }
   .buttonTheme.dark {
     left: 870px;
   }
-
-
- 
 }
 
 @media (max-width: 950px) {
 
   .logIn {
     left: 700px;
-   
   }
 
   .buttonTheme {
@@ -543,32 +393,23 @@ background-color:#edf4f6;
     left: 770px;
   }
 
-  .searchContainer{
-    top:0px;
-    left:130px;
-     
+  .searchContainer {
+    top: 0px;
+    left: 130px;
   }
-  .searchInput{
+  .searchInput {
     font-size: 16px;
     position: relative;
-    left:10px;
-width: 120px;
+    left: 10px;
+    width: 120px;
     padding: 6px;
     margin: 25px 0 20px 0;
-
-   
-  
-
   }
-  
 }
-
-
 
 @media (max-width: 860px) {
 
   .logIn {
-    
     left: 600px;
   }
 
@@ -580,404 +421,284 @@ width: 120px;
     left: 710px;
   }
 
-
-  .searchContainer{
-   display: none;
-     
+  .searchContainer {
+    display: none;
   }
-
-  
 }
-
-
 
 @media (max-width: 750px) {
 
   .logIn {
     left: 530px;
-    
   }
 
   .buttonTheme {
     left: 600px;
   }
 
-
-
   .buttonTheme.dark {
     left: 630px;
   }
-
-
-
 }
-
-
 
 @media (max-width: 650px) {
 
-  .buttonCabinet{
-  
-   
-    left:200px;
-  
-  
+  .buttonCabinet {
+    left: 200px;
   }
 
-  .neonText{ display: none;}
+  .neonText {
+    display: none;
+  }
 
   .logIn {
     left: 550px;
-
   }
-.headerLogo{
-  left:250px;
-}
-.buttonTheme{
-
-  font-size: 30px;
-
-}
+  .headerLogo {
+    left: 250px;
+  }
+  .buttonTheme {
+    font-size: 30px;
+  }
   .buttonTheme.light {
- 
     left: 60px;
-  
     background-color: #fff;
-   
-  
-  }  
-  
-
+  }
 
   .buttonTheme.dark {
-
     left: 70px;
-    background-color: #1B414C;
+    background-color: #1b414c;
   }
 
-
-
   .header {
-  font-size: 14px;
-  height: 50px;
-
-}
+    font-size: 14px;
+    height: 50px;
+  }
 
   .headerLogoletter {
-  font-size: 100%;
- } 
- 
-  .modalButtonLog {
-  font-size: 10px;
- }
-
-  .header {
-    box-shadow:none;
+    font-size: 100%;
   }
 
+  .modalButtonLog {
+    font-size: 10px;
+  }
+
+  .header {
+    box-shadow: none;
+  }
 }
 
 @media (max-width: 600px) {
 
+  .searchContainer {
+    display: none;
+  }
 
-  .searchContainer{display: none;}
   .header {
- position: static;
-z-index: 9999;
+    position: static;
+    z-index: 9999;
     top: 0;
     left: 0;
     width: 100%;
     height: 50px;
-    
-border-radius:20px;
+    border-radius: 20px;
     align-items: center;
     justify-content: center;
     margin: 0;
-    color: #455E63; 
-   
-  
+    color: #455e63;
   }
 
-  
-  .headerLogoMobile{
+  .headerLogoMobile {
     display: block;
     font-size: 40px;
     position: relative;
-    right:200px;
-  
-  
+    right: 200px;
   }
-  .logIn {
 
+  .logIn {
     left: 500px;
     font-size: 30px;
+  }
 
-  }.letter{
+  .letter {
     color: #9dafb4;
-
   }
 
-
-  .logIn.dark{
-    
-    background-color: #0E272E;
-   
-   
-
+  .logIn.dark {
+    background-color: #0e272e;
   }
-  .buttonCab.dark{
 
-    
-    background-color:#0E272E;
-    
-    }
-
-
-.logIn.light{
-    
-    background-color:#EDF4F6;
-   
-   
-
+  .buttonCab.dark {
+    background-color: #0e272e;
   }
-.headerLogo{
- display: none;
-}
 
+  .logIn.light {
+    background-color: #edf4f6;
+  }
+
+  .headerLogo {
+    display: none;
+  }
 
   .buttonTheme.light {
     left: 400px;
-
-
-    background-color: #EDF4F6;
-   
-  
-  }  
+    background-color: #edf4f6;
+  }
 
   .buttonTheme.dark {
     left: 390px;
-    background-color: #0E272E;  }
+    background-color: #0e272e;
+  }
 
-    .searchContainer{
-      /* display: inline-block; */
-      margin: 0px;
-      left: 20px;
-      top:70px;
-      position: absolute;
-   
-      padding: 5px;
-     }
-     .header.dark .searchInput{
-      background-color:#0e272e;
+  .searchContainer {
+    /* display: inline-block; */
+    margin: 0px;
+    left: 20px;
+    top: 70px;
+    position: absolute;
+    padding: 5px;
+  }
 
-}
-.searchInput{
+  .header.dark .searchInput {
+    background-color: #0e272e;
+  }
 
-  border-radius:25px;
- 
-font-size: 20px;
-  padding: 15px 30px;
-  margin: 25px 0 20px 0;
+  .searchInput {
+    border-radius: 25px;
+    font-size: 20px;
+    padding: 15px 30px;
+    margin: 25px 0 20px 0;
+  }
 
- 
-
-
-}
-.searchButton {
-
-  top: 30px;
-
-  font-size: 25px;
- 
+  .searchButton {
+    top: 30px;
+    font-size: 25px;
+  }
 }
 
-}
-
-@media (max-width:540px) {
+@media (max-width: 540px) {
 
   .logIn {
     left: 450px;
   }
- 
-    
 }
-
-
-
-
 
 @media (max-width: 500px) {
 
   .logIn {
-    left:320px;
-    
+    left: 320px;
   }
 
- 
-
-
-
-
   .header {
-
     height: 70px;
- 
     box-shadow: none;
-}
+  }
 
   .headerLogoletter {
-    font-size: 120%; 
- } 
- 
-  .modalButtonLog{
+    font-size: 120%;
+  }
+
+  .modalButtonLog {
     font-size: 10px;
- }
-
-
-
+  }
 
   .header {
     font-size: 13px;
     height: 70px;
     box-shadow: none;
     /* position: fixed; */
- 
   }
-  .headerLogoMobile{
-
-
-    right:150px;
-  
-  
+  .headerLogoMobile {
+    right: 150px;
   }
 
   .headerLogoletter {
-    font-size: 120%; 
-  } 
- 
-  .modalButtonLog{
+    font-size: 120%;
+  }
+
+  .modalButtonLog {
     font-size: 10px;
   }
- 
 }
 
+@media (max-width: 430px) { 
 
-
-@media (max-width:430px) {
   .logIn {
-    left:310px;
-    
+    left: 310px;
   }
 
   .buttonTheme.light {
     left: 360px;
-
-
- 
-   
-  
-  }  
+  }
 
   .buttonTheme.dark {
     left: 365px;
   }
 }
 
-
-
-
-@media (max-width:410px) {
+@media (max-width: 410px) {
 
   .header {
-
-    height:50px;
-  
+    height: 50px;
   }
 
   .logIn {
-    left:250px;
-    
+    left: 250px;
   }
 
   .buttonTheme.light {
     left: 310px;
-
-
- 
-   
-  
-  }  
+  }
 
   .buttonTheme.dark {
     left: 315px;
   }
 
+  .searchInput {
+    border-radius: 25px;
+    width: 150px;
+    font-size: 20px;
+    padding: 10px 30px;
+    margin: 25px 0 20px 0;
+    z-index: 99999999999999999;
+  }
 
-.searchInput{
+  .header.dark .searchInput {
+    background-color: #1b414c;
+  }
 
-border-radius:25px;
-width: 150px;
-font-size: 20px;
-padding: 10px 30px;
-margin: 25px 0 20px 0;
-z-index: 99999999999999999;
+  .searchContainer {
+    margin: 0px;
+    left: 10px;
+    z-index: 99999999999999999;
+    top: 22px;
 
-
-
+    padding: 10px;
+  }
 }
 
+@media (max-width: 350px) {
 
- .header.dark .searchInput{
-  background-color:#1b414c;
-
-}
-
-
-
-.searchContainer{
-
-  margin: 0px;
-  left:10px;
-  z-index: 99999999999999999;
-top:22px;
-
-
-
-  padding: 10px;
- }
-
-}
-
-@media (max-width:350px) {
-  .headerLogoMobile{
-    right:120px;
+  .headerLogoMobile {
+    right: 120px;
   }
   .logIn {
-    left:230px;
-    
+    left: 230px;
   }
 
   .buttonTheme.light {
     left: 280px;
-
-
- 
-   
-  
-  }  
+  }
 
   .buttonTheme.dark {
     left: 285px;
   }
-
 }
 
-
-@media (max-width:300px) {
- 
-
+@media (max-width: 300px) {
+  
   .buttonTheme {
-    top:10px;
+    top: 10px;
     left: 0px;
     font-size: 30px;
   }
@@ -985,11 +706,4 @@ top:22px;
   .buttonTheme.dark {
     left: 5px;
   }
-
-
-  
 }
-
-
-
-

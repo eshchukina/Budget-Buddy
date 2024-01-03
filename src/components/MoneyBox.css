@@ -1,222 +1,158 @@
-
-
 .moneyBox {
-    transition: 0.5s;
-    padding: 10px;
-
-
-    width:300px;
-
-
+  transition: 0.5s;
+  padding: 10px;
+  width: 300px;
   top: 395px;
-    position: relative;
-    left:1380px;
-  
+  position: relative;
+  left: 1380px;
+  background-color: #1b414c;
+  border-radius: 20px;
+  color: #fff;
+  font-size: 20px;
+}
 
+.flex-container {
+  position: absolute;
+}
+.moneyBox.light {
+  color: #9dafb4;
+  background-color: #fff;
+}
 
+.progressContainer {
+  height: 15px;
+  background-color: #edf4f6;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 5px;
+}
 
-    background-color: #1b414c;
-    border-radius: 20px;
+.moneyBox.light .progressContainer {
+  background-color: #ffffff;
+}
 
+.logoMoneyBox {
+  color: #ffcd38;
+  padding-left: 10px;
+  font-size: 30px;
+}
 
+.progressBar {
+  height: 100%;
+  background-color: #9ddd5e;
+}
 
+.infoMoneyBox {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  color: #fff;
+}
 
-    color:#fff;
-    font-size: 20px;
-
-  }
-.flex-container{
-    position: absolute;
-  }
-  .moneyBox.light{
-    color:#9dafb4;
-    background-color: #fff;
-
-  }
-
-  .progressContainer {
-    height: 15px;
-    background-color: #edf4f6;
-    border-radius: 10px;
-    overflow: hidden;
-    margin-bottom: 5px;
-  }
-  .moneyBox.light .progressContainer {
-
-    background-color: #ffffff;
-    
-  }
-
-  .logoMoneyBox{
-    color:#ffcd38;
-    padding-left:10px ;
-    font-size: 30px;
-  }
-  
-  .progressBar {
-    height: 100%;
-    background-color: #9ddd5e;
-  }
-  
-  .infoMoneyBox {
-    display: flex;
-    justify-content: space-between;
-    font-size: 18px;
-    color: #fff;
-  }
-  
 .moneyBox.light .infoMoneyBox {
-    color:#9dafb4;
-   
+  color: #9dafb4;
+}
 
-  }
+.infoMoneyBox p {
+  margin: 0;
+}
 
-
-
-
-  .infoMoneyBox p {
-    margin: 0;
-  }
-  
-
-
-
-
-  input.inputMoneyBox{
-   
-   
-    transition: 0.5s;
-    padding: 3px;
-
-    background-color: #fff;
- 
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-   
-  
-
-  }
- 
- 
+input.inputMoneyBox {
+  transition: 0.5s;
+  padding: 3px;
+  background-color: #fff;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
 
 .searchInput:focus {
   outline: none;
-  border: 1px solid #5ec7dd; 
+  border: 1px solid #5ec7dd;
 }
 
 .searchInput:hover {
-
-  border: 1px solid #5ec7dd; 
+  border: 1px solid #5ec7dd;
 }
-
 
 @media (max-width: 2200px) {
 
-  .moneyBox{
-    left:1080px;
+  .moneyBox {
+    left: 1080px;
   }
 }
 
 @media (max-width: 1650px) {
 
-  .moneyBox{
-    left:980px;
+  .moneyBox {
+    left: 980px;
   }
 }
-
-
 
 @media (max-width: 1450px) {
 
-  .moneyBox{
-    left:820px;
+  .moneyBox {
+    left: 820px;
   }
 }
-
-
-
 
 @media (max-width: 1350px) {
 
-  .moneyBox{
-    left:90px;
- top: 850px;
- width: 600px;
+  .moneyBox {
+    left: 90px;
+    top: 850px;
+    width: 600px;
   }
 }
 
-
 @media (max-width: 1000px) {
 
-  .moneyBox{
-    left:90px;
- top: 1100px;
- width: 500px;
-
+  .moneyBox {
+    left: 90px;
+    top: 1100px;
+    width: 500px;
   }
 }
 
 @media (max-width: 820px) {
 
-  .moneyBox{
- 
- width: 400px;
-
+  .moneyBox {
+    width: 400px;
   }
 }
 
-
-
-
-
-
 @media (max-width: 720px) {
 
-  .moneyBox{
- margin: 0 auto;
-    left:50px;
+  .moneyBox {
+    margin: 0 auto;
+    left: 50px;
     top: 1100px;
-
   }
 }
 
 @media (max-width: 600px) {
 
-  .moneyBox{
- margin: 0 auto;
-    left:50px;
+  .moneyBox {
+    margin: 0 auto;
+    left: 50px;
     top: 730px;
-
   }
 }
 
-
 @media (max-width: 400px) {
 
-  .moneyBox{
- margin: 0 auto;
-    left:0px;
+  .moneyBox {
+    margin: 0 auto;
+    left: 0px;
     top: -240px;
     width: 350px;
-
-
-
-   
   }
-  .moneyBox.light{
-  
-    background-color: #edf4f6;
-   
-       
-      
-     }
-  .moneyBox.dark{
-  
-    background-color: #0e272e;
-   
-       
-      
-     }
 
+  .moneyBox.light {
+    background-color: #edf4f6;
+  }
+  
+  .moneyBox.dark {
+    background-color: #0e272e;
+  }
 }

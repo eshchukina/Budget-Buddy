@@ -1,278 +1,217 @@
-.instruction{
-    color: #fff;
-    padding: 50px 200px 0 300px;
-    text-align: center;
-    transition: 0.5s;
- margin: 0 10% ;
-      font-size: 25px;  
- 
-
+.instruction {
+  color: #fff;
+  padding: 50px 200px 0 300px;
+  text-align: center;
+  transition: 0.5s;
+  margin: 0 10%;
+  font-size: 25px;
 }
 
-.highlighName{
-    color: #e96e94;
-    font-size: 110%;  
+.highlighName {
+  color: #e96e94;
+  font-size: 110%;
 }
 
-
-.instruction.light{
-    color: #9dafb4;
+.instruction.light {
+  color: #9dafb4;
 }
-
 
 .one.dark {
-    background-image: url("/public/1_screen.png");
-    background-size: contain;
-    background-repeat: no-repeat;
+  background-image: url("/public/1_screen.png");
+  background-size: contain;
+  background-repeat: no-repeat;
 
- 
- 
-
-   height: 200px;
-
- 
-  
+  height: 200px;
 }
 
 .one {
-
-    margin: 0 10%;
-    height: 200px;
-    background-image: url("/public/1_screen_light.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-  
+  margin: 0 10%;
+  height: 200px;
+  background-image: url("/public/1_screen_light.png");
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 .two.dark {
-    background-image: url("/public/2_screen.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    
- 
-  
+  background-image: url("/public/2_screen.png");
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .two {
-    margin: 0 10%;
-    background-image: url("/public/2_screen_light.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    
+  margin: 0 10%;
+  background-image: url("/public/2_screen_light.png");
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 .three.dark {
-    background-image: url("/public/3_screen.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    
- 
-  
+  background-image: url("/public/3_screen.png");
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .three {
-    margin: 0 10%;
-   
-    background-image: url("/public/3_screen_light.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-  
-    
+  margin: 0 10%;
+
+  background-image: url("/public/3_screen_light.png");
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .four.dark {
-    background-image: url("/public/4_screen.png");
-    background-size: contain;
-    background-repeat: no-repeat;
- 
-    
- 
-  
+  background-image: url("/public/4_screen.png");
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .four {
-    margin: 0 10%;
+  margin: 0 10%;
 
-    background-image: url("/public/4_screen_light.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-
-    
+  background-image: url("/public/4_screen_light.png");
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .five.dark {
-    background-image: url("/public/5_screen.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    
- 
-  
+  background-image: url("/public/5_screen.png");
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .five {
-    margin: 0 10%;
-    background-image: url("/public/5_screen_light.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-
-    
+  margin: 0 10%;
+  background-image: url("/public/5_screen_light.png");
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
-
-
 .parent {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    grid-column-gap: 5px;
-    grid-row-gap: 5px;
-
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 5px;
+  grid-row-gap: 5px;
 
   justify-content: center; /* Horizontally center */
   align-items: center;
-    }
-     html {
+}
+html {
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+html::-webkit-scrollbar {
+  width: 0px;
+}
 
-        overflow-y:scroll;
-        scrollbar-width: thin; 
-        scrollbar-color: transparent transparent; 
-      
-      }
-      html::-webkit-scrollbar {
-        width:0px;
-      
-      
-      
-      
-      } 
-      
-
-    @media (max-width: 1500px) {
-
-        .instruction{
-            color: #fff;
-            padding: 50px 100px 0 300px;
-            text-align: center;
-            transition: 0.5s;
-         margin: 0  ;
-              font-size: 20px;  
-            
-        }
-       
-    }       
-
-    @media (max-width: 1050px) {
-
-        .instruction{
-            color: #fff;
-            padding: 50px 0px 0 250px;
-            text-align: center;
-            transition: 0.5s;
-         margin: 0  ;
-              font-size: 20px;  
-            
-        }
-       
-    }       
-
-
-    @media (max-width: 800px) {
-
-        .instruction{
-            color: #fff;
-            padding: 0;
-            text-align: center;
-            transition: 0.5s;
-         margin: 10% 20% 0 30% ;
-              font-size: 18px;  
-            
-        }
-       
-        .two, 
-        .one,
-        .three,
-        .four,
-        .five {
-            margin: 0 0 0 20%;
-        }
-
-            
-.parent {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: repeat(1, 1fr);
-    grid-column-gap: 5px;
-    grid-row-gap: 5px;
-
-
-  justify-content: start; /* Horizontally center */
-  align-items: center;
-    }
-    }       
-
-
-    @media (max-width: 600px) {
-
-        .instruction{
-            color: #fff;
-            padding: 0;
-            text-align: center;
-            transition: 0.5s;
-         margin: 10% 10% 0 10% ;
-              font-size: 18px;  
-            
-        }
-       
-        .two {
-            margin: 0 10%;
-        }
-
-
-            
-.parent {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: repeat(1, 1fr);
-    grid-column-gap: 5px;
-    grid-row-gap: 5px;
-
-
-  justify-content: start; /* Horizontally center */
-  align-items: center;
-    }
-    }       
-
+@media (max-width: 1500px) {
     
-    @media (max-width: 400px) {
+  .instruction {
+    color: #fff;
+    padding: 50px 100px 0 300px;
+    text-align: center;
+    transition: 0.5s;
+    margin: 0;
+    font-size: 20px;
+  }
+}
 
-        .instruction{
-            color: #fff;
-            padding: 0;
-            text-align: center;
-            transition: 0.5s;
-         margin: 5% 0% 5% 0% ;
-              font-size: 18px;  
-            
-        }
-       
-        .two {
-            margin: 0 10%;
-        }
-        .three {
-            margin: 0 15%;
-        }
-        .four, .five {
-            margin: 0 15%;
-        }
-            
-            
-.parent {
+@media (max-width: 1050px) {
+
+  .instruction {
+    color: #fff;
+    padding: 50px 0px 0 250px;
+    text-align: center;
+    transition: 0.5s;
+    margin: 0;
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 800px) {
+
+  .instruction {
+    color: #fff;
+    padding: 0;
+    text-align: center;
+    transition: 0.5s;
+    margin: 10% 20% 0 30%;
+    font-size: 18px;
+  }
+
+  .two,
+  .one,
+  .three,
+  .four,
+  .five {
+    margin: 0 0 0 20%;
+  }
+
+  .parent {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
+    justify-content: start; /* Horizontally center */
+    align-items: center;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .instruction {
+    color: #fff;
+    padding: 0;
+    text-align: center;
+    transition: 0.5s;
+    margin: 10% 10% 0 10%;
+    font-size: 18px;
+  }
+
+  .two {
+    margin: 0 10%;
+  }
+
+  .parent {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
+    justify-content: start; /* Horizontally center */
+    align-items: center;
+  }
+}
+
+@media (max-width: 400px) {
+
+  .instruction {
+    color: #fff;
+    padding: 0;
+    text-align: center;
+    transition: 0.5s;
+    margin: 5% 0% 5% 0%;
+    font-size: 18px;
+  }
+
+  .two {
+    margin: 0 10%;
+  }
+  .three {
+    margin: 0 15%;
+  }
+  .four,
+  .five {
+    margin: 0 15%;
+  }
+
+  .parent {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     grid-template-rows: repeat(1, 1fr);
     grid-column-gap: 0px;
     grid-row-gap: 0px;
-
-
-  justify-content: start; /* Horizontally center */
-  align-items: center;
-    }
-    }       
+    justify-content: start; /* Horizontally center */
+    align-items: center;
+  }
+}

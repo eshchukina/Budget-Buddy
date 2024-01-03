@@ -1,66 +1,68 @@
 import React from "react";
 import ReactApexChart from "react-apexcharts";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircle } from '@fortawesome/free-solid-svg-icons';
+import { faCircle } from "@fortawesome/free-solid-svg-icons";
 import "./AreaCharts.css";
 import "./Style.css";
 
-const AreaCharts = ({ account, chartDataSchedule, isDarkMode, formatBalance }) => {
-  const chartIsEmpty = !chartDataSchedule.series || chartDataSchedule.series.length === 0;
+const AreaCharts = ({
+  account,
+  chartDataSchedule,
+  isDarkMode,
+  formatBalance,
+}) => {
+  const chartIsEmpty =
+    !chartDataSchedule.series || chartDataSchedule.series.length === 0;
 
-  const axisLabelColor = '#9dafb4';
-  const axisLabelFontSize = '10px'; 
-  const axisTitleFontSize = '10px'; 
-  const axisTitleMargin = 10; 
-  const lineColors = ['#E96E94', '#5EC7DD'];
-  const areaColors = ['#E96E94', '#5EC7DD']; 
+  const axisLabelColor = "#9dafb4";
+  const axisLabelFontSize = "10px";
+  const axisTitleFontSize = "10px";
+  const axisTitleMargin = 10;
+  const lineColors = ["#E96E94", "#5EC7DD"];
+  const areaColors = ["#E96E94", "#5EC7DD"];
 
-
-
-
-  
   const options = chartIsEmpty
     ? {
         chart: {
           height: 350,
-          type: 'area',
-          background: 'transparent',
+          type: "area",
+          background: "transparent",
         },
         dataLabels: {
-          enabled: false
+          enabled: false,
         },
         stroke: {
-          curve: 'smooth'
+          curve: "smooth",
         },
         xaxis: {
-          type: 'datetime',
-          categories: []
+          type: "datetime",
+          categories: [],
         },
         tooltip: {
           x: {
-            format: '/MM/yy'
+            format: "/MM/yy",
           },
         },
         yaxis: {
           labels: {
             style: {
               colors: axisLabelColor,
-              fontSize: axisLabelFontSize
-            }
+              fontSize: axisLabelFontSize,
+            },
           },
           title: {
-            text: 'Y-Axis Title',
+            text: "Y-Axis Title",
             style: {
               color: axisLabelColor,
               fontSize: axisTitleFontSize,
-            }
-          }
+            },
+          },
         },
         legend: {
           labels: {
             colors: lineColors,
             style: {
-              fontSize: '14px',
+              fontSize: "14px",
             },
           },
         },
@@ -68,19 +70,19 @@ const AreaCharts = ({ account, chartDataSchedule, isDarkMode, formatBalance }) =
     : {
         ...chartDataSchedule.options,
         stroke: {
-          curve: 'smooth',
-          colors: lineColors
+          curve: "smooth",
+          colors: lineColors,
         },
         fill: {
-          colors: areaColors
+          colors: areaColors,
         },
         xaxis: {
           ...chartDataSchedule.options.xaxis,
           labels: {
             show: true,
             style: {
-              colors: '#9dafb4',
-              fontSize: '13px'
+              colors: "#9dafb4",
+              fontSize: "13px",
             },
           },
         },
@@ -88,15 +90,15 @@ const AreaCharts = ({ account, chartDataSchedule, isDarkMode, formatBalance }) =
           labels: {
             style: {
               colors: axisLabelColor,
-              fontSize: axisLabelFontSize
-            }
+              fontSize: axisLabelFontSize,
+            },
           },
           title: {
             style: {
               color: axisLabelColor,
               fontSize: axisTitleFontSize,
-              margin: `${axisTitleMargin}px 0`
-            }
+              margin: `${axisTitleMargin}px 0`,
+            },
           },
         },
       };
@@ -110,7 +112,6 @@ const AreaCharts = ({ account, chartDataSchedule, isDarkMode, formatBalance }) =
           options={options}
           series={series}
           type="area"
-         
           height={200}
         />
         <div className="labelG">

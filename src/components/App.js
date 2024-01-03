@@ -17,7 +17,7 @@ function App() {
   const [accounts, setAccounts] = useState([]);
   const [currency, setCurrency] = useState("USD");
   // const [activeAccount, setActiveAccount] = useState(
-  //   accounts.length > 0 ? accounts[0] : null 
+  //   accounts.length > 0 ? accounts[0] : null
   // );
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -41,18 +41,14 @@ function App() {
 
   const headersWithToken = {};
 
+  // Inside the App component
+  // const [activeAccount, setActiveAccount] = useState(() => {
+  //   const lastVisitedAccountId = localStorage.getItem("lastVisitedAccount");
+  //   return accounts.find((account) => account.id === parseInt(lastVisitedAccountId)) || null;
+  // });
 
-// Inside the App component
-// const [activeAccount, setActiveAccount] = useState(() => {
-//   const lastVisitedAccountId = localStorage.getItem("lastVisitedAccount");
-//   return accounts.find((account) => account.id === parseInt(lastVisitedAccountId)) || null;
-// });
+  const [activeAccount, setActiveAccount] = useState(null);
 
-const [activeAccount, setActiveAccount] = useState(null);
-
-
-
-  
   useEffect(() => {
     if (isDarkMode) {
       document.body.classList.add("dark");
@@ -65,13 +61,6 @@ const [activeAccount, setActiveAccount] = useState(null);
   const toggleTheme = () => {
     setIsDarkMode((prevMode) => !prevMode);
   };
-
-
-
- 
-
-
-
 
   const onAccountUpdate = (account) => {};
 
@@ -125,163 +114,110 @@ const [activeAccount, setActiveAccount] = useState(null);
     updateAccountData(accountId, updatedDataList);
   };
 
-
-
   const handleLogout = () => {
-
     localStorage.removeItem("isLoggedIn");
     localStorage.removeItem("accessToken");
     localStorage.removeItem("refreshToken");
     localStorage.removeItem("expiresIn");
-  
-  
-   
+
     window.location.reload();
   };
 
+  useEffect(() => {
+    if (activeAccount) {
+      localStorage.setItem("lastVisitedAccount", activeAccount.id);
+    }
+  }, [activeAccount]);
 
+  const [isDashboardView, setIsDashboardView] = useState(true);
 
-
-
-useEffect(() => {
-  if (activeAccount) {
-    localStorage.setItem("lastVisitedAccount", activeAccount.id);
-  }
-}, [activeAccount]);
-
-
-
-const [isDashboardView, setIsDashboardView] = useState(true); 
-
-
-const toggleInstructions = () => {
-  if (windowWidth <= 600) {
-    setIsInstructionOpen(!isInstructionOpen);
-  }
-};
-
-
+  const toggleInstructions = () => {
+    if (windowWidth <= 600) {
+      setIsInstructionOpen(!isInstructionOpen);
+    }
+  };
 
   return (
     <div className={isDarkMode ? "dark" : "light"}>
-
-
-
-
-
-
-
-<Header
+      <Header
         isDarkMode={isDarkMode}
         toggleTheme={toggleTheme}
         handleLogout={handleLogout}
-
-        activeModal={null} 
-        setActiveModal={() => {}} 
+        activeModal={null}
+        setActiveModal={() => {}}
         activeAccount={activeAccount}
         setActiveAccount={setActiveAccount}
         setIsLoggedIn={setIsLoggedIn}
       />
-            
 
+      {isLoggedIn && (
+        <FontAwesomeIcon
+          className={`instructionButton ${isDashboardView ? "active" : ""} ${
+            isDarkMode ? "dark" : "light"
+          }`}
+          icon={faCircleInfo}
+          title="Instructions"
+          onClick={() => {
+            setIsDashboardView(!isDashboardView);
+            toggleInstructions();
+          }}
+        />
+      )}
 
-            {
-  isLoggedIn && (
-    <FontAwesomeIcon
-      className={`instructionButton ${isDashboardView ? "active" : ""} ${isDarkMode ? "dark" : "light"}`}
-      icon={faCircleInfo}
-      title="Instructions"
-      onClick={() => {
-        setIsDashboardView(!isDashboardView);
-        toggleInstructions();
-      }}
-    />
-  )
-}
+      {!isDashboardView && <Instruction isDarkMode={isDarkMode} />}
 
+      {isDashboardView ? (
+        activeAccount ? (
+          <Dashboard
+            isDarkMode={isDarkMode}
+            account={activeAccount}
+            updateAccountData={updateAccountData}
+            currency={currency}
+            handleDelete={handleDelete}
+            submittedDataList={activeAccount.submittedDataList}
+            headersWithToken={headersWithToken}
+            setActiveAccount={setActiveAccount}
+            updateAccountCaption={updateAccountCaption}
+            handleCurrencyChange={handleCurrencyChange}
+            createAccount={createAccount}
+            setAccounts={setAccounts}
+            accountList={accounts}
+            activeAccount={activeAccount}
+            handleDeleteAccount={handleDeleteAccount}
+            setActiveModal={setActiveModal}
+            onAccountUpdate={onAccountUpdate}
+          />
+        ) : (
+          <Instruction
+            isDarkMode={isDarkMode}
+            isInstructionOpen={isInstructionOpen}
+          />
+        )
+      ) : (
+        <div></div>
+      )}
 
-{!isDashboardView && <Instruction isDarkMode={isDarkMode} />}
-      
-      {
-  isDashboardView  ? (
-    activeAccount? (
-      <Dashboard
+      <Footer isDarkMode={isDarkMode} />
+
+      {!isInstructionOpen && (
+        <SideMenu
           isDarkMode={isDarkMode}
-          account={activeAccount}
-          updateAccountData={updateAccountData}
-          currency={currency}
-          handleDelete={handleDelete}
-          submittedDataList={activeAccount.submittedDataList}
-          headersWithToken={headersWithToken}
-          setActiveAccount={setActiveAccount}
-          updateAccountCaption={updateAccountCaption}
-          handleCurrencyChange={handleCurrencyChange}
-        
-
-          
           createAccount={createAccount}
-        
+          setActiveAccount={setActiveAccount}
           setAccounts={setAccounts}
           accountList={accounts}
           activeAccount={activeAccount}
-        
-     
+          currency={currency}
+          handleCurrencyChange={handleCurrencyChange}
           handleDeleteAccount={handleDeleteAccount}
-       
-          setActiveModal={setActiveModal}
+          updateAccountCaption={updateAccountCaption}
           onAccountUpdate={onAccountUpdate}
-        
-        /> 
-      
-
-
-
-        
-      ) 
-      
-      
-      
-      : (
-    
-      
-      <Instruction isDarkMode={isDarkMode}
-      isInstructionOpen={isInstructionOpen} />
-
-          
-       
-      )
-      
-      
-      ) : (
-      
-        <div></div>
-      )
-    }
-
-
-
-      <Footer isDarkMode={isDarkMode} />
-     
-      {!isInstructionOpen && (
-  <SideMenu
-    isDarkMode={isDarkMode}
-    createAccount={createAccount}
-    setActiveAccount={setActiveAccount}
-    setAccounts={setAccounts}
-    accountList={accounts}
-    activeAccount={activeAccount}
-    currency={currency}
-    handleCurrencyChange={handleCurrencyChange}
-    handleDeleteAccount={handleDeleteAccount}
-    updateAccountCaption={updateAccountCaption}
-    onAccountUpdate={onAccountUpdate}
-    handleLogout={handleLogout}
-    isLoggedIn={isLoggedIn}
-    isInstructionViewOpen={!isDashboardView}
-    closeInstructionView={() => setIsDashboardView(true)}
-  />
-)}
-
+          handleLogout={handleLogout}
+          isLoggedIn={isLoggedIn}
+          isInstructionViewOpen={!isDashboardView}
+          closeInstructionView={() => setIsDashboardView(true)}
+        />
+      )}
     </div>
   );
 }

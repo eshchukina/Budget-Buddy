@@ -3,16 +3,13 @@ import ReactApexChart from "react-apexcharts";
 
 import "./ApexChart.css";
 import "./Style.css";
-import "./Dashboard.css"
+import "./Dashboard.css";
 
 const ApexChart = ({ account, isDarkMode, chartData }) => {
   const chartIsEmpty = chartData.series.length === 0;
 
   return (
     <div className={`mainField ${isDarkMode ? "dark" : "light"}`}>
-     
-
-
       <div id="chart" className="secondt chart">
         {chartIsEmpty ? (
           <ReactApexChart
@@ -21,12 +18,7 @@ const ApexChart = ({ account, isDarkMode, chartData }) => {
                 width: 345,
                 type: "donut",
               },
-
-             
-
-              
               labels: ["Category 1", "Category 2", "Category 3"],
-              
               legend: {
                 position: "bottom",
               },
@@ -52,7 +44,7 @@ const ApexChart = ({ account, isDarkMode, chartData }) => {
               legend: {
                 position: "bottom",
               },
-            }}  
+            }}
             series={chartData.series}
             type="donut"
             width={345}
@@ -60,7 +52,7 @@ const ApexChart = ({ account, isDarkMode, chartData }) => {
         )}
       </div>
     </div>
-  );  
+  );
 };
 
 export default ApexChart;

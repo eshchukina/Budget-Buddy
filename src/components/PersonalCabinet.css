@@ -1,197 +1,165 @@
-.personalAccount{
-position: absolute;
-bottom:-100px;
-transition: 0.5s;
-padding: 0 10px;
-   background-color: #fff;
-   color: #000;
-   border: 1px solid #9dafb4;
-   border-radius: 20px;
-
+.personalAccount {
+  position: absolute;
+  bottom: -100px;
+  transition: 0.5s;
+  padding: 0 10px;
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #9dafb4;
+  border-radius: 20px;
 }
 
-
-
-
-
-
-.personalAccount.dark{
-
-
-   background-color: #455e63;
-   color: #fff;
-
-
+.personalAccount.dark {
+  background-color: #455e63;
+  color: #fff;
 }
 
-.buttonCabCross.dark{
- 
-    color: #fff;
-    font-size: 24px;
-    background-color:#455e63;
-
+.buttonCabCross.dark {
+  color: #fff;
+  font-size: 24px;
+  background-color: #455e63;
 }
 
 .buttonCabCross:hover {
-  color: #5EC7DD; 
+  color: #5ec7dd;
 }
 
-
-.buttonCabCross{
-    border:none;
-   border-radius:10px;
-    color: #9DAFB4;
-    font-size: 30px;
-    background-color:#fff;
+.buttonCabCross {
+  border: none;
+  border-radius: 10px;
+  color: #9dafb4;
+  font-size: 30px;
+  background-color: #fff;
   padding: 0;
-    transition: 0.5s;
+  transition: 0.5s;
 }
 
-.personalAccount.light .user-details{
-    color: #455e63;
+.personalAccount.light .user-details {
+  color: #455e63;
 }
-.personalAccount.dark .user-details{
-    color: #fff;
+.personalAccount.dark .user-details {
+  color: #fff;
 }
 
-.user-details{
-    position: relative;
-bottom:40px;
-margin: 0;
-padding: 0;
-z-index: 399999;
-color: #000;
-text-align: center;
-font-size: 15px;
-
-
+.user-details {
+  position: relative;
+  bottom: 40px;
+  margin: 0;
+  padding: 0;
+  z-index: 399999;
+  color: #000;
+  text-align: center;
+  font-size: 15px;
 }
 
 :root {
   --eyes-color: white;
-  --head-color: #1B2129;
+  --head-color: #1b2129;
   --color1: #98c200;
   --color2: #4d0033;
   --color4: #162947;
 }
 
-
-
 .cat-container {
   width: 0px;
   height: 5px;
   margin: 0;
-
 }
 
 .cat {
-    margin: 0;
+  margin: 0;
   width: 50%;
   height: 50%;
   border-radius: 40% 40% 50% 50% / 60% 60% 40% 40%;
   animation: eyes-animation 100ms infinite ease-in-out;
   animation-direction: alternate;
-  background-image:
-  
+  background-image: radial-gradient(
+      ellipse,
+      var(--eyes-color) 60%,
+      transparent 61%
+    ),
+    radial-gradient(ellipse, var(--eyes-color) 60%, transparent 61%),
+    radial-gradient(ellipse, var(--head-color) 60%, transparent 61%),
+    radial-gradient(ellipse, var(--eyes-color) 60%, transparent 61%),
+    radial-gradient(ellipse, black 60%, transparent 61%),
     radial-gradient(ellipse, var(--eyes-color) 60%, transparent 61%),
     radial-gradient(ellipse, var(--eyes-color) 60%, transparent 61%),
     radial-gradient(ellipse, var(--head-color) 60%, transparent 61%),
     radial-gradient(ellipse, var(--eyes-color) 60%, transparent 61%),
     radial-gradient(ellipse, black 60%, transparent 61%),
-    radial-gradient(ellipse, var(--eyes-color) 60%, transparent 61%),
-    radial-gradient(ellipse, var(--eyes-color) 60%, transparent 61%),
     radial-gradient(ellipse, var(--head-color) 60%, transparent 61%),
-    radial-gradient(ellipse, var(--eyes-color) 60%, transparent 61%),
-    radial-gradient(ellipse, black 60%, transparent 61%),
+    radial-gradient(ellipse, #4d4355 60%, transparent 61%),
     radial-gradient(ellipse, var(--head-color) 60%, transparent 61%),
-    radial-gradient(ellipse, #4D4355 60%, transparent 61%),
-    radial-gradient(ellipse, var(--head-color) 60%, transparent 61%),
-    radial-gradient(ellipse, #4D4355 60%, transparent 61%),
-    radial-gradient(ellipse, #4D4355 60%, transparent 61%),
+    radial-gradient(ellipse, #4d4355 60%, transparent 61%),
+    radial-gradient(ellipse, #4d4355 60%, transparent 61%),
     radial-gradient(ellipse, pink 60%, transparent 61%),
-    radial-gradient(ellipse, #1B2129 49%, var(--head-color) 50%, var(--head-color) 51%);
-  background-position: 
-    32.5% 38%, 23.5% 50%, 22.5% 40%, 20% 40%, 18% 38%,
-    81% 38%, 70.5% 50%, 77.5% 40%, 80% 40%, 82% 38%,
-    34% 81%, 35% 83%, 67% 81%, 65% 83%,
-    /* nose */
-    50% 70%,
-    /* tongue */
-    50% 87%,
-    /* cat head */
-    50% 75%;
+    radial-gradient(
+      ellipse,
+      #1b2129 49%,
+      var(--head-color) 50%,
+      var(--head-color) 51%
+    );
+  background-position: 32.5% 38%, 23.5% 50%, 22.5% 40%, 20% 40%, 18% 38%,
+    81% 38%, 70.5% 50%, 77.5% 40%, 80% 40%, 82% 38%, 34% 81%, 35% 83%, 67% 81%,
+    65% 83%, /* nose */ 50% 70%, /* tongue */ 50% 87%, /* cat head */ 50% 75%;
   background-size: 
-    /* left eye */
-    2vmin 2vmin, 1.5vmin 1.5vmin, 3.5vmin 3.5vmin, 4.5vmin 4.5vmin, 4.75vmin 4.75vmin,
-    /* right eye */
-    2vmin 2vmin, 1.5vmin 1.5vmin, 3.5vmin 3.5vmin, 4.5vmin 4.5vmin, 4.75vmin 4.75vmin,
-    /* mouth */
-    4vmin 3vmin, 4vmin 3vmin, 4vmin 3vmin, 4vmin 3vmin,
-    /* nose */
-    2vmin 2vmin,
-    /* tongue */
-    0vmin 0vmin,
-    /* cat head */
-    19vmin 16.5vmin;
+    /* left eye */ 2vmin 2vmin, 1.5vmin 1.5vmin,
+    3.5vmin 3.5vmin, 4.5vmin 4.5vmin, 4.75vmin 4.75vmin,
+    /* right eye */ 2vmin 2vmin, 1.5vmin 1.5vmin, 3.5vmin 3.5vmin,
+    4.5vmin 4.5vmin, 4.75vmin 4.75vmin, /* mouth */ 4vmin 3vmin, 4vmin 3vmin,
+    4vmin 3vmin, 4vmin 3vmin, /* nose */ 2vmin 2vmin, /* tongue */ 0vmin 0vmin,
+    /* cat head */ 19vmin 16.5vmin;
   background-repeat: no-repeat;
 }
 
 .cat:hover {
   background-image:
-    /* left eye */
-    radial-gradient(ellipse, var(--eyes-color) 60%, transparent 61%),
+    /* left eye */ radial-gradient(
+      ellipse,
+      var(--eyes-color) 60%,
+      transparent 61%
+    ),
     radial-gradient(ellipse, var(--eyes-color) 60%, transparent 61%),
     radial-gradient(ellipse, var(--head-color) 60%, transparent 61%),
     radial-gradient(ellipse, var(--eyes-color) 60%, transparent 61%),
     radial-gradient(ellipse, black 60%, transparent 61%),
     /* right eye */
-    radial-gradient(ellipse, var(--eyes-color) 60%, transparent 61%),
+      radial-gradient(ellipse, var(--eyes-color) 60%, transparent 61%),
     radial-gradient(ellipse, var(--eyes-color) 60%, transparent 61%),
     radial-gradient(ellipse, var(--head-color) 60%, transparent 61%),
     radial-gradient(ellipse, var(--eyes-color) 60%, transparent 61%),
     radial-gradient(ellipse, black 60%, transparent 61%),
-    /* mouth */
+    /* mouth */ radial-gradient(ellipse, var(--head-color) 60%, transparent 61%),
+    radial-gradient(ellipse, #4d4355 60%, transparent 61%),
     radial-gradient(ellipse, var(--head-color) 60%, transparent 61%),
-    radial-gradient(ellipse, #4D4355 60%, transparent 61%),
-    radial-gradient(ellipse, var(--head-color) 60%, transparent 61%),
-    radial-gradient(ellipse, #4D4355 60%, transparent 61%),
-    /* nose */
-    radial-gradient(ellipse, #4D4355 60%, transparent 61%),
-    /* tongue */
-    radial-gradient(ellipse, pink 60%, transparent 61%),
+    radial-gradient(ellipse, #4d4355 60%, transparent 61%),
+    /* nose */ radial-gradient(ellipse, #4d4355 60%, transparent 61%),
+    /* tongue */ radial-gradient(ellipse, pink 60%, transparent 61%),
     /* cat head */
-    radial-gradient(ellipse, #1B2129 49%, var(--head-color) 50%, var(--head-color) 51%);
+      radial-gradient(
+        ellipse,
+        #1b2129 49%,
+        var(--head-color) 50%,
+        var(--head-color) 51%
+      );
   background-position: 
-    /* left eye */
-    32.5% 38%, 23.5% 50%, 22.5% 40%, 20% 40%, 18% 38%,
-    /* right eye */
-    81% 38%, 70.5% 50%, 77.5% 40%, 80% 40%, 82% 38%,
-    /* mouth */
-    34% 81%, 35% 83%, 67% 81%, 65% 83%,
-    /* nose */
-    50% 70%,
-    /* tongue */
-    50% 87%,
-    /* cat head */
-    50% 75%;
+    /* left eye */ 32.5% 38%, 23.5% 50%, 22.5% 40%,
+    20% 40%, 18% 38%, /* right eye */ 81% 38%, 70.5% 50%, 77.5% 40%, 80% 40%,
+    82% 38%, /* mouth */ 34% 81%, 35% 83%, 67% 81%, 65% 83%, /* nose */ 50% 70%,
+    /* tongue */ 50% 87%, /* cat head */ 50% 75%;
   background-size: 
-    /* left eye */
-    2vmin 2vmin, 1.5vmin 1.5vmin, 3.5vmin 3.5vmin, 4.5vmin 4.5vmin, 4.75vmin 4.75vmin,
-    /* right eye */
-    2vmin 2vmin, 1.5vmin 1.5vmin, 3.5vmin 3.5vmin, 4.5vmin 4.5vmin, 4.75vmin 4.75vmin,
-    /* mouth */
-    4vmin 3vmin, 4vmin 3vmin, 4vmin 3vmin, 4vmin 3vmin,
-    /* nose */
-    2vmin 2vmin,
-    /* tongue */
-    2vmin 2vmin,
-    /* cat head */
-    19vmin 16.5vmin;
+    /* left eye */ 2vmin 2vmin, 1.5vmin 1.5vmin,
+    3.5vmin 3.5vmin, 4.5vmin 4.5vmin, 4.75vmin 4.75vmin,
+    /* right eye */ 2vmin 2vmin, 1.5vmin 1.5vmin, 3.5vmin 3.5vmin,
+    4.5vmin 4.5vmin, 4.75vmin 4.75vmin, /* mouth */ 4vmin 3vmin, 4vmin 3vmin,
+    4vmin 3vmin, 4vmin 3vmin, /* nose */ 2vmin 2vmin, /* tongue */ 2vmin 2vmin,
+    /* cat head */ 19vmin 16.5vmin;
   background-repeat: no-repeat;
   animation: tongue-animation 100ms;
 }
 
-.cat:before, .cat:after {
+.cat:before,
+.cat:after {
   content: "";
   position: absolute;
   width: 5vmin;
@@ -214,18 +182,3 @@ font-size: 15px;
   transform: rotate(-5deg);
   box-shadow: inset 0 2vmin 0 var(--head-color);
 }
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
- 

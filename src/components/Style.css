@@ -1,34 +1,21 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Ysabeau+SC:wght@1;100;200;300;500&display=swap');*{
-  font-family: 'Ysabeau SC', sans-serif;
-
+@import url("https://fonts.googleapis.com/css2?family=Ysabeau+SC:wght@1;100;200;300;500&display=swap");
+* {
+  font-family: "Ysabeau SC", sans-serif;
 }
-
-
 
 html {
   transition: 0.5s;
-    overflow: hidden;
-   
-  }
+  overflow: hidden;
+}
 
+body {
+  background-color: #edf4f6;
+  min-height: 100vh;
+  transition: 0.5s;
+}
 
-
-  body {
-    background-color:#EDF4F6;
-    min-height: 100vh;
-    transition: 0.5s;
-    
-
-  }
-
-
-
-
-body.dark  {
-  background-color: #0E272E;
-
- 
+body.dark {
+  background-color: #0e272e;
 }
 
 .modalWindow {
@@ -41,10 +28,9 @@ body.dark  {
   display: flex;
   justify-content: center;
   align-items: center;
-z-index: 999999;
+  z-index: 999999;
   transition: 0.5s;
   background-size: 200% auto;
-
 }
 
 .modalContent {
@@ -53,14 +39,12 @@ z-index: 999999;
   border-radius: 4px;
   width: auto;
   transition: 0.5s;
-
   color: #455e63;
- z-index: 999999999999999999999999999;
+  z-index: 999999999999999999999999999;
 }
 
 .modalContent select,
-.modalContent input
- {
+.modalContent input {
   color: #455e63;
 }
 
@@ -86,36 +70,25 @@ z-index: 999999;
   border-radius: 10px;
   margin: 10px;
   color: #455e63;
-  
 }
-
-
-
 
 .modalContent.dark select,
-.modalContent.dark input[type="text"]::placeholder ,
+.modalContent.dark input[type="text"]::placeholder,
 .modalContent.dark input[type="password"]::placeholder,
-.modalContent.dark input[type="number"]::placeholder ,
-.modalContent.dark input[type="date"]::placeholder ,
-.modalContent.dark input[type="email"]::placeholder 
-  {
-  color: #455e63!important;
-  
+.modalContent.dark input[type="number"]::placeholder,
+.modalContent.dark input[type="date"]::placeholder,
+.modalContent.dark input[type="email"]::placeholder {
+  color: #455e63 !important;
 }
-
 
 .modalContent.light select,
-.modalContent.light input[type="text"]::placeholder ,
+.modalContent.light input[type="text"]::placeholder,
 .modalContent.light input[type="password"]::placeholder,
-.modalContent.light input[type="number"]::placeholder ,
-.modalContent.light input[type="date"]::placeholder ,
-.modalContent.light input[type="email"]::placeholder 
-  {
-  color: #455e63!important;
-  
+.modalContent.light input[type="number"]::placeholder,
+.modalContent.light input[type="date"]::placeholder,
+.modalContent.light input[type="email"]::placeholder {
+  color: #455e63 !important;
 }
-
-
 
 .modalContent select:focus,
 .modalContent input[type="text"]:focus,
@@ -125,63 +98,56 @@ z-index: 999999;
 .modalContent input[type="password"]:focus {
   border-color: #5ec7dd;
   outline: none;
-
-  
 }
+
 .instructionButton.light {
-  background-color:#fff;
-  color:#9dafba ;
+  background-color: #fff;
+  color: #9dafba;
 }
 
 .modalContent select {
   color: #455e63;
 }
 
-.instructionButton{
-
-
-  background-color:#0E272E;
+.instructionButton {
+  background-color: #0e272e;
   position: fixed;
-  left:250px;
+  left: 250px;
   top: 25px;
   color: #fff;
   font-size: 160%;
   z-index: 1;
-cursor: pointer;
-transition: 0.5s;
+  cursor: pointer;
+  transition: 0.5s;
 }
 
-.instructionButton:hover{
-  color:#5EC7DD;
+.instructionButton:hover {
+  color: #5ec7dd;
 }
 
-
-
-.modalBtn{
+.modalBtn {
   box-shadow: 0px 2px 4px #81858e;
   padding: 5px 10px;
   margin: 5px;
   font-size: 16px;
-
-
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: 0.5s;
   background-size: 200% auto;
   border-radius: 10px;
-
 }
 
-.modalBtn.dark{
+.modalBtn.dark {
   color: #fff;
   background-color: #455e63;
 }
 
-.modalBtn.light{
+.modalBtn.light {
   background-color: #9dafb4;
   color: #455e63;
 }
+
 button.modalBtn:hover {
   background-position: right center;
 }
@@ -189,7 +155,6 @@ button.modalBtn:hover {
 .modalButton {
   padding: 5px;
   font-size: 16px;
-
   border: none;
   border-radius: 10px;
   cursor: pointer;
@@ -201,16 +166,11 @@ button.modalBtn:hover {
   box-shadow: 0px 2px 4px #81858e;
 }
 
-
-
-
-
 .modalButton.dark {
   background-color: #edf4f6;
-
 }
 
-.modalButton.light{
+.modalButton.light {
   color: #fff;
   background-color: #9dafb4;
 }
@@ -228,9 +188,6 @@ button.modalBtn:hover {
   text-overflow: initial;
 }
 
-
-
-
 .modalButtonLog {
   box-shadow: 0px 2px 4px #81858e;
   padding: 5px 10px;
@@ -245,25 +202,26 @@ button.modalBtn:hover {
   border-radius: 10px;
   margin: 10px;
 }
-  
-.modalButtonLog.dark{
+
+.modalButtonLog.dark {
   background-color: #455e63;
   color: #ffffff;
   box-shadow: 0px 2px 4px #81858e;
 }
 
-.modalButtonLog.light{
+.modalButtonLog.light {
   background-color: #9dafb4;
   color: #455e63;
   box-shadow: 0px 2px 4px #81858e;
 }
+
 .modalContent.dark input[type="email"],
 .modalContent.dark input[type="password"] {
   background-color: #b8bbc4;
 }
-.modalLogin{
-  z-index: 999990000;
 
+.modalLogin {
+  z-index: 999990000;
 }
 
 .modalLogin form {
@@ -271,12 +229,11 @@ button.modalBtn:hover {
   flex-direction: column;
 }
 
-
 .modalLogin form input {
   margin-bottom: 10px;
 }
 
-.modalLogin{
+.modalLogin {
   padding: 40px;
 }
 
@@ -284,12 +241,12 @@ button.modalBtn:hover {
   text-align: center;
 }
 
-.futureBalance{
+.futureBalance {
   font-size: 13px;
   padding: 5px 10px;
   position: absolute;
   margin: 60px 220px;
-  right:  10px;
+  right: 10px;
   width: 11%;
   text-align: center;
   border-collapse: collapse;
@@ -301,26 +258,21 @@ button.modalBtn:hover {
   background-size: 200% auto;
 }
 
-
-  
-.leterBalance{
-   font-size: 18px;
+.leterBalance {
+  font-size: 18px;
 }
 
 .mainField.light .highlight {
-  background-color: #edf4f6; 
-
+  background-color: #edf4f6;
   border-radius: 10px;
-   transition: 0.5s;
+  transition: 0.5s;
 }
 
 .mainField.dark .highlight {
-  background-color:#0e272e; 
-
+  background-color: #0e272e;
   border-radius: 10px;
-   transition: 0.5s;
+  transition: 0.5s;
 }
-
 
 .backdrop {
   position: fixed;
@@ -330,22 +282,11 @@ button.modalBtn:hover {
   right: 0;
   background-color: gray;
   opacity: 0.5;
- 
 }
 
-
-
-.flex-container{
-
- 
-  
-
-
-
+.flex-container {
   display: flex;
-
-position: relative;
-
+  position: relative;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: flex-start;
@@ -354,219 +295,121 @@ position: relative;
   margin: 0 auto;
 }
 
-
 .firstt {
-
-
-align-items:center;
-margin: 0 20%;
+  align-items: center;
+  margin: 0 20%;
   order: 0;
   flex: 1 1 auto;
-
-
-  }
-.secondt {
-
-margin: 0 20% ;
-  order: 0;
-  flex: 0 1 auto;
-
-  align-items:center;
-
-
 }
 
+.secondt {
+  margin: 0 20%;
+  order: 0;
+  flex: 0 1 auto;
+  align-items: center;
+}
 
 @media (max-width: 4000px) {
 
-  .flex-container{
-
-padding-top: 80px ;
+  .flex-container {
+    padding-top: 80px;
   }
-
-
-  
 }
 
-
-
-
-
-
 .mainField {
-position: relative;
-top:30px;
-
+  position: relative;
+  top: 30px;
   transition: 0.5s;
 }
 
-
-
-  
 @media (max-width: 2200px) {
 
-
   .firstt {
-
-
-    align-items:center;
+    align-items: center;
     margin: 0 10%;
-      order: 0;
-      flex: 1 1 auto;
-    
-    
-      }
-    .secondt {
-    
-    margin: 0 10% ;
-      order: 0;
-      flex: 0 1 auto;
-    
-      align-items:center;
-    
-    
-    }
+    order: 0;
+    flex: 1 1 auto;
+  }
+
+  .secondt {
+    margin: 0 10%;
+    order: 0;
+    flex: 0 1 auto;
+    align-items: center;
+  }
 }
-
-
-
-
-
-
 
 @media (max-width: 1530px) {
 
   .secondt {
-  
- 
-    margin: 0 5% ;
-   
-  
-  
+    margin: 0 5%;
   }
-   
-
-  
 }
 
 @media (max-width: 1260px) {
 
-  .instructionButton{
-left: 90px;
-background-color:#1b414c;
-
+  .instructionButton {
+    left: 90px;
+    background-color: #1b414c;
   }
 }
- 
+
 @media (max-width: 800px) {
 
-  .instructionButton{
-left: 80px;
-
-
+  .instructionButton {
+    left: 80px;
   }
 }
- 
 
- 
+@media (max-width: 600px) {
 
-
-  
-  @media (max-width: 600px) {
-
- 
-    .flex-container{
-
-      display: flex;
+  .flex-container {
+    display: flex;
     position: relative;
+    top: 250px;
+  }
 
-    top:250px;
-    
-  
-    }
+  .instructionButton {
+    position: sticky;
+    background-color: #9dafba;
+    left: 20px;
+    top: 100px;
+  }
 
+  .instructionButton.light {
+    background-color: #edf4f6;
+  }
 
-    .instructionButton{
-      position:sticky;
-      background-color:#9dafba;
-            left:20px;
-            top:100px;
-         
-          
-          }
+  .instructionButton.dark {
+    background-color: #0e272e;
+  }
 
-    .instructionButton.light{
-
-background-color:#edf4f6;
-     
-    
-    
-    }
-
-    .instructionButton.dark{
-   
-      background-color:#0E272E;
-      
-        
-          
-          }
-
-
-    
-    .mainField{
-       
+  .mainField {
     position: absolute;
-    }
-   
-
-
-
-
-
-        
-      }  
-    
-
-
-
-      @media (max-width: 400px) {
-
-
-.secondt {
-  
-margin: 0 0 0 0 ;
-
-
-
-
+  }
 }
 
-.instructionButton{
+@media (max-width: 400px) {
 
-position: relative;
-top:-38px;
-  left:140px;
-  background-color:#0E272E;
+  .secondt {
+    margin: 0 0 0 0;
+  }
 
-
+  .instructionButton {
+    position: relative;
+    top: -38px;
+    left: 140px;
+    background-color: #0e272e;
+  }
 }
-
-
-
-}
-
 
 .instruction {
-  /* Ваши текущие стили */
-
-  /* Добавляем стили для анимации */
   opacity: 1;
   max-height: 1000px;
   transition: opacity 0.3s ease, max-height 0.3s ease;
 }
 
 .instruction.hidden {
-  /* Скрыть инструкцию */
   opacity: 0;
   max-height: 0;
   overflow: hidden;

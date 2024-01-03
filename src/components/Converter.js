@@ -9,11 +9,9 @@ const Converter = ({ isDarkMode }) => {
   const [amount1, setAmount1] = useState("");
   const [amount2, setAmount2] = useState("");
   const [conversionRates, setConversionRates] = useState({});
-
   const [sourceCurrency, setSourceCurrency] = useState("GBP");
   const [targetCurrency, setTargetCurrency] = useState("GEL");
 
-  
   const currencies = ["EUR", "GBP", "GEL", "TRY", "RUB", "USD"];
 
   const inputRef1 = useRef(null);
