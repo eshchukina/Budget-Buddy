@@ -2,21 +2,13 @@
 *{
   font-family: 'Ysabeau SC', sans-serif; */
 
-  html {
-    overflow: hidden;
-  }
-  
-
-
-body {
-height: 100%;
-overflow: hidden;
-
-
-  
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  
+html {
+  overflow: hidden;
 }
 
+body {
+  height: 100%;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
