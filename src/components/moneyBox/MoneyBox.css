@@ -1,0 +1,72 @@
+.moneyBox {
+  transition: 0.5s;
+  padding: 10px;
+  margin: 0 auto;
+  width: 400px;
+  align-items: center;
+  justify-content: space-between;
+  color: #fff;
+  font-size: 20px;
+}
+
+.moneyBox.light {
+  color: #9dafb4;
+  background-color: #fff;
+}
+
+.progressContainer {
+  height: 15px;
+  background-color: #edf4f6;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 5px;
+}
+
+.moneyBox.light .progressContainer {
+  background-color: #ffffff;
+}
+
+.logoMoneyBox {
+  color: #ffcd38;
+  padding-left: 10px;
+  font-size: 30px;
+}
+
+.progressBar {
+  height: 100%;
+  background-color: #9ddd5e;
+}
+
+.infoMoneyBox {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  color: #fff;
+}
+
+.moneyBox.light .infoMoneyBox {
+  color: #9dafb4;
+}
+
+.infoMoneyBox p {
+  margin: 0;
+}
+
+input.inputMoneyBox {
+  transition: 0.5s;
+  padding: 3px;
+  background-color: #fff;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.searchInput:focus {
+  outline: none;
+  border: 1px solid #5ec7dd;
+}
+
+.searchInput:hover {
+  border: 1px solid #5ec7dd;
+}
+

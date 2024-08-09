@@ -1,21 +1,17 @@
 import React, { useState, useEffect, useRef } from "react";
 
-import config from "../config";
-import "./Dashboard.css";
+import config from "../../config";
+import "../../components/dashboard/Dashboard.css";
 import "./Converter.css";
-import "./Style.css";
+import "../Style.css";
 
 const Converter = ({ isDarkMode }) => {
   const [amount1, setAmount1] = useState("");
   const [amount2, setAmount2] = useState("");
   const [conversionRates, setConversionRates] = useState({});
-
   const [sourceCurrency, setSourceCurrency] = useState("GBP");
   const [targetCurrency, setTargetCurrency] = useState("GEL");
-
-  
   const currencies = ["EUR", "GBP", "GEL", "TRY", "RUB", "USD"];
-
   const inputRef1 = useRef(null);
   const inputRef2 = useRef(null);
 
@@ -80,7 +76,6 @@ const Converter = ({ isDarkMode }) => {
   const handleAmountChange1 = (e) => {
     const { value } = e.target;
     if (!isNaN(value) || value === "") {
-      // Check if the value is a valid number or an empty string
       setAmount1(value);
       const convertedAmount = convertCurrency(
         value,
@@ -123,7 +118,7 @@ const Converter = ({ isDarkMode }) => {
   const handleTargetCurrencyChange = (e) => {
     const { value } = e.target;
     setTargetCurrency(value);
-    const convertedAmount = convertCurrency(amount1, sourceCurrency, value); // Изменили параметры функции
+    const convertedAmount = convertCurrency(amount1, sourceCurrency, value);
     setAmount2(convertedAmount);
   };
 
@@ -138,8 +133,9 @@ const Converter = ({ isDarkMode }) => {
 
   return (
     <div className={`mainField ${isDarkMode ? "dark" : "light"}`}>
-      <div className={`secondt converter ${isDarkMode ? "dark" : "light"}`}>
-        <h3 className="headerCurrency">converter</h3>
+      <div className={`converter ${isDarkMode ? "dark" : "light"}`}>
+        <p className="title">most common monthly expenses</p>
+
         <>
           <div className="input-container">
             <input

@@ -1,21 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faUser,
   faUserPlus,
   faEye,
   faEyeSlash,
   faArrowRightToBracket,
 } from "@fortawesome/free-solid-svg-icons";
-import SearchPage from "./SearchPage";
-import PersonalCabinet from "./PersonalCabinet";
-import ThemeToggle from "./ThemeToggle";
-import LoginButton from "./LoginButton";
 
-import config from "../config";
-import "./Style.css";
+import ThemeToggle from "../buttons/ThemeToggle";
+import LoginButton from "../buttons/LoginButton";
+import config from "../../config";
+import "../Style.css";
 import "./Header.css";
-import "./PersonalCabinet";
 
 const Header = ({
   isDarkMode,
@@ -23,26 +19,13 @@ const Header = ({
   activeAccount,
   setActiveAccount,
   setIsLoggedIn,
-  isDashboardView,
-  toggleInstructions,
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isCabinetOpen, setIsCabinetOpen] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const [userName, setUserName] = useState(
-    localStorage.getItem("userName") || ""
-  );
-  const [userEmail, setUserEmail] = useState(
-    localStorage.getItem("userEmail") || ""
-  );
-
-  const toggleCabinet = () => {
-    setIsCabinetOpen(!isCabinetOpen);
-  };
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -113,13 +96,10 @@ const Header = ({
 
       if (response.ok) {
         console.log("Registration successful");
-
         setName("");
         setEmail("");
         setPassword("");
-
         setIsModalOpen(false);
-
         handleOpenLoginModal();
       } else {
         console.log("Registration failed");
@@ -152,30 +132,22 @@ const Header = ({
         if (data && data.accessToken) {
           const { name, email, accessToken, refreshToken, expires_in } = data;
 
-          setUserName(name);
-          setUserEmail(email);
-
           setIsLoggedIn(true);
 
           localStorage.setItem("userName", name);
           localStorage.setItem("userEmail", email);
-
           localStorage.setItem("accessToken", accessToken);
           localStorage.setItem("refreshToken", refreshToken);
           localStorage.setItem("expiresIn", expires_in.toString());
 
-          // localStorage.setItem("lastVisitedAccount", activeAccount.id);
           if (activeAccount && activeAccount.id) {
             localStorage.setItem("lastVisitedAccount", activeAccount.id);
           }
 
           console.log("Login successful");
-
           setEmail("");
           setPassword("");
           setIsModalOpen(false);
-
-          // console.log(data);
 
           const s = localStorage.getItem("expiresIn");
           const ss = parseInt(s, 10);
@@ -202,7 +174,6 @@ const Header = ({
 
     if (storedRefreshToken) {
       try {
-        // console.log(JSON.stringify({ refreshToken: storedRefreshToken }));
         const response = await fetch(`${config.apiUrl}refresh`, {
           method: "POST",
           mode: "cors",
@@ -239,12 +210,6 @@ const Header = ({
   useEffect(() => {
     const storedAccessToken = localStorage.getItem("accessToken");
     const expiresIn = localStorage.getItem("expiresIn");
-    const savedUserName = localStorage.getItem("userName");
-    const savedUserEmail = localStorage.getItem("userEmail");
-    if (savedUserName && savedUserEmail) {
-      setUserName(savedUserName);
-      setUserEmail(savedUserEmail);
-    }
 
     if (!storedAccessToken || !expiresIn) {
       refreshTokenFunc();
@@ -256,7 +221,6 @@ const Header = ({
       } else {
         const timeLeft = expiresInMilliseconds - Date.now() - 5 * 60 * 1000;
         const timerId = setTimeout(refreshTokenFunc, timeLeft);
-
         return () => clearTimeout(timerId);
       }
     }
@@ -300,8 +264,6 @@ const Header = ({
           BB
         </span>
       </h1>
-
-      <SearchPage />
 
       <ThemeToggle isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
 
@@ -446,25 +408,6 @@ const Header = ({
               </button>
             </form>
           </div>
-        </div>
-      )}
-      {userName && userEmail && (
-        <div className="buttonCabinet">
-          {isCabinetOpen ? (
-            <PersonalCabinet
-              name={userName}
-              email={userEmail}
-              isDarkMode={isDarkMode}
-              onClose={toggleCabinet}
-            />
-          ) : (
-            <button
-              className={`buttonCab ${isDarkMode ? "dark" : "light"}`}
-              onClick={toggleCabinet}
-            >
-              <FontAwesomeIcon icon={faUser} />
-            </button>
-          )}
         </div>
       )}
     </div>

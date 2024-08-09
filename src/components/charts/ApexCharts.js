@@ -2,37 +2,32 @@ import React from "react";
 import ReactApexChart from "react-apexcharts";
 
 import "./ApexChart.css";
-import "./Style.css";
-import "./Dashboard.css"
+import "../Style.css";
+import "../../components/dashboard/Dashboard.css";
 
-const ApexChart = ({ account, isDarkMode, chartData }) => {
+const ApexChart = ({ isDarkMode, chartData }) => {
   const chartIsEmpty = chartData.series.length === 0;
 
   return (
     <div className={`mainField ${isDarkMode ? "dark" : "light"}`}>
-     
-
-
-      <div id="chart" className="secondt chart">
+      <p className="title">most common monthly expenses</p>
+      <div id="chart" className="converter">
         {chartIsEmpty ? (
           <ReactApexChart
             options={{
               chart: {
-                width: 345,
+                width: 350,
                 type: "donut",
               },
 
-             
-
-              
               labels: ["Category 1", "Category 2", "Category 3"],
-              
+
               legend: {
-                position: "bottom",
+                position: "right",
               },
               colors: ["#E96E94", "#5EC7DD", "#ffcd38"],
               title: {
-                text: "most common monthly expenses",
+                text: "",
                 align: "center",
                 style: {
                   fontSize: "18px",
@@ -43,24 +38,24 @@ const ApexChart = ({ account, isDarkMode, chartData }) => {
             }}
             series={[50, 30, 20]}
             type="donut"
-            width={345}
+            width={350}
           />
         ) : (
           <ReactApexChart
             options={{
               ...chartData.options,
               legend: {
-                position: "bottom",
+                position: "right",
               },
-            }}  
+            }}
             series={chartData.series}
             type="donut"
-            width={345}
+            width={350}
           />
         )}
       </div>
     </div>
-  );  
+  );
 };
 
 export default ApexChart;

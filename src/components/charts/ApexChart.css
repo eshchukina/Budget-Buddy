@@ -1,0 +1,24 @@
+#chart {
+  transition: 0.5s;
+  margin: 0 auto;
+  font-size: 20px;
+}
+
+.mainField.dark #chart {
+  background-color: #1b414c;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+}
+
+.mainField.dark .apexcharts-legend-text {
+  color: #fff !important;
+}
+
+#chart {
+}
+
+.textShedule {
+  color: #9dafb4;
+  text-align: center;
+}

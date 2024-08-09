@@ -1,58 +1,37 @@
 import React, { useState, useEffect } from "react";
-import Header from "./Header";
-import SideMenu from "./SideMenu";
-import Dashboard from "./Dashboard";
-import Footer from "./Footer";
+import Header from "../components/header/Header";
+import SideMenu from "./sideMenu/SideMenu";
+import Footer from "../components/footer/Footer";
 import "./Style.css";
-import "./Dashboard.css";
+import "../components/dashboard/Dashboard.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
+import Dashboard from "./dashboard/Dashboard";
+import Instruction from "./Instruction/Instruction";
 
-import Instruction from "./Instruction";
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(() => {
     const storedTheme = localStorage.getItem("isDarkMode");
-    return storedTheme ? JSON.parse(storedTheme) : false;
+    return storedTheme ? JSON.parse(storedTheme) : true;
   });
   const [accounts, setAccounts] = useState([]);
   const [currency, setCurrency] = useState("USD");
-  // const [activeAccount, setActiveAccount] = useState(
-  //   accounts.length > 0 ? accounts[0] : null 
-  // );
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
   const [isInstructionOpen, setIsInstructionOpen] = useState(false);
-
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
+  const [activeAccount, setActiveAccount] = useState(null);
+  const [isDashboardView, setIsDashboardView] = useState(true);
+  const [dataList, setDataList] = useState([]);
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
     };
-
     window.addEventListener("resize", handleResize);
-
     return () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
 
-  const setActiveModal = (modal) => {};
-
-  const headersWithToken = {};
-
-
-// Inside the App component
-// const [activeAccount, setActiveAccount] = useState(() => {
-//   const lastVisitedAccountId = localStorage.getItem("lastVisitedAccount");
-//   return accounts.find((account) => account.id === parseInt(lastVisitedAccountId)) || null;
-// });
-
-const [activeAccount, setActiveAccount] = useState(null);
-
-
-
-  
   useEffect(() => {
     if (isDarkMode) {
       document.body.classList.add("dark");
@@ -64,26 +43,6 @@ const [activeAccount, setActiveAccount] = useState(null);
 
   const toggleTheme = () => {
     setIsDarkMode((prevMode) => !prevMode);
-  };
-
-
-
- 
-
-
-
-
-  const onAccountUpdate = (account) => {};
-
-  const createAccount = (newAccount, currency) => {
-    const account = {
-      name: newAccount,
-      id: accounts.length + 1,
-      submittedDataList: [],
-      currency: currency,
-    };
-    setAccounts([...accounts, account]);
-    setActiveAccount(account);
   };
 
   const updateAccountData = (accountId, newData) => {
@@ -108,9 +67,6 @@ const [activeAccount, setActiveAccount] = useState(null);
       )
     );
   };
-  const handleCurrencyChange = (e) => {
-    setCurrency(e.target.value);
-  };
 
   const handleDeleteAccount = (account) => {
     const updatedAccounts = accounts.filter((acc) => acc.id !== account.id);
@@ -118,170 +74,73 @@ const [activeAccount, setActiveAccount] = useState(null);
     setActiveAccount(updatedAccounts.length > 0 ? updatedAccounts[0] : null);
   };
 
-  const handleDelete = (accountId, id) => {
-    const updatedDataList = accounts
-      .find((account) => account.id === accountId)
-      .submittedDataList.filter((data) => data.id !== id);
-    updateAccountData(accountId, updatedDataList);
+  useEffect(() => {
+    if (activeAccount) {
+      localStorage.setItem("lastVisitedAccount", activeAccount.id);
+    }
+  }, [activeAccount]);
+
+  const toggleInstructions = () => {
+    if (windowWidth <= 600) {
+      setIsInstructionOpen(!isInstructionOpen);
+    }
   };
 
+  const moneyBoxTransactions = dataList
+    ? dataList.filter((data) => data.tag === "moneyBox")
+    : [];
 
-
-  const handleLogout = () => {
-
-    localStorage.removeItem("isLoggedIn");
-    localStorage.removeItem("accessToken");
-    localStorage.removeItem("refreshToken");
-    localStorage.removeItem("expiresIn");
-  
-  
-   
-    window.location.reload();
-  };
-
-
-
-
-
-useEffect(() => {
-  if (activeAccount) {
-    localStorage.setItem("lastVisitedAccount", activeAccount.id);
-  }
-}, [activeAccount]);
-
-
-
-const [isDashboardView, setIsDashboardView] = useState(true); 
-
-
-const toggleInstructions = () => {
-  if (windowWidth <= 600) {
-    setIsInstructionOpen(!isInstructionOpen);
-  }
-};
-
-
+  const currentBalanceMoneyBox = moneyBoxTransactions.reduce(
+    (total, item) => total + Math.abs(item.amount),
+    0
+  );
 
   return (
     <div className={isDarkMode ? "dark" : "light"}>
-
-
-
-
-
-
-
-<Header
+      <Header
         isDarkMode={isDarkMode}
         toggleTheme={toggleTheme}
-        handleLogout={handleLogout}
-
-        activeModal={null} 
-        setActiveModal={() => {}} 
         activeAccount={activeAccount}
         setActiveAccount={setActiveAccount}
         setIsLoggedIn={setIsLoggedIn}
       />
-            
 
+      <FontAwesomeIcon
+        className={`instructionButton ${isDashboardView ? "active" : ""} ${
+          isDarkMode ? "dark" : "light"
+        }`}
+        icon={faCircleInfo}
+        title="Instructions"
+        onClick={() => {
+          setIsDashboardView(!isDashboardView);
+          toggleInstructions();
+        }}
+      />
 
-            {/* {
-  isLoggedIn && ( */}
-    <FontAwesomeIcon
-      className={`instructionButton ${isDashboardView ? "active" : ""} ${isDarkMode ? "dark" : "light"}`}
-      icon={faCircleInfo}
-      title="Instructions"
-      onClick={() => {
-        setIsDashboardView(!isDashboardView);
-        toggleInstructions();
-      }}
-    />
-{/* //    )
-// }  */}
+      {!isDashboardView && <Instruction isDarkMode={isDarkMode} />}
 
-
-{!isDashboardView && <Instruction isDarkMode={isDarkMode} />}
-      
-      {
-  isDashboardView  ? (
-    activeAccount? (
       <Dashboard
-          isDarkMode={isDarkMode}
-          account={activeAccount}
-          updateAccountData={updateAccountData}
-          currency={currency}
-          handleDelete={handleDelete}
-          submittedDataList={activeAccount.submittedDataList}
-          headersWithToken={headersWithToken}
-          setActiveAccount={setActiveAccount}
-          // updateAccountCaption={updateAcnpmcountCaption}
-          handleCurrencyChange={handleCurrencyChange}
-        
-
-          
-          createAccount={createAccount}
-        
-          setAccounts={setAccounts}
-          accountList={accounts}
-          activeAccount={activeAccount}
-        
-     
-          handleDeleteAccount={handleDeleteAccount}
-       
-          setActiveModal={setActiveModal}
-          onAccountUpdate={onAccountUpdate}
-        
-        /> 
-      
-
-
-
-        
-      ) 
-      
-      
-      
-      : (
-    
-      
-      <Instruction isDarkMode={isDarkMode}
-      isInstructionOpen={isInstructionOpen} />
-
-          
-       
-      )
-      
-      
-      ) : (
-      
-        <div></div>
-      )
-    }
-
-
+        isDarkMode={isDarkMode}
+        account={activeAccount}
+        updateAccountData={updateAccountData}
+        setDataList={setDataList}
+        dataList={dataList}
+        currentBalanceMoneyBox={currentBalanceMoneyBox}
+      />
 
       <Footer isDarkMode={isDarkMode} />
-     
-      {!isInstructionOpen && (
-  <SideMenu
-    isDarkMode={isDarkMode}
-    createAccount={createAccount}
-    setActiveAccount={setActiveAccount}
-    setAccounts={setAccounts}
-    accountList={accounts}
-    activeAccount={activeAccount}
-    currency={currency}
-    handleCurrencyChange={handleCurrencyChange}
-    handleDeleteAccount={handleDeleteAccount}
-    updateAccountCaption={updateAccountCaption}
-    onAccountUpdate={onAccountUpdate}
-    handleLogout={handleLogout}
-    isLoggedIn={isLoggedIn}
-    isInstructionViewOpen={!isDashboardView}
-    closeInstructionView={() => setIsDashboardView(true)}
-  />
-)}
 
+      <SideMenu
+        isDarkMode={isDarkMode}
+        setActiveAccount={setActiveAccount}
+        setAccounts={setAccounts}
+        accountList={accounts}
+        activeAccount={activeAccount}
+        currency={currency}
+        handleDeleteAccount={handleDeleteAccount}
+        updateAccountCaption={updateAccountCaption}
+        closeInstructionView={() => setIsDashboardView(true)}
+      />
     </div>
   );
 }

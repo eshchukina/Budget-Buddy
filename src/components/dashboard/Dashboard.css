@@ -1,0 +1,212 @@
+.accountContent {
+  color: #9dafb4;
+  transition: 0.5s;
+}
+.instructionButton {
+  display: inline;
+}
+
+.mainField.light .instructionButton {
+  color: #9dafb4;
+  background-color: #fff;
+}
+
+.mainField.light .instructionButton:hover {
+  color: #5ec7dd;
+}
+
+.text {
+  margin: 100px auto;
+  width: 50%;
+  text-align: center;
+  border-collapse: collapse;
+  border-spacing: 5px;
+  transition: 0.5s;
+  background-size: 200% auto;
+  font-size: 23px;
+  color: #9dafb4;
+}
+
+.text.dark {
+  color: #fff;
+}
+
+.titleList {
+  text-align: center;
+}
+
+table::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+tfoot {
+  position: sticky;
+  bottom: 0;
+  background-color: #1b414c;
+  transition: 0.5s;
+}
+
+.mainField.light tfoot {
+  background-color: #fff;
+}
+
+thead {
+  position: sticky;
+  top: 50px;
+  transition: 0.5s;
+  background-color: #1b414c;
+}
+
+table {
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+  margin-left: 20px;
+  transition: 0.5s;
+  display: inline-block;
+}
+
+table caption {
+  color: #9dafb4;
+  font-size: 25px;
+}
+
+th {
+  transition: 0.5s;
+  font-weight: 300;
+  padding-bottom: 5px;
+}
+
+caption {
+  transition: 0.5s;
+  font-weight: 600;
+  text-align: center;
+  padding-bottom: 20px;
+  position: sticky;
+  top: 0px;
+  color: #9dafb4;
+  background-color: #1b414c;
+}
+
+td:first-child {
+  font-size: 140%;
+}
+
+td {
+  width: 2%;
+  align-items: center;
+}
+
+table.accountContent.dark {
+  border-radius: 20px;
+  background-color: #1b414c;
+}
+caption {
+  color: #455e63;
+}
+
+.positive {
+  color: #e96e94;
+}
+
+.negative {
+  color: #5ec7dd;
+}
+
+.pad {
+  margin-top: 5px;
+  padding: 5px 5px 0 0;
+}
+
+.editIcon1.light:hover,
+.deleteIcon1.light:hover {
+  color: #5ec7dd;
+  box-shadow: 0 0 5px #5ec7dd;
+  text-shadow: 0 0 5px #5ec7dd;
+  border-radius: 5px;
+}
+
+.editIcon1.dark:hover,
+.deleteIcon1.dark:hover {
+  color: #ffcd38;
+  box-shadow: 0 0 5px #ffcd38;
+  text-shadow: 0 0 5px #ffcd38;
+  border-radius: 5px;
+}
+
+.editIcon1 {
+  padding: 8px;
+  font-size: 16px;
+  color: #5ec7dd;
+  transition: 0.5s;
+  margin: 1px;
+  cursor: pointer;
+}
+
+.deleteIcon1 {
+  padding: 6px;
+  font-size: 22px;
+  color: #5ec7dd;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.editIcon1.dark {
+  color: #ffcd38;
+}
+
+.deleteIcon1.dark {
+  color: #ffcd38;
+}
+
+.accountContent.dark th {
+  font-size: 20px;
+  font-weight: 300;
+  border-bottom: 5px solid #0e272e;
+}
+
+.accountContent.light th {
+  font-size: 20px;
+  font-weight: 300;
+  border-bottom: 5px solid #edf4f6;
+}
+
+.titleList {
+  position: relative;
+  margin: auto;
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.blinking-icon {
+  animation: blink 3s infinite;
+  position: relative;
+  top: 5px;
+  left: 10px;
+}
+
+.tagCircle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.mainField.light thead {
+  background-color: #fff;
+}
+
+.mainField.light caption {
+  background-color: #fff;
+}

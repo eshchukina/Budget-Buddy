@@ -1,0 +1,113 @@
+.converter {
+  transition: 0.5s;
+  width: 400px;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: space-between;
+  color: #9dafb4;
+  border: none;
+  background-color: #fff;
+  transition: 0.5s;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+}
+
+.input-container input {
+  flex: 1;
+  padding: 15px;
+  border: 1px solid #9ddd5e;
+  border-radius: 15px;
+  font-size: 16px;
+  transition: 0.5s;
+}
+
+.active.input-container input {
+  color: #5ec7dd;
+}
+
+.input-container select {
+  margin-left: 10px;
+  padding: 15px;
+  font-size: 16px;
+  border: 1px solid #9ddd5e;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.buttonArrow {
+  font-size: 18px;
+  border: none;
+  background-color: #fff;
+  color: #e96e94;
+  cursor: pointer;
+  transition: 0.5s;
+  background-size: 200% auto;
+}
+
+.buttonCoins {
+  font-size: 18px;
+  border: none;
+  background-color: #f9f9f9;
+  color: #e96e94;
+  cursor: pointer;
+  display: none;
+  transition: 0.5s;
+  background-size: 200% auto;
+}
+
+.input-container select:focus,
+.input-container input[type="text"]:focus {
+  border-color: #5ec7dd;
+  outline: none;
+}
+
+.input-container input::placeholder {
+  color: #b4afaf;
+}
+
+.result p {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.converter.dark {
+  background-color: #1b414c;
+  color: #fff;
+}
+
+.converter.dark input[type="text"],
+.converter.dark select {
+  background-color: #455e63;
+  color: #fff;
+}
+.converter.dark .buttonCoins {
+  background-color: #1b414c;
+  font-size: 18px;
+  color: #e96e94;
+  cursor: pointer;
+}
+
+.converter.dark .buttonArrow {
+  background-color: #1b414c;
+  font-size: 18px;
+  color: #e96e94;
+  cursor: pointer;
+}
+
+.converter.light .cross {
+  background-color: #9dafb4;
+  color: #fff;
+}
+
+.converter.dark .cross {
+  background-color: #edf4f6;
+  color: #2b2929;
+}
+
+.headerCurrencyAdd {
+  display: none;
+}
