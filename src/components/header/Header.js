@@ -1,31 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faUserPlus,
-  faEye,
-  faEyeSlash,
-  faArrowRightToBracket,
-} from "@fortawesome/free-solid-svg-icons";
-
-import ThemeToggle from "../buttons/ThemeToggle";
-import LoginButton from "../buttons/LoginButton";
+import RegistrationModal from "../modals/RegistrationModal";
+import LoginModal from "../modals/LoginModal";
 import config from "../../config";
 import "../Style.css";
 import "./Header.css";
+import Button from "../buttons/Button";
+import { faArrowRightToBracket } from "@fortawesome/free-solid-svg-icons";
 
-const Header = ({
-  isDarkMode,
-  toggleTheme,
-  activeAccount,
-  setActiveAccount,
-  setIsLoggedIn,
-}) => {
+const Header = ({ isDarkMode, activeAccount, setActiveAccount }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -132,8 +119,6 @@ const Header = ({
         if (data && data.accessToken) {
           const { name, email, accessToken, refreshToken, expires_in } = data;
 
-          setIsLoggedIn(true);
-
           localStorage.setItem("userName", name);
           localStorage.setItem("userEmail", email);
           localStorage.setItem("accessToken", accessToken);
@@ -229,9 +214,6 @@ const Header = ({
   const reloadPage = () => {
     window.location.reload();
   };
-  const handlePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
 
   useEffect(() => {
     const handleOutsideClick = (e) => {
@@ -253,164 +235,46 @@ const Header = ({
   }, [isModalOpen, isLoginModalOpen]);
 
   return (
-    <div className={`header ${isDarkMode ? "dark" : "light"}`}>
-      <h1 className="headerLogo" onClick={reloadPage}>
-        <span className="headerLogoletter">B</span>udget{" "}
-        <span className="headerLogoletter">B</span>uddy
-      </h1>
+    <>
+      <div className={`header ${isDarkMode ? "dark" : "light"}`}>
+        <h1 className="headerLogo" onClick={reloadPage}>
+          <span className="headerLogoletter">B</span>udget{" "}
+          <span className="headerLogoletter">B</span>uddy
+        </h1>
 
-      <h1 className="headerLogoMobile">
-        <span className="headerLogoletter" onClick={reloadPage}>
-          BB
-        </span>
-      </h1>
-
-      <ThemeToggle isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
-
-      <LoginButton
+        <Button
+          text=""
+          onClick={handleOpenLoginModal}
+          icon={faArrowRightToBracket}
+          iconColor="#ffcd38"
+        />
+      </div>
+      <LoginModal
         isDarkMode={isDarkMode}
-        handleOpenLoginModal={handleOpenLoginModal}
+        isOpen={isLoginModalOpen}
+        onClose={handleCloseLoginModal}
+        onRegisterOpen={handleOpenModal}
+        handleLogin={handleLogin}
+        email={email}
+        setEmail={setEmail}
+        password={password}
+        setPassword={setPassword}
       />
 
-      {isLoginModalOpen && (
-        <div className="modalWindow">
-          <div
-            className={`modalLogin modalContent ${
-              isDarkMode ? "dark" : "light"
-            }`}
-          >
-            <h3 className={`modalText ${isDarkMode ? "dark" : "light"}`}>
-              Login
-            </h3>
-            <form onSubmit={handleLogin}>
-              <input
-                type="email"
-                placeholder="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-
-              <input
-                type={showPassword ? "text" : "password"}
-                placeholder="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-
-              <div
-                type="button"
-                className="lockPassword"
-                onClick={handlePasswordVisibility}
-              >
-                {showPassword ? (
-                  <FontAwesomeIcon icon={faEye} />
-                ) : (
-                  <FontAwesomeIcon icon={faEyeSlash} />
-                )}
-              </div>
-
-              <button
-                type="submit"
-                className={`modalButtonLog ${isDarkMode ? "dark" : "light"}`}
-              >
-                Login
-              </button>
-              <button
-                className={`buttonCLose modalButtonLog ${
-                  isDarkMode ? "dark" : "light"
-                }`}
-                onClick={handleCloseLoginModal}
-              >
-                Close
-              </button>
-
-              <p className={`modalText ${isDarkMode ? "dark" : "light"}`}>
-                {" "}
-                create a new account
-              </p>
-              <button
-                className={`modalButtonLog ${isDarkMode ? "dark" : "light"}`}
-                onClick={handleOpenModal}
-              >
-                Create <FontAwesomeIcon icon={faUserPlus} />
-              </button>
-            </form>
-          </div>
-        </div>
-      )}
-
-      {isModalOpen && (
-        <div className="modalWindow">
-          <div
-            className={`modalLogin modalContent ${
-              isDarkMode ? "dark" : "light"
-            }`}
-          >
-            <h3 className={`modalText ${isDarkMode ? "dark" : "light"}`}>
-              Registration
-            </h3>
-            <form onSubmit={handleRegistration}>
-              <input
-                type="text"
-                placeholder="name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-              <input
-                type="email"
-                placeholder="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              <div className="passwordInputContainer">
-                <input
-                  type={showPassword ? "text" : "password"}
-                  placeholder="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-                <div
-                  type="button"
-                  className="lockPassword"
-                  onClick={handlePasswordVisibility}
-                >
-                  {showPassword ? (
-                    <FontAwesomeIcon icon={faEye} />
-                  ) : (
-                    <FontAwesomeIcon icon={faEyeSlash} />
-                  )}
-                </div>
-              </div>
-              <button
-                type="submit"
-                className={`modalButtonLog ${isDarkMode ? "dark" : "light"}`}
-              >
-                Register
-              </button>
-              <button
-                className={`buttonCLose modalButtonLog ${
-                  isDarkMode ? "dark" : "light"
-                }`}
-                onClick={handleCloseModal}
-              >
-                Close
-              </button>
-
-              <p className={`modalText ${isDarkMode ? "dark" : "light"}`}>
-                {" "}
-                enter login
-              </p>
-              <button
-                className={`modalButtonLog ${isDarkMode ? "dark" : "light"}`}
-                onClick={handleOpenLoginModal}
-              >
-                Login <FontAwesomeIcon icon={faArrowRightToBracket} />
-              </button>
-            </form>
-          </div>
-        </div>
-      )}
-    </div>
+      <RegistrationModal
+        isDarkMode={isDarkMode}
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        onLoginOpen={handleOpenLoginModal}
+        handleRegistration={handleRegistration}
+        name={name}
+        setName={setName}
+        email={email}
+        setEmail={setEmail}
+        password={password}
+        setPassword={setPassword}
+      />
+    </>
   );
 };
 

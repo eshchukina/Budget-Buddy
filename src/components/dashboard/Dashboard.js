@@ -8,14 +8,32 @@ import Converter from "../converter/Converter";
 import "../Style.css";
 import "./Dashboard.css";
 import "../sideMenu/SideMenu";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
+import TransactionModal from "../modals/TransactionModal";
+import AccountModal from "../modals/AccountModal";
+import MainButton from "../buttons/MainButton";
+import AccountCard from "../accounts/AccountCard";
 
 const Dashboard = ({
   isDarkMode,
-  account,
+  currency,
   updateAccountData,
   dataList,
   setDataList,
   currentBalanceMoneyBox,
+  fetchAccountList,
+  fetchedAccountList,
+  activeAccount,
+  handleAccountChange,
+  setActiveAccount,
+  updateAccountCaption,
+  setAccounts,
+  accounts,
+  closeModalAccount,
+  isModalOpenAccount,
+  openModalAccount,
 }) => {
   const [editData, setEditData] = useState({
     id: null,
@@ -26,43 +44,17 @@ const Dashboard = ({
   });
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const [editAccountId, setEditAccountId] = useState(null);
+  const [newAccount, setNewAccount] = useState("");
+  const [newCurrency, setNewCurrency] = useState(currency);
   const [currentBalance, setCurrentBalance] = useState(
-    account ? account.currentBalance : 0
+    activeAccount ? activeAccount.currentBalance : 0
   );
   const [futureBalance, setFutureBalance] = useState(
-    account ? account.futureBalance : 0
+    activeAccount ? activeAccount.futureBalance : 0
   );
-
   const [chartData, setChartData] = useState({
     series: [],
-    options: {
-      chart: {
-        width: 350,
-        type: "donut",
-      },
-      labels: [],
-      responsive: [
-        {
-          options: {
-            legend: {
-              position: "right",
-            },
-          },
-        },
-      ],
-      colors: ["#E96E94", "#5EC7DD", "#ffcd38", "#9ddd5e", "#1b414c"],
-      title: {
-        text: "",
-        align: "center",
-
-        style: {
-          fontSize: "18px",
-          fontFamily: "'Ysabeau SC', sans-serif",
-          color: "#9dafb4",
-        },
-      },
-    },
   });
 
   const [chartDataSchedule, setChartDataSchedule] = useState({
@@ -99,6 +91,15 @@ const Dashboard = ({
     },
   });
 
+  const settings = {
+    dots: true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    arrows: true,
+  };
+
   useEffect(() => {
     const handleOutsideClick = (e) => {
       if (
@@ -123,11 +124,42 @@ const Dashboard = ({
 
   useEffect(() => {
     fetchAccountData();
-  }, [account]);
-
-  useEffect(() => {
     fetchChartData();
-  }, [account]);
+    fetchChartDataSchedule();
+  }, [activeAccount]);
+
+  const handleCreateAccount = async () => {
+    if (newAccount) {
+      try {
+        const token = localStorage.getItem("accessToken");
+        const headersWithToken = {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        };
+        const response = await fetch(`${config.apiUrl}accounts`, {
+          method: "POST",
+          mode: "cors",
+          headers: headersWithToken,
+          body: JSON.stringify({
+            name: newAccount,
+            currency: newCurrency,
+          }),
+        });
+        if (response.ok) {
+          const createdAccount = await response.json();
+          setAccounts([...accounts, createdAccount]);
+          setNewAccount("");
+          fetchAccountList();
+        } else {
+          console.log("Failed to create account");
+        }
+      } catch (error) {
+        console.log("Error creating account:", error);
+      }
+    }
+    closeModalAccount();
+    fetchAccountList();
+  };
 
   const fetchChartData = async () => {
     try {
@@ -138,7 +170,7 @@ const Dashboard = ({
       };
 
       const response = await fetch(
-        `${config.apiUrl}transactions/accounts/${account.id}/statistics`,
+        `${config.apiUrl}transactions/accounts/${activeAccount.id}/statistics`,
         {
           headers: headersWithToken,
         }
@@ -154,7 +186,7 @@ const Dashboard = ({
         (a, b) => parseFloat(b[1]) - parseFloat(a[1])
       );
 
-      const chartLabels = sortedData.slice(0, 5).map(([label]) => label);
+      // const chartLabels = sortedData.slice(0, 5).map(([label]) => label);
       const seriesData = sortedData
         .slice(0, 5)
         .map(([, value]) => parseFloat(value));
@@ -172,7 +204,7 @@ const Dashboard = ({
         series: seriesData,
         options: {
           ...prevState.options,
-          labels: chartLabels,
+
           colors: chartColors,
         },
       }));
@@ -180,10 +212,6 @@ const Dashboard = ({
       console.log("Error fetching account statistics:", error.message);
     }
   };
-
-  useEffect(() => {
-    fetchChartDataSchedule();
-  }, [account]);
 
   const fetchChartDataSchedule = async () => {
     try {
@@ -194,7 +222,7 @@ const Dashboard = ({
       };
 
       const response = await fetch(
-        `${config.apiUrl}transactions/accounts/${account.id}/statement`,
+        `${config.apiUrl}transactions/accounts/${activeAccount.id}/statement`,
         {
           headers: headersWithToken,
         }
@@ -240,6 +268,52 @@ const Dashboard = ({
     setFutureBalance(futureBalance);
   }, [currentBalance, futureBalance]);
 
+  const handleSaveAccount = async () => {
+    try {
+      const token = localStorage.getItem("accessToken");
+      const headersWithToken = {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      };
+      const response = await fetch(
+        `${config.apiUrl}accounts/${editAccountId}`,
+        {
+          method: "PUT",
+          mode: "cors",
+          headers: headersWithToken,
+          body: JSON.stringify({
+            name: newAccount,
+            currency: newCurrency,
+          }),
+        }
+      );
+
+      if (response.ok) {
+        fetchAccountList();
+
+        updateAccountCaption({
+          id: editAccountId,
+          name: newAccount,
+          currency: newCurrency,
+        });
+      } else {
+        console.log("Failed to update account");
+      }
+    } catch (error) {
+      console.log("Error updating account:", error);
+    }
+    closeModalAccount();
+  };
+
+  const handleEditAccount = async (account) => {
+    setActiveAccount(account);
+    setEditAccountId(account.id);
+    setNewAccount(account.name);
+    setNewCurrency(account.currency);
+    openModalAccount();
+    updateAccountCaption(account);
+  };
+
   const fetchAccountData = async () => {
     try {
       const token = localStorage.getItem("accessToken");
@@ -249,7 +323,7 @@ const Dashboard = ({
       };
 
       const response = await fetch(
-        `${config.apiUrl}transactions/accounts/${account.id}/statement`,
+        `${config.apiUrl}transactions/accounts/${activeAccount.id}/statement`,
         {
           headers: headersWithToken,
         }
@@ -285,7 +359,7 @@ const Dashboard = ({
 
   const handleCreateData = async () => {
     const newSubmittedData = {
-      account_id: account.id,
+      account_id: activeAccount.id,
       description: editData.description,
       tag: editData.tag,
       amount: editData.amount,
@@ -298,7 +372,7 @@ const Dashboard = ({
       : [];
 
     setDataList(updatedDataList);
-    updateAccountData(account.id, updatedDataList);
+    updateAccountData(activeAccount.id, updatedDataList);
 
     try {
       const token = localStorage.getItem("accessToken");
@@ -343,7 +417,7 @@ const Dashboard = ({
       : [];
 
     setDataList(updatedDataList);
-    updateAccountData(account.id, updatedDataList);
+    updateAccountData(activeAccount.id, updatedDataList);
 
     try {
       const token = localStorage.getItem("accessToken");
@@ -352,7 +426,7 @@ const Dashboard = ({
         Authorization: `Bearer ${token}`,
       };
       const updatedData = {
-        account_id: account.id,
+        account_id: activeAccount.id,
         description: editData.description,
         tag: editData.tag,
         amount: parseFloat(editData.amount),
@@ -378,21 +452,15 @@ const Dashboard = ({
     } catch (error) {
       console.log("Error updating data in the database:", error);
     }
-
-    fetchAccountData();
-    setCurrentBalance(currentBalance);
-    setFutureBalance(currentBalance);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (editData.id !== null) {
       await handleUpdateData();
     } else {
       await handleCreateData();
     }
-
     closeModal();
   };
 
@@ -496,7 +564,7 @@ const Dashboard = ({
     return formattedDate;
   };
 
-  if (!account) {
+  if (!activeAccount) {
     return null;
   }
 
@@ -507,115 +575,70 @@ const Dashboard = ({
     return "";
   };
 
-  if (!account) {
-    return <div>No account data available</div>;
-  }
+  const handleDeleteAccount = async (account) => {
+    try {
+      const token = localStorage.getItem("accessToken");
+      const headersWithToken = {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      };
+      const response = await fetch(`${config.apiUrl}accounts/${account.id}`, {
+        method: "DELETE",
+        mode: "cors",
+        headers: headersWithToken,
+      });
+      if (response.ok) {
+        handleDeleteAccount(account);
+        if (editAccountId !== null && editAccountId === account.id) {
+          setEditAccountId(null);
+        }
+        fetchAccountList();
+      } else {
+        console.log("Failed to delete account");
+      }
+    } catch (error) {
+      console.log("Error deleting account:", error);
+    }
+  };
+
   return (
-    <div className={` ${isDarkMode ? "dark" : "light"}`}>
-      <div key={account.id}>
-        {isModalOpen && (
-          <div className="modalWindow">
-            <div className={`modalContent ${isDarkMode ? "dark" : "light"}`}>
-              <h3>Enter the data</h3>
-              <form onSubmit={handleSubmit}>
-                <input
-                  type="text"
-                  value={editData.description}
-                  onChange={handleDescriptionChange}
-                  placeholder="description"
-                />
+    <div className={`${isDarkMode ? "dark" : "light"}`}>
+      <div key={activeAccount.id}>
+        <TransactionModal
+          isDarkMode={isDarkMode}
+          isModalOpen={isModalOpen}
+          editData={editData}
+          handleSubmit={handleSubmit}
+          handleDescriptionChange={handleDescriptionChange}
+          handleTagChange={handleTagChange}
+          handleAmountChange={handleAmountChange}
+          formatDateForInput={formatDateForInput}
+          formatDateTime={formatDateTime}
+          setEditData={setEditData}
+          closeModal={closeModal}
+        />
 
-                <select
-                  value={editData.tag}
-                  onChange={handleTagChange}
-                  required
-                  className="tagSelect"
-                >
-                  <option value="other" className="tagOther">
-                    Select a tag
-                  </option>
-                  <option value="food" className="tagFood">
-                    food
-                  </option>
-                  <option value="transport" className="tagTransport">
-                    transport
-                  </option>
-                  <option value="salary" className="tagSalary">
-                    salary
-                  </option>
-                  <option value="health" className="tagHealth">
-                    health
-                  </option>
-                  <option value="pets" className="tagPets">
-                    pets
-                  </option>
-                  <option value="gifts" className="tagGifts">
-                    gifts
-                  </option>
-                  <option value="hobby" className="tagHobby">
-                    hobby
-                  </option>
-                  <option value="entertainment" className="tagEntertainment">
-                    entertainment
-                  </option>
-                  <option value="cloth" className="tagCloth">
-                    cloth
-                  </option>
-
-                  <option value="moneyBox" className="tagmoneyBox">
-                    money box
-                  </option>
-                  <option value="trips" className="tagTrips">
-                    trips
-                  </option>
-                  <option value="credit" className="tagCredit">
-                    credit
-                  </option>
-                  <option value="other" className="tagOther">
-                    other
-                  </option>
-                </select>
-
-                <input
-                  type="number"
-                  inputMode="decimal"
-                  value={editData.amount}
-                  onChange={handleAmountChange}
-                  placeholder="amount"
-                />
-
-                <input
-                  type="date"
-                  value={editData.date ? formatDateForInput(editData.date) : ""}
-                  onChange={(e) => {
-                    const selectedDate = e.target.value;
-                    const formattedDate = formatDateTime(selectedDate);
-                    setEditData({ ...editData, date: formattedDate });
-                  }}
-                  placeholder="date"
-                />
-
-                <button
-                  className={`modalBtn ${isDarkMode ? "dark" : "light"}`}
-                  type="submit"
-                >
-                  Add
-                </button>
-                <button
-                  className={`modalBtn ${isDarkMode ? "dark" : "light"}`}
-                  onClick={closeModal}
-                >
-                  Cancel
-                </button>
-              </form>
-            </div>
-          </div>
-        )}
+        <AccountModal
+          isDarkMode={isDarkMode}
+          isModalOpenAccount={isModalOpenAccount}
+          newAccount={newAccount}
+          setNewAccount={setNewAccount}
+          newCurrency={newCurrency}
+          setNewCurrency={setNewCurrency}
+          editAccountId={editAccountId}
+          handleSaveAccount={handleSaveAccount}
+          handleCreateAccount={handleCreateAccount}
+          closeModalAccount={closeModalAccount}
+        />
 
         <div className="FlexContainer">
-          <div className="FlexContainerItem">
+          <div
+            className={`FlexContainerItemDouble FlexContainerItem ${
+              isDarkMode ? "dark" : "light"
+            }`}
+          >
             <TransactionTable
-              account={account}
+              account={activeAccount}
               dataList={dataList}
               isDarkMode={isDarkMode}
               handleEdit={handleEdit}
@@ -623,21 +646,50 @@ const Dashboard = ({
               openModal={openModal}
             />
           </div>
-          <div className="FlexContainerItem"></div>
-          <div className="FlexContainerItem">
+
+          <div
+            className={`FlexContainerItemAccount FlexContainerItem ${
+              isDarkMode ? "dark" : "light"
+            }`}
+          >
+            <div className="accountButtons">
+              <Slider {...settings}>
+                {fetchedAccountList?.map((account) => (
+                  <div key={activeAccount.id}>
+                    <AccountCard
+                      isDarkMode={isDarkMode}
+                      account={account}
+                      activeAccount={activeAccount}
+                      handleAccountChange={handleAccountChange}
+                      handleEditAccount={handleEditAccount}
+                      handleDelete={handleDeleteAccount}
+                    />
+                  </div>
+                ))}
+              </Slider>
+              <div className="buttonTransaction">
+                <MainButton
+                  isDarkMode={isDarkMode}
+                  onClick={openModalAccount}
+                  buttonText="+ account"
+                />
+              </div>
+            </div>
+          </div>
+          <div className={`FlexContainerItem ${isDarkMode ? "dark" : "light"}`}>
             <ApexChart isDarkMode={isDarkMode} chartData={chartData} />
           </div>
-          <div className="FlexContainerItem">
+          <div className={`FlexContainerItem ${isDarkMode ? "dark" : "light"}`}>
             <AreaCharts
               isDarkMode={isDarkMode}
               formatBalance={formatBalance}
               chartDataSchedule={chartDataSchedule}
             />
           </div>
-          <div className="FlexContainerItem">
+          <div className={`FlexContainerItem ${isDarkMode ? "dark" : "light"}`}>
             <Converter isDarkMode={isDarkMode} />
           </div>
-          <div className="FlexContainerItem">
+          <div className={`FlexContainerItem ${isDarkMode ? "dark" : "light"}`}>
             <MoneyBox
               isDarkMode={isDarkMode}
               currentBalanceMoneyBox={currentBalanceMoneyBox}

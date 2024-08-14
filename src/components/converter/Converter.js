@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-
+import MainButton from "../buttons/MainButton";
 import config from "../../config";
 import "../../components/dashboard/Dashboard.css";
 import "./Converter.css";
@@ -132,60 +132,51 @@ const Converter = ({ isDarkMode }) => {
   };
 
   return (
-    <div className={`mainField ${isDarkMode ? "dark" : "light"}`}>
-      <div className={`converter ${isDarkMode ? "dark" : "light"}`}>
-        <p className="title">most common monthly expenses</p>
+    <div className={`converter ${isDarkMode ? "dark" : "light"}`}>
+      <p className="title">most common monthly expenses</p>
 
-        <>
-          <div className="input-container">
-            <input
-              ref={inputRef1}
-              type="text"
-              value={amount1}
-              onChange={handleAmountChange1}
-              placeholder={`enter amount in ${sourceCurrency}`}
-            />
-            <select
-              onChange={handleSourceCurrencyChange}
-              value={sourceCurrency}
-            >
-              {currencies.map((currency) => (
-                <option key={currency} value={currency}>
-                  {currency}
-                </option>
-              ))}
-            </select>
-          </div>
-        </>
-        <>
-          <br />
-          <div className="input-container">
-            <input
-              ref={inputRef2}
-              type="text"
-              value={amount2}
-              onChange={handleAmountChange2}
-              placeholder={`enter amount in ${targetCurrency}`}
-            />
+      <div className="input-container">
+        <input
+          ref={inputRef1}
+          type="text"
+          value={amount1}
+          onChange={handleAmountChange1}
+          placeholder={`enter amount in ${sourceCurrency}`}
+        />
+        <select onChange={handleSourceCurrencyChange} value={sourceCurrency}>
+          {currencies.map((currency) => (
+            <option key={currency} value={currency}>
+              {currency}
+            </option>
+          ))}
+        </select>
+      </div>
 
-            <select
-              onChange={handleTargetCurrencyChange}
-              value={targetCurrency}
-            >
-              {currencies.map((currency) => (
-                <option key={currency} value={currency}>
-                  {currency}
-                </option>
-              ))}
-            </select>
-          </div>
-          <br />
+      <br />
+      <div className="input-container">
+        <input
+          ref={inputRef2}
+          type="text"
+          value={amount2}
+          onChange={handleAmountChange2}
+          placeholder={`enter amount in ${targetCurrency}`}
+        />
 
-          <button className="modalBtn cross" onClick={handleCloseConverterForm}>
-            clear
-          </button>
-        </>
-      </div>{" "}
+        <select onChange={handleTargetCurrencyChange} value={targetCurrency}>
+          {currencies.map((currency) => (
+            <option key={currency} value={currency}>
+              {currency}
+            </option>
+          ))}
+        </select>
+      </div>
+      <br />
+
+      <MainButton
+        isDarkMode={isDarkMode}
+        onClick={handleCloseConverterForm}
+        buttonText="Clear"
+      />
     </div>
   );
 };

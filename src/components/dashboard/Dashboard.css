@@ -2,6 +2,7 @@
   color: #9dafb4;
   transition: 0.5s;
 }
+
 .instructionButton {
   display: inline;
 }
@@ -35,75 +36,18 @@
   text-align: center;
 }
 
-table::-webkit-scrollbar {
-  width: 0px;
-  background: transparent;
-}
-
-tfoot {
-  position: sticky;
-  bottom: 0;
-  background-color: #1b414c;
-  transition: 0.5s;
-}
-
-.mainField.light tfoot {
-  background-color: #fff;
-}
-
-thead {
-  position: sticky;
-  top: 50px;
-  transition: 0.5s;
-  background-color: #1b414c;
-}
-
 table {
   width: 100%;
   text-align: center;
   border-collapse: collapse;
+  margin-bottom: 20px;
   margin-left: 20px;
   transition: 0.5s;
-  display: inline-block;
-}
-
-table caption {
-  color: #9dafb4;
-  font-size: 25px;
-}
-
-th {
-  transition: 0.5s;
-  font-weight: 300;
-  padding-bottom: 5px;
-}
-
-caption {
-  transition: 0.5s;
-  font-weight: 600;
-  text-align: center;
-  padding-bottom: 20px;
-  position: sticky;
-  top: 0px;
-  color: #9dafb4;
-  background-color: #1b414c;
-}
-
-td:first-child {
-  font-size: 140%;
+  display: block;
 }
 
 td {
-  width: 2%;
-  align-items: center;
-}
-
-table.accountContent.dark {
-  border-radius: 20px;
-  background-color: #1b414c;
-}
-caption {
-  color: #455e63;
+  width: 10%;
 }
 
 .positive {
@@ -209,4 +153,34 @@ caption {
 
 .mainField.light caption {
   background-color: #fff;
+}
+
+.FlexContainerItemAccount {
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+  scroll-snap-type: x mandatory;
+}
+
+.buttonTransaction {
+  display: flex;
+  width: 100%;
+  margin-top: 20px;
+  justify-content: center;
+}
+
+@media (max-width: 960px) {
+  td {
+    font-size: 15px;
+  }
+
+  .editIcon1 {
+    font-size: 10px;
+  }
+  .deleteIcon1 {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 700px) {
 }

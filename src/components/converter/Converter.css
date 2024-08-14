@@ -1,13 +1,16 @@
+
 .converter {
-  transition: 0.5s;
-  width: 400px;
+  height: 100%;
+  width: 90%;
+  background-color:transparent;
   margin: 0 auto;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
   color: #9dafb4;
   border: none;
-  background-color: #fff;
   transition: 0.5s;
+  display: flex;
+  flex-direction: column;
 }
 
 .input-container {
@@ -75,7 +78,6 @@
 }
 
 .converter.dark {
-  background-color: #1b414c;
   color: #fff;
 }
 
@@ -84,6 +86,7 @@
   background-color: #455e63;
   color: #fff;
 }
+
 .converter.dark .buttonCoins {
   background-color: #1b414c;
   font-size: 18px;

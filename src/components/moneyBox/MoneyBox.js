@@ -32,41 +32,36 @@ const MoneyBox = ({ isDarkMode, currentBalanceMoneyBox }) => {
   };
 
   return (
-    <div className="mainField">
-      <div className="secondt">
-        <p className="title">most common monthly expenses</p>
-        <div className={`moneyBox ${isDarkMode ? "dark" : "light"}`}>
-          <p>
-            Money Box
-            <FontAwesomeIcon icon={faPiggyBank} className="logoMoneyBox" />
-          </p>
-          <div className="progressContainer">
-            <div
-              className="progressBar"
-              style={{ width: `${progress}%` }}
-            ></div>
-          </div>
-          <div className="infoMoneyBox">
-            <p>{`$${currentBalanceMoneyBox.toFixed(2)} saved`}</p>
+    <div className="moneyBox">
+      <p className="title">most common monthly expenses</p>
+      <div className={`moneyBox ${isDarkMode ? "dark" : "light"}`}>
+        <p>
+          Money Box
+          <FontAwesomeIcon icon={faPiggyBank} className="logoMoneyBox" />
+        </p>
+        <div className="progressContainer">
+          <div className="progressBar" style={{ width: `${progress}%` }}></div>
+        </div>
+        <div className="infoMoneyBox">
+          <p>{`$${currentBalanceMoneyBox.toFixed(2)} saved`}</p>
 
-            {editingRemaining ? (
-              <input
-                type="number"
-                step="0.01"
-                className="inputMoneyBox"
-                value={remainingValue}
-                onChange={handleRemainingChange}
-                onBlur={handleRemainingBlur}
-                autoFocus
-              />
-            ) : (
-              <p
-                onClick={handleRemainingEdit}
-              >{`$${remainingValue} remaining`}</p>
-            )}
-          </div>
-        </div>{" "}
-      </div>{" "}
+          {editingRemaining ? (
+            <input
+              type="number"
+              step="0.01"
+              className="inputMoneyBox"
+              value={remainingValue}
+              onChange={handleRemainingChange}
+              onBlur={handleRemainingBlur}
+              autoFocus
+            />
+          ) : (
+            <p
+              onClick={handleRemainingEdit}
+            >{`$${remainingValue} remaining`}</p>
+          )}
+        </div>
+      </div>
     </div>
   );
 };

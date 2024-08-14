@@ -1,9 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowTurnDown } from "@fortawesome/free-solid-svg-icons";
 import TransactionRow from "./TransactionRow";
-
+import MainButton from "../buttons/MainButton";
 import "../Style.css";
 import "../../components/dashboard/Dashboard.css";
 
@@ -49,96 +47,64 @@ const TransactionTable = ({
   };
 
   return (
-    <>
-      <div className={`mainField ${isDarkMode ? "dark" : "light"}`}>
-        <div>
-          <div>
-            <div style={{ maxHeight: "380px", overflowY: "scroll" }}>
-              <table
-                key={account.id}
-                className={`accountContent ${isDarkMode ? "dark" : "light"}`}
-              >
-                <caption>
-                  {account.name.length > 20
-                    ? `${account.name.substring(0, 13)}...`
-                    : account.name}{" "}
-                  ({account.currency})
-                </caption>
-                <thead>
-                  <tr>
-                    <th></th>
-                    <th>Name</th>
-                    <th>Amount</th>
-                    <th>Balance</th>
-                    <th></th>
-                  </tr>
-                </thead>
-                {dataList && dataList.length > 0 ? (
-                  <tbody>
-                    {dataList.map((data, index) => (
-                      <TransactionRow
-                        data={data}
-                        isDarkMode={isDarkMode}
-                        handleEdit={handleEdit}
-                        handleDelete={handleDelete}
-                        handleExpandDescription={handleExpandDescription}
-                        expandedDescription={expandedDescription}
-                        formatData={formatData}
-                        formatDate={formatDate}
-                        formatBalance={formatBalance}
-                      />
-                    ))}
-                  </tbody>
-                ) : (
-                  <tbody>
-                    <tr>
-                      <td colSpan="6">
-                        <br />
-                        <br />
-                        <p>
-                          Create your first transaction{" "}
-                          <span>
-                            {" "}
-                            <FontAwesomeIcon
-                              icon={faArrowTurnDown}
-                              className="blinking-icon"
-                            />{" "}
-                          </span>
-                        </p>
-                      </td>
-                    </tr>
-                  </tbody>
-                )}{" "}
-                <tfoot>
-                  <tr>
-                    <td colSpan="6">
-                      {" "}
-                      <div className="pad">
-                        {" "}
-                        <button
-                          className={`modalButton ${
-                            isDarkMode ? "dark" : "light"
-                          }`}
-                          onClick={openModal}
-                        >
-                          Create transaction
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td colSpan="6">
-                      {" "}
-                      <div className="pad"></div>
-                    </td>
-                  </tr>
-                </tfoot>
-              </table>{" "}
-            </div>
-          </div>{" "}
+    <div className={` ${isDarkMode ? "dark" : "light"}`}>
+      <div className="titleContainer">
+        <p className="title">
+          {account.name.length > 20
+            ? `${account.name.substring(0, 13)}...`
+            : account.name}{" "}
+          ({account.currency})
+        </p>
+
+        <MainButton
+          isDarkMode={isDarkMode}
+          onClick={openModal}
+          buttonText="+ transaction"
+        />
+      </div>
+      <div className="textContainer">
+        <p></p>
+        <p className="titleSmall">name and date</p>
+        <p className="titleSmall">amount</p>
+        <p className="titleSmall">balance</p>
+        <p></p>
+      </div>
+
+      <div className="table">
+        <div style={{ maxHeight: "250px", overflowY: "scroll" }}>
+          <table
+            key={account.id}
+            className={`accountContent ${isDarkMode ? "dark" : "light"}`}
+          >
+            {dataList && dataList.length > 0 ? (
+              <tbody>
+                {dataList.map((data, index) => (
+                  <TransactionRow
+                    data={data}
+                    isDarkMode={isDarkMode}
+                    handleEdit={handleEdit}
+                    handleDelete={handleDelete}
+                    handleExpandDescription={handleExpandDescription}
+                    expandedDescription={expandedDescription}
+                    formatData={formatData}
+                    formatDate={formatDate}
+                    formatBalance={formatBalance}
+                  />
+                ))}
+              </tbody>
+            ) : (
+              <tbody>
+                <tr>
+                  <td colSpan="6">
+                    <p>Create your first transaction</p>
+                  </td>
+                </tr>
+              </tbody>
+            )}
+          </table>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

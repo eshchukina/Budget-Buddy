@@ -5,37 +5,48 @@
 
 html {
   transition: 0.5s;
-  overflow: hidden;
 }
 
 body {
   background-color: #edf4f6;
   transition: 0.5s;
+  margin: 0px;
 }
 
 body.dark {
   background-color: #0e272e;
 }
+
 .FlexContainer {
+  padding-top: 20px;
+  margin-bottom: 10%;
   padding-left: 100px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100vh;
+  height: 90vh;
   overflow: auto;
   flex-direction: row;
 }
 
 .FlexContainerItem {
   width: 27%;
-  height: 35%;
+  height: 390px;
   margin: 10px;
   background-color: #1b414c;
   align-items: center;
   justify-content: space-between;
   border-radius: 20px;
+}
+
+.FlexContainerItem.dark {
+  background-color: #1b414c;
+}
+
+.FlexContainerItem.light {
+  background-color: #fff;
 }
 
 .modalWindow {
@@ -59,7 +70,6 @@ body.dark {
   border-radius: 4px;
   width: auto;
   transition: 0.5s;
-
   color: #455e63;
   z-index: 999999999999999999999999999;
 }
@@ -120,10 +130,6 @@ body.dark {
   border-color: #5ec7dd;
   outline: none;
 }
-.instructionButton.light {
-  background-color: #fff;
-  color: #9dafba;
-}
 
 .modalContent select {
   color: #455e63;
@@ -150,7 +156,6 @@ body.dark {
   padding: 5px 10px;
   margin: 5px;
   font-size: 16px;
-
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -168,6 +173,7 @@ body.dark {
   background-color: #9dafb4;
   color: #455e63;
 }
+
 button.modalBtn:hover {
   background-position: right center;
 }
@@ -175,14 +181,9 @@ button.modalBtn:hover {
 .modalButton {
   padding: 5px;
   font-size: 16px;
-
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  position: relative;
-  left: 40%;
-  margin: 0;
-  transform: translateX(-50%);
   transition: 0.5s;
   box-shadow: 0px 2px 4px #81858e;
 }
@@ -235,10 +236,12 @@ button.modalBtn:hover {
   color: #455e63;
   box-shadow: 0px 2px 4px #81858e;
 }
+
 .modalContent.dark input[type="email"],
 .modalContent.dark input[type="password"] {
   background-color: #b8bbc4;
 }
+
 .modalLogin {
   z-index: 999990000;
 }
@@ -281,15 +284,13 @@ button.modalBtn:hover {
   font-size: 18px;
 }
 
-.mainField.light .highlight {
+.accountContent.light .highlight {
   background-color: #edf4f6;
-  border-radius: 10px;
   transition: 0.5s;
 }
 
-.mainField.dark .highlight {
+.accountContent.dark .highlight {
   background-color: #0e272e;
-  border-radius: 10px;
   transition: 0.5s;
 }
 
@@ -343,4 +344,66 @@ button.modalBtn:hover {
   font-size: 25px;
   text-align: center;
   color: #9dafb4;
+}
+
+.titleSmall {
+  font-size: 20px;
+  text-align: center;
+  color: #9dafb4;
+}
+
+.textContainer {
+  flex-direction: row;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.titleContainer {
+  flex-direction: row;
+  display: flex;
+  width: 70%;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media (max-width: 1900px) {
+
+  .FlexContainer {
+    padding-top: 30px;
+  }
+
+  .FlexContainerItem {
+    width: 40%;
+    height: 400px;
+  }
+}
+
+@media (max-width: 1400px) {
+
+  .FlexContainerItem {
+    width: 70%;
+    height: 400px;
+  }
+}
+
+@media (max-width: 700px) {
+  .FlexContainerItem {
+    width: 100%;
+    height: 400px;
+  }
+
+  .FlexContainer {
+    padding-left: 0px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 90vh;
+    overflow: auto;
+    flex-direction: row;
+  }
 }

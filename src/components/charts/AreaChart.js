@@ -19,7 +19,7 @@ const AreaCharts = ({ chartDataSchedule, isDarkMode, formatBalance }) => {
   const options = chartIsEmpty
     ? {
         chart: {
-          height: 250,
+          height: 220,
           type: "area",
           background: "transparent",
         },
@@ -109,13 +109,13 @@ const AreaCharts = ({ chartDataSchedule, isDarkMode, formatBalance }) => {
           options={options}
           series={series}
           type="area"
-          height={250}
+          height={220}
         />
 
         <p className="labelT">
           positive amount {formatBalance}{" "}
           <FontAwesomeIcon className="pos" icon={faCircle} /> negative amount{" "}
-          <FontAwesomeIcon className="neg" icon={faCircle} />{" "}
+          <FontAwesomeIcon className="neg" icon={faCircle} />
         </p>
       </div>
     </div>

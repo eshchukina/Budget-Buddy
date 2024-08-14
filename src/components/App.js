@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Header from "../components/header/Header";
 import SideMenu from "./sideMenu/SideMenu";
-import Footer from "../components/footer/Footer";
 import "./Style.css";
 import "../components/dashboard/Dashboard.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
+
 import Dashboard from "./dashboard/Dashboard";
 import Instruction from "./Instruction/Instruction";
+import config from "../config";
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(() => {
@@ -16,21 +15,70 @@ function App() {
   });
   const [accounts, setAccounts] = useState([]);
   const [currency, setCurrency] = useState("USD");
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isInstructionOpen, setIsInstructionOpen] = useState(false);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [activeAccount, setActiveAccount] = useState(null);
-  const [isDashboardView, setIsDashboardView] = useState(true);
   const [dataList, setDataList] = useState([]);
+  const [fetchedAccountList, setFetchedAccountList] = useState([]);
+  const [isTokenAvailable, setTokenAvailable] = useState(false);
+  const [isModalOpenAccount, setIsModalOpenAccount] = useState(false);
+  const [showDashboard, setShowDashboard] = useState(true);
+
   useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+    if (fetchedAccountList.length > 0) {
+      setActiveAccount(fetchedAccountList[0]);
+    }
+  }, [fetchedAccountList]);
+
+  useEffect(() => {
+    const token = localStorage.getItem("accessToken");
+    setTokenAvailable(!!token);
   }, []);
+
+  useEffect(() => {
+    setFetchedAccountList(fetchedAccountList || []);
+  }, [fetchedAccountList]);
+
+  useEffect(() => {
+    fetchAccountList();
+  }, []);
+
+  useEffect(() => {
+    setFetchedAccountList(fetchedAccountList || []);
+  }, [fetchedAccountList]);
+
+  const fetchAccountList = async () => {
+    try {
+      const token = localStorage.getItem("accessToken");
+      const headersWithToken = {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      };
+
+      const response = await fetch(`${config.apiUrl}accounts`, {
+        headers: headersWithToken,
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setFetchedAccountList(data || []);
+      } else {
+        console.log("Failed to fetch account list");
+      }
+    } catch (error) {
+      console.log("Error fetching account list:", error);
+    }
+  };
+
+  const openModalAccount = () => {
+    setIsModalOpenAccount(true);
+  };
+
+  const closeModalAccount = () => {
+    setIsModalOpenAccount(false);
+  };
+
+  const handleAccountChange = (account) => {
+    setActiveAccount(account);
+  };
 
   useEffect(() => {
     if (isDarkMode) {
@@ -68,23 +116,11 @@ function App() {
     );
   };
 
-  const handleDeleteAccount = (account) => {
-    const updatedAccounts = accounts.filter((acc) => acc.id !== account.id);
-    setAccounts(updatedAccounts);
-    setActiveAccount(updatedAccounts.length > 0 ? updatedAccounts[0] : null);
-  };
-
   useEffect(() => {
     if (activeAccount) {
       localStorage.setItem("lastVisitedAccount", activeAccount.id);
     }
   }, [activeAccount]);
-
-  const toggleInstructions = () => {
-    if (windowWidth <= 600) {
-      setIsInstructionOpen(!isInstructionOpen);
-    }
-  };
 
   const moneyBoxTransactions = dataList
     ? dataList.filter((data) => data.tag === "moneyBox")
@@ -95,6 +131,10 @@ function App() {
     0
   );
 
+  const handleToggleView = () => {
+    setShowDashboard((prev) => !prev);
+  };
+
   return (
     <div className={isDarkMode ? "dark" : "light"}>
       <Header
@@ -102,45 +142,38 @@ function App() {
         toggleTheme={toggleTheme}
         activeAccount={activeAccount}
         setActiveAccount={setActiveAccount}
-        setIsLoggedIn={setIsLoggedIn}
       />
-
-      <FontAwesomeIcon
-        className={`instructionButton ${isDashboardView ? "active" : ""} ${
-          isDarkMode ? "dark" : "light"
-        }`}
-        icon={faCircleInfo}
-        title="Instructions"
-        onClick={() => {
-          setIsDashboardView(!isDashboardView);
-          toggleInstructions();
-        }}
-      />
-
-      {!isDashboardView && <Instruction isDarkMode={isDarkMode} />}
-
-      <Dashboard
-        isDarkMode={isDarkMode}
-        account={activeAccount}
-        updateAccountData={updateAccountData}
-        setDataList={setDataList}
-        dataList={dataList}
-        currentBalanceMoneyBox={currentBalanceMoneyBox}
-      />
-
-      <Footer isDarkMode={isDarkMode} />
-
       <SideMenu
         isDarkMode={isDarkMode}
-        setActiveAccount={setActiveAccount}
-        setAccounts={setAccounts}
-        accountList={accounts}
-        activeAccount={activeAccount}
-        currency={currency}
-        handleDeleteAccount={handleDeleteAccount}
-        updateAccountCaption={updateAccountCaption}
-        closeInstructionView={() => setIsDashboardView(true)}
+        handleToggleView={handleToggleView}
+        toggleTheme={toggleTheme}
       />
+
+      {!isTokenAvailable ? (
+        <Instruction isDarkMode={isDarkMode} />
+      ) : showDashboard ? (
+        <Dashboard
+          isDarkMode={isDarkMode}
+          currency={currency}
+          updateAccountData={updateAccountData}
+          setDataList={setDataList}
+          dataList={dataList}
+          currentBalanceMoneyBox={currentBalanceMoneyBox}
+          activeAccount={activeAccount}
+          handleAccountChange={handleAccountChange}
+          accountList={accounts}
+          fetchedAccountList={fetchedAccountList}
+          updateAccountCaption={updateAccountCaption}
+          setAccounts={setAccounts}
+          closeModalAccount={closeModalAccount}
+          isModalOpenAccount={isModalOpenAccount}
+          openModalAccount={openModalAccount}
+          setActiveAccount={setActiveAccount}
+          fetchAccountList={fetchAccountList}
+        />
+      ) : (
+        <Instruction isDarkMode={isDarkMode} />
+      )}
     </div>
   );
 }

@@ -1,24 +1,26 @@
 #chart {
   transition: 0.5s;
-  margin: 0 auto;
-  font-size: 20px;
+  align-items: center;
+  justify-content: center;
 }
 
-.mainField.dark #chart {
-  background-color: #1b414c;
-  justify-content: space-between;
-  display: flex;
+.dark #chart {
+  background-color: transparent;
+  transition: 0.5s;
   align-items: center;
 }
 
-.mainField.dark .apexcharts-legend-text {
-  color: #fff !important;
-}
-
-#chart {
+.light #chart {
+  background-color: transparent;
+    transition: 0.5s;
+  align-items: center;
 }
 
 .textShedule {
   color: #9dafb4;
   text-align: center;
+}
+
+.apexcharts-legend {
+display: none!important;
 }

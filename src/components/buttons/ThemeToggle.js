@@ -6,6 +6,7 @@ import "../Style.css";
 import "../header/Header.css";
 
 const ThemeToggle = ({ isDarkMode, toggleTheme }) => {
+
   const handleThemeToggle = () => {
     toggleTheme();
   };
