@@ -14,3 +14,5 @@ Budget Buddy helps you save money for your dreams. Create savings goals with spe
 
 Currency converter:
 With the built-in currency converter, you can easily convert amounts from one currency to another without extra effor.
+
+![screenshot 1](https://github.com/eshchukina/Budget-Buddy/blob/dev/public/main.png)
