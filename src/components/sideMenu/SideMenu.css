@@ -171,6 +171,10 @@
   align-items: center;
 }
 
+.modalWindow button:hover{
+  background-color:#5ec7dd;
+}
+
 .accountButton {
   width: 100%;
   height: 290px;
@@ -242,9 +246,7 @@ button.accountButton.dark {
   color: #5ec7dd;
 }
 
-hr {
-  border: 1px solid #9dafb4;
-}
+
 
 .majorButtonSmall {
   display: none;
@@ -289,10 +291,22 @@ hr {
 .button:hover {
   text-decoration: underline;
 }
+hr {
+  transition: 0.5s;
+  border: 1px solid #0e272e;
+  width: 100%;
+}
+
+.light hr {
+  transition: 0.5s;
+  border: 1px solid #9dafb4;
+
+}
+
 
 @media (max-width: 900px) {
   .sidebar {
-    width: 200px;
+    width:200px;
   }
 }
 
@@ -300,15 +314,15 @@ hr {
   .sidebar {
     position: relative;
     z-index: 9999;
-    top: 0;
+    bottom: 0;
     left: 0;
     width: 100%;
-    height: 100px;
+    height: 50px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    margin: 0;
+
     color: #455e63;
     transition: 0.5s;
   }
@@ -330,5 +344,21 @@ hr {
     align-items: center;
     flex-direction: row;
     justify-content: center;
+  }
+
+  .headerLogoletter {
+    color: #e96e94;
+    font-size: 20px;
+    cursor: pointer;
+    text-transform: capitalize;
+  }
+
+  .sidebar .headerLogo{
+    font-size: 15px;
+    display: none;
+  }
+
+  hr{
+    display:none;
   }
 }

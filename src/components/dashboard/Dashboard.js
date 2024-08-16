@@ -15,6 +15,7 @@ import TransactionModal from "../modals/TransactionModal";
 import AccountModal from "../modals/AccountModal";
 import MainButton from "../buttons/MainButton";
 import AccountCard from "../accounts/AccountCard";
+import { handleDeleteAccount,  fetchChartData, fetchChartDataSchedule } from "../../api/api";
 
 const Dashboard = ({
   isDarkMode,
@@ -34,6 +35,12 @@ const Dashboard = ({
   closeModalAccount,
   isModalOpenAccount,
   openModalAccount,
+  setNewAccount,
+  newAccount,
+  setNewCurrency,
+  newCurrency,
+  setEditAccountId,
+  editAccountId,
 }) => {
   const [editData, setEditData] = useState({
     id: null,
@@ -44,9 +51,6 @@ const Dashboard = ({
   });
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [editAccountId, setEditAccountId] = useState(null);
-  const [newAccount, setNewAccount] = useState("");
-  const [newCurrency, setNewCurrency] = useState(currency);
   const [currentBalance, setCurrentBalance] = useState(
     activeAccount ? activeAccount.currentBalance : 0
   );
@@ -59,35 +63,15 @@ const Dashboard = ({
 
   const [chartDataSchedule, setChartDataSchedule] = useState({
     series: [
-      {
-        name: "series1",
-        data: [],
-      },
-      {
-        name: "series2",
-        data: [],
-      },
+      { name: "series1", data: [] },
+      { name: "series2", data: [] },
     ],
     options: {
-      chart: {
-        height: 350,
-        type: "area",
-      },
-      dataLabels: {
-        enabled: false,
-      },
-      stroke: {
-        curve: "smooth",
-      },
-      xaxis: {
-        type: "datetime",
-        categories: [],
-      },
-      tooltip: {
-        x: {
-          format: "dd/MM/yy HH:mm",
-        },
-      },
+      chart: { height: 350, type: "area" },
+      dataLabels: { enabled: false },
+      stroke: { curve: "smooth" },
+      xaxis: { type: "datetime", categories: [] },
+      tooltip: { x: { format: "dd/MM/yy HH:mm" } },
     },
   });
 
@@ -111,21 +95,17 @@ const Dashboard = ({
       }
     };
 
-    if (isModalOpen) {
-      document.addEventListener("click", handleOutsideClick);
-    } else {
-      document.removeEventListener("click", handleOutsideClick);
-    }
-
-    return () => {
-      document.removeEventListener("click", handleOutsideClick);
-    };
+    document.addEventListener("click", handleOutsideClick);
+    return () => document.removeEventListener("click", handleOutsideClick);
   }, [isModalOpen]);
 
   useEffect(() => {
-    fetchAccountData();
-    fetchChartData();
-    fetchChartDataSchedule();
+    if (activeAccount) {
+      fetchAccountData();
+      fetchChartData(activeAccount, setChartData);
+
+      fetchChartDataSchedule(activeAccount, setChartDataSchedule);
+    }
   }, [activeAccount]);
 
   const handleCreateAccount = async () => {
@@ -161,102 +141,7 @@ const Dashboard = ({
     fetchAccountList();
   };
 
-  const fetchChartData = async () => {
-    try {
-      const token = localStorage.getItem("accessToken");
-      const headersWithToken = {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      };
 
-      const response = await fetch(
-        `${config.apiUrl}transactions/accounts/${activeAccount.id}/statistics`,
-        {
-          headers: headersWithToken,
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error("Failed to fetch account statistics");
-      }
-
-      const data = await response.json();
-
-      const sortedData = Object.entries(data).sort(
-        (a, b) => parseFloat(b[1]) - parseFloat(a[1])
-      );
-
-      // const chartLabels = sortedData.slice(0, 5).map(([label]) => label);
-      const seriesData = sortedData
-        .slice(0, 5)
-        .map(([, value]) => parseFloat(value));
-
-      const chartColors = [
-        "#E96E94",
-        "#5EC7DD",
-        "#ffcd38",
-        "#9ddd5e",
-        "#9dafb4",
-      ];
-
-      setChartData((prevState) => ({
-        ...prevState,
-        series: seriesData,
-        options: {
-          ...prevState.options,
-
-          colors: chartColors,
-        },
-      }));
-    } catch (error) {
-      console.log("Error fetching account statistics:", error.message);
-    }
-  };
-
-  const fetchChartDataSchedule = async () => {
-    try {
-      const token = localStorage.getItem("accessToken");
-      const headersWithToken = {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      };
-
-      const response = await fetch(
-        `${config.apiUrl}transactions/accounts/${activeAccount.id}/statement`,
-        {
-          headers: headersWithToken,
-        }
-      );
-
-      const data = await response.json();
-      const positiveData = data.filter((item) => item.amount >= 0);
-      const negativeData = data.filter((item) => item.amount < 0);
-      const categories = positiveData.map((item) => item.date);
-
-      setChartDataSchedule((prevState) => ({
-        ...prevState,
-        series: [
-          {
-            name: " ",
-            data: positiveData.map((item) => item.amount),
-          },
-          {
-            name: " ",
-            data: negativeData.map((item) => item.amount),
-          },
-        ],
-        options: {
-          ...prevState.options,
-          xaxis: {
-            ...prevState.options.xaxis,
-            categories: categories,
-          },
-        },
-      }));
-    } catch (error) {
-      console.log("Error fetching account data:", error);
-    }
-  };
 
   useEffect(() => {
     const futureBalance = calculateFutureBalance(dataList);
@@ -304,15 +189,15 @@ const Dashboard = ({
     }
     closeModalAccount();
   };
-
-  const handleEditAccount = async (account) => {
+  const handleEditAccount = (account) => {
     setActiveAccount(account);
-    setEditAccountId(account.id);
+    setEditAccountId(account.id); // Устанавливаем id аккаунта для редактирования
     setNewAccount(account.name);
     setNewCurrency(account.currency);
     openModalAccount();
     updateAccountCaption(account);
   };
+  
 
   const fetchAccountData = async () => {
     try {
@@ -398,7 +283,6 @@ const Dashboard = ({
         closeModal();
       } else {
         console.log("Error adding data to the database.");
-        fetchAccountData();
       }
     } catch (error) {
       console.log("Error adding data to the database:", error);
@@ -442,7 +326,7 @@ const Dashboard = ({
           body: JSON.stringify(updatedData),
         }
       );
-      fetchAccountData();
+
       setCurrentBalance(currentBalance);
       setFutureBalance(currentBalance);
 
@@ -452,6 +336,7 @@ const Dashboard = ({
     } catch (error) {
       console.log("Error updating data in the database:", error);
     }
+    fetchAccountData();
   };
 
   const handleSubmit = async (e) => {
@@ -575,34 +460,11 @@ const Dashboard = ({
     return "";
   };
 
-  const handleDeleteAccount = async (account) => {
-    try {
-      const token = localStorage.getItem("accessToken");
-      const headersWithToken = {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      };
-      const response = await fetch(`${config.apiUrl}accounts/${account.id}`, {
-        method: "DELETE",
-        mode: "cors",
-        headers: headersWithToken,
-      });
-      if (response.ok) {
-        handleDeleteAccount(account);
-        if (editAccountId !== null && editAccountId === account.id) {
-          setEditAccountId(null);
-        }
-        fetchAccountList();
-      } else {
-        console.log("Failed to delete account");
-      }
-    } catch (error) {
-      console.log("Error deleting account:", error);
-    }
-  };
+ 
 
   return (
     <div className={`${isDarkMode ? "dark" : "light"}`}>
+     
       <div key={activeAccount.id}>
         <TransactionModal
           isDarkMode={isDarkMode}
@@ -644,6 +506,7 @@ const Dashboard = ({
               handleEdit={handleEdit}
               handleDelete={handleDelete}
               openModal={openModal}
+              fetchAccountLis={fetchAccountList}
             />
           </div>
 
@@ -663,6 +526,9 @@ const Dashboard = ({
                       handleAccountChange={handleAccountChange}
                       handleEditAccount={handleEditAccount}
                       handleDelete={handleDeleteAccount}
+                      editAccountId={editAccountId}
+                      setEditAccountId={setEditAccountId}
+                      fetchAccountList={fetchAccountList}
                     />
                   </div>
                 ))}
@@ -691,6 +557,7 @@ const Dashboard = ({
           </div>
           <div className={`FlexContainerItem ${isDarkMode ? "dark" : "light"}`}>
             <MoneyBox
+              account={activeAccount}
               isDarkMode={isDarkMode}
               currentBalanceMoneyBox={currentBalanceMoneyBox}
             />

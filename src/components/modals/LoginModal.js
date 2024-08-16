@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faUserPlus,
@@ -20,6 +20,10 @@ const LoginModal = ({
   setPassword,
 }) => {
   const [showPassword, setShowPassword] = useState(false);
+  useEffect(() => {
+    setPassword("");
+    setEmail("");
+  }, [isOpen]);
 
   const handlePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -35,12 +39,14 @@ const LoginModal = ({
         <h3 className={`modalText ${isDarkMode ? "dark" : "light"}`}>Login</h3>
         <form onSubmit={handleLogin}>
           <input
+            maxLength={30}
             type="email"
             placeholder="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
           <input
+            maxLength={20}
             type={showPassword ? "text" : "password"}
             placeholder="password"
             value={password}
@@ -57,7 +63,7 @@ const LoginModal = ({
             type="submit"
             className={`modalButtonLog ${isDarkMode ? "dark" : "light"}`}
           >
-            Login
+            login
           </button>
           <button
             className={`buttonClose modalButtonLog ${
@@ -65,7 +71,7 @@ const LoginModal = ({
             }`}
             onClick={onClose}
           >
-            Close
+            close
           </button>
           <p className={`modalText ${isDarkMode ? "dark" : "light"}`}>
             create a new account
@@ -74,7 +80,7 @@ const LoginModal = ({
             className={`modalButtonLog ${isDarkMode ? "dark" : "light"}`}
             onClick={onRegisterOpen}
           >
-            Create <FontAwesomeIcon icon={faUserPlus} />
+            create <FontAwesomeIcon icon={faUserPlus} />
           </button>
         </form>
       </div>

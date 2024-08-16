@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const AccountModal = ({
   isDarkMode,
@@ -12,12 +12,20 @@ const AccountModal = ({
   handleCreateAccount,
   closeModalAccount,
 }) => {
+
+  
+  useEffect(() => {
+    setNewAccount("");
+
+  }, [isModalOpenAccount]);
+
   return (
     isModalOpenAccount && (
       <div className="modalWindow">
         <div className={`modalContent ${isDarkMode ? "dark" : "light"}`}>
           <h3>Enter the data</h3>
           <input
+            maxLength={10}
             type="text"
             value={newAccount}
             onChange={(e) => setNewAccount(e.target.value)}

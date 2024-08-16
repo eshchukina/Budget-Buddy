@@ -101,15 +101,15 @@ const AreaCharts = ({ chartDataSchedule, isDarkMode, formatBalance }) => {
   const series = chartIsEmpty ? [] : chartDataSchedule.series;
 
   return (
-    <div className={`mainField ${isDarkMode ? "dark" : "light"}`}>
-      <p className="title">most common monthly expenses</p>
+    <div className={` ${isDarkMode ? "dark" : "light"}`}>
+      <p className="title">expense and income chart</p>
 
       <div id="chart2" className="chart">
         <ReactApexChart
           options={options}
           series={series}
           type="area"
-          height={220}
+          height={250}
         />
 
         <p className="labelT">

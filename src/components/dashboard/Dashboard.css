@@ -16,6 +16,7 @@
   color: #5ec7dd;
 }
 
+
 .text {
   margin: 100px auto;
   width: 50%;
@@ -41,13 +42,15 @@ table {
   text-align: center;
   border-collapse: collapse;
   margin-bottom: 20px;
-  margin-left: 20px;
+  margin-left: 10px;
   transition: 0.5s;
-  display: block;
+display:contents;
+
 }
 
 td {
   width: 10%;
+
 }
 
 .positive {

@@ -22,24 +22,33 @@ const SideMenu = ({ isDarkMode, handleToggleView, toggleTheme }) => {
   };
 
   const handleContactUs = () => {
-    const emailSubject = "Contact Us Inquiry";
-    const emailAddress = "frankkat377@gmail.com";
-    const mailtoLink = `mailto:${emailAddress}?subject=${encodeURIComponent(
-      emailSubject
-    )}`;
-
+    const emailSubject = "Contact Us";
+    const emailAddress = "unateamdev@gmail.com";
+    const mailtoLink = `mailto:${emailAddress}?subject=${encodeURIComponent(emailSubject)}`;
+  
     window.open(mailtoLink, "_blank");
   };
+  
 
   const handleButtonClick = () => {
-    window.location.href =
-      "https://www.freeprivacypolicy.com/live/d875faef-4508-457b-aabc-79905cae1581";
+    window.open(
+      "https://www.freeprivacypolicy.com/live/d875faef-4508-457b-aabc-79905cae1581",
+      "_blank"  // Открытие в новой вкладке
+    );
   };
+  
 
   return (
     <div>
       <div className={`sidebar ${isDarkMode ? "dark" : "light"} `}>
+    
         <div className={`one ${isDarkMode ? "dark" : "light"}`}></div>
+          <h1 className="headerLogo">
+          <span className="headerLogoletter">B</span>udget{" "}
+          <span className="headerLogoletter">B</span>uddy
+        
+        </h1>
+        <hr/>
         <div className="buttonContainer">
           <div className="button">
             <Button
@@ -51,7 +60,7 @@ const SideMenu = ({ isDarkMode, handleToggleView, toggleTheme }) => {
           </div>
           <div className="button">
             <Button
-              text="сontact us"
+              text="our contacts"
               onClick={handleContactUs}
               icon={faEnvelope}
               iconColor="#ffcd38"
@@ -75,7 +84,9 @@ const SideMenu = ({ isDarkMode, handleToggleView, toggleTheme }) => {
               iconColor="#e96e94"
             />
           </div>
+          
           <ThemeToggle isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
+
           <div className="button">
             <Button
               text="exit"

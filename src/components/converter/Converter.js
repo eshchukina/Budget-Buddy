@@ -133,10 +133,11 @@ const Converter = ({ isDarkMode }) => {
 
   return (
     <div className={`converter ${isDarkMode ? "dark" : "light"}`}>
-      <p className="title">most common monthly expenses</p>
+      <p className="title">converter</p>
 
       <div className="input-container">
         <input
+          maxLength={10}
           ref={inputRef1}
           type="text"
           value={amount1}
@@ -160,6 +161,7 @@ const Converter = ({ isDarkMode }) => {
           value={amount2}
           onChange={handleAmountChange2}
           placeholder={`enter amount in ${targetCurrency}`}
+          maxLength={10}
         />
 
         <select onChange={handleTargetCurrencyChange} value={targetCurrency}>
@@ -175,7 +177,7 @@ const Converter = ({ isDarkMode }) => {
       <MainButton
         isDarkMode={isDarkMode}
         onClick={handleCloseConverterForm}
-        buttonText="Clear"
+        buttonText="clear"
       />
     </div>
   );

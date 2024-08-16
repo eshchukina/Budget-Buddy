@@ -3,12 +3,17 @@ import Header from "../components/header/Header";
 import SideMenu from "./sideMenu/SideMenu";
 import "./Style.css";
 import "../components/dashboard/Dashboard.css";
-
+import AccountModal from "./modals/AccountModal";
 import Dashboard from "./dashboard/Dashboard";
 import Instruction from "./Instruction/Instruction";
 import config from "../config";
+import MainButton from "./buttons/MainButton";
 
 function App() {
+  const [newAccount, setNewAccount] = useState("");
+  const [newCurrency, setNewCurrency] = useState("USD");
+  const [editAccountId, setEditAccountId] = useState(null);
+
   const [isDarkMode, setIsDarkMode] = useState(() => {
     const storedTheme = localStorage.getItem("isDarkMode");
     return storedTheme ? JSON.parse(storedTheme) : true;
@@ -21,11 +26,13 @@ function App() {
   const [isTokenAvailable, setTokenAvailable] = useState(false);
   const [isModalOpenAccount, setIsModalOpenAccount] = useState(false);
   const [showDashboard, setShowDashboard] = useState(true);
+console.log(fetchedAccountList)
 
   useEffect(() => {
     if (fetchedAccountList.length > 0) {
       setActiveAccount(fetchedAccountList[0]);
     }
+  
   }, [fetchedAccountList]);
 
   useEffect(() => {
@@ -135,6 +142,75 @@ function App() {
     setShowDashboard((prev) => !prev);
   };
 
+  const handleCreateAccount = async () => {
+    if (newAccount) {
+      try {
+        const token = localStorage.getItem("accessToken");
+        const headersWithToken = {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        };
+        const response = await fetch(`${config.apiUrl}accounts`, {
+          method: "POST",
+          mode: "cors",
+          headers: headersWithToken,
+          body: JSON.stringify({
+            name: newAccount,
+            currency: newCurrency,
+          }),
+        });
+        if (response.ok) {
+          const createdAccount = await response.json();
+          setAccounts([...accounts, createdAccount]);
+          setNewAccount("");
+          fetchAccountList();
+        } else {
+          console.log("Failed to create account");
+        }
+      } catch (error) {
+        console.log("Error creating account:", error);
+      }
+    }
+    closeModalAccount();
+    fetchAccountList();
+  };
+  const handleSaveAccount = async () => {
+    try {
+      const token = localStorage.getItem("accessToken");
+      const headersWithToken = {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      };
+      const response = await fetch(
+        `${config.apiUrl}accounts/${editAccountId}`,
+        {
+          method: "PUT",
+          mode: "cors",
+          headers: headersWithToken,
+          body: JSON.stringify({
+            name: newAccount,
+            currency: newCurrency,
+          }),
+        }
+      );
+
+      if (response.ok) {
+        fetchAccountList();
+
+        updateAccountCaption({
+          id: editAccountId,
+          name: newAccount,
+          currency: newCurrency,
+        });
+      } else {
+        console.log("Failed to update account");
+      }
+    } catch (error) {
+      console.log("Error updating account:", error);
+    }
+    closeModalAccount();
+  };
+
   return (
     <div className={isDarkMode ? "dark" : "light"}>
       <Header
@@ -142,13 +218,13 @@ function App() {
         toggleTheme={toggleTheme}
         activeAccount={activeAccount}
         setActiveAccount={setActiveAccount}
-      />
+      />  
       <SideMenu
         isDarkMode={isDarkMode}
         handleToggleView={handleToggleView}
         toggleTheme={toggleTheme}
       />
-
+ 
       {!isTokenAvailable ? (
         <Instruction isDarkMode={isDarkMode} />
       ) : showDashboard ? (
@@ -170,10 +246,44 @@ function App() {
           openModalAccount={openModalAccount}
           setActiveAccount={setActiveAccount}
           fetchAccountList={fetchAccountList}
+          newAccount={newAccount}
+          setNewAccount={setNewAccount}
+          newCurrency={newCurrency}
+          setNewCurrency={setNewCurrency}
+          editAccountId={editAccountId}
+          setEditAccountId={setEditAccountId}
         />
       ) : (
         <Instruction isDarkMode={isDarkMode} />
       )}
+
+      {!fetchedAccountList  ?
+      (
+               <div className="buttonTransaction">
+                <MainButton
+                  isDarkMode={isDarkMode}
+                  onClick={openModalAccount}
+                  buttonText="+ account"
+                />
+                
+        <AccountModal
+          isDarkMode={isDarkMode}
+          isModalOpenAccount={isModalOpenAccount}
+          newAccount={newAccount}
+          setNewAccount={setNewAccount}
+          newCurrency={newCurrency}
+          setNewCurrency={setNewCurrency}
+          editAccountId={editAccountId}
+          handleSaveAccount={handleSaveAccount}
+          handleCreateAccount={handleCreateAccount}
+          closeModalAccount={closeModalAccount}
+        /> </div>
+      
+      ):(null)
+        
+        }
+
+             
     </div>
   );
 }

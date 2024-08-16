@@ -1,5 +1,4 @@
 import React from "react";
-import MainButton from "../buttons/MainButton";
 const TransactionModal = ({
   isDarkMode,
   isModalOpen,
@@ -24,6 +23,7 @@ const TransactionModal = ({
               value={editData.description}
               onChange={handleDescriptionChange}
               placeholder="description"
+              maxLength={15}
             />
             <select
               value={editData.tag}
@@ -32,7 +32,7 @@ const TransactionModal = ({
               className="tagSelect"
             >
               <option value="other" className="tagOther">
-                Select a tag
+                select a tag
               </option>
               <option value="food" className="tagFood">
                 food
@@ -58,8 +58,8 @@ const TransactionModal = ({
               <option value="entertainment" className="tagEntertainment">
                 entertainment
               </option>
-              <option value="cloth" className="tagCloth">
-                cloth
+              <option value="shop" className="tagCloth">
+                shop
               </option>
               <option value="moneyBox" className="tagmoneyBox">
                 money box
@@ -70,6 +70,12 @@ const TransactionModal = ({
               <option value="credit" className="tagCredit">
                 credit
               </option>
+              <option value="rent" className="tagCredit">
+                rent
+              </option>
+              <option value="education" className="tagCredit">
+                education
+              </option>
               <option value="other" className="tagOther">
                 other
               </option>
@@ -78,9 +84,15 @@ const TransactionModal = ({
               type="number"
               inputMode="decimal"
               value={editData.amount}
-              onChange={handleAmountChange}
+              onChange={(e) => {
+                const value = e.target.value;
+                if (value.length <= 10) {
+                  handleAmountChange(e);
+                }
+              }}
               placeholder="amount"
             />
+
             <input
               type="date"
               value={editData.date ? formatDateForInput(editData.date) : ""}
@@ -91,7 +103,7 @@ const TransactionModal = ({
               }}
               placeholder="date"
             />
-            
+
             <button
               className={`modalBtn ${isDarkMode ? "dark" : "light"}`}
               type="submit"

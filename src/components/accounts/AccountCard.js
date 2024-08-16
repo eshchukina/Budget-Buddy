@@ -1,8 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencilAlt, faTimes } from "@fortawesome/free-solid-svg-icons";
-
-import "../Style.css"
+import "../Style.css";
 import "../../components/sideMenu/SideMenu";
 
 const AccountCard = ({
@@ -12,9 +11,12 @@ const AccountCard = ({
   handleAccountChange,
   handleEditAccount,
   handleDelete,
+  editAccountId,
+  setEditAccountId,
+  fetchAccountList,
 }) => {
   const formatAccountName = (name) => {
-    return name.length > 10 ? `${name.substring(0, 8)}...` : name;
+    return name.length > 10 ? `${name.substring(0, 10)}...` : name;
   };
 
   return (
@@ -56,7 +58,7 @@ const AccountCard = ({
           <FontAwesomeIcon
             icon={faTimes}
             className={`deleteButton ${isDarkMode ? "dark" : "light"}`}
-            onClick={() => handleDelete(account)}
+            onClick={() => handleDelete (account, editAccountId, setEditAccountId, fetchAccountList)}
           />
         </div>
       </button>

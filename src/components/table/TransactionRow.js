@@ -15,6 +15,8 @@ import {
   faSuitcase,
   faCreditCard,
   faOtter,
+  faSchool,
+  faHouse,
 } from "@fortawesome/free-solid-svg-icons";
 
 import "../Style.css";
@@ -38,7 +40,7 @@ const TransactionRow = ({
 
   const categoryIconMap = {
     food: { icon: faBurger, color: "#e96e94" },
-    transport: { icon: faCar, color: "#5ec7dd" },
+    transport: { icon: faCar, color: "#9ddd5e" },
     health: { icon: faHeartPulse, color: "#9ddd5e" },
     pets: { icon: faPaw, color: "#e96e94" },
     gifts: { icon: faGift, color: "#e96e94" },
@@ -47,9 +49,11 @@ const TransactionRow = ({
     credit: { icon: faCreditCard, color: "#ffcd38" },
     other: { icon: faOtter, color: "#9ddd5e" },
     salary: { icon: faMoneyBill, color: "#ffcd38" },
-    entertainment: { icon: faFaceSmile, color: "#ffcd38" },
-    cloth: { icon: faShirt, color: "#5ec7dd" },
+    entertainment: { icon: faFaceSmile, color: "#5ec7dd" },
+    shop: { icon: faShirt, color: "#5ec7dd" },
     moneyBox: { icon: faPiggyBank, color: "#ffcd38" },
+    rent: { icon: faHouse, color: "#9ddd5e" },
+    education: { icon: faSchool, color: "#9ddd5e" },
   };
 
   return (
@@ -64,7 +68,7 @@ const TransactionRow = ({
         )}
       </td>
       <td>
-        <span
+        <span 
           className="descriptionText"
           onClick={() => handleExpandDescription(data.id)}
         >
@@ -85,7 +89,7 @@ const TransactionRow = ({
       >
         {formatBalance(data.balance)}
       </td>
-      <td>
+      <td >
         <FontAwesomeIcon
           icon={faPencilAlt}
           className={`editIcon1 ${isDarkMode ? "dark" : "light"}`}

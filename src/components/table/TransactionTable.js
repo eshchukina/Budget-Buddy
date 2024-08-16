@@ -16,7 +16,7 @@ const TransactionTable = ({
   const [expandedDescription, setExpandedDescription] = useState(null);
 
   const formatData = (data) => {
-    const maxLength = 30;
+    const maxLength = 10;
     if (!data || data.length === 0) {
       return "";
     }
@@ -71,7 +71,7 @@ const TransactionTable = ({
       </div>
 
       <div className="table">
-        <div style={{ maxHeight: "250px", overflowY: "scroll" }}>
+        <div style={{ maxHeight: "230px", overflowY: "scroll" }}>
           <table
             key={account.id}
             className={`accountContent ${isDarkMode ? "dark" : "light"}`}
@@ -80,6 +80,7 @@ const TransactionTable = ({
               <tbody>
                 {dataList.map((data, index) => (
                   <TransactionRow
+                    key={data.id} 
                     data={data}
                     isDarkMode={isDarkMode}
                     handleEdit={handleEdit}

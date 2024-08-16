@@ -14,6 +14,11 @@ const Header = ({ isDarkMode, activeAccount, setActiveAccount }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  let userName = localStorage.getItem("userName") || "user";
+
+
+
+
   const handleOpenModal = () => {
     setIsModalOpen(true);
     setIsLoginModalOpen(false);
@@ -50,6 +55,7 @@ const Header = ({ isDarkMode, activeAccount, setActiveAccount }) => {
           const account = await response.json();
           setActiveAccount(account);
         } else {
+         
           console.log("Failed to fetch account by id");
         }
       } catch (error) {
@@ -82,6 +88,8 @@ const Header = ({ isDarkMode, activeAccount, setActiveAccount }) => {
       });
 
       if (response.ok) {
+
+        
         console.log("Registration successful");
         setName("");
         setEmail("");
@@ -117,14 +125,14 @@ const Header = ({ isDarkMode, activeAccount, setActiveAccount }) => {
       if (response.ok) {
         const data = await response.json();
         if (data && data.accessToken) {
-          const { name, email, accessToken, refreshToken, expires_in } = data;
+          const { name, accessToken, refreshToken, expires_in } = data;
 
           localStorage.setItem("userName", name);
-          localStorage.setItem("userEmail", email);
           localStorage.setItem("accessToken", accessToken);
           localStorage.setItem("refreshToken", refreshToken);
           localStorage.setItem("expiresIn", expires_in.toString());
-
+       
+          
           if (activeAccount && activeAccount.id) {
             localStorage.setItem("lastVisitedAccount", activeAccount.id);
           }
@@ -151,7 +159,8 @@ const Header = ({ isDarkMode, activeAccount, setActiveAccount }) => {
       console.log("Error:", error);
     }
     handleCloseLoginModal();
-    window.location.reload();
+   window.location.reload();
+
   };
 
   const refreshTokenFunc = async () => {
@@ -175,7 +184,7 @@ const Header = ({ isDarkMode, activeAccount, setActiveAccount }) => {
             localStorage.setItem("accessToken", accessToken);
             localStorage.setItem("refreshToken", refreshToken);
             localStorage.setItem("expiresIn", expires_in.toString());
-            window.location.reload();
+            //window.location.reload();
           } else {
             console.log(
               "Access token is missing in the token refresh response"
@@ -238,8 +247,9 @@ const Header = ({ isDarkMode, activeAccount, setActiveAccount }) => {
     <>
       <div className={`header ${isDarkMode ? "dark" : "light"}`}>
         <h1 className="headerLogo" onClick={reloadPage}>
-          <span className="headerLogoletter">B</span>udget{" "}
-          <span className="headerLogoletter">B</span>uddy
+          <span className="headerLogoletter">
+    
+         Hello, {userName}!</span>
         </h1>
 
         <Button

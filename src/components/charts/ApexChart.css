@@ -12,7 +12,7 @@
 
 .light #chart {
   background-color: transparent;
-    transition: 0.5s;
+  transition: 0.5s;
   align-items: center;
 }
 
@@ -22,5 +22,5 @@
 }
 
 .apexcharts-legend {
-display: none!important;
+  display: none !important;
 }

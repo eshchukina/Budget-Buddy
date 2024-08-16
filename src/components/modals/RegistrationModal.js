@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEye,
@@ -23,6 +23,12 @@ const RegisterModal = ({
 }) => {
   const [showPassword, setShowPassword] = useState(false);
 
+  useEffect(() => {
+    setPassword("");
+    setName("");
+    setEmail("");
+  }, [isOpen]);
+
   const handlePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
@@ -39,12 +45,14 @@ const RegisterModal = ({
         </h3>
         <form onSubmit={handleRegistration}>
           <input
+            maxLength={30}
             type="text"
             placeholder="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
           <input
+            maxLength={30}
             type="email"
             placeholder="email"
             value={email}
@@ -52,6 +60,7 @@ const RegisterModal = ({
           />
           <div className="passwordInputContainer">
             <input
+              maxLength={20}
               type={showPassword ? "text" : "password"}
               placeholder="password"
               value={password}
@@ -69,7 +78,7 @@ const RegisterModal = ({
             type="submit"
             className={`modalButtonLog ${isDarkMode ? "dark" : "light"}`}
           >
-            Register
+            register
           </button>
           <button
             className={`buttonClose modalButtonLog ${
@@ -77,7 +86,7 @@ const RegisterModal = ({
             }`}
             onClick={onClose}
           >
-            Close
+            close
           </button>
           <p className={`modalText ${isDarkMode ? "dark" : "light"}`}>
             enter login
@@ -86,7 +95,7 @@ const RegisterModal = ({
             className={`modalButtonLog ${isDarkMode ? "dark" : "light"}`}
             onClick={onLoginOpen}
           >
-            Login <FontAwesomeIcon icon={faArrowRightToBracket} />
+            login <FontAwesomeIcon icon={faArrowRightToBracket} />
           </button>
         </form>
       </div>

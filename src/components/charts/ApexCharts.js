@@ -11,25 +11,21 @@ const ApexChart = ({ isDarkMode, chartData }) => {
   return (
     <div className={`converter ${isDarkMode ? "dark" : "light"}`}>
       <p className="title">most common monthly expenses</p>
-      <div id="chart" >
+      <div id="chart">
         {chartIsEmpty ? (
           <ReactApexChart
             options={{
               chart: {
-                width: 400,
+                width: 350,
                 type: "donut",
               },
 
-              labels: ["Category 1", "Category 2", "Category 3"],
+              labels: ["Category 1"],
 
               legend: {
                 position: "bottom",
               },
-              colors: [  "#E96E94",
-        "#5EC7DD",
-        "#ffcd38",
-        "#9ddd5e",
-        "#9dafb4",],
+              colors: ["#5EC7DD"],
               title: {
                 text: "",
                 align: "center",
@@ -40,19 +36,18 @@ const ApexChart = ({ isDarkMode, chartData }) => {
                 },
               },
             }}
-            series={[50, 30, 20]}
+            series={[50]}
             type="donut"
-            width={400}
+            width={350}
           />
         ) : (
           <ReactApexChart
             options={{
               ...chartData.options,
-          
             }}
             series={chartData.series}
             type="donut"
-            width={400}
+            width={350}
           />
         )}
       </div>

@@ -67,7 +67,7 @@ body.dark {
 .modalContent {
   background-color: #fff;
   padding: 20px;
-  border-radius: 4px;
+  border-radius: 20px;
   width: auto;
   transition: 0.5s;
   color: #455e63;
@@ -101,6 +101,7 @@ body.dark {
   border-radius: 10px;
   margin: 10px;
   color: #455e63;
+  z-index: 20000;
 }
 
 .modalContent.dark select,
@@ -284,15 +285,6 @@ button.modalBtn:hover {
   font-size: 18px;
 }
 
-.accountContent.light .highlight {
-  background-color: #edf4f6;
-  transition: 0.5s;
-}
-
-.accountContent.dark .highlight {
-  background-color: #0e272e;
-  transition: 0.5s;
-}
 
 .backdrop {
   position: fixed;
@@ -358,8 +350,12 @@ button.modalBtn:hover {
   width: 100%;
   justify-content: space-around;
   align-items: center;
+  border-bottom: 2px solid #0e272e;
 }
+.light .textContainer {
 
+  border-bottom: 2px solid #9dafb4;
+}
 .titleContainer {
   flex-direction: row;
   display: flex;
@@ -367,6 +363,38 @@ button.modalBtn:hover {
   margin: 0 auto;
   align-items: center;
   justify-content: space-between;
+
+}
+.errorText{
+font-size: 10px;
+color:#000;
+}
+
+.errorContainer{
+position: absolute;
+padding-top:85px;
+padding-left: 50px;
+text-align: center;
+}
+
+.errorNameContainer{
+  position: absolute;
+padding-top:30px;
+padding-left: 50px;
+text-align: center;
+}
+
+.errorContainerEmail{
+  position: absolute;
+padding-top:30px;
+text-align: center;
+padding-left: 50px;
+}
+.errorPasswordContainer{
+  position: absolute;
+  padding-top:140px;
+  text-align: center;
+  padding-left: 50px;
 }
 
 @media (max-width: 1900px) {
